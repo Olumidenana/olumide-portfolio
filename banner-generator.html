@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olumide Adeyemi-Nana — LinkedIn Banner Generator (1584 x 396)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #07080B;
+      color: #E2E8F0;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+<body class="p-6 md:p-12 flex flex-col items-center justify-center min-h-screen">
+
+  <div class="max-w-6xl w-full">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center gap-2">
+          <span>⚡ LinkedIn Banner Generator</span>
+          <span class="text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">1584 × 396 px (Exact LinkedIn Spec)</span>
+        </h1>
+        <p class="text-sm text-slate-400 mt-1">
+          Designed specifically with left-avatar safe margin so your profile photo never obscures your name or credentials.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="downloadBanner()" class="px-5 py-3 rounded-xl bg-cyan-400 text-slate-950 font-mono text-xs font-bold hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-cyan-400/25 flex items-center gap-2 cursor-pointer">
+          <span>💾 Download 1584x396 PNG</span>
+        </button>
+        <a href="index.html" class="px-4 py-3 rounded-xl bg-slate-900 border border-white/10 text-slate-300 font-mono text-xs hover:text-white transition-all">
+          ← Back to Portfolio
+        </a>
+      </div>
+    </div>
+
+    <!-- Live Canvas Container (Scaled to fit viewport while maintaining exact 1584x396) -->
+    <div class="relative w-full rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-black">
+      <canvas id="bannerCanvas" width="1584" height="396" class="w-full h-auto block"></canvas>
+    </div>
+
+    <!-- Controls & Customization -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+      <div class="p-5 rounded-2xl bg-slate-900/80 border border-white/10">
+        <div class="text-xs font-mono text-cyan-400 font-bold mb-2">👤 Profile Avatar Safe Zone</div>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          The 320px left margin is intentionally calibrated so your round profile picture on desktop and mobile sits perfectly in the dark space without cutting into your text.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900/80 border border-white/10">
+        <div class="text-xs font-mono text-emerald-400 font-bold mb-2">⚡ Systems Positioning</div>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Replaces the old "Customer Support / Writer" tag with authoritative "Full-Stack Systems & Quant Engineer" credentials, highlighting 73+ feeds and your 5 production platforms.
+        </p>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900/80 border border-white/10">
+        <div class="text-xs font-mono text-amber-400 font-bold mb-2">🚀 Instant 1-Click Upload</div>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Click "Download 1584x396 PNG" above. Go to your LinkedIn profile, click the camera icon on your banner, and upload the saved file. No cropping required.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('bannerCanvas');
+    const ctx = canvas.getContext('2d');
+    const bgImg = new Image();
+    bgImg.src = 'assets/linkedin-banner-bg.jpg';
+
+    bgImg.onload = function() {
+      drawBanner();
+    };
+
+    bgImg.onerror = function() {
+      // Fallback if image path needs retry
+      drawBanner(true);
+    };
+
+    function drawBanner(fallback = false) {
+      // 1. Draw Background
+      if (!fallback && bgImg.complete && bgImg.naturalWidth > 0) {
+        // Draw image covering 1584x396
+        ctx.drawImage(bgImg, 0, 0, 1584, 396);
+        
+        // Gradient overlay to ensure high text contrast on left
+        const grad = ctx.createLinearGradient(0, 0, 1584, 0);
+        grad.addColorStop(0, 'rgba(7, 8, 11, 0.96)');
+        grad.addColorStop(0.35, 'rgba(7, 8, 11, 0.88)');
+        grad.addColorStop(0.65, 'rgba(7, 8, 11, 0.45)');
+        grad.addColorStop(1, 'rgba(7, 8, 11, 0.2)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1584, 396);
+      } else {
+        // Futuristic dark fallback gradient
+        const bgGrad = ctx.createLinearGradient(0, 0, 1584, 396);
+        bgGrad.addColorStop(0, '#07080B');
+        bgGrad.addColorStop(0.5, '#0B0F17');
+        bgGrad.addColorStop(1, '#0E1726');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, 1584, 396);
+      }
+
+      // Safe Left Margin for LinkedIn Avatar Circle (starts at x = 320)
+      const startX = 330;
+
+      // 2. Top Status Badge Pill
+      const badgeY = 62;
+      ctx.fillStyle = 'rgba(45, 212, 191, 0.12)';
+      ctx.strokeStyle = 'rgba(45, 212, 191, 0.35)';
+      ctx.lineWidth = 1.5;
+      roundRect(ctx, startX, badgeY, 490, 32, 16, true, true);
+
+      // Glowing dot
+      ctx.fillStyle = '#10B981';
+      ctx.beginPath();
+      ctx.arc(startX + 18, badgeY + 16, 5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Badge Text
+      ctx.font = '700 13px "JetBrains Mono", monospace';
+      ctx.fillStyle = '#2DD4BF';
+      ctx.fillText('SYSTEMS ARCHITECT · QUANT & HIGH-CONCURRENCY FINTECH', startX + 32, badgeY + 21);
+
+      // 3. Name Headline
+      ctx.font = '800 48px "Space Grotesk", sans-serif';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText('Olumide Adeyemi-Nana', startX, 144);
+
+      // 4. Subtitle / Core Role
+      ctx.font = '600 20px "Space Grotesk", sans-serif';
+      ctx.fillStyle = '#94A3B8';
+      ctx.fillText('Full-Stack Systems & Quant Engineer · Founder @ ICT Flux & Chopos', startX, 180);
+
+      // 5. Tech Stack & Metric Badges Row
+      const chipsY = 212;
+      drawBadge(startX, chipsY, '⚡ 73+ Live Quant Feeds', '#2DD4BF', 'rgba(45,212,191,0.15)');
+      drawBadge(startX + 210, chipsY, 'Python 3.12 · TypeScript', '#60A5FA', 'rgba(96,165,250,0.15)');
+      drawBadge(startX + 440, chipsY, 'WebSockets · PostgreSQL (ACID)', '#34D399', 'rgba(52,211,153,0.15)');
+      drawBadge(startX + 730, chipsY, 'Deriv Bot & Paystack Split', '#F59E0B', 'rgba(245,158,11,0.15)');
+
+      // 6. Systems Pipeline Ticker / Footer Row
+      const footerY = 278;
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(startX, footerY);
+      ctx.lineTo(1530, footerY);
+      ctx.stroke();
+
+      // Footer Text Links & Credentials
+      ctx.font = '600 14px "JetBrains Mono", monospace';
+      ctx.fillStyle = '#E2E8F0';
+      ctx.fillText('🌐 Live 3D Portfolio: olumide-portfolio.vercel.app', startX, footerY + 34);
+
+      ctx.fillStyle = '#2DD4BF';
+      ctx.fillText('✉️ olumideadeyeminana@gmail.com', startX + 540, footerY + 34);
+
+      ctx.fillStyle = '#94A3B8';
+      ctx.fillText('🐙 github.com/Olumidenana', startX + 940, footerY + 34);
+
+      // 7. Subtle top-right decorative stamp
+      ctx.font = '700 12px "JetBrains Mono", monospace';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
+      ctx.textAlign = 'right';
+      ctx.fillText('DETERMINISTIC KERNEL v2.4 // PRODUCTION', 1530, 48);
+      ctx.textAlign = 'left';
+    }
+
+    function drawBadge(x, y, text, textColor, bgColor) {
+      ctx.font = '700 13px "JetBrains Mono", monospace';
+      const textWidth = ctx.measureText(text).width;
+      const padX = 14;
+      const w = textWidth + padX * 2;
+      const h = 28;
+
+      ctx.fillStyle = bgColor;
+      ctx.strokeStyle = textColor;
+      ctx.lineWidth = 1;
+      roundRect(ctx, x, y, w, h, 8, true, true);
+
+      ctx.fillStyle = textColor;
+      ctx.fillText(text, x + padX, y + 19);
+    }
+
+    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+      if (fill) ctx.fill();
+      if (stroke) ctx.stroke();
+    }
+
+    function downloadBanner() {
+      const link = document.createElement('a');
+      link.download = 'olumide-adeyemi-nana-linkedin-banner-1584x396.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // Initial draw
+    setTimeout(() => { drawBanner(); }, 200);
+  </script>
+</body>
+</html>
