@@ -244,7 +244,7 @@
               <span id="missionToggleText">Autonomous Demo: Running</span>
             </button>
             <div class="hidden sm:flex items-center gap-2 text-xs font-mono">
-              <span id="missionBadge" class="px-2 py-0.5 rounded bg-surface-2 text-accent border border-white/10 font-bold">MISSION 1/4</span>
+              <span id="missionBadge" class="px-2 py-0.5 rounded bg-surface-2 text-accent border border-white/10 font-bold">MISSION 1/5</span>
               <span id="missionStoryHeadline" class="text-slate-300 font-medium truncate max-w-xs md:max-w-md">EURUSD Liquidity Sweep & Limit Order Fill</span>
             </div>
           </div>
@@ -273,6 +273,9 @@
             </button>
             <button onclick="userSelectNode('ict')" id="btn-focus-ict" class="px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-accent hover:border-accent/40 transition-all">
               ⚡ ICT Flux
+            </button>
+            <button onclick="userSelectNode('toon')" id="btn-focus-toon" class="px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-amber-400 hover:border-amber-400/40 transition-all">
+              🎨 ToonForge
             </button>
             <button onclick="userSelectNode('chopos')" id="btn-focus-chopos" class="px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-brand hover:border-brand/40 transition-all">
               🍽️ Chopos OS
@@ -542,9 +545,13 @@
               <span class="font-mono text-xs text-slate-500">Python 3.12 · 73+ Feeds</span>
             </div>
             <h3 class="text-2xl font-display font-bold text-white mb-2">ICT Flux — Algorithmic Quant Execution Engine</h3>
-            <p class="text-sm text-slate-400 mb-6 leading-relaxed">
-              Institutional quantitative trading engine synthesized from the complete 903-video ICT corpus. Monitors 73+ instruments across Forex, US Indices, and Deriv Synthetics 24/7/365 with automated PD Array detection, SMT divergence validation, sub-100ms trade alerts, and an MT4/MT5 plain-text C bridge.
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Built to help everyday people rise above poverty by providing access to institutional execution systems that create genuine financial freedom when traded with discipline. Monitors 73+ instruments across Forex, US Equities, and Deriv Synthetics 24/7/365 with automated Fair Value Gaps, SMT divergence validation, and sub-100ms MT4/MT5 C bridges.
             </p>
+            <div class="p-3 rounded-xl bg-surface-2/80 border border-accent/20 mb-5 text-xs font-mono text-slate-300">
+              <span class="text-accent font-bold block mb-1">⚡ Deriv Automated Bot & Managed Accounts</span>
+              <span>Connects via Deriv API token for hands-free trading. Includes managed account program (5%–10% monthly profit commission) for busy professionals, distinct from tiered access plans.</span>
+            </div>
 
             <!-- Interactive Trading Simulator -->
             <div class="bg-bg/90 rounded-xl p-4 border border-white/10 mb-6">
@@ -583,7 +590,37 @@
           </div>
         </div>
 
-        <!-- CARD 2: CHOPOS MERCHANT OPERATING SYSTEM -->
+        <!-- CARD 2: TOONFORGE (NEW FLAGSHIP) -->
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between relative overflow-hidden border-amber-500/20 hover:border-amber-500/40">
+          <div class="absolute -top-12 -right-12 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-400 text-xs font-mono font-medium">AI Animation & 3D Cloud Studio</span>
+              <span class="font-mono text-xs text-slate-500">Browser WebGL · Cloud GPU</span>
+            </div>
+            <h3 class="text-2xl font-display font-bold text-white mb-2">ToonForge — AI Animation Studio for African Creators</h3>
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Built specifically for Nigerian and African creators who want to join the content automation and animation wave but face huge roadblocks: expensive foreign USD tool subscriptions and burning through endless temporary Gmail accounts for free trials.
+            </p>
+            <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+              ToonForge gathers free-tier and open models (Gemini / Claude) in one place with character sheet consistency, scene shot lists, and a built-in 3D animator powered by cloud graphics cards so creators can make viral 2D/3D cartoon episodes without needing a $2,000 computer.
+            </p>
+            <div class="p-3 rounded-xl bg-surface-2/80 border border-amber-500/20 mb-5 text-xs font-mono text-slate-300">
+              <span class="text-amber-400 font-bold block mb-1">🎭 Character Consistency & Browser 3D Rendering</span>
+              <span>Turns a simple prompt into an animated episode with original characters, dialogue, music, and sound effects ready for direct export to YouTube Shorts and TikTok.</span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-4 border-t border-white/10 mt-auto">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 font-mono text-xs font-semibold">Studio Core</span>
+              <span class="text-[11px] font-mono text-slate-500">🔒 Private Repository</span>
+            </div>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-2 text-slate-300">Gemini · WebGL · Cloud GPU</span>
+          </div>
+        </div>
+
+        <!-- CARD 3: CHOPOS MERCHANT OPERATING SYSTEM (BUILT TO BEAT CHOWDECK) -->
         <div class="glass-card rounded-2xl p-7 flex flex-col justify-between relative overflow-hidden">
           <div class="absolute -top-12 -right-12 w-48 h-48 bg-brand/10 rounded-full blur-3xl pointer-events-none"></div>
           <div>
@@ -592,9 +629,13 @@
               <span class="font-mono text-xs text-slate-500">TypeScript · PLpgSQL · Paystack</span>
             </div>
             <h3 class="text-2xl font-display font-bold text-white mb-2">Chopos — Merchant OS & Delivery Relay</h3>
-            <p class="text-sm text-slate-400 mb-6 leading-relaxed">
-              High-throughput operating system and logistics engine built for food vendors in Nigeria. Features real-time kitchen display synchronization, automated dispatch relay for couriers, zero-effort inventory management, and instant escrow settlement via Paystack payment splits.
+            <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+              Built to outperform Chowdeck in every aspect: faster kitchen synchronization, zero payment disputes, and seamless campus logistics. High-throughput operating system and logistics engine built for food vendors in Nigeria with instant split escrow settlement via Paystack.
             </p>
+            <div class="p-3 rounded-xl bg-surface-2/80 border border-brand/20 mb-5 text-xs font-mono text-slate-300">
+              <span class="text-brand font-bold block mb-1">💳 Instant Paystack Split Escrow</span>
+              <span>Splits checkout automatically: vendor receives food payment instantly, courier receives delivery fee with zero delay or manual dispute. Kitchen Display System (KDS) alerts cooks in real-time.</span>
+            </div>
 
             <!-- Interactive Relay Simulator -->
             <div class="bg-bg/90 rounded-xl p-4 border border-white/10 mb-6">
@@ -644,41 +685,66 @@
           </div>
         </div>
 
-        <!-- CARD 3: MOTION OAU CAMPUS TRANSIT -->
+        <!-- CARD 4: MOTION OAU CAMPUS SOCIAL & ACTIVITY HUB -->
         <div class="glass-card rounded-2xl p-7 flex flex-col justify-between relative overflow-hidden">
           <div class="flex items-center justify-between gap-3 mb-4">
-            <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-mono font-medium">Campus Transit / Realtime Mobility</span>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-mono font-medium">Campus Social & Activity Hub</span>
             <span class="font-mono text-xs text-slate-500">TypeScript · Supabase · PWA</span>
           </div>
-          <h3 class="text-2xl font-display font-bold text-white mb-2">Motion OAU — Campus Mobility Platform</h3>
-          <p class="text-sm text-slate-400 mb-6 leading-relaxed">
-            High-concurrency campus transit and activity coordination platform designed for Obafemi Awolowo University. Bridges student passengers with vehicle operators, managing route clustering, live vehicle positioning, and dynamic congestion balancing with PostgreSQL Row Level Security.
+          <h3 class="text-2xl font-display font-bold text-white mb-2">Motion OAU — Campus Social & Activity Network</h3>
+          <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+            The definitive campus social network and activity ecosystem for Obafemi Awolowo University. Lets students know where people will gather, coordinate reading & study buddy routes at lecture halls, organize sports, and establish safe night walking routes.
           </p>
+          <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+            Starting with group running routes as the social community beachhead, Motion OAU bridges student passengers with campus transit operators, managing route clustering and dynamic congestion balancing with PostgreSQL Row Level Security.
+          </p>
+          <div class="p-3 rounded-xl bg-surface-2/80 border border-emerald-500/20 mb-5 text-xs font-mono text-slate-300">
+            <span class="text-emerald-400 font-bold block mb-1">📍 Live Gatherings, Reading Groups & Runs</span>
+            <span>Live crowd maps, lecture theatre reading capacity, verified campus GPS paths, and real-time transit dispatch with zero data leaks.</span>
+          </div>
           <div class="flex items-center justify-between pt-4 border-t border-white/10 mt-auto">
             <div class="flex items-center gap-2">
-              <span class="px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-semibold">Campus Alpha</span>
-              <span class="text-[11px] font-mono text-slate-500">🔒 Private Repository</span>
+              <a href="https://motion-oau.vercel.app" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-semibold hover:bg-emerald-500/25 transition-all flex items-center gap-1">
+                <span>Campus Alpha</span>
+                <span>↗</span>
+              </a>
+              <span class="text-[11px] font-mono text-slate-500">🔒 Production Stack</span>
             </div>
             <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-2 text-slate-300">Supabase · Geolocation</span>
           </div>
         </div>
 
-        <!-- CARD 4: VIDEO ASSEMBLER SAAS -->
-        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between relative overflow-hidden">
+        <!-- CARD 5: VIDEO ASSEMBLER SAAS (FOR CLIPPERS & TIKTOK/YOUTUBE) -->
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between relative overflow-hidden md:col-span-2">
           <div class="flex items-center justify-between gap-3 mb-4">
-            <span class="px-3 py-1 rounded-full bg-purple-500/15 text-purple-400 text-xs font-mono font-medium">Media Pipeline / Cloud SaaS</span>
-            <span class="font-mono text-xs text-slate-500">TypeScript (700KB+) · FFMPEG</span>
+            <span class="px-3 py-1 rounded-full bg-purple-500/15 text-purple-400 text-xs font-mono font-medium">Creator Pipeline / Cloud Video SaaS</span>
+            <span class="font-mono text-xs text-slate-500">TypeScript (700KB+) · FFMPEG · Cloud Transcode</span>
           </div>
-          <h3 class="text-2xl font-display font-bold text-white mb-2">Video Assembler SaaS</h3>
-          <p class="text-sm text-slate-400 mb-6 leading-relaxed">
-            Automated media processing and cloud video rendering engine. Orchestrates multi-track timeline stitching, dynamic subtitle generation, automated audio level normalization, and multi-resolution video transcode pipelines with Google Cloud Storage integration.
-          </p>
-          <div class="flex items-center justify-between pt-4 border-t border-white/10 mt-auto">
-            <div class="flex items-center gap-2">
-              <span class="px-3 py-1.5 rounded-lg bg-purple-500/15 border border-purple-500/30 text-purple-400 font-mono text-xs font-semibold">Cloud Rendering</span>
-              <span class="text-[11px] font-mono text-slate-500">🔒 Proprietary SaaS</span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-2xl font-display font-bold text-white mb-2">Video Assembler SaaS — Automated Clipper Engine</h3>
+              <p class="text-sm text-slate-400 mb-4 leading-relaxed">
+                Built specifically for clippers and video creators so they can edit high-volume content seamlessly and paste/publish directly to YouTube Shorts and TikTok without freezing their computer or spending hours in manual editing software.
+              </p>
+              <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                Orchestrates multi-track timeline stitching, dynamic subtitle generation, automated vocal loudness normalization (-14 LUFS), and parallel multi-resolution video transcode pipelines with Google Cloud Storage integration.
+              </p>
             </div>
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-2 text-slate-300">FFMPEG · Cloud Media</span>
+            <div class="p-4 rounded-xl bg-surface-2/80 border border-purple-500/20 text-xs font-mono text-slate-300 flex flex-col justify-between">
+              <div>
+                <span class="text-purple-400 font-bold block text-sm mb-2">🚀 The Clipper's Cloud Pipeline</span>
+                <ul class="space-y-1.5 text-slate-300">
+                  <li class="flex items-center gap-2"><span class="text-purple-400 font-bold">✓</span> Direct YouTube & TikTok Publishing Pipeline</li>
+                  <li class="flex items-center gap-2"><span class="text-purple-400 font-bold">✓</span> Auto-Subtitle Burn-In with Word-Level Timing</li>
+                  <li class="flex items-center gap-2"><span class="text-purple-400 font-bold">✓</span> Distributed Cloud FFMPEG Workers (No CPU overheat)</li>
+                  <li class="flex items-center gap-2"><span class="text-purple-400 font-bold">✓</span> Google Cloud Storage CDN Instant Links</li>
+                </ul>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-white/10 mt-4">
+                <span class="text-[11px] font-mono text-slate-500">🔒 Proprietary SaaS</span>
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-2 text-slate-300">FFMPEG · Cloud Media</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -818,8 +884,8 @@
         latency: '0ms Edge Delay',
         latencyClass: 'text-bull',
         title: 'Deterministic Event Engine',
-        relatable: `<strong>The Conductor of the Entire Orchestra:</strong> Think of this as the central nervous system connecting all 4 production platforms. Whether a financial tick sweeps on Wall Street or a midnight food order is placed in Nigeria, this asynchronous kernel routes events in sub-100ms with zero memory leaks and strict ACID safety.`,
-        technical: `<strong>Deterministic Asynchronous Core:</strong> Pure zero-lookahead event routing bus built on Python 3.12 asyncio and high-concurrency PLpgSQL. Evaluates incoming WebSocket tick streams, webhook payloads, and spatial geohash channels with 100% non-blocking throughput.`,
+        relatable: `<strong>The Conductor of the Entire Orchestra:</strong> The central nervous system connecting all 5 flagship production platforms. Whether a financial tick sweeps on Wall Street or Deriv, a 3D cartoon scene renders in the cloud, a late-night campus meal is split between vendor and rider, or viral clips transcode into TikTok format, this asynchronous kernel routes events in sub-100ms with zero memory leaks and strict ACID safety.`,
+        technical: `<strong>Deterministic Asynchronous Core:</strong> Pure zero-lookahead event routing bus built on Python 3.12 asyncio and high-concurrency PLpgSQL. Evaluates incoming WebSocket tick streams, webhook payloads, spatial geohashes, and cloud transcode tasks with 100% non-blocking throughput.`,
         protocol: 'Async Event Bus / WS',
         throughput: 'Sub-100ms Ingestion',
         link: '#pipeline3d'
@@ -830,12 +896,25 @@
         borderClass: 'border-accent/40',
         latency: 'Sub-100ms Alert Speed',
         latencyClass: 'text-bull',
-        title: 'ICT Flux Algorithmic Quant Platform',
-        relatable: `<strong>Wall Street Brain on Autopilot:</strong> Imagine an institutional trader watching 73 market charts simultaneously 24 hours a day, never getting tired, never making emotional revenge trades, and executing buy/sell orders in 12ms before a human could even click a mouse.`,
-        technical: `<strong>Multi-Feed Algorithmic Matrix:</strong> Monitors 73+ assets across Forex, US Equities, and Deriv Synthetics 24/7/365. Evaluates Fair Value Gaps (FVG), Market Structure Shifts (MSS), and Order Block Mean Thresholds (50%) with zero-lookahead C FFI bridges to MetaTrader 4 & 5.`,
+        title: 'ICT Flux Algorithmic Quant Platform & Deriv Bot',
+        relatable: `<strong>Institutional Trading Brain + Financial Freedom for the Masses:</strong> Built with a deeper social mission: giving everyday people access to institutional Wall Street systems so they can rise above poverty. Features an automated Deriv trading bot and a managed account program for busy professionals—taking only a 5% to 10% monthly performance commission so clients earn passively with zero emotional fatigue.`,
+        technical: `<strong>Multi-Feed Algorithmic Matrix & Autonomous Bot:</strong> Monitors 73+ assets across Forex, US Equities, and Deriv Synthetics 24/7/365. Evaluates Fair Value Gaps (FVG), Market Structure Shifts (MSS), and Order Block Mean Thresholds (50%) with zero-lookahead C FFI bridges to MetaTrader 4 & 5. Automates trade execution on Deriv with strict account equity drawdown guards.`,
         protocol: 'Deriv WebSockets / C FFI',
         throughput: '24/7 Continuous Scanning',
         link: 'https://ict-trader.vercel.app'
+      },
+      toon: {
+        badge: 'AI ANIMATION STUDIO · 3D RENDERER',
+        badgeClass: 'bg-amber-500/15 text-amber-400',
+        borderClass: 'border-amber-500/40',
+        latency: 'Cloud GPU Render',
+        latencyClass: 'text-bull',
+        title: 'ToonForge AI Animation & 3D Render Studio',
+        relatable: `<strong>Studio-Grade Animation for African Creators:</strong> Built to empower Nigerian & African storytellers locked out by costly USD animation subscriptions ($100+/mo) and endless free-trial burner accounts. Bundles free foundational AI models (Gemini & Claude) with in-browser 2D/3D character generation, auto lip-sync, and cloud GPU rendering so creators can publish high-retention cartoon episodes straight to YouTube and TikTok without melting their laptops.`,
+        technical: `<strong>Multi-Modal Generative Animation Engine:</strong> Story-to-storyboard pipeline translating screenplay prompts into consistent multi-shot character models. Features WebGL character rigging, Three.js 3D viewport preview, automated dialogue phoneme-matching, and headless cloud GPU rendering with zero local GPU strain.`,
+        protocol: 'Claude/Gemini API · WebGL · Cloud GPU',
+        throughput: 'Multi-Shot Character Consistency',
+        link: '#projects'
       },
       chopos: {
         badge: 'FINTECH & MERCHANT OS',
@@ -843,22 +922,22 @@
         borderClass: 'border-brand/40',
         latency: 'Zero Unsettled Drift',
         latencyClass: 'text-bull',
-        title: 'Chopos Logistics & Escrow OS',
-        relatable: `<strong>Square + DoorDash Built for Africa:</strong> Solves the chaos of campus food delivery. Students order in two taps, payment is split instantly so vendors get their food money and couriers get their delivery fee immediately, while the kitchen tablet automatically chimes with the order ticket.`,
-        technical: `<strong>High-Throughput Merchant Engine:</strong> Dual-channel synchronization between customer checkout, Paystack Subaccount Split API, and live Kitchen Display Systems (KDS). Enforces PostgreSQL row-level locks to prevent double-spending or delayed vendor settlement.`,
+        title: 'Chopos Logistics & Escrow OS (Beating Chowdeck)',
+        relatable: `<strong>Engineered to Outperform Chowdeck in Every Dimension:</strong> Solves the friction, delayed payouts, and high commissions of campus food delivery. Students order in two taps; payment is split instantly via Paystack escrow so vendors get their food money immediately and couriers get their delivery fee on drop-off. Live kitchen tablet automatically chimes the moment an order arrives.`,
+        technical: `<strong>High-Throughput Merchant Engine:</strong> Dual-channel synchronization between customer checkout, Paystack Subaccount Split API, and live Kitchen Display Systems (KDS). Enforces PostgreSQL row-level locks to prevent double-spending or delayed vendor settlement with sub-50ms dispatch latency.`,
         protocol: 'Paystack Webhooks / PLpgSQL',
         throughput: 'Instant Split Settlement',
         link: '#projects'
       },
       motion: {
-        badge: 'CAMPUS MOBILITY / PWA',
+        badge: 'CAMPUS SOCIAL & MOBILITY',
         badgeClass: 'bg-bull/15 text-bull',
         borderClass: 'border-bull/40',
         latency: '<50ms Geohash Sync',
         latencyClass: 'text-bull',
-        title: 'Motion OAU Realtime Transit System',
-        relatable: `<strong>Uber for Campus Transit:</strong> Instead of 200 students fighting for seats at campus bus stops, Motion OAU groups students heading to the same faculty and routes shuttles directly to them, eliminating 45-minute waiting queues.`,
-        technical: `<strong>Spatial Transit Routing:</strong> Geohash clustering and Haversine matrix dispatch engine built on Supabase Realtime and PostgreSQL Row Level Security (RLS). Balances high-traffic campus terminal queues with sub-50ms sync to driver PWA devices.`,
+        title: 'Motion OAU Campus Social Network & Hub',
+        relatable: `<strong>More Than Transit—The Heartbeat of OAU Campus Life:</strong> A dynamic social network built for students to see where campus energy is gathering. Students coordinate group fitness runs (the social wedge), discover active reading spaces for late-night exam prep, organize safe night-walk routes, and cluster shuttles without 45-minute fighting queues at bus stops.`,
+        technical: `<strong>Spatial Geohash & Community Activity Engine:</strong> Dynamic crowd-clustering and Haversine matrix dispatch engine built on Supabase Realtime and PostgreSQL Row Level Security (RLS). Realtime GPS telemetry broadcasts crowd activity hotspots, group run waypoints, and shuttle seat capacity in sub-50ms.`,
         protocol: 'Supabase Realtime / GPS',
         throughput: 'Dynamic Route Balancing',
         link: '#projects'
@@ -869,9 +948,9 @@
         borderClass: 'border-purple-500/40',
         latency: 'Multi-Thread Transcode',
         latencyClass: 'text-warn',
-        title: 'Automated Video Assembler Pipeline',
-        relatable: `<strong>Digital Video Studio in the Cloud:</strong> Creators upload raw clips, and the system automatically normalizes audio, generates subtitles, cuts the timeline, and renders finished MP4 videos in seconds without burning out their laptop fans.`,
-        technical: `<strong>Distributed Media Transcoding:</strong> Automated cloud timeline assembler orchestrating multi-track FFMPEG worker clusters. Handles dynamic subtitle burning, decibel normalization (-14 LUFS), and parallel slice encoding with Google Cloud Storage integration.`,
+        title: 'Automated Video Assembler SaaS for Clippers',
+        relatable: `<strong>The Clipper's Cloud Supercomputer:</strong> Purpose-built for video editors and clippers creating viral content for TikTok and YouTube. Drop in raw clips and podcast audio; the cloud cluster automatically synchronizes subtitles, cuts dead air, normalizes audio to streaming loudness, and renders high-bitrate MP4s ready to post instantly.`,
+        technical: `<strong>Distributed Media Transcoding Pipeline:</strong> Automated cloud timeline assembler orchestrating multi-track FFMPEG worker clusters. Handles dynamic subtitle burning, decibel normalization (-14 LUFS), and parallel slice encoding with Google Cloud Storage integration. Built on 700KB+ TypeScript core.`,
         protocol: 'TypeScript (700KB+) / FFMPEG',
         throughput: 'Multi-Resolution Render',
         link: '#projects'
@@ -884,25 +963,31 @@
         { num: '01', name: '24/7 Tick Listener', desc: 'Streams sub-10ms raw ticks from Deriv WebSockets', icon: '📡', colorHex: '#2DD4BF', color: 0x2dd4bf },
         { num: '02', name: 'PD Array & FVG Matrix', desc: 'Maps institutional Order Blocks & Fair Value Gaps', icon: '🧠', colorHex: '#38BDF8', color: 0x38bdf8 },
         { num: '03', name: 'SMT Correlation Guard', desc: 'Cross-checks twin assets (EUR vs GBP) to eliminate fake sweeps', icon: '⚖️', colorHex: '#34D399', color: 0x34d399 },
-        { num: '04', name: 'MT5 C Bridge & Push', desc: 'Fires sub-100ms limit order & dispatches Telegram alert', icon: '⚡', colorHex: '#FBBF24', color: 0xfbbf24 }
+        { num: '04', name: 'Deriv Bot & Managed Accounts', desc: 'Auto-executes trades; 5%-10% monthly profit split with 0 manual fatigue', icon: '🤖', colorHex: '#FBBF24', color: 0xfbbf24 }
+      ],
+      toon: [
+        { num: '01', name: 'Story-to-Script AI', desc: 'Bundles free AI models (Gemini/Claude) into episodic screenplay & dialogue', icon: '📜', colorHex: '#F59E0B', color: 0xf59e0b },
+        { num: '02', name: 'Cast Consistency Engine', desc: 'Locks character faces, proportions & outfits across all storyboard scenes', icon: '🎭', colorHex: '#FBBF24', color: 0xfbbf24 },
+        { num: '03', name: 'Cloud GPU 3D Animator', desc: 'Renders WebGL 3D meshes & phoneme lip-sync without local GPU burn', icon: '🎮', colorHex: '#F97316', color: 0xf97316 },
+        { num: '04', name: 'Audio SFX & TikTok Export', desc: 'Mixes multi-track voiceover & exports viral-ready MP4 in one click', icon: '🚀', colorHex: '#34D399', color: 0x34d399 }
       ],
       chopos: [
         { num: '01', name: 'Customer Mobile Order', desc: 'Campus student places meal order in 2 taps without phone calls', icon: '🛒', colorHex: '#60A5FA', color: 0x60a5fa },
-        { num: '02', name: 'Paystack Split Escrow', desc: 'Instantly splits payment: vendor gets meal cash, rider gets fee', icon: '💳', colorHex: '#38BDF8', color: 0x38bdf8 },
+        { num: '02', name: 'Paystack Split Escrow', desc: 'Outperforms Chowdeck: instant vendor payout + automated rider split', icon: '💳', colorHex: '#38BDF8', color: 0x38bdf8 },
         { num: '03', name: 'Kitchen KDS Display', desc: 'Live kitchen screen notifies the cook with order tickets', icon: '🍳', colorHex: '#34D399', color: 0x34d399 },
         { num: '04', name: 'Courier Auto-Dispatch', desc: 'Dispatches nearest bike rider with delivery route', icon: '🛵', colorHex: '#A78BFA', color: 0xa78bfa }
       ],
       motion: [
-        { num: '01', name: 'Passenger Geo-Tap', desc: 'Student taps pickup location at campus landmark', icon: '📍', colorHex: '#34D399', color: 0x34d399 },
+        { num: '01', name: 'Social Activity Tap', desc: 'Join campus group runs, find study spaces, or request transit', icon: '📍', colorHex: '#34D399', color: 0x34d399 },
         { num: '02', name: 'Haversine Batch Router', desc: 'Clusters students heading to same hostel or lecture hall', icon: '🗺️', colorHex: '#2DD4BF', color: 0x2dd4bf },
         { num: '03', name: 'Supabase RLS Channel', desc: 'Zero data leak between passenger channels and operators', icon: '🔒', colorHex: '#60A5FA', color: 0x60a5fa },
-        { num: '04', name: 'Shuttle Driver Assigned', desc: 'Driver accepts full passenger cluster efficiently', icon: '🚐', colorHex: '#FBBF24', color: 0xfbbf24 }
+        { num: '04', name: 'Campus Network Sync', desc: 'Broadcasts active gathering spots and coordinates group travel', icon: '👥', colorHex: '#FBBF24', color: 0xfbbf24 }
       ],
       video: [
-        { num: '01', name: 'Multi-Track Ingestion', desc: 'Uploads raw video clips, audio voiceovers, and captions', icon: '🎞️', colorHex: '#C084FC', color: 0xc084fc },
+        { num: '01', name: 'Clipper Ingestion', desc: 'Uploads raw podcast clips, voiceovers, and TikTok highlights', icon: '🎞️', colorHex: '#C084FC', color: 0xc084fc },
         { num: '02', name: 'Audio Speech Leveler', desc: 'Auto-normalizes decibels and generates aligned subtitles', icon: '🎙️', colorHex: '#E879F9', color: 0xe879f9 },
         { num: '03', name: 'FFMPEG Cloud Cluster', desc: 'Renders 4K video cuts across parallel cloud worker pods', icon: '⚙️', colorHex: '#38BDF8', color: 0x38bdf8 },
-        { num: '04', name: 'Cloud Storage Delivery', desc: 'Encodes web-ready MP4 to Google Cloud CDN instantly', icon: '☁️', colorHex: '#34D399', color: 0x34d399 }
+        { num: '04', name: 'Direct Social Push', desc: 'Encodes 9:16 vertical cuts directly to YouTube and TikTok', icon: '☁️', colorHex: '#34D399', color: 0x34d399 }
       ]
     };
 
@@ -911,49 +996,61 @@
       {
         id: 1,
         nodeId: 'ict',
-        badge: 'MISSION 1/4',
-        headline: 'EURUSD Liquidity Sweep & Instant Limit Execution',
+        badge: 'MISSION 1/5',
+        headline: 'Deriv Automated Bot Execution & Managed Account Safeguard',
         steps: [
           { subIdx: 0, text: '1/4 INGESTION: 73+ feeds live. Deriv WebSocket catches EURUSD liquidity sweep at 1.08550 high.' },
           { subIdx: 1, text: '2/4 STATE ENGINE: Algorithm maps Bearish Fair Value Gap & 5m Market Structure Shift.' },
           { subIdx: 2, text: '3/4 AUDIT GUARD: SMT Divergence verified against GBPUSD twin feed. Zero false breakout.' },
-          { subIdx: 3, text: '4/4 EXECUTION: Limit order filled at 1.08495! Dispatched to MT5 C bridge in 12ms. +2.4R profit secured 🎯' }
+          { subIdx: 3, text: '4/4 AUTONOMOUS BOT: Deriv bot fills limit order at 1.08495! Managed account +2.4R profit secured with 5%-10% monthly fee 🎯' }
         ]
       },
       {
         id: 2,
+        nodeId: 'toon',
+        badge: 'MISSION 2/5',
+        headline: 'Episodic AI Animation & Cloud GPU 3D Character Render',
+        steps: [
+          { subIdx: 0, text: '1/4 STORY GENERATION: Free AI models (Gemini & Claude) translate creative prompt into 6-scene episodic script.' },
+          { subIdx: 1, text: '2/4 CAST CONSISTENCY: Engine locks African hero facial geometry across all multi-shot camera angles.' },
+          { subIdx: 2, text: '3/4 CLOUD 3D ANIMATION: WebGL rig phoneme-matches dialogue & renders 3D animation on cloud GPUs without laptop lag.' },
+          { subIdx: 3, text: '4/4 SOCIAL EXPORT: Background audio mixed, final episode encoded and ready for YouTube & TikTok 🎬' }
+        ]
+      },
+      {
+        id: 3,
         nodeId: 'chopos',
-        badge: 'MISSION 2/4',
-        headline: 'Late-Night Student Meal Order & Split Escrow',
+        badge: 'MISSION 3/5',
+        headline: 'Late-Night Student Meal Order & Instant Chowdeck-Beating Split Escrow',
         steps: [
           { subIdx: 0, text: '1/4 CHECKOUT: Hungry campus student orders 2x Jollof + Chicken in 2 taps on mobile menu.' },
-          { subIdx: 1, text: '2/4 MONEY SPLIT: Paystack split escrow routes N4,800 to Vendor & N800 to Courier with zero lag.' },
+          { subIdx: 1, text: '2/4 SPLIT ESCROW: Paystack split escrow routes N4,800 to Vendor & N800 to Courier with 0 delayed payouts.' },
           { subIdx: 2, text: '3/4 KITCHEN KDS: Cook tablet screen chimes. Chef marks order accepted & begins cooking.' },
           { subIdx: 3, text: '4/4 DISPATCH: Nearest campus bike rider assigned GPS pickup route. Hot meal delivered in 14 mins 🛵' }
         ]
       },
       {
-        id: 3,
+        id: 4,
         nodeId: 'motion',
-        badge: 'MISSION 3/4',
-        headline: 'Post-Exam Campus Transit Rush & Passenger Batching',
+        badge: 'MISSION 4/5',
+        headline: 'OAU Campus Social Coordination: Group Run & Shuttle Batching',
         steps: [
-          { subIdx: 0, text: '1/4 PICKUP TAP: 18 students finish exams and tap pickup request at Spider Hall.' },
+          { subIdx: 0, text: '1/4 COMMUNITY HUD: 24 students organize an evening group run; others check quiet spots in Hezekiah Library.' },
           { subIdx: 1, text: '2/4 HAVERSINE ROUTING: Algorithm clusters 6 students heading to PG Hall into a single batch.' },
           { subIdx: 2, text: '3/4 SUPABASE REALTIME: PostgreSQL Row Level Security updates driver coordinates with 0 leaks.' },
           { subIdx: 3, text: '4/4 TRANSIT DISPATCH: Campus shuttle arrives, picks up entire cluster. 100% full, 0 student brawl 🚐' }
         ]
       },
       {
-        id: 4,
+        id: 5,
         nodeId: 'video',
-        badge: 'MISSION 4/4',
-        headline: 'Viral Video Cloud Transcode & Timeline Render',
+        badge: 'MISSION 5/5',
+        headline: 'Viral Clipper Pipeline: Audio Leveling & Multi-Platform Render',
         steps: [
-          { subIdx: 0, text: '1/4 INGESTION: Video creator uploads 3 raw 4K smartphone clips and a voiceover track.' },
+          { subIdx: 0, text: '1/4 INGESTION: Video editor uploads raw podcast clips and high-energy voiceover track.' },
           { subIdx: 1, text: '2/4 AI SPEECH: Audio normalizer cleans background noise & synchronizes word-by-word subtitles.' },
-          { subIdx: 2, text: '3/4 FFMPEG CLOUD: Multi-worker cloud cluster renders timeline cuts in parallel.' },
-          { subIdx: 3, text: '4/4 CDN DELIVERY: Encoded MP4 uploaded to Google Cloud Storage CDN ready for download in 18s 🎬' }
+          { subIdx: 2, text: '3/4 FFMPEG CLOUD: Multi-worker cloud cluster renders 9:16 vertical cuts in parallel.' },
+          { subIdx: 3, text: '4/4 SOCIAL CDN: Encoded MP4 uploaded to Google Cloud Storage CDN ready for TikTok & YouTube 🚀' }
         ]
       }
     ];
@@ -1149,6 +1246,17 @@
           geomType: 'octahedron'
         },
         {
+          id: 'toon',
+          name: 'ToonForge Studio',
+          label: '🎨 TOONFORGE',
+          color: 0xf59e0b,
+          colorHex: '#F59E0B',
+          pos: new THREE.Vector3(0, 16, -18),
+          camPos: new THREE.Vector3(0, 10, -2),
+          camLookAt: new THREE.Vector3(0, 12, -18),
+          geomType: 'icosahedron'
+        },
+        {
           id: 'chopos',
           name: 'Chopos OS',
           label: '🍽️ CHOPOS OS',
@@ -1165,9 +1273,9 @@
           label: '📍 MOTION OAU',
           color: 0x34d399,
           colorHex: '#34D399',
-          pos: new THREE.Vector3(-14, -2, -18),
-          camPos: new THREE.Vector3(-4, -4, -4),
-          camLookAt: new THREE.Vector3(-14, -7, -18),
+          pos: new THREE.Vector3(-16, -4, -16),
+          camPos: new THREE.Vector3(-6, -6, -2),
+          camLookAt: new THREE.Vector3(-16, -9, -16),
           geomType: 'dodecahedron'
         },
         {
@@ -1176,9 +1284,9 @@
           label: '🎬 VIDEO SAAS',
           color: 0xc084fc,
           colorHex: '#C084FC',
-          pos: new THREE.Vector3(18, -2, 14),
-          camPos: new THREE.Vector3(8, -4, 26),
-          camLookAt: new THREE.Vector3(18, -7, 14),
+          pos: new THREE.Vector3(18, -4, 14),
+          camPos: new THREE.Vector3(8, -6, 26),
+          camLookAt: new THREE.Vector3(18, -9, 14),
           geomType: 'cylinder'
         }
       ];
@@ -1207,6 +1315,22 @@
           );
           const cage = new THREE.Mesh(
             new THREE.OctahedronGeometry(3.1, 0),
+            new THREE.MeshBasicMaterial({ color: node.color, wireframe: true, transparent: true, opacity: 0.4 })
+          );
+          group.add(cage);
+        } else if (node.geomType === 'icosahedron') {
+          mesh = new THREE.Mesh(
+            new THREE.IcosahedronGeometry(2.5, 0),
+            new THREE.MeshStandardMaterial({
+              color: node.color,
+              emissive: node.color,
+              emissiveIntensity: 0.5,
+              metalness: 0.85,
+              roughness: 0.25
+            })
+          );
+          const cage = new THREE.Mesh(
+            new THREE.IcosahedronGeometry(3.1, 0),
             new THREE.MeshBasicMaterial({ color: node.color, wireframe: true, transparent: true, opacity: 0.4 })
           );
           group.add(cage);
@@ -1411,7 +1535,7 @@
               subList.appendChild(row);
             });
           } else {
-            if (subIndicator) subIndicator.textContent = 'All 4 Systems Synced';
+            if (subIndicator) subIndicator.textContent = 'All 5 Systems Synced';
             subList.innerHTML = `
               <div class="p-2 rounded bg-surface-2/60 border border-white/5 text-slate-400 text-[11px] leading-relaxed">
                 Click any satellite node to drop down its 4 internal architectural layers in 3D.
@@ -1421,7 +1545,7 @@
         }
 
         // Highlight Active Camera Preset Button
-        const buttons = ['galaxy', 'ict', 'chopos', 'motion', 'video'];
+        const buttons = ['galaxy', 'ict', 'toon', 'chopos', 'motion', 'video'];
         buttons.forEach((btnId) => {
           const btn = document.getElementById(`btn-focus-${btnId}`);
           if (btn) {
