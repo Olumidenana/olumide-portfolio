@@ -14,6 +14,10 @@
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Three.js + OrbitControls for 3D Systems Galaxy & Workflow -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -217,16 +221,109 @@
 
     <!-- 3D INTERACTIVE ARCHITECTURE PIPELINE SECTION -->
     <section id="pipeline3d" class="py-16 border-t border-white/10">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
           <div class="font-mono text-xs text-accent uppercase tracking-wider mb-1 flex items-center gap-2">
-            <span>●</span> 3D Interactive Pipeline Telemetry
+            <span class="w-2 h-2 rounded-full bg-accent pulse-dot"></span> 3D Systems Galaxy & Live Data Conduits
           </div>
-          <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">Mission-Critical System Blueprint</h2>
+          <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">Interactive Systems Architecture in 3D</h2>
         </div>
-        <div class="text-xs font-mono text-slate-400">
-          Move cursor over 3D stages to inspect spatial depth layers
+        <div class="text-xs font-mono text-slate-400 max-w-sm">
+          Spatial 3D orbital topology of the deterministic event kernel, asynchronous data conduits, and distributed production engines.
         </div>
+      </div>
+
+      <!-- 3D WEBGL GALAXY VIEWPORT -->
+      <div class="relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-b from-[#0B0F17] via-[#07080B] to-[#0E1117] shadow-2xl mb-12">
+        
+        <!-- Viewport Controls Bar -->
+        <div class="p-3 sm:p-4 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 bg-surface/80 backdrop-blur-md relative z-10">
+          
+          <!-- Camera Presets -->
+          <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs font-mono">
+            <span class="text-slate-400 mr-1 hidden sm:inline">Camera Focus:</span>
+            <button onclick="focus3DNode('galaxy')" id="btn-focus-galaxy" class="px-3 py-1.5 rounded-lg bg-accent text-slate-950 font-bold hover:brightness-110 transition-all shadow-sm shadow-accent/20">
+              🌐 Galaxy View
+            </button>
+            <button onclick="focus3DNode('ict')" id="btn-focus-ict" class="px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-accent hover:border-accent/40 transition-all">
+              ⚡ ICT Flux
+            </button>
+            <button onclick="focus3DNode('chopos')" id="btn-focus-chopos" class="px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-brand hover:border-brand/40 transition-all">
+              🍽️ Chopos OS
+            </button>
+            <button onclick="focus3DNode('motion')" id="btn-focus-motion" class="px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-bull hover:border-bull/40 transition-all">
+              📍 Motion OAU
+            </button>
+            <button onclick="focus3DNode('video')" id="btn-focus-video" class="px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-purple-400 hover:border-purple-400/40 transition-all">
+              🎬 Video SaaS
+            </button>
+          </div>
+
+          <!-- Controls Toggle -->
+          <div class="flex items-center gap-2 sm:gap-3 text-xs font-mono">
+            <button onclick="toggle3DOrbit()" id="btn-orbit-toggle" class="px-2.5 py-1 rounded-md bg-surface-2/90 border border-white/10 text-slate-300 hover:text-white transition-colors flex items-center gap-1.5">
+              <span id="orbitIcon">⏸</span> <span id="orbitLabel">Auto-Orbit: ON</span>
+            </button>
+            <button onclick="reset3DCamera()" class="px-2.5 py-1 rounded-md bg-surface-2/90 border border-white/10 text-slate-400 hover:text-accent transition-colors" title="Reset View">
+              ↺ Reset
+            </button>
+            <span class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-accent/10 border border-accent/20 text-accent font-mono text-[11px]">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></span> 60 FPS WebGL
+            </span>
+          </div>
+        </div>
+
+        <!-- 3D Canvas Area -->
+        <div class="relative w-full h-[520px] md:h-[620px] bg-[#07080B] cursor-grab active:cursor-grabbing overflow-hidden select-none" id="systems3dWrapper">
+          <canvas id="systems3dCanvas" class="w-full h-full block"></canvas>
+
+          <!-- Top-Right Live Event Stream Ticker -->
+          <div class="absolute top-4 right-4 z-10 glass px-3.5 py-2 rounded-xl border border-white/10 pointer-events-none hidden sm:block">
+            <div class="flex items-center gap-2 text-[11px] font-mono">
+              <span class="w-2 h-2 rounded-full bg-bull pulse-dot"></span>
+              <span class="text-slate-200 font-semibold">Live Dataflow Influx</span>
+            </div>
+            <div id="hudPulseCounter" class="text-[10px] font-mono text-accent mt-0.5">
+              Streaming 73+ concurrent feeds
+            </div>
+          </div>
+
+          <!-- Floating Node Telemetry HUD Inspector (Bottom Left) -->
+          <div id="telemetryCard" class="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-md z-10 glass-card p-5 rounded-2xl border border-accent/30 shadow-2xl transition-all duration-300 backdrop-blur-xl">
+            <div class="flex items-center justify-between gap-3 mb-2">
+              <span id="telemetryBadge" class="px-2.5 py-0.5 rounded-full bg-accent/15 text-accent text-[11px] font-mono font-semibold">
+                UNIFIED CORE KERNEL
+              </span>
+              <span id="telemetryLatency" class="font-mono text-[11px] text-bull">0ms Edge Delay</span>
+            </div>
+            <h4 id="telemetryTitle" class="text-lg font-display font-bold text-white mb-1">
+              Deterministic Event Engine
+            </h4>
+            <p id="telemetryDesc" class="text-xs text-slate-300 leading-relaxed mb-3">
+              Central asynchronous orchestration router evaluating quantitative liquidity matrix, ACID state transitions, and high-frequency webhook feeds.
+            </p>
+            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono border-t border-white/10 pt-3">
+              <div>
+                <span class="text-slate-500 block">Protocol</span>
+                <span id="telemetryProtocol" class="text-slate-200 font-medium">Async Event Bus / WS</span>
+              </div>
+              <div>
+                <span class="text-slate-500 block">Throughput</span>
+                <span id="telemetryThroughput" class="text-accent font-medium">Sub-100ms Ingestion</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spatial Interaction Hint (Bottom Right) -->
+          <div class="absolute bottom-4 right-4 z-10 hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-2/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-slate-400 pointer-events-none">
+            <span>🖱️ Drag to Rotate</span>
+            <span>·</span>
+            <span>Scroll to Zoom</span>
+            <span>·</span>
+            <span>Click Node to Focus</span>
+          </div>
+        </div>
+
       </div>
 
       <!-- 3D ISOMETRIC INTERACTIVE STAGE PIPELINE -->
@@ -251,12 +348,12 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
             
             <!-- STAGE 1: INGESTION -->
-            <div class="iso-layer bg-surface/90 border border-white/10 rounded-2xl p-6 relative hover:border-accent/50 transition-all">
+            <div onclick="if(typeof focus3DNode==='function') focus3DNode('ict')" class="iso-layer bg-surface/90 border border-white/10 rounded-2xl p-6 relative hover:border-accent/50 transition-all cursor-pointer group" title="Click to inspect Ingestion Node in 3D">
               <div class="layer-depth-1 flex items-center justify-between mb-4">
-                <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-2.5 py-1 rounded-md border border-accent/20">TIER 1 · INGESTION</span>
+                <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-2.5 py-1 rounded-md border border-accent/20 group-hover:brightness-125">TIER 1 · INGESTION</span>
                 <span class="font-mono text-[11px] text-slate-500">Sub-100ms</span>
               </div>
-              <h4 class="layer-depth-2 text-lg font-display font-bold text-white mb-2">Realtime Stream Influx</h4>
+              <h4 class="layer-depth-2 text-lg font-display font-bold text-white mb-2 group-hover:text-accent transition-colors">Realtime Stream Influx</h4>
               <p class="layer-depth-2 text-xs text-slate-400 leading-relaxed mb-4">
                 Persistent event-driven listeners streaming live market ticks, webhook payloads, and spatial telemetry:
               </p>
@@ -277,12 +374,12 @@
             </div>
 
             <!-- STAGE 2: DETERMINISTIC ENGINE -->
-            <div class="iso-layer bg-surface/90 border border-accent/30 rounded-2xl p-6 relative shadow-lg shadow-accent/5 hover:border-accent transition-all">
+            <div onclick="if(typeof focus3DNode==='function') focus3DNode('galaxy')" class="iso-layer bg-surface/90 border border-accent/30 rounded-2xl p-6 relative shadow-lg shadow-accent/5 hover:border-accent transition-all cursor-pointer group" title="Click to inspect Core Kernel in 3D">
               <div class="layer-depth-1 flex items-center justify-between mb-4">
-                <span class="text-xs font-mono font-bold text-brand bg-brand/10 px-2.5 py-1 rounded-md border border-brand/20">TIER 2 · CORE KERNEL</span>
+                <span class="text-xs font-mono font-bold text-brand bg-brand/10 px-2.5 py-1 rounded-md border border-brand/20 group-hover:brightness-125">TIER 2 · CORE KERNEL</span>
                 <span class="font-mono text-[11px] text-bull">Deterministic</span>
               </div>
-              <h4 class="layer-depth-2 text-lg font-display font-bold text-white mb-2">Algorithmic State Engine</h4>
+              <h4 class="layer-depth-2 text-lg font-display font-bold text-white mb-2 group-hover:text-brand transition-colors">Algorithmic State Engine</h4>
               <p class="layer-depth-2 text-xs text-slate-400 leading-relaxed mb-4">
                 Pure zero-lookahead state machine evaluating institutional matrix rules and transactional safety:
               </p>
@@ -303,9 +400,9 @@
             </div>
 
             <!-- STAGE 3: EXECUTION & DISPATCH -->
-            <div class="iso-layer bg-surface/90 border border-white/10 rounded-2xl p-6 relative hover:border-bull/50 transition-all">
+            <div onclick="if(typeof focus3DNode==='function') focus3DNode('chopos')" class="iso-layer bg-surface/90 border border-white/10 rounded-2xl p-6 relative hover:border-bull/50 transition-all cursor-pointer group" title="Click to inspect Dispatch & Chopos in 3D">
               <div class="layer-depth-1 flex items-center justify-between mb-4">
-                <span class="text-xs font-mono font-bold text-bull bg-bull/10 px-2.5 py-1 rounded-md border border-bull/20">TIER 3 · DISPATCH</span>
+                <span class="text-xs font-mono font-bold text-bull bg-bull/10 px-2.5 py-1 rounded-md border border-bull/20 group-hover:brightness-125">TIER 3 · DISPATCH</span>
                 <span class="font-mono text-[11px] text-slate-500">Zero Proxy Lag</span>
               </div>
               <h4 class="layer-depth-2 text-lg font-display font-bold text-white mb-2">Execution & Output Relay</h4>
@@ -631,8 +728,605 @@
 
   </main>
 
-  <!-- Interactive Simulator & Terminal Script -->
+  <!-- Interactive 3D Systems Galaxy, Simulator & Terminal Script -->
   <script>
+    /* =========================================================================
+       THREE.JS INTERACTIVE 3D SYSTEMS GALAXY & DATA CONDUITS
+       ========================================================================= */
+    const telemetryData = {
+      galaxy: {
+        badge: 'UNIFIED CORE KERNEL',
+        badgeClass: 'bg-accent/15 text-accent',
+        borderClass: 'border-accent/30',
+        latency: '0ms Edge Delay',
+        latencyClass: 'text-bull',
+        title: 'Deterministic Event Engine',
+        desc: 'Central asynchronous orchestration router evaluating quantitative liquidity matrix, ACID state transitions, and high-frequency webhook feeds.',
+        protocol: 'Async Event Bus / WS',
+        throughput: 'Sub-100ms Ingestion'
+      },
+      ict: {
+        badge: 'QUANT ENGINE · 73+ FEEDS',
+        badgeClass: 'bg-accent/15 text-accent',
+        borderClass: 'border-accent/40',
+        latency: 'Sub-100ms Alert Speed',
+        latencyClass: 'text-bull',
+        title: 'ICT Flux Algorithmic Execution System',
+        desc: 'Synthesizes 903 institutional ICT concepts into automated real-time SMT divergence, PD Array mean thresholds, and zero-delay C bridge dispatch to MetaTrader 4 & 5.',
+        protocol: 'Deriv WebSockets / C FFI',
+        throughput: '24/7/365 Continuous Scanning'
+      },
+      chopos: {
+        badge: 'FINTECH & MERCHANT OS',
+        badgeClass: 'bg-brand/15 text-brand',
+        borderClass: 'border-brand/40',
+        latency: 'Zero Unsettled Drift',
+        latencyClass: 'text-bull',
+        title: 'Chopos Logistics & Escrow OS',
+        desc: 'Powers high-throughput Nigerian food vendors with multi-split Paystack subaccount escrow, automated Kitchen Display (KDS) synchronization, and courier routing.',
+        protocol: 'Paystack Webhooks / PLpgSQL',
+        throughput: 'Instant Split Settlement'
+      },
+      motion: {
+        badge: 'CAMPUS MOBILITY / PWA',
+        badgeClass: 'bg-bull/15 text-bull',
+        borderClass: 'border-bull/40',
+        latency: '<50ms Geohash Sync',
+        latencyClass: 'text-bull',
+        title: 'Motion OAU Realtime Transit System',
+        desc: 'High-concurrency campus transit dispatch and passenger clustering for Obafemi Awolowo University with Haversine GPS routing and PostgreSQL Row Level Security.',
+        protocol: 'Supabase Realtime / GPS',
+        throughput: 'Dynamic Route Balancing'
+      },
+      video: {
+        badge: 'CLOUD RENDERING ENGINE',
+        badgeClass: 'bg-purple-500/15 text-purple-400',
+        borderClass: 'border-purple-500/40',
+        latency: 'Multi-Thread Cloud Transcode',
+        latencyClass: 'text-warn',
+        title: 'Automated Video Assembler Pipeline',
+        desc: 'Scalable automated timeline compositor stitching multi-track video, subtitle alignments, and audio normalization with Google Cloud Storage and FFMPEG workers.',
+        protocol: 'TypeScript (700KB+) / FFMPEG',
+        throughput: 'Multi-Resolution Cloud Render'
+      }
+    };
+
+    let focus3DNode, toggle3DOrbit, reset3DCamera;
+
+    function init3DGalaxy() {
+      const canvas = document.getElementById('systems3dCanvas');
+      const wrapper = document.getElementById('systems3dWrapper');
+      if (!canvas || !wrapper) return;
+      if (typeof THREE === 'undefined') {
+        console.warn('Three.js not loaded');
+        return;
+      }
+
+      // Scene & Fog
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.FogExp2(0x07080B, 0.012);
+
+      // Camera
+      const camera = new THREE.PerspectiveCamera(45, wrapper.clientWidth / wrapper.clientHeight, 0.1, 1000);
+      camera.position.set(0, 24, 48);
+
+      // Renderer
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.25;
+
+      // OrbitControls with Damping & Bounds
+      const ControlsClass = THREE.OrbitControls || window.OrbitControls;
+      let controls = null;
+      let isAutoOrbiting = true;
+      if (ControlsClass) {
+        controls = new ControlsClass(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.06;
+        controls.minDistance = 14;
+        controls.maxDistance = 85;
+        controls.maxPolarAngle = Math.PI / 2 + 0.08;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.8;
+      }
+
+      // Ambient & Point Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+      scene.add(ambientLight);
+
+      const coreLight = new THREE.PointLight(0x2dd4bf, 3.5, 75);
+      coreLight.position.set(0, 2, 0);
+      scene.add(coreLight);
+
+      const blueLight = new THREE.PointLight(0x60a5fa, 2.5, 65);
+      blueLight.position.set(20, 10, -10);
+      scene.add(blueLight);
+
+      const purpleLight = new THREE.PointLight(0xc084fc, 2.2, 55);
+      purpleLight.position.set(16, -10, 15);
+      scene.add(purpleLight);
+
+      // Deep Space Ground Grid
+      const gridHelper = new THREE.GridHelper(90, 36, 0x2dd4bf, 0x1e293b);
+      gridHelper.position.y = -22;
+      gridHelper.material.opacity = 0.16;
+      gridHelper.material.transparent = true;
+      scene.add(gridHelper);
+
+      // Ambient Drifting Starfield / Data Dust
+      const starCount = 450;
+      const starGeo = new THREE.BufferGeometry();
+      const starPos = new Float32Array(starCount * 3);
+      for (let i = 0; i < starCount * 3; i += 3) {
+        starPos[i] = (Math.random() - 0.5) * 160;
+        starPos[i + 1] = (Math.random() - 0.5) * 100;
+        starPos[i + 2] = (Math.random() - 0.5) * 160;
+      }
+      starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+      const starMat = new THREE.PointsMaterial({
+        color: 0x94a3b8,
+        size: 0.9,
+        transparent: true,
+        opacity: 0.45
+      });
+      const starField = new THREE.Points(starGeo, starMat);
+      scene.add(starField);
+
+      // Helper: Universal 2D Canvas Billboard Label
+      function createTextSprite(text, colorHex) {
+        const c = document.createElement('canvas');
+        c.width = 256;
+        c.height = 64;
+        const ctx = c.getContext('2d');
+        
+        ctx.fillStyle = 'rgba(14, 17, 23, 0.88)';
+        ctx.strokeStyle = colorHex;
+        ctx.lineWidth = 3;
+        const x = 6, y = 6, w = 244, h = 52, r = 16;
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + w - r, y);
+        ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+        ctx.lineTo(x + w, y + h - r);
+        ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+        ctx.lineTo(x + r, y + h);
+        ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+        ctx.lineTo(x, y + r);
+        ctx.quadraticCurveTo(x, y, x + r, y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.font = 'bold 20px "Space Grotesk", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillText(text, 128, 32);
+
+        const tex = new THREE.CanvasTexture(c);
+        tex.minFilter = THREE.LinearFilter;
+        const mat = new THREE.SpriteMaterial({ map: tex, transparent: true });
+        const sprite = new THREE.Sprite(mat);
+        sprite.scale.set(7, 1.75, 1);
+        return sprite;
+      }
+
+      // Central Deterministic Core Kernel Hub
+      const coreGroup = new THREE.Group();
+      scene.add(coreGroup);
+
+      const coreInnerGeo = new THREE.DodecahedronGeometry(2.5, 0);
+      const coreInnerMat = new THREE.MeshStandardMaterial({
+        color: 0x2dd4bf,
+        emissive: 0x0f766e,
+        emissiveIntensity: 0.8,
+        roughness: 0.2,
+        metalness: 0.9
+      });
+      const coreInner = new THREE.Mesh(coreInnerGeo, coreInnerMat);
+      coreGroup.add(coreInner);
+
+      const coreCageGeo = new THREE.IcosahedronGeometry(3.8, 1);
+      const coreCageMat = new THREE.MeshBasicMaterial({
+        color: 0x2dd4bf,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.35
+      });
+      const coreCage = new THREE.Mesh(coreCageGeo, coreCageMat);
+      coreGroup.add(coreCage);
+
+      const ringGeo = new THREE.TorusGeometry(5.2, 0.05, 16, 100);
+      const ringMat1 = new THREE.MeshBasicMaterial({ color: 0x2dd4bf, transparent: true, opacity: 0.55 });
+      const ring1 = new THREE.Mesh(ringGeo, ringMat1);
+      ring1.rotation.x = Math.PI / 3;
+      coreGroup.add(ring1);
+
+      const ringMat2 = new THREE.MeshBasicMaterial({ color: 0x60a5fa, transparent: true, opacity: 0.55 });
+      const ring2 = new THREE.Mesh(ringGeo, ringMat2);
+      ring2.rotation.y = Math.PI / 4;
+      ring2.rotation.z = Math.PI / 6;
+      coreGroup.add(ring2);
+
+      const coreLabel = createTextSprite('⚡ DETERMINISTIC KERNEL', '#2DD4BF');
+      coreLabel.position.set(0, 5.0, 0);
+      coreGroup.add(coreLabel);
+
+      // System Satellites Definitions
+      const systemNodes = [
+        {
+          id: 'ict',
+          name: 'ICT Flux',
+          label: '⚡ ICT FLUX',
+          color: 0x2dd4bf,
+          colorHex: '#2DD4BF',
+          pos: new THREE.Vector3(-22, 6, 8),
+          camPos: new THREE.Vector3(-14, 10, 16),
+          geomType: 'octahedron'
+        },
+        {
+          id: 'chopos',
+          name: 'Chopos OS',
+          label: '🍽️ CHOPOS OS',
+          color: 0x60a5fa,
+          colorHex: '#60A5FA',
+          pos: new THREE.Vector3(22, 7, -8),
+          camPos: new THREE.Vector3(15, 12, -2),
+          geomType: 'box'
+        },
+        {
+          id: 'motion',
+          name: 'Motion OAU',
+          label: '📍 MOTION OAU',
+          color: 0x34d399,
+          colorHex: '#34D399',
+          pos: new THREE.Vector3(-12, -14, -16),
+          camPos: new THREE.Vector3(-6, -8, -8),
+          geomType: 'dodecahedron'
+        },
+        {
+          id: 'video',
+          name: 'Video SaaS',
+          label: '🎬 VIDEO SAAS',
+          color: 0xc084fc,
+          colorHex: '#C084FC',
+          pos: new THREE.Vector3(16, -12, 14),
+          camPos: new THREE.Vector3(10, -7, 20),
+          geomType: 'cylinder'
+        }
+      ];
+
+      const interactiveMeshes = [coreInner];
+      const pulseParticles = [];
+
+      // Build Satellites, Conduits & Pulse Streams
+      systemNodes.forEach((node) => {
+        const group = new THREE.Group();
+        group.position.copy(node.pos);
+        scene.add(group);
+        node.group = group;
+
+        let mesh;
+        if (node.geomType === 'octahedron') {
+          mesh = new THREE.Mesh(
+            new THREE.OctahedronGeometry(2.4, 0),
+            new THREE.MeshStandardMaterial({
+              color: node.color,
+              emissive: node.color,
+              emissiveIntensity: 0.5,
+              metalness: 0.8,
+              roughness: 0.25
+            })
+          );
+          const cage = new THREE.Mesh(
+            new THREE.OctahedronGeometry(3.0, 0),
+            new THREE.MeshBasicMaterial({ color: node.color, wireframe: true, transparent: true, opacity: 0.4 })
+          );
+          group.add(cage);
+        } else if (node.geomType === 'box') {
+          mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(2.6, 2.6, 2.6),
+            new THREE.MeshStandardMaterial({
+              color: node.color,
+              emissive: node.color,
+              emissiveIntensity: 0.45,
+              metalness: 0.85,
+              roughness: 0.25
+            })
+          );
+          const cage = new THREE.Mesh(
+            new THREE.BoxGeometry(3.2, 3.2, 3.2),
+            new THREE.MeshBasicMaterial({ color: node.color, wireframe: true, transparent: true, opacity: 0.4 })
+          );
+          group.add(cage);
+        } else if (node.geomType === 'dodecahedron') {
+          mesh = new THREE.Mesh(
+            new THREE.DodecahedronGeometry(2.2, 0),
+            new THREE.MeshStandardMaterial({
+              color: node.color,
+              emissive: node.color,
+              emissiveIntensity: 0.5,
+              metalness: 0.8,
+              roughness: 0.25
+            })
+          );
+          const cage = new THREE.Mesh(
+            new THREE.DodecahedronGeometry(2.8, 0),
+            new THREE.MeshBasicMaterial({ color: node.color, wireframe: true, transparent: true, opacity: 0.4 })
+          );
+          group.add(cage);
+        } else {
+          mesh = new THREE.Mesh(
+            new THREE.CylinderGeometry(1.8, 1.8, 2.5, 12),
+            new THREE.MeshStandardMaterial({
+              color: node.color,
+              emissive: node.color,
+              emissiveIntensity: 0.45,
+              metalness: 0.85,
+              roughness: 0.25
+            })
+          );
+          const cage = new THREE.Mesh(
+            new THREE.CylinderGeometry(2.2, 2.2, 2.9, 12),
+            new THREE.MeshBasicMaterial({ color: node.color, wireframe: true, transparent: true, opacity: 0.35 })
+          );
+          group.add(cage);
+        }
+
+        mesh.userData = { nodeId: node.id, nodeData: node };
+        group.add(mesh);
+        node.mesh = mesh;
+        interactiveMeshes.push(mesh);
+
+        // Satellite Billboarding Label
+        const label = createTextSprite(node.label, node.colorHex);
+        label.position.set(0, 3.8, 0);
+        group.add(label);
+
+        // Arched CatmullRom 3D Conduit Curve
+        const mid = new THREE.Vector3(node.pos.x * 0.5, node.pos.y * 0.5 + 4.5, node.pos.z * 0.5);
+        const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(0, 0, 0), mid, node.pos]);
+        node.curve = curve;
+
+        const tubeGeo = new THREE.TubeGeometry(curve, 44, 0.08, 8, false);
+        const tubeMat = new THREE.MeshBasicMaterial({
+          color: node.color,
+          transparent: true,
+          opacity: 0.35,
+          wireframe: false
+        });
+        scene.add(new THREE.Mesh(tubeGeo, tubeMat));
+
+        // 14 Animated Data Pulse Particles along this conduit
+        const pulseCount = 14;
+        for (let i = 0; i < pulseCount; i++) {
+          const pulseGeo = new THREE.SphereGeometry(0.24, 8, 8);
+          const pulseMat = new THREE.MeshBasicMaterial({ color: node.color });
+          const pulseMesh = new THREE.Mesh(pulseGeo, pulseMat);
+          scene.add(pulseMesh);
+          pulseParticles.push({
+            mesh: pulseMesh,
+            curve: curve,
+            baseOffset: i / pulseCount,
+            speed: 0.12
+          });
+        }
+      });
+
+      // Smooth Cinematic Camera Flight State
+      let targetCamPos = new THREE.Vector3(0, 24, 48);
+      let targetLookAt = new THREE.Vector3(0, 0, 0);
+      let isFlying = false;
+
+      // Update Telemetry HUD Card
+      function updateHUD(nodeId) {
+        const data = telemetryData[nodeId] || telemetryData.galaxy;
+        const card = document.getElementById('telemetryCard');
+        const badge = document.getElementById('telemetryBadge');
+        const latency = document.getElementById('telemetryLatency');
+        const title = document.getElementById('telemetryTitle');
+        const desc = document.getElementById('telemetryDesc');
+        const protocol = document.getElementById('telemetryProtocol');
+        const throughput = document.getElementById('telemetryThroughput');
+
+        if (badge) {
+          badge.textContent = data.badge;
+          badge.className = `px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold ${data.badgeClass}`;
+        }
+        if (latency) {
+          latency.textContent = data.latency;
+          latency.className = `font-mono text-[11px] ${data.latencyClass}`;
+        }
+        if (title) title.textContent = data.title;
+        if (desc) desc.textContent = data.desc;
+        if (protocol) protocol.textContent = data.protocol;
+        if (throughput) throughput.textContent = data.throughput;
+
+        // Highlight Active Camera Preset Button
+        const buttons = ['galaxy', 'ict', 'chopos', 'motion', 'video'];
+        buttons.forEach((btnId) => {
+          const btn = document.getElementById(`btn-focus-${btnId}`);
+          if (btn) {
+            if (btnId === nodeId) {
+              btn.className = 'px-3 py-1.5 rounded-lg bg-accent text-slate-950 font-bold hover:brightness-110 transition-all shadow-sm shadow-accent/20';
+            } else {
+              btn.className = 'px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-white transition-all';
+            }
+          }
+        });
+      }
+
+      // Camera Focus Trigger
+      focus3DNode = function(nodeId) {
+        if (nodeId === 'galaxy') {
+          targetCamPos.set(0, 24, 48);
+          targetLookAt.set(0, 0, 0);
+        } else {
+          const found = systemNodes.find(n => n.id === nodeId);
+          if (found) {
+            targetCamPos.copy(found.camPos);
+            targetLookAt.copy(found.pos);
+          }
+        }
+        isFlying = true;
+        updateHUD(nodeId);
+      };
+
+      // Orbit Toggle
+      toggle3DOrbit = function() {
+        if (!controls) return;
+        isAutoOrbiting = !isAutoOrbiting;
+        controls.autoRotate = isAutoOrbiting;
+        const icon = document.getElementById('orbitIcon');
+        const label = document.getElementById('orbitLabel');
+        if (icon) icon.textContent = isAutoOrbiting ? '⏸' : '▶';
+        if (label) label.textContent = isAutoOrbiting ? 'Auto-Orbit: ON' : 'Auto-Orbit: OFF';
+      };
+
+      // Reset Camera
+      reset3DCamera = function() {
+        focus3DNode('galaxy');
+      };
+
+      // Raycasting on Mouse Move & Click
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2(-999, -999);
+      let hoveredMesh = null;
+
+      wrapper.addEventListener('pointermove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      });
+
+      wrapper.addEventListener('pointerleave', () => {
+        mouse.set(-999, -999);
+        wrapper.style.cursor = 'grab';
+        if (hoveredMesh) {
+          hoveredMesh.scale.set(1, 1, 1);
+          hoveredMesh = null;
+        }
+      });
+
+      wrapper.addEventListener('click', () => {
+        if (hoveredMesh && hoveredMesh.userData && hoveredMesh.userData.nodeId) {
+          focus3DNode(hoveredMesh.userData.nodeId);
+        } else if (hoveredMesh === coreInner) {
+          focus3DNode('galaxy');
+        }
+      });
+
+      // Cycling Ticker Messages
+      const ticker = document.getElementById('hudPulseCounter');
+      const tickerMsgs = [
+        "Streaming 73+ concurrent feeds",
+        "Sub-100ms algorithmic latency",
+        "Plurality SMT divergence verified",
+        "Paystack split escrow ready",
+        "Haversine cluster sync active",
+        "Zero proxy lag direct scan"
+      ];
+      let tickerIdx = 0;
+      setInterval(() => {
+        tickerIdx = (tickerIdx + 1) % tickerMsgs.length;
+        if (ticker) ticker.textContent = tickerMsgs[tickerIdx];
+      }, 3200);
+
+      // Resize Observer
+      function handleResize() {
+        const w = wrapper.clientWidth;
+        const h = wrapper.clientHeight;
+        if (w === 0 || h === 0) return;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      }
+      window.addEventListener('resize', handleResize);
+
+      // Main 60 FPS Render Loop
+      const clock = new THREE.Clock();
+
+      function animate() {
+        requestAnimationFrame(animate);
+        const elapsedTime = clock.getElapsedTime();
+
+        // Rotate Central Core
+        coreInner.rotation.y = elapsedTime * 0.45;
+        coreInner.rotation.x = elapsedTime * 0.25;
+        coreCage.rotation.y = -elapsedTime * 0.2;
+        coreCage.rotation.z = elapsedTime * 0.15;
+        ring1.rotation.z = elapsedTime * 0.35;
+        ring2.rotation.x = elapsedTime * 0.3;
+
+        // Core Pulse Breathing
+        const coreScale = 1.0 + 0.08 * Math.sin(elapsedTime * 3);
+        coreInner.scale.set(coreScale, coreScale, coreScale);
+
+        // Rotate Satellite Nodes
+        systemNodes.forEach((node) => {
+          if (node.mesh) {
+            node.mesh.rotation.y = elapsedTime * 0.6;
+            node.mesh.rotation.x = elapsedTime * 0.35;
+          }
+        });
+
+        // Drift Starfield
+        starField.rotation.y = elapsedTime * 0.02;
+
+        // Stream Data Pulses along Conduits
+        pulseParticles.forEach((p) => {
+          const t = (p.baseOffset + elapsedTime * p.speed) % 1.0;
+          p.mesh.position.copy(p.curve.getPointAt(t));
+          const pScale = 0.6 + 0.4 * Math.sin(t * Math.PI);
+          p.mesh.scale.set(pScale, pScale, pScale);
+        });
+
+        // Raycast Check
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(interactiveMeshes);
+        if (intersects.length > 0) {
+          const hit = intersects[0].object;
+          if (hoveredMesh !== hit) {
+            if (hoveredMesh) hoveredMesh.scale.set(1, 1, 1);
+            hoveredMesh = hit;
+            hoveredMesh.scale.set(1.15, 1.15, 1.15);
+            wrapper.style.cursor = 'pointer';
+          }
+        } else {
+          if (hoveredMesh) {
+            hoveredMesh.scale.set(1, 1, 1);
+            hoveredMesh = null;
+            wrapper.style.cursor = 'grab';
+          }
+        }
+
+        // Camera Smooth Flight Lerping
+        if (isFlying) {
+          camera.position.lerp(targetCamPos, 0.055);
+          if (controls) {
+            controls.target.lerp(targetLookAt, 0.055);
+          }
+          if (camera.position.distanceTo(targetCamPos) < 0.25) {
+            isFlying = false;
+          }
+        }
+
+        if (controls) controls.update();
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    }
+
+    // Launch 3D Galaxy once DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init3DGalaxy);
+    } else {
+      init3DGalaxy();
+    }
+
     // 3D Mouse Parallax on Pipeline Stage Card
     const stageCard = document.getElementById('pipelineStageCard');
     if (stageCard) {
@@ -660,10 +1354,10 @@
       const progress = document.getElementById('pipelineProgress');
       
       const steps = [
-        { text: "1/3 INGESTING: Influx from Deriv WebSockets & Paystack Webhooks...", color: "#2DD4BF" },
-        { text: "2/3 COMPUTING: Evaluating PD Arrays, MSS, SMT & PLpgSQL locks...", color: "#60A5FA" },
-        { text: "3/3 DISPATCHING: Routed to MT5 Bridge, Telegram Push & Live KDS!", color: "#34D399" },
-        { text: "COMPLETE: End-to-end execution verified under 120ms total latency.", color: "#34D399" }
+        { text: "1/3 INGESTING: Influx from Deriv WebSockets & Paystack Webhooks...", color: "#2DD4BF", node: "ict" },
+        { text: "2/3 COMPUTING: Evaluating PD Arrays, MSS, SMT & PLpgSQL locks...", color: "#60A5FA", node: "galaxy" },
+        { text: "3/3 DISPATCHING: Routed to MT5 Bridge, Telegram Push & Live KDS!", color: "#34D399", node: "chopos" },
+        { text: "COMPLETE: End-to-end execution verified under 120ms total latency.", color: "#34D399", node: "galaxy" }
       ];
 
       let idx = 0;
@@ -672,8 +1366,11 @@
           statusText.textContent = steps[idx].text;
           statusText.style.color = steps[idx].color;
           progress.textContent = `Stage ${idx + 1} of 3 active`;
+          if (typeof focus3DNode === 'function' && steps[idx].node) {
+            focus3DNode(steps[idx].node);
+          }
           idx++;
-          setTimeout(nextStep, 1100);
+          setTimeout(nextStep, 1300);
         } else {
           progress.textContent = "Pipeline cycle completed successfully (0 errors)";
           isPipelineSimulating = false;
