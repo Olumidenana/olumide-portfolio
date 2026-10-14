@@ -1,0 +1,20 @@
+{
+  "name": "olumide-portfolio",
+  "version": "1.0.0",
+  "description": "Olumide Nana · Full-Stack Systems Engineer & Algorithmic Architect Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -l 3000 .",
+    "dev": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "portfolio",
+    "developer",
+    "quant",
+    "fintech",
+    "software-engineer",
+    "full-stack"
+  ],
+  "author": "Olumide Nana",
+  "license": "MIT"
+}
