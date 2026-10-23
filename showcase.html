@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olumide Adeyemi-Nana · 3D tour of five products</title>
+  <meta name="description" content="An interactive 3D tour of five products built by Olumide Adeyemi-Nana: what each is made of and how data moves through it. Illustration only.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  
+  <!-- Bespoke Typography: Space Grotesk (Editorial/Architectural Display) + Plus Jakarta Sans (Human Tech) + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Three.js + OrbitControls for 3D Systems Galaxy & Workflow -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            bg: '#07080B',
+            surface: '#0E1117',
+            'surface-2': '#151922',
+            accent: '#2DD4BF',
+            'accent-soft': 'rgba(45, 212, 191, 0.12)',
+            brand: '#60A5FA',
+            bull: '#34D399',
+            bear: '#F87171',
+            warn: '#FBBF24',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #07080B;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-bright: rgba(255, 255, 255, 0.18);
+      --glow: radial-gradient(1200px 600px at 50% -10%, rgba(45, 212, 191, 0.12), transparent 70%),
+              radial-gradient(800px 500px at 90% 25%, rgba(96, 165, 250, 0.09), transparent 60%);
+    }
+    body {
+      background-color: var(--bg);
+      background-image: var(--glow);
+      background-attachment: fixed;
+      color: #E2E8F0;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: -0.03em;
+    }
+    .glass {
+      background: rgba(14, 17, 23, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--line);
+    }
+    .glass-card {
+      background: rgba(14, 17, 23, 0.7);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--line);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(45, 212, 191, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 28px -6px rgba(45, 212, 191, 0.18);
+    }
+    .glow-cyan {
+      text-shadow: 0 0 24px rgba(45, 212, 191, 0.45);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+    }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.96); }
+    }
+    .pulse-dot {
+      animation: pulse-subtle 2s infinite ease-in-out;
+    }
+    canvas#bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.45;
+    }
+
+    /* 3D Isometric Workflow Styles */
+    .perspective-container {
+      perspective: 1200px;
+    }
+    .iso-stage {
+      transform-style: preserve-3d;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .iso-layer {
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+    }
+    .iso-stage:hover .layer-depth-1 {
+      transform: translateZ(28px);
+    }
+    .iso-stage:hover .layer-depth-2 {
+      transform: translateZ(48px);
+    }
+    .iso-stage:hover .layer-depth-3 {
+      transform: translateZ(68px);
+    }
+    .hologram-border {
+      background: linear-gradient(135deg, rgba(45,212,191,0.3) 0%, rgba(96,165,250,0.15) 50%, rgba(255,255,255,0.05) 100%);
+    }
+  </style>
+</head>
+<body class="relative min-h-screen text-slate-200 selection:bg-accent selection:text-black">
+
+  <!-- Interactive Neural / Particle Canvas -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-50 glass border-b border-white/[0.08]">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="./" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-accent to-brand flex items-center justify-center font-mono font-bold text-black text-sm shadow-lg shadow-accent/20">ON</div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-white tracking-tight group-hover:text-accent transition-colors">Olumide Adeyemi-Nana</span>
+          <span class="text-[11px] font-mono text-slate-400">Full-stack engineer</span>
+        </div>
+      </a>
+      <a href="./" class="px-4 py-2 rounded-lg bg-surface-2/80 border border-white/10 text-xs font-mono text-slate-300 hover:text-white hover:border-white/20 transition-all">← Portfolio</a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrap -->
+  <main class="relative z-10 max-w-6xl mx-auto px-6 pt-16 pb-28">
+
+    <!-- HERO SECTION -->
+    <section class="py-12 md:py-20 flex flex-col items-start gap-6 max-w-4xl">
+      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-surface-2 border border-white/15 text-slate-300 text-xs font-mono font-medium">
+        Interactive tour. The plain portfolio is on the main page.
+      </div>
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight text-white leading-[1.1]">
+        How I put <span class="bg-gradient-to-r from-accent via-cyan-300 to-brand bg-clip-text text-transparent glow-cyan">five products</span> together.
+      </h1>
+      <p class="text-lg md:text-xl text-slate-400 leading-relaxed font-normal max-w-2xl">
+        A 3D tour of the projects on the main page: what each one is made of and how data moves through it. It is an illustration with no live data. The four figures below are the only measurements, and they come from the repositories.
+      </p>
+      <div class="flex flex-wrap items-center gap-3 pt-1">
+        <a href="#pipeline3d" class="px-6 py-3.5 rounded-xl bg-accent text-slate-950 font-bold text-xs sm:text-sm hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-accent/20 flex items-center gap-2"><span>⚡ Explore in 3D</span><span>↓</span></a>
+        <a href="./" class="px-6 py-3.5 rounded-xl bg-surface-2 border border-white/15 text-slate-200 font-medium text-xs sm:text-sm hover:border-accent/40 hover:text-white transition-all flex items-center gap-2"><span>← Back to the portfolio</span></a>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full pt-4">
+        <div class="glass p-4 rounded-xl border border-white/10"><div class="font-mono text-2xl font-bold text-accent">5</div><div class="text-xs text-slate-400 font-medium mt-0.5">Products built</div></div>
+        <div class="glass p-4 rounded-xl border border-white/10"><div class="font-mono text-2xl font-bold text-brand">690+</div><div class="text-xs text-slate-400 font-medium mt-0.5">Tests in ICT Flux</div></div>
+        <div class="glass p-4 rounded-xl border border-white/10"><div class="font-mono text-2xl font-bold text-bull">197</div><div class="text-xs text-slate-400 font-medium mt-0.5">Tests in the video editor, all passing</div></div>
+        <div class="glass p-4 rounded-xl border border-white/10"><div class="font-mono text-2xl font-bold text-warn">17k</div><div class="text-xs text-slate-400 font-medium mt-0.5">Lines of Python in ICT Flux</div></div>
+      </div>
+    </section>
+
+    <!-- 3D INTERACTIVE ARCHITECTURE PIPELINE SECTION -->
+    <section id="pipeline3d" class="py-16 border-t border-white/10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <div class="font-mono text-xs text-accent uppercase tracking-wider mb-1 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent pulse-dot"></span> Interactive tour
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white tracking-tight">How the five products are put together</h2>
+        </div>
+        <div class="text-xs font-mono text-slate-400 max-w-sm">
+          Pick a product to see its parts, or let the walkthrough play. This is an illustration of how each project is built. It shows no live data.
+        </div>
+      </div>
+
+      <!-- 3D WEBGL GALAXY VIEWPORT -->
+      <div class="relative rounded-3xl overflow-hidden border border-white/15 bg-gradient-to-b from-[#0B0F17] via-[#07080B] to-[#0E1117] shadow-2xl mb-12">
+        
+        <!-- Row 1: Autonomous Tech Mission Controller (Playable Game Loop on Automation) -->
+        <div class="p-3 sm:px-5 sm:py-3 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 bg-[#0B0F17]/95 backdrop-blur-md relative z-20">
+          <div class="flex items-center gap-3">
+            <button onclick="toggleMissionAutoPlay()" id="btn-mission-toggle" class="px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-semibold hover:bg-emerald-500/25 transition-all flex items-center gap-2 shadow-sm shadow-emerald-500/10">
+              <span id="missionToggleIcon" class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+              <span id="missionToggleText">Walkthrough: playing</span>
+            </button>
+            <div class="hidden sm:flex items-center gap-2 text-xs font-mono">
+              <span id="missionBadge" class="px-2 py-0.5 rounded bg-surface-2 text-accent border border-white/10 font-bold">WALKTHROUGH 1/5</span>
+              <span id="missionStoryHeadline" class="text-slate-300 font-medium truncate max-w-xs md:max-w-md">How ICT Flux decides: a sweep, a shift, a gap, or nothing</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 text-xs font-mono">
+            <div class="flex items-center gap-2">
+              <span class="text-slate-500 text-[11px] hidden md:inline">Progress:</span>
+              <div class="w-24 sm:w-32 bg-surface-2 h-2 rounded-full overflow-hidden border border-white/10">
+                <div id="missionProgressBar" class="h-full bg-gradient-to-r from-accent to-brand w-0 transition-all duration-300"></div>
+              </div>
+            </div>
+            <button onclick="nextMission()" class="px-2.5 py-1 rounded bg-surface-2 border border-white/10 text-slate-300 hover:text-accent hover:border-accent/40 text-xs transition-all flex items-center gap-1 font-semibold" title="Skip to next story">
+              <span>Next</span>
+              <span>⏭</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Row 2: Camera Focus Presets & Viewport Controls -->
+        <div class="p-3 sm:px-5 sm:py-2.5 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 bg-surface/75 backdrop-blur-md relative z-10">
+          <!-- Camera Presets -->
+          <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs font-mono">
+            <span class="text-slate-400 mr-1 hidden sm:inline">Camera Focus:</span>
+            <button onclick="userSelectNode('galaxy')" id="btn-focus-galaxy" class="px-3 py-1.5 rounded-lg bg-accent text-slate-950 font-bold hover:brightness-110 transition-all shadow-sm shadow-accent/20">
+              🌐 Galaxy View
+            </button>
+            <button onclick="userSelectNode('ict')" id="btn-focus-ict" class="px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-accent hover:border-accent/40 transition-all">
+              ⚡ ICT Flux
+            </button>
+            <button onclick="userSelectNode('toon')" id="btn-focus-toon" class="px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-amber-400 hover:border-amber-400/40 transition-all">
+              🎨 ToonForge
+            </button>
+            <button onclick="userSelectNode('chopos')" id="btn-focus-chopos" class="px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-brand hover:border-brand/40 transition-all">
+              🍽️ Chopos
+            </button>
+            <button onclick="userSelectNode('motion')" id="btn-focus-motion" class="px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-bull hover:border-bull/40 transition-all">
+              📍 Motion
+            </button>
+            <button onclick="userSelectNode('video')" id="btn-focus-video" class="px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-purple-400 hover:border-purple-400/40 transition-all">
+              🎬 Video editor
+            </button>
+          </div>
+
+          <!-- Controls Toggle -->
+          <div class="flex items-center gap-2 sm:gap-3 text-xs font-mono">
+            <button onclick="toggle3DOrbit()" id="btn-orbit-toggle" class="px-2.5 py-1 rounded-md bg-surface-2/90 border border-white/10 text-slate-300 hover:text-white transition-colors flex items-center gap-1.5">
+              <span id="orbitIcon">⏸</span> <span id="orbitLabel">Auto-Orbit: ON</span>
+            </button>
+            <button onclick="reset3DCamera()" class="px-2.5 py-1 rounded-md bg-surface-2/90 border border-white/10 text-slate-400 hover:text-accent transition-colors" title="Reset View">
+              ↺ Reset
+            </button>
+            <span class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-accent/10 border border-accent/20 text-accent font-mono text-[11px]">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent pulse-dot"></span> WebGL
+            </span>
+          </div>
+        </div>
+
+        <!-- 3D Canvas Area -->
+        <div class="relative w-full h-[580px] md:h-[680px] bg-[#07080B] cursor-grab active:cursor-grabbing overflow-hidden select-none" id="systems3dWrapper">
+          <canvas id="systems3dCanvas" class="w-full h-full block"></canvas>
+
+          <!-- Top-Right Live Event Stream Ticker -->
+          <div class="absolute top-4 right-4 z-10 glass px-3.5 py-2.5 rounded-xl border border-white/10 pointer-events-none hidden sm:block max-w-xs">
+            <div class="flex items-center gap-2 text-[11px] font-mono">
+              <span class="w-2 h-2 rounded-full bg-bull pulse-dot"></span>
+              <span class="text-slate-200 font-semibold uppercase tracking-wider">Illustration</span>
+            </div>
+            <div id="hudPulseCounter" class="text-[11px] font-mono text-accent mt-0.5 leading-snug">
+              Not live data
+            </div>
+          </div>
+
+          <!-- Floating Node Telemetry HUD Inspector (Bottom Left) -->
+          <div id="telemetryCard" class="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-lg z-10 glass-card p-5 rounded-2xl border border-accent/30 shadow-2xl transition-all duration-300 backdrop-blur-xl">
+            
+            <!-- Top Controls in Card: Badge & Mode Switcher -->
+            <div class="flex items-center justify-between gap-3 mb-3 border-b border-white/10 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span id="telemetryBadge" class="px-2.5 py-0.5 rounded-full bg-accent/15 text-accent text-[11px] font-mono font-semibold">
+                  FIVE PRODUCTS
+                </span>
+                <span id="telemetryLatency" class="font-mono text-[11px] text-bull">Illustration only</span>
+              </div>
+              <div class="flex items-center gap-1 bg-surface-2/80 p-0.5 rounded-lg border border-white/10">
+                <button onclick="setHUDMode('relatable')" id="hud-tab-relatable" class="text-[10px] font-mono px-2 py-0.5 rounded bg-accent text-slate-950 font-bold transition-all">
+                  💡 Plain English
+                </button>
+                <button onclick="setHUDMode('technical')" id="hud-tab-technical" class="text-[10px] font-mono px-2 py-0.5 rounded text-slate-400 hover:text-white transition-all">
+                  ⚡ Architecture
+                </button>
+              </div>
+            </div>
+
+            <!-- Title & Relatable Summary -->
+            <h4 id="telemetryTitle" class="text-lg font-display font-bold text-white mb-1.5 flex items-center justify-between">
+              <span>Five products, one pattern</span>
+            </h4>
+
+            <!-- Dynamic Explanatory Content (Plain English vs Technical) -->
+            <div id="telemetryBody" class="text-xs text-slate-300 leading-relaxed mb-3 min-h-[54px]">
+              Each project is a web front end, a small API, a database and a payment or data provider. Pick a product to see its parts.
+            </div>
+
+            <!-- 3D Cascading Sub-Components Dropdown Checklist -->
+            <div id="telemetrySubNodesWrap" class="mb-3 pt-2.5 border-t border-white/10">
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-1.5">
+                <span class="flex items-center gap-1.5">
+                  <span class="text-accent">▼</span> 3D Cascading Architecture Order:
+                </span>
+                <span id="subNodeStateIndicator" class="text-accent text-[10px]">Active in 3D Space</span>
+              </div>
+              <div id="telemetrySubNodesList" class="space-y-1 text-[11px] font-mono">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+            <!-- Live Storyline Execution Pill -->
+            <div class="bg-surface-2/90 border border-white/10 rounded-xl p-2.5 mb-3 flex items-start gap-2">
+              <span class="text-xs mt-0.5">🎮</span>
+              <div class="text-[11px] font-mono text-slate-300 leading-snug">
+                <span class="text-accent font-bold">Walkthrough:</span>
+                <span id="telemetryStoryText" class="text-slate-300">The five products, in orbit.</span>
+              </div>
+            </div>
+
+            <!-- Bottom Specs & Action Row -->
+            <div class="flex items-center justify-between pt-2 border-t border-white/10 text-[11px] font-mono">
+              <div class="flex items-center gap-3">
+                <div>
+                  <span class="text-slate-500 block text-[10px]">Stack</span>
+                  <span id="telemetryProtocol" class="text-slate-200 font-medium">Next.js · Python</span>
+                </div>
+                <div>
+                  <span class="text-slate-500 block text-[10px]">Shown</span>
+                  <span id="telemetryThroughput" class="text-accent font-medium">Illustration only</span>
+                </div>
+              </div>
+              <div id="telemetryActionWrap">
+                <a id="telemetryActionLink" href="#projects" class="px-3 py-1.5 rounded-lg bg-accent/20 border border-accent/40 text-accent font-semibold hover:bg-accent/30 transition-all flex items-center gap-1">
+                  <span>Explore Project</span>
+                  <span>↓</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Spatial Interaction Hint (Bottom Right) -->
+          <div class="absolute bottom-4 right-4 z-10 hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-2/80 backdrop-blur-md border border-white/10 text-[11px] font-mono text-slate-400 pointer-events-none">
+            <span>🖱️ Drag: Orbit 360°</span>
+            <span>·</span>
+            <span>Scroll: Zoom</span>
+            <span>·</span>
+            <span>Click: Drop Down 3D Tiers</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3D ISOMETRIC INTERACTIVE STAGE PIPELINE -->
+      <div class="perspective-container">
+        <div id="pipelineStageCard" class="iso-stage glass p-8 rounded-3xl border border-white/15 relative overflow-hidden shadow-2xl">
+          <div class="absolute -top-24 -left-24 w-72 h-72 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-brand/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <!-- Top Status Bar -->
+          <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10 mb-8">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-bull pulse-dot"></span>
+              <span class="font-mono text-xs text-slate-200 font-semibold tracking-wide uppercase">How ICT Flux flows (illustration)</span>
+            </div>
+            <div class="flex items-center gap-2 font-mono text-xs">
+              <span class="text-slate-400">Step:</span>
+              <span id="pipelineStatusText" class="px-2.5 py-0.5 rounded bg-surface-2 text-accent border border-accent/30 font-semibold">Idle</span>
+            </div>
+          </div>
+
+          <!-- The 3 Spatial 3D Pipeline Tiers -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            
+            <!-- STAGE 1: INGESTION -->
+            <div onclick="if(typeof focus3DNode==='function') focus3DNode('ict')" class="iso-layer bg-surface/90 border border-white/10 rounded-2xl p-6 relative hover:border-accent/50 transition-all cursor-pointer group" title="Click to inspect Ingestion Node in 3D">
+              <div class="layer-depth-1 flex items-center justify-between mb-4">
+                <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-2.5 py-1 rounded-md border border-accent/20 group-hover:brightness-125">STEP 1 · INPUT</span>
+                <span class="font-mono text-[11px] text-slate-500">Closed candles</span>
+              </div>
+              <h4 class="layer-depth-2 text-lg font-display font-bold text-white mb-2 group-hover:text-accent transition-colors">Prices and sign-ins in</h4>
+              <p class="layer-depth-2 text-xs text-slate-400 leading-relaxed mb-4">
+                What goes in:
+              </p>
+              <div class="layer-depth-3 space-y-2 font-mono text-[11px]">
+                <div class="p-2 rounded bg-surface-2/80 border border-white/5 flex items-center justify-between text-slate-300">
+                  <span>⚡ Deriv WebSocket</span>
+                  <span class="text-accent">Live candles</span>
+                </div>
+                <div class="p-2 rounded bg-surface-2/80 border border-white/5 flex items-center justify-between text-slate-300">
+                  <span>💳 Paystack webhooks</span>
+                  <span class="text-brand">Plan payments</span>
+                </div>
+                <div class="p-2 rounded bg-surface-2/80 border border-white/5 flex items-center justify-between text-slate-300">
+                  <span>🔐 Supabase sign-in</span>
+                  <span class="text-bull">Accounts and trial</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- STAGE 2: DETERMINISTIC ENGINE -->
+            <div onclick="if(typeof focus3DNode==='function') focus3DNode('galaxy')" class="iso-layer bg-surface/90 border border-accent/30 rounded-2xl p-6 relative shadow-lg shadow-accent/5 hover:border-accent transition-all cursor-pointer group" title="Click to inspect Core Kernel in 3D">
+              <div class="layer-depth-1 flex items-center justify-between mb-4">
+                <span class="text-xs font-mono font-bold text-brand bg-brand/10 px-2.5 py-1 rounded-md border border-brand/20 group-hover:brightness-125">STEP 2 · RULES</span>
+                <span class="font-mono text-[11px] text-bull">Written down</span>
+              </div>
+              <h4 class="layer-depth-2 text-lg font-display font-bold text-white mb-2 group-hover:text-brand transition-colors">The rules engine</h4>
+              <p class="layer-depth-2 text-xs text-slate-400 leading-relaxed mb-4">
+                A Python state machine: sweep, then shift, then gap, then entry. Gates along the way can say no:
+              </p>
+              <div class="layer-depth-3 space-y-2 font-mono text-[11px]">
+                <div class="p-2 rounded bg-surface-2/80 border border-white/5 flex items-center justify-between text-slate-300">
+                  <span>📐 Premium and discount</span>
+                  <span class="text-accent">Entry on the right side</span>
+                </div>
+                <div class="p-2 rounded bg-surface-2/80 border border-white/5 flex items-center justify-between text-slate-300">
+                  <span>📊 SMT check</span>
+                  <span class="text-bull">Correlated pairs</span>
+                </div>
+                <div class="p-2 rounded bg-surface-2/80 border border-white/5 flex items-center justify-between text-slate-300">
+                  <span>🧪 Tests</span>
+                  <span class="text-warn">Noise and edge checks</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- STAGE 3: EXECUTION & DISPATCH -->
+            <div onclick="if(typeof focus3DNode==='function') focus3DNode('chopos')" class="iso-layer bg-surface/90 border border-white/10 rounded-2xl p-6 relative hover:border-bull/50 transition-all cursor-pointer group" title="Click to inspect Dispatch & Chopos in 3D">
+              <div class="layer-depth-1 flex items-center justify-between mb-4">
+                <span class="text-xs font-mono font-bold text-bull bg-bull/10 px-2.5 py-1 rounded-md border border-bull/20 group-hover:brightness-125">STEP 3 · OUTPUT</span>
+                <span class="font-mono text-[11px] text-slate-500">Or stand aside</span>
+              </div>
+              <h4 class="layer-depth-2 text-lg font-display font-bold text-white mb-2">Alerts and bridges</h4>
+              <p class="layer-depth-2 text-xs text-slate-400 leading-relaxed mb-4">
+                If every gate passes: an entry, a stop and a target. If not: stand aside, with the reason.
+              </p>
+              <div class="layer-depth-3 space-y-2 font-mono text-[11px]">
+                <div class="p-2 rounded bg-surface-2/80 border border-white/5 flex items-center justify-between text-slate-300">
+                  <span>🤖 MetaTrader 4/5</span>
+                  <span class="text-accent">Expert Advisors read a text feed</span>
+                </div>
+                <div class="p-2 rounded bg-surface-2/80 border border-white/5 flex items-center justify-between text-slate-300">
+                  <span>📱 Alerts</span>
+                  <span class="text-bull">Web push and Telegram</span>
+                </div>
+                <div class="p-2 rounded bg-surface-2/80 border border-white/5 flex items-center justify-between text-slate-300">
+                  <span>📈 Track record</span>
+                  <span class="text-brand">Every trade shown</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Interactive Controls -->
+          <div class="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <button onclick="simulateFullPipeline()" class="px-5 py-2.5 rounded-xl bg-accent text-slate-950 font-bold text-xs tracking-wider uppercase hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-accent/20 flex items-center gap-2">
+                <span>▶ Play the flow</span>
+              </button>
+              <span id="pipelineProgress" class="text-xs font-mono text-slate-400">Idle</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs font-mono text-slate-500">
+              <span>Illustration, not a benchmark</span>
+              <span>No live data on this page</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="pt-8 pb-12 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+      <div>© 2026 Olumide Adeyemi-Nana. Illustration only: no live data, no benchmarks.</div>
+      <div class="flex items-center gap-4">
+        <a href="./" class="hover:text-slate-300 transition-colors">Portfolio</a>
+        <a href="https://github.com/Olumidenana/olumide-portfolio/blob/main/FACTS.md" class="hover:text-slate-300 transition-colors">Where the numbers come from</a>
+      </div>
+    </footer>
+
+  </main>
+
+
+
+  <!-- Interactive 3D Systems Galaxy, Simulator & Terminal Script -->
+  <script>
+    /* =========================================================================
+       THREE.JS INTERACTIVE 3D SYSTEMS GALAXY, DROP-DOWN ARCHITECTURE & AUTO-MISSION
+       ========================================================================= */
+
+    // 1. Relatable & Technical Telemetry Data Dictionary
+    const telemetryData = {
+      galaxy: {
+        badge: 'FIVE PRODUCTS',
+        badgeClass: 'bg-accent/15 text-accent',
+        borderClass: 'border-accent/30',
+        latency: 'Illustration only',
+        latencyClass: 'text-slate-400',
+        title: 'Five products, one pattern',
+        relatable: `<strong>The same building blocks, five times:</strong> each project is a web front end, a small API, a database and a payment or data provider. Pick a product to see what it is made of. Nothing on this page is live data.`,
+        technical: `<strong>Shared stack:</strong> Next.js or a single-page web app on the front; Vercel serverless functions or FastAPI on the back; PostgreSQL (Supabase, Prisma) or Firebase for data; Paystack for payments. Every product has its own repository and its own tests, or says it has none.`,
+        protocol: 'Next.js · Python · Postgres',
+        throughput: 'Illustration only',
+        link: '#pipeline3d'
+      },
+      ict: {
+        badge: 'TRADING-SIGNAL APP · LIVE',
+        badgeClass: 'bg-accent/15 text-accent',
+        borderClass: 'border-accent/40',
+        latency: 'Not proven profitable',
+        latencyClass: 'text-warn',
+        title: 'ICT Flux',
+        relatable: `<strong>A rulebook that can say no:</strong> it reads live prices and checks them against the steps of a published trading method. Most of the time the answer is "stand aside", and it says why. On real candles it has not shown a reliable edge, so it makes no return claims.`,
+        technical: `<strong>Python rules engine:</strong> about 17,000 lines (68 engine modules). Live candles from Deriv's WebSocket, a sweep, shift, gap and entry state machine with gates, an installable web app with push alerts, Supabase accounts, Paystack plans, and MetaTrader 4/5 Expert Advisors. Over 690 tests, including one that fails if it starts trading random prices.`,
+        protocol: 'Deriv WebSocket · Python',
+        throughput: 'Rules, then gates',
+        link: 'https://ictflux.app'
+      },
+      toon: {
+        badge: 'STORY-TO-CARTOON STUDIO · PROTOTYPE',
+        badgeClass: 'bg-amber-500/15 text-amber-400',
+        borderClass: 'border-amber-500/40',
+        latency: 'GPU worker: mock-tested only',
+        latencyClass: 'text-warn',
+        title: 'ToonForge',
+        relatable: `<strong>From a story idea to an animated episode, in the browser:</strong> it plans the story and the shots, keeps each character looking the same in every shot prompt, and animates a simple 2D cartoon that you can export.`,
+        technical: `<strong>Next.js and TypeScript (about 5,300 lines), Python worker (about 600):</strong> story planning with the user's own Gemini or Claude key, a canvas animator with MP4 export, on-device text-to-speech in a Web Worker, and a FastAPI worker for GPU image and video generation with open models. 38 tests pass. The voices and the GPU worker have not been tried on real hardware yet.`,
+        protocol: 'Gemini / Claude · Canvas · FastAPI',
+        throughput: 'Plan, animate, export',
+        link: '#pipeline3d'
+      },
+      chopos: {
+        badge: 'FOOD-VENDOR ORDERING · PROTOTYPE',
+        badgeClass: 'bg-brand/15 text-brand',
+        borderClass: 'border-brand/40',
+        latency: 'Demo mode without API keys',
+        latencyClass: 'text-warn',
+        title: 'Chopos',
+        relatable: `<strong>Ordering and payment for a food vendor:</strong> customers order from the vendor's own page, the kitchen sees the order, stock counts go down as orders arrive, and the payment is split between vendor and platform.`,
+        technical: `<strong>Next.js 14 and TypeScript (about 7,300 lines), Prisma and PostgreSQL:</strong> 12 models and 13 API routes, Paystack subaccount split payments, a configurable delivery-dispatch adapter, WhatsApp stock commands, and a SQL function that locks the stock row so the same item cannot be sold twice. No automated tests yet.`,
+        protocol: 'Paystack · Postgres',
+        throughput: 'Order, kitchen, payment',
+        link: '#pipeline3d'
+      },
+      motion: {
+        badge: 'CAMPUS RUNNING GROUPS',
+        badgeClass: 'bg-bull/15 text-bull',
+        borderClass: 'border-bull/40',
+        latency: 'Demo mode without a backend',
+        latencyClass: 'text-warn',
+        title: 'Motion',
+        relatable: `<strong>Never run alone at Great Ife:</strong> find a running route on a map, schedule a group run (date, pace, group size, meeting point), join or leave other people's runs, and share them on WhatsApp. Built for cheap phones and slow data.`,
+        technical: `<strong>Next.js 15 and TypeScript (about 4,000 lines):</strong> Firebase (Google sign-in, Firestore with security rules) with Supabase as an alternative backend. Maps use Leaflet or Google Maps and load only when they scroll into view. No automated tests.`,
+        protocol: 'Firebase · Maps',
+        throughput: 'Routes, runs, sharing',
+        link: '#pipeline3d'
+      },
+      video: {
+        badge: 'BROWSER VIDEO EDITOR',
+        badgeClass: 'bg-purple-500/15 text-purple-400',
+        borderClass: 'border-purple-500/40',
+        latency: '197 tests passing',
+        latencyClass: 'text-bull',
+        title: 'Video Splitter & Assembler',
+        relatable: `<strong>Edit video on your own device:</strong> trim, split, caption and stitch clips in the browser, so there is no upload queue and no server time limit.`,
+        technical: `<strong>Next.js 16, React 19 and TypeScript (about 16,700 lines):</strong> FFmpeg.wasm (multi-threaded where the browser allows it), on-device Whisper captions, a clip finder that scores segments, the Claude API for free-text edit commands, Supabase auth and database, Paystack plans in naira, and YouTube and TikTok upload over OAuth.`,
+        protocol: 'FFmpeg.wasm · Whisper',
+        throughput: 'Runs on the user device',
+        link: 'https://github.com/Olumidenana/video-assembler-saas'
+      }
+    };
+
+    // 2. 3D sub-components for each product (they drop down in 3D, in order)
+    const systemSubComponents = {
+      ict: [
+        { num: '01', name: 'Live candles', desc: "Closed candles from Deriv's WebSocket", icon: '📡', colorHex: '#2DD4BF', color: 0x2dd4bf },
+        { num: '02', name: 'Rules engine', desc: 'Sweep, shift, gap, entry', icon: '🧠', colorHex: '#38BDF8', color: 0x38bdf8 },
+        { num: '03', name: 'Gates', desc: 'Bias, premium or discount, clear road: any can say no', icon: '⚖️', colorHex: '#34D399', color: 0x34d399 },
+        { num: '04', name: 'Alerts and bridges', desc: 'Push alerts and MetaTrader 4/5 Expert Advisors', icon: '🤖', colorHex: '#FBBF24', color: 0xfbbf24 }
+      ],
+      toon: [
+        { num: '01', name: 'Story planner', desc: 'Story bible and shot list from Gemini or Claude, with your own key', icon: '📜', colorHex: '#F59E0B', color: 0xf59e0b },
+        { num: '02', name: 'Consistency', desc: 'The same style and character sheet in every shot prompt', icon: '🎭', colorHex: '#FBBF24', color: 0xfbbf24 },
+        { num: '03', name: 'Browser animator', desc: '2D puppets, sets, camera, music, MP4 export', icon: '🎮', colorHex: '#F97316', color: 0xf97316 },
+        { num: '04', name: 'Voices and GPU worker', desc: 'On-device speech and a GPU worker: prototypes, tested in mock mode', icon: '🎙️', colorHex: '#34D399', color: 0x34d399 }
+      ],
+      chopos: [
+        { num: '01', name: 'Storefront', desc: 'A page for each vendor where customers order', icon: '🛒', colorHex: '#60A5FA', color: 0x60a5fa },
+        { num: '02', name: 'Paystack split', desc: 'One payment, divided between vendor and platform', icon: '💳', colorHex: '#38BDF8', color: 0x38bdf8 },
+        { num: '03', name: 'Kitchen dashboard', desc: 'Orders and stock counts', icon: '🍳', colorHex: '#34D399', color: 0x34d399 },
+        { num: '04', name: 'Dispatch adapter', desc: 'Asks a delivery service for a rider; configurable', icon: '🛵', colorHex: '#A78BFA', color: 0xa78bfa }
+      ],
+      motion: [
+        { num: '01', name: 'Route map', desc: 'Common campus running routes on a map', icon: '📍', colorHex: '#34D399', color: 0x34d399 },
+        { num: '02', name: 'Schedule a run', desc: 'Date, pace, group size, meeting point', icon: '🗓️', colorHex: '#2DD4BF', color: 0x2dd4bf },
+        { num: '03', name: 'Join or leave', desc: 'See who is going; private profiles show as "A runner"', icon: '👥', colorHex: '#60A5FA', color: 0x60a5fa },
+        { num: '04', name: 'Share', desc: 'Send a run to friends on WhatsApp', icon: '🔗', colorHex: '#FBBF24', color: 0xfbbf24 }
+      ],
+      video: [
+        { num: '01', name: 'Load clips', desc: 'Files are opened in the browser and stay on the device', icon: '🎞️', colorHex: '#C084FC', color: 0xc084fc },
+        { num: '02', name: 'Captions and clip finder', desc: 'Whisper on the device; segments scored', icon: '🎙️', colorHex: '#E879F9', color: 0xe879f9 },
+        { num: '03', name: 'FFmpeg.wasm', desc: 'Trim, split and stitch in the browser', icon: '⚙️', colorHex: '#38BDF8', color: 0x38bdf8 },
+        { num: '04', name: 'Upload', desc: 'To YouTube and TikTok over OAuth', icon: '☁️', colorHex: '#34D399', color: 0x34d399 }
+      ]
+    };
+
+    // 3. The walkthrough: one short story per product, played automatically
+    const autonomousMissions = [
+      {
+        id: 1,
+        nodeId: 'ict',
+        badge: 'WALKTHROUGH 1/5',
+        headline: 'How ICT Flux decides: a sweep, a shift, a gap, or nothing',
+        steps: [
+          { subIdx: 0, text: "1/4 PRICES: the engine reads closed 5-minute candles from Deriv's WebSocket." },
+          { subIdx: 1, text: '2/4 RULES: it looks for a sweep of a named level, then a displacement through structure, then a fair value gap.' },
+          { subIdx: 2, text: '3/4 GATES: bias, premium or discount and a clear road to a target can each say no. Most days they do.' },
+          { subIdx: 3, text: '4/4 OUTPUT: if all pass, an alert with entry, stop and target. If not, "stand aside" and the reason.' }
+        ]
+      },
+      {
+        id: 2,
+        nodeId: 'toon',
+        badge: 'WALKTHROUGH 2/5',
+        headline: 'ToonForge: from a story idea to an episode, in the browser',
+        steps: [
+          { subIdx: 0, text: '1/4 STORY: Gemini or Claude, with your own key, plans the story bible and the shots.' },
+          { subIdx: 1, text: '2/4 CONSISTENCY: the same style and character sheet are repeated in every shot prompt.' },
+          { subIdx: 2, text: '3/4 ANIMATE: a 2D animator draws sets and puppets, moves the camera and adds music.' },
+          { subIdx: 3, text: '4/4 EXPORT: the episode plays and exports as MP4 in the browser. Voices and the GPU worker are still prototypes.' }
+        ]
+      },
+      {
+        id: 3,
+        nodeId: 'chopos',
+        badge: 'WALKTHROUGH 3/5',
+        headline: 'Chopos: one order, from checkout to kitchen',
+        steps: [
+          { subIdx: 0, text: "1/4 ORDER: a customer picks items on the vendor's page." },
+          { subIdx: 1, text: '2/4 PAYMENT: one Paystack payment is split between vendor and platform. Demo mode when there are no API keys.' },
+          { subIdx: 2, text: '3/4 KITCHEN: the order shows on the kitchen dashboard and stock goes down under a row lock.' },
+          { subIdx: 3, text: '4/4 DISPATCH: an adapter asks a delivery service for a rider. It runs as a stub without API keys.' }
+        ]
+      },
+      {
+        id: 4,
+        nodeId: 'motion',
+        badge: 'WALKTHROUGH 4/5',
+        headline: 'Motion: from a route to a group run',
+        steps: [
+          { subIdx: 0, text: '1/4 ROUTES: students see common running routes on a map.' },
+          { subIdx: 1, text: '2/4 SCHEDULE: someone picks a route, a time in Lagos time, a pace and a group size.' },
+          { subIdx: 2, text: '3/4 JOIN: others join or leave, and private profiles show as "A runner".' },
+          { subIdx: 3, text: '4/4 SHARE: the run goes out on WhatsApp.' }
+        ]
+      },
+      {
+        id: 5,
+        nodeId: 'video',
+        badge: 'WALKTHROUGH 5/5',
+        headline: 'Video editor: everything runs on your device',
+        steps: [
+          { subIdx: 0, text: '1/4 LOAD: clips are opened in the browser and stay on the device.' },
+          { subIdx: 1, text: '2/4 UNDERSTAND: Whisper writes captions on the device and a scorer ranks clip candidates.' },
+          { subIdx: 2, text: '3/4 EDIT: FFmpeg.wasm trims, splits and stitches. There is no server render queue.' },
+          { subIdx: 3, text: '4/4 PUBLISH: the result can be uploaded to YouTube or TikTok over OAuth.' }
+        ]
+      }
+    ];
+
+    // Global variables & state handlers
+    let focus3DNode, userSelectNode, toggle3DOrbit, reset3DCamera, toggleMissionAutoPlay, nextMission, setHUDMode;
+    let activeFocusedNodeId = 'galaxy';
+    let currentHUDMode = 'relatable'; // 'relatable' | 'technical'
+    let isAutoMissionActive = true;
+    let currentMissionIdx = 0;
+    let currentStepIdx = 0;
+    let missionTimer = null;
+
+    function init3DGalaxy() {
+      const canvas = document.getElementById('systems3dCanvas');
+      const wrapper = document.getElementById('systems3dWrapper');
+      if (!canvas || !wrapper) return;
+      if (typeof THREE === 'undefined') {
+        console.warn('Three.js not loaded');
+        return;
+      }
+
+      // Scene & Fog
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.FogExp2(0x07080B, 0.011);
+
+      // Camera
+      const camera = new THREE.PerspectiveCamera(45, wrapper.clientWidth / wrapper.clientHeight, 0.1, 1000);
+      camera.position.set(0, 26, 52);
+
+      // Renderer
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.25;
+
+      // OrbitControls with Damping & Bounds
+      const ControlsClass = THREE.OrbitControls || window.OrbitControls;
+      let controls = null;
+      let isAutoOrbiting = true;
+      if (ControlsClass) {
+        controls = new ControlsClass(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.06;
+        controls.minDistance = 12;
+        controls.maxDistance = 90;
+        controls.maxPolarAngle = Math.PI / 2 + 0.08;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.7;
+
+        // When user drags, pause automated mission so they can explore freely
+        controls.addEventListener('start', () => {
+          if (isAutoMissionActive) {
+            pauseMissionUserInteracted();
+          }
+        });
+      }
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
+      scene.add(ambientLight);
+
+      const coreLight = new THREE.PointLight(0x2dd4bf, 3.8, 80);
+      coreLight.position.set(0, 2, 0);
+      scene.add(coreLight);
+
+      const blueLight = new THREE.PointLight(0x60a5fa, 2.5, 70);
+      blueLight.position.set(22, 12, -10);
+      scene.add(blueLight);
+
+      const purpleLight = new THREE.PointLight(0xc084fc, 2.4, 60);
+      purpleLight.position.set(18, -8, 16);
+      scene.add(purpleLight);
+
+      // Deep Space Ground Grid
+      const gridHelper = new THREE.GridHelper(100, 40, 0x2dd4bf, 0x1e293b);
+      gridHelper.position.y = -22;
+      gridHelper.material.opacity = 0.16;
+      gridHelper.material.transparent = true;
+      scene.add(gridHelper);
+
+      // Drifting Starfield / Data Particles
+      const starCount = 500;
+      const starGeo = new THREE.BufferGeometry();
+      const starPos = new Float32Array(starCount * 3);
+      for (let i = 0; i < starCount * 3; i += 3) {
+        starPos[i] = (Math.random() - 0.5) * 180;
+        starPos[i + 1] = (Math.random() - 0.5) * 110;
+        starPos[i + 2] = (Math.random() - 0.5) * 180;
+      }
+      starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+      const starMat = new THREE.PointsMaterial({
+        color: 0x94a3b8,
+        size: 0.9,
+        transparent: true,
+        opacity: 0.45
+      });
+      const starField = new THREE.Points(starGeo, starMat);
+      scene.add(starField);
+
+      // Helper: 2D Canvas Billboard Label
+      function createTextSprite(text, colorHex, fontSize = 20, w = 260, h = 64) {
+        const c = document.createElement('canvas');
+        c.width = w;
+        c.height = h;
+        const ctx = c.getContext('2d');
+        
+        ctx.fillStyle = 'rgba(11, 15, 23, 0.92)';
+        ctx.strokeStyle = colorHex;
+        ctx.lineWidth = 3;
+        const x = 5, y = 5, bw = w - 10, bh = h - 10, r = 14;
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + bw - r, y);
+        ctx.quadraticCurveTo(x + bw, y, x + bw, y + r);
+        ctx.lineTo(x + bw, y + bh - r);
+        ctx.quadraticCurveTo(x + bw, y + bh, x + bw - r, y + bh);
+        ctx.lineTo(x + r, y + bh);
+        ctx.quadraticCurveTo(x, y + bh, x, y + bh - r);
+        ctx.lineTo(x, y + r);
+        ctx.quadraticCurveTo(x, y, x + r, y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.font = `bold ${fontSize}px "Space Grotesk", sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillText(text, w / 2, h / 2);
+
+        const tex = new THREE.CanvasTexture(c);
+        tex.minFilter = THREE.LinearFilter;
+        const mat = new THREE.SpriteMaterial({ map: tex, transparent: true });
+        const sprite = new THREE.Sprite(mat);
+        sprite.scale.set(w / 38, h / 38, 1);
+        return sprite;
+      }
+
+      // Central Deterministic Core Hub
+      const coreGroup = new THREE.Group();
+      scene.add(coreGroup);
+
+      const coreInnerGeo = new THREE.DodecahedronGeometry(2.6, 0);
+      const coreInnerMat = new THREE.MeshStandardMaterial({
+        color: 0x2dd4bf,
+        emissive: 0x0f766e,
+        emissiveIntensity: 0.85,
+        roughness: 0.2,
+        metalness: 0.9
+      });
+      const coreInner = new THREE.Mesh(coreInnerGeo, coreInnerMat);
+      coreGroup.add(coreInner);
+
+      const coreCageGeo = new THREE.IcosahedronGeometry(4.0, 1);
+      const coreCageMat = new THREE.MeshBasicMaterial({
+        color: 0x2dd4bf,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.35
+      });
+      const coreCage = new THREE.Mesh(coreCageGeo, coreCageMat);
+      coreGroup.add(coreCage);
+
+      const ringGeo = new THREE.TorusGeometry(5.4, 0.05, 16, 100);
+      const ringMat1 = new THREE.MeshBasicMaterial({ color: 0x2dd4bf, transparent: true, opacity: 0.55 });
+      const ring1 = new THREE.Mesh(ringGeo, ringMat1);
+      ring1.rotation.x = Math.PI / 3;
+      coreGroup.add(ring1);
+
+      const ringMat2 = new THREE.MeshBasicMaterial({ color: 0x60a5fa, transparent: true, opacity: 0.55 });
+      const ring2 = new THREE.Mesh(ringGeo, ringMat2);
+      ring2.rotation.y = Math.PI / 4;
+      ring2.rotation.z = Math.PI / 6;
+      coreGroup.add(ring2);
+
+      const coreLabel = createTextSprite('⚡ DETERMINISTIC KERNEL', '#2DD4BF');
+      coreLabel.position.set(0, 5.2, 0);
+      coreGroup.add(coreLabel);
+
+      // System Satellites Definitions
+      const systemNodes = [
+        {
+          id: 'ict',
+          name: 'ICT Flux',
+          label: '⚡ ICT FLUX',
+          color: 0x2dd4bf,
+          colorHex: '#2DD4BF',
+          pos: new THREE.Vector3(-22, 10, 8),
+          camPos: new THREE.Vector3(-12, 6, 22),
+          camLookAt: new THREE.Vector3(-22, 5, 8),
+          geomType: 'octahedron'
+        },
+        {
+          id: 'toon',
+          name: 'ToonForge',
+          label: '🎨 TOONFORGE',
+          color: 0xf59e0b,
+          colorHex: '#F59E0B',
+          pos: new THREE.Vector3(0, 16, -18),
+          camPos: new THREE.Vector3(0, 10, -2),
+          camLookAt: new THREE.Vector3(0, 12, -18),
+          geomType: 'icosahedron'
+        },
+        {
+          id: 'chopos',
+          name: 'Chopos',
+          label: '🍽️ CHOPOS',
+          color: 0x60a5fa,
+          colorHex: '#60A5FA',
+          pos: new THREE.Vector3(22, 10, -8),
+          camPos: new THREE.Vector3(12, 6, 12),
+          camLookAt: new THREE.Vector3(22, 5, -8),
+          geomType: 'box'
+        },
+        {
+          id: 'motion',
+          name: 'Motion',
+          label: '📍 MOTION',
+          color: 0x34d399,
+          colorHex: '#34D399',
+          pos: new THREE.Vector3(-16, -4, -16),
+          camPos: new THREE.Vector3(-6, -6, -2),
+          camLookAt: new THREE.Vector3(-16, -9, -16),
+          geomType: 'dodecahedron'
+        },
+        {
+          id: 'video',
+          name: 'Video editor',
+          label: '🎬 VIDEO EDITOR',
+          color: 0xc084fc,
+          colorHex: '#C084FC',
+          pos: new THREE.Vector3(18, -4, 14),
+          camPos: new THREE.Vector3(8, -6, 26),
+          camLookAt: new THREE.Vector3(18, -9, 14),
+          geomType: 'cylinder'
+        }
+      ];
+
+      const interactiveMeshes = [coreInner];
+      const pulseParticles = [];
+
+      // Build Satellites, 3D Drop-Down Sub-Components & Data Conduits
+      systemNodes.forEach((node) => {
+        const group = new THREE.Group();
+        group.position.copy(node.pos);
+        scene.add(group);
+        node.group = group;
+
+        let mesh;
+        if (node.geomType === 'octahedron') {
+          mesh = new THREE.Mesh(
+            new THREE.OctahedronGeometry(2.5, 0),
+            new THREE.MeshStandardMaterial({
+              color: node.color,
+              emissive: node.color,
+              emissiveIntensity: 0.5,
+              metalness: 0.85,
+              roughness: 0.25
+            })
+          );
+          const cage = new THREE.Mesh(
+            new THREE.OctahedronGeometry(3.1, 0),
+            new THREE.MeshBasicMaterial({ color: node.color, wireframe: true, transparent: true, opacity: 0.4 })
+          );
+          group.add(cage);
+        } else if (node.geomType === 'icosahedron') {
+          mesh = new THREE.Mesh(
+            new THREE.IcosahedronGeometry(2.5, 0),
+            new THREE.MeshStandardMaterial({
+              color: node.color,
+              emissive: node.color,
+              emissiveIntensity: 0.5,
+              metalness: 0.85,
+              roughness: 0.25
+            })
+          );
+          const cage = new THREE.Mesh(
+            new THREE.IcosahedronGeometry(3.1, 0),
+            new THREE.MeshBasicMaterial({ color: node.color, wireframe: true, transparent: true, opacity: 0.4 })
+          );
+          group.add(cage);
+        } else if (node.geomType === 'box') {
+          mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(2.7, 2.7, 2.7),
+            new THREE.MeshStandardMaterial({
+              color: node.color,
+              emissive: node.color,
+              emissiveIntensity: 0.45,
+              metalness: 0.85,
+              roughness: 0.25
+            })
+          );
+          const cage = new THREE.Mesh(
+            new THREE.BoxGeometry(3.3, 3.3, 3.3),
+            new THREE.MeshBasicMaterial({ color: node.color, wireframe: true, transparent: true, opacity: 0.4 })
+          );
+          group.add(cage);
+        } else if (node.geomType === 'dodecahedron') {
+          mesh = new THREE.Mesh(
+            new THREE.DodecahedronGeometry(2.3, 0),
+            new THREE.MeshStandardMaterial({
+              color: node.color,
+              emissive: node.color,
+              emissiveIntensity: 0.5,
+              metalness: 0.85,
+              roughness: 0.25
+            })
+          );
+          const cage = new THREE.Mesh(
+            new THREE.DodecahedronGeometry(2.9, 0),
+            new THREE.MeshBasicMaterial({ color: node.color, wireframe: true, transparent: true, opacity: 0.4 })
+          );
+          group.add(cage);
+        } else {
+          mesh = new THREE.Mesh(
+            new THREE.CylinderGeometry(1.9, 1.9, 2.5, 12),
+            new THREE.MeshStandardMaterial({
+              color: node.color,
+              emissive: node.color,
+              emissiveIntensity: 0.45,
+              metalness: 0.85,
+              roughness: 0.25
+            })
+          );
+          const cage = new THREE.Mesh(
+            new THREE.CylinderGeometry(2.3, 2.3, 2.9, 12),
+            new THREE.MeshBasicMaterial({ color: node.color, wireframe: true, transparent: true, opacity: 0.35 })
+          );
+          group.add(cage);
+        }
+
+        mesh.userData = { nodeId: node.id, nodeData: node };
+        group.add(mesh);
+        node.mesh = mesh;
+        interactiveMeshes.push(mesh);
+
+        // Satellite Billboarding Label
+        const label = createTextSprite(node.label, node.colorHex);
+        label.position.set(0, 3.8, 0);
+        group.add(label);
+
+        // BUILD 3D DROP-DOWN SUB-COMPONENTS
+        const subDefs = systemSubComponents[node.id] || [];
+        node.subNodes = [];
+        const subGroup = new THREE.Group();
+        group.add(subGroup);
+        node.subGroup = subGroup;
+
+        // Vertical laser conduit line linking the cascade
+        const laserGeo = new THREE.CylinderGeometry(0.04, 0.04, 14, 8);
+        const laserMat = new THREE.MeshBasicMaterial({ color: node.color, transparent: true, opacity: 0.4 });
+        const laserLine = new THREE.Mesh(laserGeo, laserMat);
+        laserLine.position.set(0, -7.0, 0);
+        laserLine.visible = false;
+        subGroup.add(laserLine);
+        node.laserLine = laserLine;
+
+        subDefs.forEach((sub, i) => {
+          const subItem = new THREE.Group();
+          subItem.position.set(0, 0, 0); // starts inside parent
+          subItem.scale.set(0.001, 0.001, 0.001); // hidden until opened
+          subGroup.add(subItem);
+
+          // Sub-node 3D geometric platform
+          const smGeo = new THREE.CylinderGeometry(1.4, 1.4, 0.5, 16);
+          const smMat = new THREE.MeshStandardMaterial({
+            color: sub.color,
+            emissive: sub.color,
+            emissiveIntensity: 0.45,
+            metalness: 0.8,
+            roughness: 0.25
+          });
+          const smMesh = new THREE.Mesh(smGeo, smMat);
+          smMesh.userData = { isSubNode: true, parentId: node.id, subIndex: i, subData: sub };
+          subItem.add(smMesh);
+          interactiveMeshes.push(smMesh);
+
+          // Glowing wireframe border
+          const wireMat = new THREE.MeshBasicMaterial({ color: sub.color, wireframe: true, transparent: true, opacity: 0.55 });
+          const wireMesh = new THREE.Mesh(new THREE.CylinderGeometry(1.6, 1.6, 0.55, 16), wireMat);
+          subItem.add(wireMesh);
+
+          // 3D Tag Billboard next to sub-node
+          const subTag = createTextSprite(`${sub.icon} ${sub.name}`, sub.colorHex, 17, 250, 52);
+          subTag.position.set(4.4, 0, 0);
+          subItem.add(subTag);
+
+          node.subNodes.push({
+            group: subItem,
+            mesh: smMesh,
+            data: sub,
+            targetY: -(i + 1) * 3.4
+          });
+        });
+
+        // Arched CatmullRom 3D Conduit Curve back to Core
+        const mid = new THREE.Vector3(node.pos.x * 0.5, node.pos.y * 0.5 + 4.5, node.pos.z * 0.5);
+        const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(0, 0, 0), mid, node.pos]);
+        node.curve = curve;
+
+        const tubeGeo = new THREE.TubeGeometry(curve, 44, 0.08, 8, false);
+        const tubeMat = new THREE.MeshBasicMaterial({
+          color: node.color,
+          transparent: true,
+          opacity: 0.35,
+          wireframe: false
+        });
+        scene.add(new THREE.Mesh(tubeGeo, tubeMat));
+
+        // 14 Animated Data Pulse Particles along conduit
+        const pulseCount = 14;
+        for (let i = 0; i < pulseCount; i++) {
+          const pulseGeo = new THREE.SphereGeometry(0.24, 8, 8);
+          const pulseMat = new THREE.MeshBasicMaterial({ color: node.color });
+          const pulseMesh = new THREE.Mesh(pulseGeo, pulseMat);
+          scene.add(pulseMesh);
+          pulseParticles.push({
+            mesh: pulseMesh,
+            curve: curve,
+            baseOffset: i / pulseCount,
+            speed: 0.12
+          });
+        }
+      });
+
+      // Smooth Camera Flight State
+      let targetCamPos = new THREE.Vector3(0, 26, 52);
+      let targetLookAt = new THREE.Vector3(0, 0, 0);
+      let isFlying = false;
+
+      // Update Telemetry HUD Content
+      function updateHUD(nodeId) {
+        const data = telemetryData[nodeId] || telemetryData.galaxy;
+        const badge = document.getElementById('telemetryBadge');
+        const latency = document.getElementById('telemetryLatency');
+        const title = document.getElementById('telemetryTitle');
+        const body = document.getElementById('telemetryBody');
+        const protocol = document.getElementById('telemetryProtocol');
+        const throughput = document.getElementById('telemetryThroughput');
+        const subList = document.getElementById('telemetrySubNodesList');
+        const subIndicator = document.getElementById('subNodeStateIndicator');
+        const actionLink = document.getElementById('telemetryActionLink');
+
+        if (badge) {
+          badge.textContent = data.badge;
+          badge.className = `px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold ${data.badgeClass}`;
+        }
+        if (latency) {
+          latency.textContent = data.latency;
+          latency.className = `font-mono text-[11px] ${data.latencyClass}`;
+        }
+        if (title) title.innerHTML = `<span>${data.title}</span>`;
+
+        // Switch between Relatable Story and Deep Engineering Blueprint
+        if (body) {
+          body.innerHTML = (currentHUDMode === 'relatable') ? data.relatable : data.technical;
+        }
+
+        if (protocol) protocol.textContent = data.protocol;
+        if (throughput) throughput.textContent = data.throughput;
+        if (actionLink && data.link) actionLink.href = data.link;
+
+        // Render Drop-Down 3D Sub-Components Checklist
+        if (subList) {
+          subList.innerHTML = '';
+          const subs = systemSubComponents[nodeId];
+          if (subs && subs.length > 0) {
+            if (subIndicator) subIndicator.textContent = 'Cascading in 3D Space';
+            subs.forEach((s, idx) => {
+              const row = document.createElement('div');
+              row.id = `hudSubRow_${nodeId}_${idx}`;
+              row.className = 'p-1.5 rounded bg-surface-2/80 border border-white/5 flex items-center justify-between transition-all';
+              row.innerHTML = `
+                <div class="flex items-center gap-2">
+                  <span class="w-5 h-5 rounded-md bg-white/5 flex items-center justify-center text-xs">${s.icon}</span>
+                  <span class="font-medium text-slate-200">${s.name}</span>
+                </div>
+                <span class="text-[10px] text-accent font-semibold px-1.5 py-0.5 rounded bg-accent/10">STAGE ${s.num}</span>
+              `;
+              subList.appendChild(row);
+            });
+          } else {
+            if (subIndicator) subIndicator.textContent = 'All 5 Systems Synced';
+            subList.innerHTML = `
+              <div class="p-2 rounded bg-surface-2/60 border border-white/5 text-slate-400 text-[11px] leading-relaxed">
+                Click any satellite node to drop down its 4 internal architectural layers in 3D.
+              </div>
+            `;
+          }
+        }
+
+        // Highlight Active Camera Preset Button
+        const buttons = ['galaxy', 'ict', 'toon', 'chopos', 'motion', 'video'];
+        buttons.forEach((btnId) => {
+          const btn = document.getElementById(`btn-focus-${btnId}`);
+          if (btn) {
+            if (btnId === nodeId) {
+              btn.className = 'px-3 py-1.5 rounded-lg bg-accent text-slate-950 font-bold hover:brightness-110 transition-all shadow-sm shadow-accent/20';
+            } else {
+              btn.className = 'px-3 py-1.5 rounded-lg bg-surface-2 border border-white/10 text-slate-300 hover:text-white transition-all';
+            }
+          }
+        });
+      }
+
+      // Camera Focus Trigger (Controls 3D Dropping of Sub-Nodes)
+      focus3DNode = function(nodeId) {
+        activeFocusedNodeId = nodeId;
+        if (nodeId === 'galaxy') {
+          targetCamPos.set(0, 26, 52);
+          targetLookAt.set(0, 0, 0);
+        } else {
+          const found = systemNodes.find(n => n.id === nodeId);
+          if (found) {
+            targetCamPos.copy(found.camPos);
+            targetLookAt.copy(found.camLookAt || found.pos);
+          }
+        }
+        isFlying = true;
+
+        // Show/hide laser lines for cascading sub-nodes
+        systemNodes.forEach(n => {
+          if (n.laserLine) n.laserLine.visible = (n.id === nodeId);
+        });
+
+        updateHUD(nodeId);
+      };
+
+      // User selects node manually
+      userSelectNode = function(nodeId) {
+        pauseMissionUserInteracted();
+        focus3DNode(nodeId);
+      };
+
+      // Switch HUD Mode (Plain English vs Technical Blueprint)
+      setHUDMode = function(mode) {
+        currentHUDMode = mode;
+        const tabRel = document.getElementById('hud-tab-relatable');
+        const tabTech = document.getElementById('hud-tab-technical');
+        if (tabRel && tabTech) {
+          if (mode === 'relatable') {
+            tabRel.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-accent text-slate-950 font-bold transition-all';
+            tabTech.className = 'text-[10px] font-mono px-2 py-0.5 rounded text-slate-400 hover:text-white transition-all';
+          } else {
+            tabTech.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-brand text-slate-950 font-bold transition-all';
+            tabRel.className = 'text-[10px] font-mono px-2 py-0.5 rounded text-slate-400 hover:text-white transition-all';
+          }
+        }
+        updateHUD(activeFocusedNodeId);
+      };
+
+      // Orbit Toggle
+      toggle3DOrbit = function() {
+        if (!controls) return;
+        isAutoOrbiting = !isAutoOrbiting;
+        controls.autoRotate = isAutoOrbiting;
+        const icon = document.getElementById('orbitIcon');
+        const label = document.getElementById('orbitLabel');
+        if (icon) icon.textContent = isAutoOrbiting ? '⏸' : '▶';
+        if (label) label.textContent = isAutoOrbiting ? 'Auto-Orbit: ON' : 'Auto-Orbit: OFF';
+      };
+
+      // Reset Camera
+      reset3DCamera = function() {
+        pauseMissionUserInteracted();
+        focus3DNode('galaxy');
+      };
+
+      // =======================================================================
+      // AUTONOMOUS PLAYABLE MISSION ENGINE (Simulated Game on Autopilot)
+      // =======================================================================
+      function runMissionStep() {
+        if (!isAutoMissionActive) return;
+
+        const mission = autonomousMissions[currentMissionIdx];
+        const step = mission.steps[currentStepIdx];
+
+        // Ensure 3D camera is focused on mission node & sub-nodes are dropped down
+        if (activeFocusedNodeId !== mission.nodeId) {
+          focus3DNode(mission.nodeId);
+        }
+
+        // Update Mission HUD Banners
+        const badgeEl = document.getElementById('missionBadge');
+        const headlineEl = document.getElementById('missionStoryHeadline');
+        const storyTextEl = document.getElementById('telemetryStoryText');
+        const progressBar = document.getElementById('missionProgressBar');
+
+        if (badgeEl) badgeEl.textContent = mission.badge;
+        if (headlineEl) headlineEl.textContent = mission.headline;
+        if (storyTextEl) storyTextEl.textContent = step.text;
+
+        const pct = Math.round(((currentStepIdx + 1) / mission.steps.length) * 100);
+        if (progressBar) progressBar.style.width = `${pct}%`;
+
+        // Pulse the active 3D sub-node brightly
+        const targetNode = systemNodes.find(n => n.id === mission.nodeId);
+        if (targetNode && targetNode.subNodes && targetNode.subNodes[step.subIdx]) {
+          const subObj = targetNode.subNodes[step.subIdx];
+          subObj.mesh.material.emissiveIntensity = 1.3;
+          setTimeout(() => {
+            if (subObj.mesh) subObj.mesh.material.emissiveIntensity = 0.45;
+          }, 1100);
+        }
+
+        // Highlight HUD sub-node row
+        const hudRow = document.getElementById(`hudSubRow_${mission.nodeId}_${step.subIdx}`);
+        if (hudRow) {
+          hudRow.classList.add('border-accent', 'bg-accent/15');
+          setTimeout(() => {
+            if (hudRow) hudRow.classList.remove('border-accent', 'bg-accent/15');
+          }, 1800);
+        }
+
+        currentStepIdx++;
+
+        if (currentStepIdx < mission.steps.length) {
+          missionTimer = setTimeout(runMissionStep, 2800);
+        } else {
+          // Mission completed! Zoom back to galaxy view for 3.5 seconds
+          missionTimer = setTimeout(() => {
+            if (!isAutoMissionActive) return;
+            focus3DNode('galaxy');
+            if (storyTextEl) {
+              storyTextEl.innerHTML = `<span class="text-bull font-bold">✓ Done.</span> Next product...`;
+            }
+            if (progressBar) progressBar.style.width = '100%';
+
+            setTimeout(() => {
+              if (!isAutoMissionActive) return;
+              currentMissionIdx = (currentMissionIdx + 1) % autonomousMissions.length;
+              currentStepIdx = 0;
+              runMissionStep();
+            }, 3500);
+          }, 2400);
+        }
+      }
+
+      function startMissionAutoPlay() {
+        isAutoMissionActive = true;
+        updateMissionToggleUI(true);
+        runMissionStep();
+      }
+
+      function pauseMissionUserInteracted() {
+        if (!isAutoMissionActive) return;
+        isAutoMissionActive = false;
+        clearTimeout(missionTimer);
+        updateMissionToggleUI(false);
+      }
+
+      toggleMissionAutoPlay = function() {
+        if (isAutoMissionActive) {
+          pauseMissionUserInteracted();
+        } else {
+          startMissionAutoPlay();
+        }
+      };
+
+      nextMission = function() {
+        clearTimeout(missionTimer);
+        currentMissionIdx = (currentMissionIdx + 1) % autonomousMissions.length;
+        currentStepIdx = 0;
+        isAutoMissionActive = true;
+        updateMissionToggleUI(true);
+        runMissionStep();
+      };
+
+      function updateMissionToggleUI(active) {
+        const icon = document.getElementById('missionToggleIcon');
+        const text = document.getElementById('missionToggleText');
+        const btn = document.getElementById('btn-mission-toggle');
+        if (active) {
+          if (icon) icon.className = 'w-2 h-2 rounded-full bg-emerald-400 pulse-dot';
+          if (text) text.textContent = 'Autonomous Demo: Running';
+          if (btn) btn.className = 'px-3 py-1.5 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-semibold hover:bg-emerald-500/25 transition-all flex items-center gap-2 shadow-sm shadow-emerald-500/10';
+        } else {
+          if (icon) icon.className = 'w-2 h-2 rounded-full bg-amber-400';
+          if (text) text.textContent = 'Autonomous Demo: Paused (Click to Resume)';
+          if (btn) btn.className = 'px-3 py-1.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-xs font-semibold hover:bg-amber-500/25 transition-all flex items-center gap-2';
+        }
+      }
+
+      // Start autonomous mission after slight pause for viewer orientation
+      setTimeout(() => {
+        if (isAutoMissionActive) runMissionStep();
+      }, 2000);
+
+      // Raycasting on Mouse Move & Click
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2(-999, -999);
+      let hoveredMesh = null;
+
+      wrapper.addEventListener('pointermove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      });
+
+      wrapper.addEventListener('pointerleave', () => {
+        mouse.set(-999, -999);
+        wrapper.style.cursor = 'grab';
+        if (hoveredMesh) {
+          hoveredMesh.scale.set(1, 1, 1);
+          hoveredMesh = null;
+        }
+      });
+
+      wrapper.addEventListener('click', () => {
+        if (hoveredMesh && hoveredMesh.userData) {
+          pauseMissionUserInteracted();
+          if (hoveredMesh.userData.isSubNode) {
+            focus3DNode(hoveredMesh.userData.parentId);
+          } else if (hoveredMesh.userData.nodeId) {
+            focus3DNode(hoveredMesh.userData.nodeId);
+          }
+        } else if (hoveredMesh === coreInner) {
+          pauseMissionUserInteracted();
+          focus3DNode('galaxy');
+        }
+      });
+
+      // Cycling Ticker Messages
+      const ticker = document.getElementById('hudPulseCounter');
+      const tickerMsgs = [
+        "Illustration: not live data",
+        "Five products, five repositories",
+        "ICT Flux: over 690 tests",
+        "Video editor: 197 tests passing",
+        "Prototypes are labelled as prototypes"
+      ];
+      let tickerIdx = 0;
+      setInterval(() => {
+        tickerIdx = (tickerIdx + 1) % tickerMsgs.length;
+        if (ticker) ticker.textContent = tickerMsgs[tickerIdx];
+      }, 3200);
+
+      // Resize Observer
+      function handleResize() {
+        const w = wrapper.clientWidth;
+        const h = wrapper.clientHeight;
+        if (w === 0 || h === 0) return;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      }
+      window.addEventListener('resize', handleResize);
+
+      // Main 60 FPS Render Loop
+      const clock = new THREE.Clock();
+
+      function animate() {
+        requestAnimationFrame(animate);
+        const elapsedTime = clock.getElapsedTime();
+
+        // Rotate Central Core
+        coreInner.rotation.y = elapsedTime * 0.45;
+        coreInner.rotation.x = elapsedTime * 0.25;
+        coreCage.rotation.y = -elapsedTime * 0.2;
+        coreCage.rotation.z = elapsedTime * 0.15;
+        ring1.rotation.z = elapsedTime * 0.35;
+        ring2.rotation.x = elapsedTime * 0.3;
+
+        // Core Pulse Breathing
+        const coreScale = 1.0 + 0.08 * Math.sin(elapsedTime * 3);
+        coreInner.scale.set(coreScale, coreScale, coreScale);
+
+        // Rotate Satellite Nodes & Animate Drop-Down Sub-Components
+        systemNodes.forEach((node) => {
+          if (node.mesh) {
+            node.mesh.rotation.y = elapsedTime * 0.6;
+            node.mesh.rotation.x = elapsedTime * 0.35;
+          }
+
+          const isNodeActive = (activeFocusedNodeId === node.id);
+
+          // Animate 3D Drop-Down Sub-Nodes
+          if (node.subNodes) {
+            node.subNodes.forEach((sub) => {
+              const targetY = isNodeActive ? sub.targetY : 0;
+              const targetScale = isNodeActive ? 1.0 : 0.001;
+
+              sub.group.position.y += (targetY - sub.group.position.y) * 0.12;
+              sub.group.scale.x += (targetScale - sub.group.scale.x) * 0.12;
+              sub.group.scale.y += (targetScale - sub.group.scale.y) * 0.12;
+              sub.group.scale.z += (targetScale - sub.group.scale.z) * 0.12;
+
+              if (isNodeActive) {
+                sub.mesh.rotation.y = elapsedTime * 0.5;
+              }
+            });
+          }
+        });
+
+        // Drift Starfield
+        starField.rotation.y = elapsedTime * 0.02;
+
+        // Stream Data Pulses along Conduits
+        pulseParticles.forEach((p) => {
+          const t = (p.baseOffset + elapsedTime * p.speed) % 1.0;
+          p.mesh.position.copy(p.curve.getPointAt(t));
+          const pScale = 0.6 + 0.4 * Math.sin(t * Math.PI);
+          p.mesh.scale.set(pScale, pScale, pScale);
+        });
+
+        // Raycast Check
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(interactiveMeshes);
+        if (intersects.length > 0) {
+          const hit = intersects[0].object;
+          if (hoveredMesh !== hit) {
+            if (hoveredMesh) hoveredMesh.scale.set(1, 1, 1);
+            hoveredMesh = hit;
+            hoveredMesh.scale.set(1.15, 1.15, 1.15);
+            wrapper.style.cursor = 'pointer';
+          }
+        } else {
+          if (hoveredMesh) {
+            hoveredMesh.scale.set(1, 1, 1);
+            hoveredMesh = null;
+            wrapper.style.cursor = 'grab';
+          }
+        }
+
+        // Camera Smooth Flight Lerping
+        if (isFlying) {
+          camera.position.lerp(targetCamPos, 0.055);
+          if (controls) {
+            controls.target.lerp(targetLookAt, 0.055);
+          }
+          if (camera.position.distanceTo(targetCamPos) < 0.25) {
+            isFlying = false;
+          }
+        }
+
+        if (controls) controls.update();
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    }
+
+    // Launch 3D Galaxy once DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init3DGalaxy);
+    } else {
+      init3DGalaxy();
+    }
+
+    // 3D Mouse Parallax on Pipeline Stage Card
+    const stageCard = document.getElementById('pipelineStageCard');
+    if (stageCard) {
+      stageCard.addEventListener('mousemove', (e) => {
+        const rect = stageCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
+        stageCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+      stageCard.addEventListener('mouseleave', () => {
+        stageCard.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+    }
+
+    // 3D Pipeline Simulation
+    let isPipelineSimulating = false;
+    function simulateFullPipeline() {
+      if (isPipelineSimulating) return;
+      isPipelineSimulating = true;
+      const statusText = document.getElementById('pipelineStatusText');
+      const progress = document.getElementById('pipelineProgress');
+      
+      const steps = [
+        { text: "1/3 INPUT: closed candles arrive from Deriv's WebSocket.", color: "#2DD4BF", node: "ict" },
+        { text: "2/3 RULES: sweep, then shift, then gap, then the gates.", color: "#60A5FA", node: "ict" },
+        { text: "3/3 OUTPUT: an alert and a text feed for MetaTrader, or stand aside with the reason.", color: "#34D399", node: "ict" },
+        { text: "DONE: this is an illustration. No live data was used.", color: "#94A3B8", node: "galaxy" }
+      ];
+
+      let idx = 0;
+      function nextStep() {
+        if (idx < steps.length) {
+          statusText.textContent = steps[idx].text;
+          statusText.style.color = steps[idx].color;
+          progress.textContent = `Step ${Math.min(idx + 1, 3)} of 3`;
+          if (typeof focus3DNode === 'function' && steps[idx].node) {
+            focus3DNode(steps[idx].node);
+          }
+          idx++;
+          setTimeout(nextStep, 1300);
+        } else {
+          progress.textContent = "Flow shown";
+          isPipelineSimulating = false;
+        }
+      }
+      nextStep();
+    }
+
+    // Background Particle Canvas
+    const canvas = document.getElementById('bgCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      const particles = Array.from({ length: 42 }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 1.5 + 0.8
+      }));
+
+      function render() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = 'rgba(45, 212, 191, 0.4)';
+        ctx.strokeStyle = 'rgba(45, 212, 191, 0.04)';
+
+        particles.forEach((p, i) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = w;
+          if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h;
+          if (p.y > h) p.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (dist < 110) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        });
+        requestAnimationFrame(render);
+      }
+      render();
+    }
+  </script>
+</body>
+</html>

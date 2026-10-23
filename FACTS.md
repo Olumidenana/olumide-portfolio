@@ -21,6 +21,8 @@ Checked on 23 October 2026. Every figure on `index.html` and `portfolio-dossier.
 
 Notes
 
+- `showcase.html` (the 3D tour) uses only the figures above. Its walkthroughs describe how each project works; they are illustrations with no live data.
+
 - A count of lines is a size, not a measure of quality.
 - "Over 690 automated tests" counts test functions. It does not say they all pass at every commit.
 - The site makes no claim that ICT Flux is profitable, because the measured result does not support one.
