@@ -1,338 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olumide Adeyemi-Nana — Systems Architecture & Production Portfolio Dossier</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @media print {
-      body {
-        background-color: #FFFFFF !important;
-        color: #0F172A !important;
-        font-size: 11pt;
-      }
-      .page-break {
-        page-break-after: always;
-        break-after: page;
-      }
-      .no-print {
-        display: none !important;
-      }
-      .print-border {
-        border-color: #E2E8F0 !important;
-      }
-      .print-card {
-        background-color: #F8FAFC !important;
-        border: 1px solid #CBD5E1 !important;
-        color: #0F172A !important;
-      }
-      .print-text-dark {
-        color: #0F172A !important;
-      }
-      .print-text-muted {
-        color: #475569 !important;
-      }
-      .print-tag {
-        background-color: #E2E8F0 !important;
-        color: #0F172A !important;
-        border: 1px solid #CBD5E1 !important;
-      }
-    }
-    body {
-      background-color: #07080B;
-      color: #E2E8F0;
-      font-family: 'Space Grotesk', sans-serif;
-    }
-    .font-mono {
-      font-family: 'JetBrains Mono', monospace;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Olumide Adeyemi-Nana · One-page summary</title>
+<meta name="color-scheme" content="light">
+<style>
+:root{--ink:#17181a;--muted:#555b62;--line:#d9d6ce;--accent:#0d6b58}
+*{box-sizing:border-box}
+body{margin:0;background:#f1efe9;color:var(--ink);font:14px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.page{max-width:48rem;margin:1.5rem auto;background:#fff;padding:2.2rem 2.4rem;border:1px solid var(--line)}
+a{color:var(--accent)}
+h1{font-size:1.9rem;line-height:1.2;margin:0;letter-spacing:-.02em}
+h2{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:1.5rem 0 .5rem;padding-bottom:.25rem;border-bottom:1px solid var(--line)}
+p{margin:.35rem 0}
+.sub{color:var(--muted);margin:.25rem 0 0}
+.proj{margin:.7rem 0;break-inside:avoid}
+.proj b{font-size:1rem}
+.proj .st{color:var(--muted);font-size:.85rem}
+ul{margin:.25rem 0;padding-left:1.1rem}
+li{margin:.15rem 0}
+.cols{display:grid;grid-template-columns:8rem 1fr;gap:.2rem .8rem}
+.cols div:nth-child(odd){color:var(--muted)}
+.bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+button{font:inherit;padding:.35rem .8rem;border:1px solid var(--line);background:#fff;border-radius:6px;cursor:pointer}
+@media (max-width:36rem){.page{margin:0;padding:1.4rem 1.1rem;border:0}.cols{grid-template-columns:1fr}}
+@media print{
+  body{background:#fff;font-size:8.6pt;line-height:1.38}
+  .page{margin:0;border:0;padding:0;max-width:none}
+  .noprint{display:none}
+  a{color:#000;text-decoration:none}
+  h1{font-size:18pt}
+  h2{margin:.7rem 0 .3rem}
+  .proj{margin:.4rem 0}
+  .proj b{font-size:9.6pt}
+  .proj .st{font-size:8.2pt;margin-top:.1rem}
+  li{margin:.05rem 0}
+  ul{margin:.15rem 0}
+  @page{size:A4;margin:11mm 13mm}
+}
+</style>
 </head>
-<body class="p-4 sm:p-8 md:p-12 selection:bg-cyan-400 selection:text-black">
+<body>
+<div class="page">
+  <div class="bar noprint"><a href="./">← Portfolio</a><button type="button" id="print">Save as PDF</button></div>
 
-  <!-- Floating Print / Save as PDF Bar -->
-  <div class="no-print max-w-5xl mx-auto mb-8 p-4 rounded-2xl bg-slate-900/90 border border-cyan-500/30 backdrop-blur-md flex flex-wrap items-center justify-between gap-4 sticky top-4 z-50 shadow-2xl">
-    <div class="flex items-center gap-3">
-      <span class="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></span>
-      <div>
-        <div class="font-bold text-white text-sm">Executive Engineering Portfolio Dossier</div>
-        <div class="text-xs font-mono text-slate-400">Ready to save as PDF or attach to LinkedIn Featured Section</div>
-      </div>
-    </div>
-    <div class="flex items-center gap-3">
-      <button onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-cyan-400 text-slate-950 font-mono text-xs font-bold hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-cyan-400/20 flex items-center gap-2 cursor-pointer">
-        <span>📄 Save as PDF (Ctrl+P)</span>
-      </button>
-      <a href="index.html" class="px-4 py-2.5 rounded-xl bg-slate-800 border border-white/10 text-slate-300 font-mono text-xs hover:text-white transition-all">
-        ← Live Portfolio
-      </a>
-    </div>
+  <h1>Olumide Adeyemi-Nana</h1>
+  <p class="sub">Full-stack engineer · TypeScript and Python · Osun and Lagos, Nigeria · open to full-time and contract work, remote</p>
+  <p class="sub"><a href="mailto:olumideadeyeminana@gmail.com">olumideadeyeminana@gmail.com</a> · <a href="https://github.com/Olumidenana">github.com/Olumidenana</a> · <a href="https://olumide-portfolio.vercel.app">olumide-portfolio.vercel.app</a></p>
+
+  <h2>Summary</h2>
+  <p>I build complete products: sign-in, payments, data and deployment. Five built so far, from a live trading-signal app to an in-browser video editor. B.Sc. Mechanical Engineering, Obafemi Awolowo University. I build with AI coding tools, and I test, review and decide what ships.</p>
+
+  <h2>Work</h2>
+  <div class="proj"><b>ICT Flux</b> · <a href="https://ictflux.app">ictflux.app</a> · live · private code
+    <ul>
+      <li>Trading-signal web app: a Python rules engine reads forex, index and synthetic markets from Deriv's live WebSocket feed and says what a published trading method would do, or to stand aside, with the reason.</li>
+      <li>About 17,000 lines of Python on Vercel serverless functions; installable web app with push alerts; Supabase accounts; Paystack subscriptions; MetaTrader 4 and 5 Expert Advisors.</li>
+      <li>Over 690 automated tests, including one that fails if the engine starts trading random prices, and an offline tool that tests whether the rules have an edge (itself tested on planted-edge and noise data).</li>
+    </ul>
+    <div class="st">Not proven profitable: on 19 markets of real candles the rules have shown no reliable edge yet. The app shows every trade it took.</div></div>
+
+  <div class="proj"><b>Video Splitter &amp; Assembler</b> · <a href="https://github.com/Olumidenana/video-assembler-saas">code on GitHub</a>
+    <ul>
+      <li>Trim, split, caption and stitch video in the browser with FFmpeg.wasm and on-device Whisper, so no server render queue or time limit.</li>
+      <li>Next.js 16, React 19, TypeScript, about 16,700 lines; Supabase; Paystack monthly plans in naira; YouTube and TikTok upload over OAuth; Claude API for free-text edit commands.</li>
+      <li>Cross-origin isolation limited to the editor route so Paystack's popup still works. 197 tests, all passing.</li>
+    </ul></div>
+
+  <div class="proj"><b>ToonForge</b> · prototype · private code
+    <ul>
+      <li>Story-to-cartoon studio: story planning with Gemini or Claude, a 2D browser animator with MP4 export, on-device speech, and a Python FastAPI worker for GPU image and video generation.</li>
+      <li>About 5,300 lines of TypeScript and 600 of Python. 38 tests, all passing.</li>
+    </ul>
+    <div class="st">The browser animator works; voices and the GPU worker are tested in mock mode only, not yet on real hardware.</div></div>
+
+  <div class="proj"><b>Chopos</b> · prototype · private code
+    <ul>
+      <li>Ordering and settlement for food vendors: storefront, kitchen dashboard, stock counts, WhatsApp stock commands, Paystack split payments, delivery-dispatch adapter.</li>
+      <li>Next.js 14, TypeScript, about 7,300 lines; Prisma and PostgreSQL (12 models, 13 API routes); SQL row locks for stock.</li>
+    </ul>
+    <div class="st">Runs in demo mode without API keys. No automated tests yet.</div></div>
+
+  <div class="proj"><b>Motion</b> · <a href="https://motion-oau.vercel.app">motion-oau.vercel.app</a> · <a href="https://github.com/Olumidenana/motion-oau">code on GitHub</a>
+    <ul>
+      <li>Campus running groups for Obafemi Awolowo University: routes on a map, schedule and join runs, WhatsApp sharing. Built for cheap Android phones and slow data.</li>
+      <li>Next.js 15, TypeScript, about 4,000 lines; Firebase (Google sign-in, Firestore rules) with Supabase as an alternative. No automated tests.</li>
+    </ul></div>
+
+  <h2>Tools</h2>
+  <div class="cols">
+    <div>Languages</div><div>TypeScript, Python, SQL, JavaScript, MQL</div>
+    <div>Front end</div><div>Next.js, React, Web Workers, Canvas, PWA</div>
+    <div>Back end and data</div><div>Vercel serverless, FastAPI, WebSockets, PostgreSQL (Supabase, Prisma), Firebase</div>
+    <div>Payments, sign-in</div><div>Paystack (subscriptions, split payments, webhooks), Supabase Auth, Google sign-in</div>
+    <div>AI</div><div>Claude and Gemini APIs, on-device Whisper and text-to-speech, Make.com, n8n, Zapier</div>
+    <div>Testing</div><div>Vitest, Python unittest, tests against random data</div>
   </div>
 
-  <div class="max-w-5xl mx-auto space-y-12">
-
-    <!-- =========================================================================
-         PAGE 1: COVER & EXECUTIVE SUMMARY
-         ========================================================================= -->
-    <div class="page-break p-8 sm:p-12 rounded-3xl bg-slate-900/80 border border-white/15 print-card">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 border-b border-white/10 print-border">
-        <div>
-          <div class="font-mono text-xs text-cyan-400 font-bold uppercase tracking-wider mb-2">
-            Technical Dossier & Portfolio Review // 2026
-          </div>
-          <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight print-text-dark">
-            Olumide Adeyemi-Nana
-          </h1>
-          <p class="text-lg text-slate-300 font-medium mt-1 print-text-muted">
-            Full-Stack Systems & Quant Engineer · Systems Architect
-          </p>
-        </div>
-        <div class="text-right font-mono text-xs text-slate-400 space-y-1 print-text-muted">
-          <div><strong class="text-white print-text-dark">Location:</strong> Osun / Lagos, Nigeria</div>
-          <div><strong class="text-white print-text-dark">Education:</strong> B.Sc. Mechanical Engineering, OAU</div>
-          <div><strong class="text-white print-text-dark">Email:</strong> olumideadeyeminana@gmail.com</div>
-          <div><strong class="text-white print-text-dark">Live Web:</strong> olumide-portfolio.vercel.app</div>
-        </div>
-      </div>
-
-      <!-- Core Metrics Strip -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-8">
-        <div class="p-4 rounded-xl bg-black/40 border border-white/10 print-card">
-          <div class="font-mono text-2xl font-bold text-cyan-400">73+</div>
-          <div class="text-xs text-slate-400 mt-1 font-medium print-text-muted">Concurrent WebSocket Feeds</div>
-        </div>
-        <div class="p-4 rounded-xl bg-black/40 border border-white/10 print-card">
-          <div class="font-mono text-2xl font-bold text-blue-400">3,270+</div>
-          <div class="text-xs text-slate-400 mt-1 font-medium print-text-muted">Dossiers & Frames Indexed</div>
-        </div>
-        <div class="p-4 rounded-xl bg-black/40 border border-white/10 print-card">
-          <div class="font-mono text-2xl font-bold text-emerald-400">&lt;100ms</div>
-          <div class="text-xs text-slate-400 mt-1 font-medium print-text-muted">Execution Latency SLA</div>
-        </div>
-        <div class="p-4 rounded-xl bg-black/40 border border-white/10 print-card">
-          <div class="font-mono text-2xl font-bold text-amber-400">5</div>
-          <div class="text-xs text-slate-400 mt-1 font-medium print-text-muted">Production Systems Deployed</div>
-        </div>
-      </div>
-
-      <!-- Executive Overview -->
-      <div class="space-y-4 text-sm text-slate-300 leading-relaxed print-text-dark">
-        <h3 class="text-xl font-bold text-white print-text-dark">Executive Profile</h3>
-        <p>
-          I am a <strong>Full-Stack Systems Engineer and Algorithmic Architect</strong> with a background in Mechanical Engineering from Obafemi Awolowo University (OAU). I view software through the lens of mechanical systems under load—focusing on stress limits, friction reduction, concurrency bottlenecks, and strict fail-safes.
-        </p>
-        <p>
-          Over the past several years, I transitioned from operational process automation to designing and shipping <strong>high-concurrency, low-latency production platforms</strong> spanning quantitative trading execution, high-throughput merchant fintech operating systems, spatial community networks, and distributed cloud media rendering.
-        </p>
-        <p>
-          My engineering work is defined by <strong>depth over buzzwords</strong>: zero-lookahead algorithmic event routing, PLpgSQL row-level locking to prevent double-spending, C FFI bridges to MetaTrader 4 & 5, and in-browser 3D/WebGL experiences that eliminate expensive cloud software fees for creators.
-        </p>
-      </div>
-
-      <!-- Core Competencies Grid -->
-      <div class="mt-8 pt-6 border-t border-white/10 print-border">
-        <div class="font-mono text-xs text-cyan-400 font-bold uppercase mb-3">Core Technical Proficiencies</div>
-        <div class="flex flex-wrap gap-2 text-xs font-mono">
-          <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 print-tag">Python 3.12 (asyncio, FastAPI)</span>
-          <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 print-tag">TypeScript / JavaScript (ESNext)</span>
-          <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 print-tag">PostgreSQL / PLpgSQL (ACID & Locks)</span>
-          <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 print-tag">MetaTrader MT4/MT5 C FFI Bridges</span>
-          <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 print-tag">Real-Time WebSockets</span>
-          <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 print-tag">Paystack Split Payment API</span>
-          <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 print-tag">Three.js / WebGL 3D</span>
-          <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 print-tag">Supabase Realtime & RLS</span>
-          <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 print-tag">Cloud FFMPEG Video Transcoding</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- =========================================================================
-         PAGE 2: FLAGSHIP SYSTEM 1 & 2 (ICT FLUX & CHOPOS)
-         ========================================================================= -->
-    <div class="page-break p-8 sm:p-12 rounded-3xl bg-slate-900/80 border border-white/15 print-card space-y-8">
-      <div>
-        <div class="font-mono text-xs text-cyan-400 font-bold uppercase mb-1">Flagship Platform 01 // Fintech & Algorithmic Trading</div>
-        <h2 class="text-3xl font-extrabold text-white tracking-tight print-text-dark">
-          ICT Flux — Algorithmic Quant Platform & Deriv Bot
-        </h2>
-        <div class="text-xs font-mono text-slate-400 mt-1 print-text-muted">
-          Live URL: <a href="https://ict-trader.vercel.app" class="text-cyan-400 underline">ict-trader.vercel.app</a> · Tech Stack: Python 3.12, Deriv WS, C FFI, MT5, PLpgSQL
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-300 leading-relaxed print-text-dark">
-        <div class="p-5 rounded-2xl bg-black/40 border border-white/10 print-card space-y-2">
-          <div class="font-bold text-white text-sm print-text-dark">Founder Mission & Social Impact</div>
-          <p>
-            Built to democratize institutional-grade trading algorithms. The core mission is to help everyday people rise above poverty by removing emotional revenge trading and providing automated access to disciplined market execution.
-          </p>
-          <div class="font-bold text-amber-400 pt-2">Managed Accounts & Deriv Bot:</div>
-          <p>
-            Automates trade execution via Deriv WebSockets with strict equity drawdown controls. Offers a managed account program taking a <strong>5% to 10% monthly performance fee</strong>—aligning incentives with clients.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-black/40 border border-white/10 print-card space-y-2">
-          <div class="font-bold text-white text-sm print-text-dark">Technical Architecture</div>
-          <ul class="space-y-1.5 list-disc list-inside text-slate-300 print-text-dark">
-            <li><strong>73+ Concurrent Feeds:</strong> Streams Forex, US Equities & Deriv Synthetics simultaneously.</li>
-            <li><strong>Zero-Lookahead Matrix:</strong> Detects Fair Value Gaps (FVG), Market Structure Shifts (MSS), and Order Block 50% Mean Thresholds.</li>
-            <li><strong>SMT Correlation Guard:</strong> Cross-checks correlated twins (EURUSD vs GBPUSD) to filter false liquidity sweeps.</li>
-            <li><strong>MetaTrader C Bridge:</strong> Executes sub-100ms orders via low-level C FFI bindings.</li>
-          </ul>
-        </div>
-      </div>
-
-      <hr class="border-white/10 print-border my-6">
-
-      <div>
-        <div class="font-mono text-xs text-blue-400 font-bold uppercase mb-1">Flagship Platform 02 // Merchant OS & Delivery Relay</div>
-        <h2 class="text-3xl font-extrabold text-white tracking-tight print-text-dark">
-          Chopos OS — Logistics & Escrow OS (Beating Chowdeck)
-        </h2>
-        <div class="text-xs font-mono text-slate-400 mt-1 print-text-muted">
-          Proprietary Architecture · Tech Stack: Next.js, Paystack Subaccounts Split, PostgreSQL Row-Level Locks
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-300 leading-relaxed print-text-dark">
-        <div class="p-5 rounded-2xl bg-black/40 border border-white/10 print-card space-y-2">
-          <div class="font-bold text-white text-sm print-text-dark">The Chowdeck Alternative for Campus & Hyperlocal</div>
-          <p>
-            Chowdeck revolutionized Nigerian food delivery, but campus environments suffer from high commission cuts and delayed vendor payouts. Chopos was engineered from the ground up to outperform Chowdeck in speed, vendor trust, and real-time transparency.
-          </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-black/40 border border-white/10 print-card space-y-2">
-          <div class="font-bold text-white text-sm print-text-dark">Real-Time Split Escrow & KDS Relay</div>
-          <ul class="space-y-1.5 list-disc list-inside text-slate-300 print-text-dark">
-            <li><strong>Instant Paystack Split:</strong> At checkout, funds split atomically: vendor gets food cash immediately; rider gets delivery fee instantly.</li>
-            <li><strong>Kitchen Display System (KDS):</strong> Kitchen tablets chime the moment orders drop, cutting cook-start lag to under 3 seconds.</li>
-            <li><strong>Zero Double-Spending:</strong> Enforces PostgreSQL row-level locks on stock and cart balances.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- =========================================================================
-         PAGE 3: FLAGSHIP SYSTEM 3, 4 & 5 (TOONFORGE, MOTION OAU, VIDEO SAAS)
-         ========================================================================= -->
-    <div class="page-break p-8 sm:p-12 rounded-3xl bg-slate-900/80 border border-white/15 print-card space-y-8">
-      <div>
-        <div class="font-mono text-xs text-amber-400 font-bold uppercase mb-1">Flagship Platform 03 // Generative AI & WebGL Studio</div>
-        <h2 class="text-3xl font-extrabold text-white tracking-tight print-text-dark">
-          ToonForge — In-Browser AI Animation & 3D Render Studio
-        </h2>
-        <div class="text-xs font-mono text-slate-400 mt-1 print-text-muted">
-          Private Studio Repo: github.com/Olumidenana/toonforge · Tech Stack: Claude / Gemini API, Three.js WebGL, Cloud GPU
-        </div>
-      </div>
-
-      <div class="p-5 rounded-2xl bg-black/40 border border-white/10 print-card space-y-3 text-xs leading-relaxed text-slate-300 print-text-dark">
-        <p>
-          <strong>Empowering African Storytellers:</strong> Commercial animation tools demand \$100+/month USD subscriptions—shutting out African creators who are forced into creating endless burner Gmail accounts for free trials. ToonForge aggregates free foundational AI models (Claude & Gemini) with an in-browser 2D/3D character engine and cloud GPU rendering.
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-          <div>
-            <span class="font-bold text-white print-text-dark">Key Innovations:</span>
-            <ul class="list-disc list-inside mt-1 space-y-1">
-              <li>Episodic script & screenplay generation from simple prompts</li>
-              <li>Multi-shot facial & character consistency engine</li>
-            </ul>
-          </div>
-          <div>
-            <span class="font-bold text-white print-text-dark">Production Pipeline:</span>
-            <ul class="list-disc list-inside mt-1 space-y-1">
-              <li>WebGL 3D viewport with automated phoneme lip-syncing</li>
-              <li>1-click cloud render & direct export for YouTube & TikTok</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-        <!-- Motion OAU -->
-        <div class="p-6 rounded-2xl bg-black/40 border border-white/10 print-card space-y-2 text-xs">
-          <div class="font-mono text-xs text-emerald-400 font-bold uppercase">Flagship Platform 04 // Social Network</div>
-          <h3 class="text-xl font-bold text-white print-text-dark">Motion OAU</h3>
-          <p class="text-slate-300 print-text-dark">
-            <strong>Campus Social Pulse:</strong> Beyond transit, Motion OAU is a campus social network for Obafemi Awolowo University. Uses group fitness runs as a social wedge, coordinates quiet reading spaces in Hezekiah library, safe night walks, and dynamic shuttle batching via Haversine clustering.
-          </p>
-          <div class="font-mono text-[11px] text-cyan-400">Next.js · Supabase Realtime · Leaflet GPS</div>
-        </div>
-
-        <!-- Video SaaS -->
-        <div class="p-6 rounded-2xl bg-black/40 border border-white/10 print-card space-y-2 text-xs">
-          <div class="font-mono text-xs text-purple-400 font-bold uppercase">Flagship Platform 05 // Cloud Transcoder</div>
-          <h3 class="text-xl font-bold text-white print-text-dark">Video Assembler SaaS</h3>
-          <p class="text-slate-300 print-text-dark">
-            <strong>The Clipper's Cloud Studio:</strong> Cloud-based multi-track media assembler built for video editors and clippers. Features 700KB+ TypeScript timeline orchestrator, FFMPEG worker cluster, speech leveling (-14 LUFS), and parallel slice encoding with direct TikTok/YouTube publishing.
-          </p>
-          <div class="font-mono text-[11px] text-purple-400">TypeScript · Cloud FFMPEG · Google Cloud Storage</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- =========================================================================
-         PAGE 4: PHILOSOPHY, EXPERIENCE & CONTACT
-         ========================================================================= -->
-    <div class="p-8 sm:p-12 rounded-3xl bg-slate-900/80 border border-white/15 print-card space-y-8">
-      <div>
-        <div class="font-mono text-xs text-cyan-400 font-bold uppercase mb-1">Engineering Ethos</div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight print-text-dark">
-          "Don't Chase Trends, Chase Depth."
-        </h2>
-      </div>
-
-      <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed print-text-dark">
-        <p>
-          In a tech ecosystem flooded with surface-level prompt wrappers and no-code buzzwords, real leverage belongs to engineers who understand the mechanics beneath the surface:
-        </p>
-        <blockquote class="p-4 rounded-xl bg-black/40 border-l-4 border-cyan-400 font-mono text-xs text-slate-200 print-card print-text-dark">
-          "A model calculating 97.5% confidence sounds airtight until you realize the missing 2.5% holds the human truth. In software, finance, and logistics, the design choice that matters is knowing when a system should advise, when it should act, and where the human signature belongs."
-        </blockquote>
-      </div>
-
-      <div class="pt-6 border-t border-white/10 print-border space-y-4">
-        <h3 class="text-lg font-bold text-white print-text-dark">Engagement & Availability</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-          <div class="p-4 rounded-xl bg-black/40 border border-white/10 print-card">
-            <div class="font-bold text-cyan-400 mb-1">🤖 Deriv Bot & Accounts</div>
-            <div class="text-slate-300 print-text-dark">Automated trading setup & managed account program (5%–10% monthly profit split).</div>
-          </div>
-          <div class="p-4 rounded-xl bg-black/40 border border-white/10 print-card">
-            <div class="font-bold text-blue-400 mb-1">⚡ Systems Engineering</div>
-            <div class="text-slate-300 print-text-dark">Founding architect / Senior contractor for high-throughput fintech, WebSockets, & cloud pipelines.</div>
-          </div>
-          <div class="p-4 rounded-xl bg-black/40 border border-white/10 print-card">
-            <div class="font-bold text-amber-400 mb-1">🎨 ToonForge Partnerships</div>
-            <div class="text-slate-300 print-text-dark">Content studio licensing, animated series co-production, and AI workflow integration.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Direct Contact Card -->
-      <div class="p-6 rounded-2xl bg-cyan-950/30 border border-cyan-500/30 print-card mt-6">
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <div class="font-bold text-white text-base print-text-dark">Direct Inquiry Channel</div>
-            <div class="text-xs font-mono text-cyan-400 mt-0.5">olumideadeyeminana@gmail.com</div>
-            <div class="text-xs text-slate-400 mt-1 print-text-muted">Personal response guaranteed within 24 hours.</div>
-          </div>
-          <div class="text-right font-mono text-xs text-slate-300 print-text-muted space-y-1">
-            <div><strong>Portfolio:</strong> olumide-portfolio.vercel.app</div>
-            <div><strong>GitHub:</strong> github.com/Olumidenana</div>
-            <div><strong>LinkedIn:</strong> linkedin.com/in/olumideadeyemi-nana</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
+  <p class="sub" style="margin-top:1.4rem">Line and test counts were checked on 23 October 2026. Private repositories: I can walk through the code on a call or share access.</p>
+</div>
+<script>document.getElementById('print').addEventListener('click',function(){window.print()})</script>
 </body>
 </html>
