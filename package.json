@@ -1,7 +1,7 @@
 {
   "name": "olumide-portfolio",
   "version": "1.0.0",
-  "description": "Olumide Nana · Full-Stack Systems Engineer & Algorithmic Architect Portfolio",
+  "description": "Olumide Adeyemi-Nana \u00b7 Full-stack engineer \u00b7 portfolio",
   "main": "index.html",
   "scripts": {
     "start": "npx serve -l 3000 .",
@@ -9,12 +9,11 @@
   },
   "keywords": [
     "portfolio",
-    "developer",
-    "quant",
-    "fintech",
-    "software-engineer",
-    "full-stack"
+    "full-stack",
+    "typescript",
+    "python",
+    "nextjs"
   ],
-  "author": "Olumide Nana",
+  "author": "Olumide Adeyemi-Nana",
   "license": "MIT"
 }
