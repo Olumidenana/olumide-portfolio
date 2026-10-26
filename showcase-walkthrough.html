@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olumide Adeyemi-Nana — Production Systems Visual Showcase & Media Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#07080B',
+            surface: '#0F1218',
+            'surface-2': '#171B24',
+            accent: '#00F0FF',
+            gold: '#F59E0B',
+            emerald: '#10B981',
+            purple: '#A855F7',
+            rose: '#F43F5E'
+          },
+          fontFamily: {
+            sans: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+            royal: ['Cinzel', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #07080B; color: #E2E8F0; font-family: 'Space Grotesk', sans-serif; }
+    .glass-card { background: rgba(15, 18, 24, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .glow-accent { box-shadow: 0 0 35px -5px rgba(0, 240, 255, 0.2); }
+    .glow-gold { box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.2); }
+    .pulse-dot { animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.9); } }
+  </style>
+</head>
+<body class="min-h-screen selection:bg-accent/30 selection:text-white">
+
+  <!-- TOP HEADER -->
+  <header class="border-b border-white/10 sticky top-0 bg-bg/90 backdrop-blur-md z-50 px-4 sm:px-8 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="w-9 h-9 rounded-xl bg-accent/15 border border-accent/40 flex items-center justify-center text-accent font-mono font-bold hover:brightness-125 transition-all">
+          ←
+        </a>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+            <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Client Acquisition & Showcase Kit</span>
+          </div>
+          <h1 class="text-lg sm:text-xl font-bold text-white tracking-tight">Visual Walkthrough & High-Converting Feature Suite</h1>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="px-3.5 py-1.5 rounded-xl bg-surface-2 border border-white/10 text-xs font-mono text-slate-300 hover:text-white transition-all">
+          View Main Portfolio
+        </a>
+        <a href="https://wa.me/2348149640122" target="_blank" class="px-3.5 py-1.5 rounded-xl bg-accent text-slate-950 text-xs font-mono font-bold hover:brightness-110 transition-all flex items-center gap-1.5">
+          <span>Inquire on WhatsApp</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-10">
+
+    <!-- HERO INTRO -->
+    <div class="glass-card rounded-2xl p-6 sm:p-8 border-accent/25 relative overflow-hidden">
+      <div class="absolute -right-20 -top-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="max-w-3xl">
+        <span class="px-3 py-1 rounded-full bg-accent/10 text-accent font-mono text-xs font-semibold uppercase tracking-wider border border-accent/20">The High-Converting Showcase Blueprint</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3 mb-2 tracking-tight">How to Present Your Systems to Get Contacted for High-Ticket Gigs</h2>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          Clients don't buy code; they buy <strong class="text-white">solved business problems</strong>. Below are the interactive visual breakdowns, feature notes, 60-second screen-recording scripts, and copy-paste social media launch posts for your top production systems.
+        </p>
+      </div>
+    </div>
+
+    <!-- TABS TO CHOOSE PLATFORM -->
+    <div class="flex flex-wrap items-center gap-2 pb-2 border-b border-white/10">
+      <button onclick="switchTab('ojaja')" id="tab-ojaja" class="tab-btn px-4 py-2 rounded-xl bg-gold/20 border border-gold/50 text-gold font-mono text-xs font-bold transition-all">
+        👑 1. Ojaja Cinemas
+      </button>
+      <button onclick="switchTab('educore')" id="tab-educore" class="tab-btn px-4 py-2 rounded-xl bg-surface-2 border border-white/10 text-slate-400 font-mono text-xs font-bold hover:text-white transition-all">
+        🎓 2. EduCore OS (Schools)
+      </button>
+      <button onclick="switchTab('ictflux')" id="tab-ictflux" class="tab-btn px-4 py-2 rounded-xl bg-surface-2 border border-white/10 text-slate-400 font-mono text-xs font-bold hover:text-white transition-all">
+        ⚡ 3. ICT Flux (Quant Engine)
+      </button>
+      <button onclick="switchTab('auracut')" id="tab-auracut" class="tab-btn px-4 py-2 rounded-xl bg-surface-2 border border-white/10 text-slate-400 font-mono text-xs font-bold hover:text-white transition-all">
+        🎬 4. AuraCut (Video SaaS)
+      </button>
+      <button onclick="switchTab('cravers')" id="tab-cravers" class="tab-btn px-4 py-2 rounded-xl bg-surface-2 border border-white/10 text-slate-400 font-mono text-xs font-bold hover:text-white transition-all">
+        🍔 5. Cravers & Food Logistics
+      </button>
+    </div>
+
+    <!-- TAB CONTENT 1: OJAJA CINEMAS -->
+    <div id="content-ojaja" class="tab-panel space-y-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- VISUAL MOCKUP & LIVE FRAME -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="glass-card rounded-2xl overflow-hidden border-gold/30 glow-gold">
+            <!-- Window header -->
+            <div class="bg-surface-2/80 px-4 py-3 border-b border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                <span class="text-xs font-mono text-slate-400 ml-2">ojaja-cinemas.vercel.app</span>
+              </div>
+              <a href="https://ojaja-cinemas.vercel.app" target="_blank" class="px-2.5 py-1 rounded bg-gold/15 text-gold text-xs font-mono font-bold hover:bg-gold/25 transition-all">
+                Open Live ↗
+              </a>
+            </div>
+            <!-- Mockup screen preview -->
+            <div class="p-6 bg-gradient-to-b from-[#0F1016] to-[#08090D] relative min-h-[380px] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="font-royal text-gold font-bold tracking-widest text-sm">OJAJA CINEMAS · ROYAL TICKET ENGINE</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-xs font-mono">Live Paystack Connected</span>
+                </div>
+                <div class="text-center my-6">
+                  <div class="w-3/4 mx-auto h-2 bg-gradient-to-r from-transparent via-gold/80 to-transparent rounded-full shadow-[0_0_20px_#F59E0B]"></div>
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 mt-1 block">Curved 4K Christie Laser Projection Arc</span>
+                </div>
+                <!-- Simulated interactive seating grid -->
+                <div class="grid grid-cols-8 gap-1.5 max-w-sm mx-auto mb-6">
+                  <div class="h-6 rounded bg-surface-2 border border-white/10 flex items-center justify-center text-[10px] font-mono text-slate-400">A1</div>
+                  <div class="h-6 rounded bg-surface-2 border border-white/10 flex items-center justify-center text-[10px] font-mono text-slate-400">A2</div>
+                  <div class="h-6 rounded bg-surface-2 border border-white/10 flex items-center justify-center text-[10px] font-mono text-slate-400">A3</div>
+                  <div class="h-6 rounded bg-rose-500/30 border border-rose-500/50 flex items-center justify-center text-[10px] font-mono text-rose-300" title="Reserved">A4</div>
+                  <div class="h-6 rounded bg-rose-500/30 border border-rose-500/50 flex items-center justify-center text-[10px] font-mono text-rose-300" title="Reserved">A5</div>
+                  <div class="h-6 rounded bg-gold text-slate-950 font-bold border border-gold flex items-center justify-center text-[10px] font-mono" title="Selected VIP">A6</div>
+                  <div class="h-6 rounded bg-gold text-slate-950 font-bold border border-gold flex items-center justify-center text-[10px] font-mono" title="Selected VIP">A7</div>
+                  <div class="h-6 rounded bg-surface-2 border border-white/10 flex items-center justify-center text-[10px] font-mono text-slate-400">A8</div>
+                </div>
+                <div class="p-3 rounded-xl bg-gold/10 border border-gold/30 text-xs font-mono text-gold flex items-center justify-between">
+                  <span>Selected: 2x VIP Recliner (A6, A7)</span>
+                  <span class="font-bold">₦15,000 Total</span>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>Features: Concurrency seat locks · Concessions add-on · Apple Wallet Pass</span>
+                <span class="text-gold font-bold">● High-Ticket Inbound Magnet</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 60-SECOND RECORDING SCRIPT -->
+          <div class="glass-card rounded-2xl p-6 border-white/10">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-lg">🎬</span>
+              <h3 class="font-bold text-white text-base">The 60-Second Video Recording Script (Follow on your phone or OBS)</h3>
+            </div>
+            <div class="space-y-3 text-xs font-mono text-slate-300">
+              <div class="flex gap-3 items-start bg-surface-2/60 p-2.5 rounded-lg border border-white/5">
+                <span class="text-gold font-bold min-w-[50px]">00-10s</span>
+                <span><strong>The Hook:</strong> Open `ojaja-cinemas.vercel.app` on screen. Say: <em>"Most cinema and venue websites in Nigeria are clunky, freeze on phone browsers, and lose millions to fake transfer disputes. Here is how I solved it."</em></span>
+              </div>
+              <div class="flex gap-3 items-start bg-surface-2/60 p-2.5 rounded-lg border border-white/5">
+                <span class="text-gold font-bold min-w-[50px]">10-25s</span>
+                <span><strong>The Seating Matrix:</strong> Click movie & select hall. Tap VIP seats. Show how the curved 3D laser arc and live NGN calculation update instantly without page lag.</span>
+              </div>
+              <div class="flex gap-3 items-start bg-surface-2/60 p-2.5 rounded-lg border border-white/5">
+                <span class="text-gold font-bold min-w-[50px]">25-45s</span>
+                <span><strong>The Checkout & Pass:</strong> Tap Checkout. Pop up the Paystack inline modal (or demo simulator). Complete booking & reveal the Apple Wallet-style digital boarding pass with the live turnstile QR code!</span>
+              </div>
+              <div class="flex gap-3 items-start bg-surface-2/60 p-2.5 rounded-lg border border-white/5">
+                <span class="text-gold font-bold min-w-[50px]">45-60s</span>
+                <span><strong>The Call to Action:</strong> <em>"If you run a cinema, resort, event center, or ticketing platform and want custom high-concurrency booking architecture, send me a DM or reach out on WhatsApp."</em></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXPLANATORY NOTES & COPY-PASTE SOCIAL POST -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="glass-card rounded-2xl p-6 border-white/10">
+            <h3 class="font-bold text-white text-lg mb-3 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-gold"></span>
+              Architectural Breakdown & Why Clients Pay
+            </h3>
+            <div class="space-y-3 text-xs text-slate-300">
+              <div class="p-3 rounded-xl bg-surface-2/80 border border-white/5">
+                <strong class="text-gold block mb-1">1. Concurrency-Safe Seat Locks</strong>
+                <span>Prevents the #1 disaster for event venues: double booking. If two patrons click seat D4 at the same second, the first holds a 5-minute checkout lock.</span>
+              </div>
+              <div class="p-3 rounded-xl bg-surface-2/80 border border-white/5">
+                <strong class="text-accent block mb-1">2. Smart Sold-Out Detection</strong>
+                <span>If the 4:00 PM Red Room is full, the system pops up the exact alternative screening times today rather than bouncing the customer away.</span>
+              </div>
+              <div class="p-3 rounded-xl bg-surface-2/80 border border-white/5">
+                <strong class="text-emerald-400 block mb-1">3. Automated Box Office Settlement</strong>
+                <span>Integrates official Paystack Inline SDK so money settles directly into the cinema's account with kobo precision and zero fake transfer vulnerability.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- READY-TO-POST COPY -->
+          <div class="glass-card rounded-2xl p-6 border-gold/30">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-gold font-bold uppercase tracking-wider">Ready-to-Post Copy (LinkedIn & Twitter/X)</span>
+              <button onclick="copyPost('post-ojaja')" class="px-2.5 py-1 rounded bg-gold/20 text-gold text-xs font-mono font-bold hover:bg-gold/30 transition-all flex items-center gap-1">
+                <span>Copy Post</span>
+                <span>📋</span>
+              </button>
+            </div>
+            <textarea id="post-ojaja" readonly class="w-full h-48 bg-surface-2/90 text-slate-300 text-xs font-mono p-3.5 rounded-xl border border-white/10 resize-none focus:outline-none">
+Most event ticketing and cinema booking portals in Nigeria suffer from the same 3 fatal flaws:
+1. Double-booked seats during peak screenings.
+2. Clunky mobile UIs that abandon customers during checkout.
+3. Vulnerability to fake bank transfer alert fraud.
+
+To solve this, I engineered a high-concurrency luxury cinema booking engine for Ojaja Cinemas (African Village, Ife Grand Resort).
+
+Here is what went under the hood:
+- Interactive 3D Curved Cinema Seating Map with real-time hall capacity calculations.
+- Smart Sold-Out Recommender: Instantly detects full halls and routes patrons to alternative showtimes.
+- 256-bit CBN-verified Paystack checkout for instant cashless ticket issuance.
+- Digital VIP Boarding Passes with live turnstile QR codes and instant thermal printing.
+
+Try the live system directly: https://ojaja-cinemas.vercel.app
+
+Are you running an event venue, luxury lounge, or hospitality platform looking to modernize your reservation infrastructure? Let’s connect in the DMs or reach me via WhatsApp: +234 814 964 0122.
+
+#SoftwareEngineering #Fintech #Paystack #WebDevelopment #HospitalityTech #NigeriaTech
+            </textarea>
+            <div id="copy-feedback-ojaja" class="text-[11px] font-mono text-emerald-400 mt-2 hidden">✓ Copied to clipboard! Ready to paste into LinkedIn or Twitter.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB CONTENT 2: EDUCORE OS -->
+    <div id="content-educore" class="tab-panel space-y-8 hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <div class="lg:col-span-7 space-y-4">
+          <div class="glass-card rounded-2xl overflow-hidden border-emerald-500/30 glow-accent">
+            <div class="bg-surface-2/80 px-4 py-3 border-b border-white/10 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                <span class="text-xs font-mono text-slate-400 ml-2">school-portal-os.vercel.app</span>
+              </div>
+              <a href="https://school-portal-os.vercel.app" target="_blank" class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 text-xs font-mono font-bold hover:bg-emerald-500/30 transition-all">
+                Open Live ↗
+              </a>
+            </div>
+            <div class="p-6 bg-gradient-to-b from-[#0B1512] to-[#07080B] relative min-h-[380px] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="font-mono text-emerald-400 font-bold text-sm tracking-wide">EDUCORE OS · PREMIER SCHOOL INTELLIGENCE</span>
+                  <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 text-xs font-mono">Junior AI Foundry Integrated</span>
+                </div>
+                <div class="p-4 rounded-xl bg-surface-2/90 border border-white/10 space-y-3 mb-4">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-slate-400">Student: Adewale T. (SS3 Science)</span>
+                    <span class="text-emerald-400 font-bold">GPA: 3.92 / 4.00</span>
+                  </div>
+                  <div class="h-2 w-full bg-surface rounded-full overflow-hidden">
+                    <div class="h-full bg-emerald-400 w-11/12"></div>
+                  </div>
+                  <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 pt-1">
+                    <span>Term Clearance: ₦185,000 Verified</span>
+                    <span class="text-emerald-400">● Tamper-Proof QR Signed</span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3 text-xs font-mono">
+                  <div class="p-3 rounded-lg bg-surface border border-white/5">
+                    <span class="text-purple-400 font-bold block mb-1">🤖 Junior AI Foundry</span>
+                    <span class="text-slate-400 text-[11px]">12-week hands-on student curriculum with in-browser AI bots.</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-surface border border-white/5">
+                    <span class="text-accent font-bold block mb-1">💳 Paystack Tuition Split</span>
+                    <span class="text-slate-400 text-[11px]">Automated tuition clearance directly to school bank accounts.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>Targets: Elite private academies, high school proprietors, international schools</span>
+                <span class="text-emerald-400 font-bold">● High-Contract Value (₦2M–₦10M)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6 border-white/10">
+            <h3 class="font-bold text-white text-base mb-3 flex items-center gap-2">
+              <span>🎬</span> 60-Second Video Script for School Owners & Education Boards
+            </h3>
+            <div class="space-y-3 text-xs font-mono text-slate-300">
+              <div class="flex gap-3 items-start bg-surface-2/60 p-2.5 rounded-lg border border-white/5">
+                <span class="text-emerald-400 font-bold min-w-[50px]">00-15s</span>
+                <span><strong>The Problem:</strong> <em>"Private schools in Nigeria lose hundreds of thousands every term to forged paper bank tellers, and parents wait weeks for messy report cards."</em></span>
+              </div>
+              <div class="flex gap-3 items-start bg-surface-2/60 p-2.5 rounded-lg border border-white/5">
+                <span class="text-emerald-400 font-bold min-w-[50px]">15-35s</span>
+                <span><strong>The Result Slip & Tuition:</strong> Pull up the mobile result checker on `school-portal-os.vercel.app`. Input a student ID, show the instantaneous signed A4 report slip with QR code, and tap the tuition payment rail.</span>
+              </div>
+              <div class="flex gap-3 items-start bg-surface-2/60 p-2.5 rounded-lg border border-white/5">
+                <span class="text-emerald-400 font-bold min-w-[50px]">35-60s</span>
+                <span><strong>The AI Foundry:</strong> Click the Junior AI Foundry tab. Show how students learn real-world AI right inside their portal. Close with: <em>"Proprietors, DM me to deploy this for your upcoming term."</em></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="glass-card rounded-2xl p-6 border-white/10">
+            <h3 class="font-bold text-white text-lg mb-3">Architectural Highlights for School Proprietors</h3>
+            <div class="space-y-3 text-xs text-slate-300">
+              <div class="p-3 rounded-xl bg-surface-2/80 border border-white/5">
+                <strong class="text-emerald-400 block mb-1">1. Cryptographic QR Verification</strong>
+                <span>Anyone scanning the printed or digital transcript instantly confirms GPA authenticity directly against the server hash — eliminating fake result sheets.</span>
+              </div>
+              <div class="p-3 rounded-xl bg-surface-2/80 border border-white/5">
+                <strong class="text-purple-400 block mb-1">2. Built-in Junior AI Foundry</strong>
+                <span>Gives private schools a massive marketing edge over competitors by providing an interactive curriculum where students build real AI and game simulators.</span>
+              </div>
+              <div class="p-3 rounded-xl bg-surface-2/80 border border-white/5">
+                <strong class="text-accent block mb-1">3. Automated Tuition Clearance</strong>
+                <span>Replaces chaotic manual WhatsApp teller verifications with automated Paystack status webhooks.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6 border-emerald-500/30">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Ready-to-Post Copy (LinkedIn & WhatsApp)</span>
+              <button onclick="copyPost('post-educore')" class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 text-xs font-mono font-bold hover:bg-emerald-500/30 transition-all flex items-center gap-1">
+                <span>Copy Post</span>
+                <span>📋</span>
+              </button>
+            </div>
+            <textarea id="post-educore" readonly class="w-full h-48 bg-surface-2/90 text-slate-300 text-xs font-mono p-3.5 rounded-xl border border-white/10 resize-none focus:outline-none">
+School proprietors face two massive challenges every term:
+1. Parents submitting fraudulent bank transfer tellers.
+2. The administrative nightmare of compiling and printing physical term report sheets.
+
+To solve this, I designed and built EduCore OS — an institutional-grade school management and parent intelligence platform.
+
+Key Engineering Features:
+- Instant Mobile Result Slip with cryptographically signed QR verification to stop transcript tampering.
+- Direct Paystack Tuition Clearance: Automated receipt generation straight to parents upon payment.
+- Junior AI & Software Foundry: A built-in 12-week interactive lab where students build real-world AI applications.
+- Multi-Campus White-Label Switcher: Instant rebranding for leading private academies.
+
+Live demo portal: https://school-portal-os.vercel.app
+
+Are you a school proprietor or board director looking to deploy a modern, fraud-proof digital portal for your school? Send me a DM or WhatsApp (+234 814 964 0122) for a customized rollout proposal.
+
+#EdTech #SchoolManagement #SoftwareEngineering #NigeriaEducation #Paystack #NextJS
+            </textarea>
+            <div id="copy-feedback-educore" class="text-[11px] font-mono text-emerald-400 mt-2 hidden">✓ Copied to clipboard! Ready to paste into LinkedIn or WhatsApp.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB CONTENT 3: ICT FLUX -->
+    <div id="content-ictflux" class="tab-panel space-y-8 hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-7 space-y-4">
+          <div class="glass-card rounded-2xl overflow-hidden border-accent/40 glow-accent">
+            <div class="bg-surface-2/80 px-4 py-3 border-b border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono text-accent font-bold">ictflux.app · Institutional Execution Desk</span>
+              <a href="https://ictflux.app" target="_blank" class="px-2.5 py-1 rounded bg-accent/20 text-accent text-xs font-mono font-bold hover:bg-accent/30 transition-all">
+                Open Terminal ↗
+              </a>
+            </div>
+            <div class="p-6 bg-gradient-to-b from-[#08131A] to-[#07080B] min-h-[380px] flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="font-mono text-accent font-bold text-sm">ICT TIME-AND-PRICE ENGINE (EURUSD · 5M)</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-xs font-mono">Sub-100ms MT5 C-Bridge</span>
+                </div>
+                <div class="bg-surface-2/90 p-4 rounded-xl border border-white/10 font-mono text-xs space-y-2 mb-4">
+                  <div class="flex justify-between text-slate-400"><span>1. Killzone Status:</span><span class="text-accent font-bold">NY AM Session ACTIVE (08:30 - 11:00 EST)</span></div>
+                  <div class="flex justify-between text-slate-400"><span>2. Liquidity Sweep:</span><span class="text-emerald-400">Asian High Swept @ 1.08940</span></div>
+                  <div class="flex justify-between text-slate-400"><span>3. Market Shift:</span><span class="text-white font-bold">Displacement MSS + Bearish FVG Confirmed</span></div>
+                  <div class="flex justify-between text-slate-400"><span>4. Risk Floor:</span><span class="text-rose-400">Fixed 1.0% Risk · Hard Daily Drawdown Stop</span></div>
+                </div>
+                <div class="p-3 rounded-lg bg-accent/10 border border-accent/30 text-xs font-mono text-accent">
+                  ⚡ 73+ Live Instruments Across Forex, Deriv Synthetics & US Equities
+                </div>
+              </div>
+              <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>Target: Prop firm desks, crypto hedge funds, high-net-worth algorithmic traders</span>
+                <span class="text-accent font-bold">● High Retainer / Advisory ($2,000–$10,000)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="glass-card rounded-2xl p-6 border-accent/30">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-accent font-bold uppercase tracking-wider">Ready-to-Post Copy (Twitter/X & LinkedIn)</span>
+              <button onclick="copyPost('post-ictflux')" class="px-2.5 py-1 rounded bg-accent/20 text-accent text-xs font-mono font-bold hover:bg-accent/30 transition-all flex items-center gap-1">
+                <span>Copy Post</span>
+                <span>📋</span>
+              </button>
+            </div>
+            <textarea id="post-ictflux" readonly class="w-full h-56 bg-surface-2/90 text-slate-300 text-xs font-mono p-3.5 rounded-xl border border-white/10 resize-none focus:outline-none">
+Most retail trading bots blow accounts because they trade 24/7 with zero regard for session time, high-impact economic news, or execution latency.
+
+I engineered ICT Flux — a deterministic, rules-based algorithmic execution desk built strictly on institutional Time-and-Price models.
+
+What makes the architecture unique:
+1. Strict Killzone Filtering: Trades only execute during fixed NY time windows when institutional volume is present.
+2. Deterministic State Machine: Every signal requires Asian/Prior-day liquidity sweep -> displacement Market Structure Shift (MSS) -> Fair Value Gap (FVG) limit entry.
+3. Sub-100ms MT4/MT5 C-Bridges: Pure Python 3.12 engine interfacing with MetaTrader terminal memory directly.
+4. Hard Mathematical Risk Floors: Hard loss floors, consecutive-loss halts, and news blackouts that no human emotion can override.
+
+Live algorithmic terminal: https://ictflux.app
+
+Are you building an automated trading system, prop firm bridge, or quantitative strategy? DM me or connect on WhatsApp (+234 814 964 0122) for custom quant engineering contracts.
+
+#QuantitativeFinance #AlgorithmicTrading #Python #MT5 #Fintech #SoftwareArchitecture
+            </textarea>
+            <div id="copy-feedback-ictflux" class="text-[11px] font-mono text-accent mt-2 hidden">✓ Copied to clipboard! Ready to paste into LinkedIn or Twitter.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB CONTENT 4: AURACUT (VIDEO ASSEMBLER) -->
+    <div id="content-auracut" class="tab-panel space-y-8 hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-7 space-y-4">
+          <div class="glass-card rounded-2xl overflow-hidden border-purple-500/40 glow-accent">
+            <div class="bg-surface-2/80 px-4 py-3 border-b border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono text-purple-400 font-bold">AuraCut · In-Browser Video Clipper & SaaS</span>
+              <a href="https://video-assembler-saas.vercel.app" target="_blank" class="px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 text-xs font-mono font-bold hover:bg-purple-500/30 transition-all">
+                Open Studio ↗
+              </a>
+            </div>
+            <div class="p-6 bg-gradient-to-b from-[#130E1F] to-[#07080B] min-h-[380px] flex flex-col justify-between">
+              <div>
+                <span class="font-mono text-purple-400 font-bold text-sm block mb-2">Bypassing Vercel's 10-Second Serverless Limit</span>
+                <p class="text-slate-300 text-xs mb-4">
+                  Video processing usually crashes serverless functions due to 10s-60s timeouts. AuraCut offloads the entire timeline slicing, audio transcription, and viral clip scoring into client-side WebAssembly (FFmpeg.wasm) and on-device Whisper (Transformers.js).
+                </p>
+                <div class="grid grid-cols-2 gap-3 text-xs font-mono mb-4">
+                  <div class="p-3 rounded-lg bg-surface-2 border border-white/5">
+                    <span class="text-purple-400 font-bold block mb-1">⚡ In-Browser FFmpeg</span>
+                    <span class="text-slate-400 text-[11px]">Multi-threaded WASM with SharedArrayBuffer isolation.</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-surface-2 border border-white/5">
+                    <span class="text-emerald-400 font-bold block mb-1">🤖 On-Device Whisper</span>
+                    <span class="text-slate-400 text-[11px]">Dynamic animated word-level captions with zero cloud GPU fees.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>Targets: Video clipping agencies, media tech founders, TikTok/Shorts automated studios</span>
+                <span class="text-purple-400 font-bold">● High SaaS & System Contract Potential</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="glass-card rounded-2xl p-6 border-purple-500/30">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-purple-400 font-bold uppercase tracking-wider">Ready-to-Post Copy (LinkedIn & Twitter/X)</span>
+              <button onclick="copyPost('post-auracut')" class="px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 text-xs font-mono font-bold hover:bg-purple-500/30 transition-all flex items-center gap-1">
+                <span>Copy Post</span>
+                <span>📋</span>
+              </button>
+            </div>
+            <textarea id="post-auracut" readonly class="w-full h-56 bg-surface-2/90 text-slate-300 text-xs font-mono p-3.5 rounded-xl border border-white/10 resize-none focus:outline-none">
+Processing video on Vercel is usually a nightmare: serverless functions time out after 10–60 seconds, and cloud GPU transcode bills can bankrupt a young SaaS in days.
+
+To solve this, I engineered AuraCut — an automated video clipper and creator studio SaaS that runs video splitting and captioning entirely on the user's device using WebAssembly.
+
+How the architecture works:
+1. Multi-Threaded FFmpeg.wasm: Leverages SharedArrayBuffer and cross-origin isolation (COOP/COEP) to render 9:16 vertical video right in Chrome/Edge without server lag.
+2. In-Browser Whisper AI: Generates word-level synchronized captions via ONNX Runtime Web with zero cloud API costs.
+3. Anti-Timeout Containerization: Backed by a standalone Next.js Docker configuration for heavy multi-video batch rendering.
+
+Live app: https://video-assembler-saas.vercel.app
+
+Building a media processing pipeline or looking to avoid serverless timeout headaches? Send me a DM or message on WhatsApp (+234 814 964 0122).
+
+#WebAssembly #NextJS #FFmpeg #VideoAI #CloudArchitecture #FullStack
+            </textarea>
+            <div id="copy-feedback-auracut" class="text-[11px] font-mono text-purple-400 mt-2 hidden">✓ Copied to clipboard! Ready to paste into LinkedIn or Twitter.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB CONTENT 5: CRAVERS SMOKEHOUSE -->
+    <div id="content-cravers" class="tab-panel space-y-8 hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-7 space-y-4">
+          <div class="glass-card rounded-2xl overflow-hidden border-amber-500/40 glow-gold">
+            <div class="bg-surface-2/80 px-4 py-3 border-b border-white/10 flex items-center justify-between">
+              <span class="text-xs font-mono text-amber-400 font-bold">Cravers Smokehouse · Food Logistics & Dispatch OS</span>
+              <a href="https://food-vendor-ordering.vercel.app" target="_blank" class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 text-xs font-mono font-bold hover:bg-amber-500/30 transition-all">
+                Open Live ↗
+              </a>
+            </div>
+            <div class="p-6 bg-gradient-to-b from-[#16110B] to-[#07080B] min-h-[380px] flex flex-col justify-between">
+              <div>
+                <span class="font-mono text-amber-400 font-bold text-sm block mb-2">Eliminating WhatsApp DM Choke & Delivery Fraud</span>
+                <p class="text-slate-300 text-xs mb-4">
+                  Food vendors lose hours taking orders manually in WhatsApp DMs and lose money to fake bank transfer screenshots. Cravers Smokehouse automates the full corridor delivery matrix, integrates Paystack, and generates a 4-digit security PIN for rider food handoffs.
+                </p>
+                <div class="p-3 rounded-lg bg-surface-2 border border-white/10 text-xs font-mono space-y-1.5 mb-4">
+                  <div class="flex justify-between"><span>Logistics Corridor:</span><span class="text-amber-400">Zoned dynamic rates (Campus, Ring Road, Olaiya)</span></div>
+                  <div class="flex justify-between"><span>Payment Gate:</span><span class="text-emerald-400">Paystack CBN verified before ticket hits kitchen</span></div>
+                  <div class="flex justify-between"><span>Handoff Verification:</span><span class="text-white font-bold">4-Digit Gate PIN + Tamper Seal</span></div>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>Targets: Quick service restaurants, bakeries, campus food brands</span>
+                <span class="text-amber-400 font-bold">● High Local SMB Contract Potential</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6">
+          <div class="glass-card rounded-2xl p-6 border-amber-500/30">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">Ready-to-Post Copy (LinkedIn & WhatsApp)</span>
+              <button onclick="copyPost('post-cravers')" class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 text-xs font-mono font-bold hover:bg-amber-500/30 transition-all flex items-center gap-1">
+                <span>Copy Post</span>
+                <span>📋</span>
+              </button>
+            </div>
+            <textarea id="post-cravers" readonly class="w-full h-56 bg-surface-2/90 text-slate-300 text-xs font-mono p-3.5 rounded-xl border border-white/10 resize-none focus:outline-none">
+Most restaurants and food vendors in Nigeria waste 4+ hours every day copying orders manually from WhatsApp chats, only to fall victim to fake bank transfer alert fraud.
+
+I built a full-stack food ordering and corridor delivery system to solve this end-to-end for Cravers Smokehouse.
+
+Key Architecture:
+- Zoned Logistics Engine: Computes real-time courier fees based on delivery zones (Ring Road, Olaiya, UNIOSUN corridors).
+- Verified Paystack Gateway: Eliminates fake transfer receipts; orders only enter the kitchen queue upon verified bank settlement.
+- Security Gate PIN: Generates a 4-digit verification code that customer and rider must confirm before meal handoff.
+- Parallel Cloud Sync: Real-time ticket dispatch to kitchen display screens and rider spreadsheets.
+
+Live platform: https://food-vendor-ordering.vercel.app
+
+Running a food brand, bakery, or restaurant and tired of manual WhatsApp order confusion? DM me or message on WhatsApp (+234 814 964 0122) to set up your automated ordering system.
+
+#FoodLogistics #ECommerce #Paystack #Fintech #RestaurantTech #NigeriaBusiness
+            </textarea>
+            <div id="copy-feedback-cravers" class="text-[11px] font-mono text-amber-400 mt-2 hidden">✓ Copied to clipboard! Ready to paste into LinkedIn or WhatsApp.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-gold/20', 'border-gold/50', 'text-gold', 'bg-emerald-500/20', 'border-emerald-500/50', 'text-emerald-400', 'bg-accent/20', 'border-accent/50', 'text-accent', 'bg-purple-500/20', 'border-purple-500/50', 'text-purple-300', 'bg-amber-500/20', 'border-amber-500/50', 'text-amber-400');
+        btn.classList.add('bg-surface-2', 'border-white/10', 'text-slate-400');
+      });
+
+      const activePanel = document.getElementById('content-' + tabId);
+      const activeBtn = document.getElementById('tab-' + tabId);
+      if (activePanel) activePanel.classList.remove('hidden');
+
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-surface-2', 'border-white/10', 'text-slate-400');
+        if (tabId === 'ojaja') activeBtn.classList.add('bg-gold/20', 'border-gold/50', 'text-gold');
+        if (tabId === 'educore') activeBtn.classList.add('bg-emerald-500/20', 'border-emerald-500/50', 'text-emerald-400');
+        if (tabId === 'ictflux') activeBtn.classList.add('bg-accent/20', 'border-accent/50', 'text-accent');
+        if (tabId === 'auracut') activeBtn.classList.add('bg-purple-500/20', 'border-purple-500/50', 'text-purple-300');
+        if (tabId === 'cravers') activeBtn.classList.add('bg-amber-500/20', 'border-amber-500/50', 'text-amber-400');
+      }
+    }
+
+    function copyPost(elementId) {
+      const textarea = document.getElementById(elementId);
+      if (!textarea) return;
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(textarea.value).then(() => {
+        const key = elementId.replace('post-', '');
+        const feedback = document.getElementById('copy-feedback-' + key);
+        if (feedback) {
+          feedback.classList.remove('hidden');
+          setTimeout(() => feedback.classList.add('hidden'), 3500);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
