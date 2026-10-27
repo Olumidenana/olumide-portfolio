@@ -3,44 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olumide Adeyemi-Nana · Systems Engineer & Technical Founder</title>
-  <meta name="description" content="Portfolio of Olumide Adeyemi-Nana — Builder of low-latency quant trading bots, merchant escrow systems, and creative WebGL tools. Built from Osogbo & Lagos.">
+  <title>Olumide Adeyemi-Nana · Lead Systems Architect & Software Engineer</title>
+  <meta name="description" content="Official portfolio of Olumide Adeyemi-Nana — Lead Systems Architect, Founder of Amazoe Solutions, and Mechanical Engineer (OAU). Full portfolio of 14+ shipped production systems.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
-  <!-- Bespoke Human Fonts -->
+  <!-- Clean Professional Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Three.js + OrbitControls for Cartoon 3D Playground -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
-            display: ['Fredoka', 'Plus Jakarta Sans', 'sans-serif'],
-            chunky: ['Space Grotesk', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
-            bg: '#0B0D13',
-            'bg-card': '#141824',
-            'bg-card-hover': '#1B2132',
-            clay: '#1E2538',
-            'clay-border': '#2D3748',
-            accent: '#FFB800', // Warm Cartoon Gold
-            mint: '#10B981',   // Playful Green
-            bubble: '#06B6D4', // Cartoon Cyan
-            coral: '#F43F5E',  // Bouncy Coral Red
-            candy: '#8B5CF6',  // Purple Candy
+            brand: '#0C332C',       // Deep Forest Obsidian (Amazoe Heritage)
+            'brand-dark': '#061C18',
+            gold: '#C9A24D',        // Royal Gold
+            'gold-light': '#F8E8C8',
+            emerald: '#10B981',
+            accent: '#0284C7',
+            surface: '#111827',
+            'surface-card': '#1A2234',
+            'surface-card-hover': '#202B42',
           }
         }
       }
@@ -48,968 +40,678 @@
   </script>
 
   <style>
-    :root {
-      --bg: #0B0D13;
-      --card: #141824;
-      --accent: #FFB800;
-    }
     body {
-      background-color: var(--bg);
+      background-color: #0A0E17;
       color: #E2E8F0;
       font-family: 'Plus Jakarta Sans', sans-serif;
-      overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 15% 20%, rgba(255, 184, 0, 0.08) 0%, transparent 35%),
-        radial-gradient(circle at 85% 60%, rgba(16, 185, 129, 0.06) 0%, transparent 35%),
-        radial-gradient(circle at 50% 90%, rgba(6, 182, 212, 0.06) 0%, transparent 40%);
-      background-attachment: fixed;
     }
-
-    /* Tactile "Clay" Cards - Bouncy & Physical, not generic glassmorphism */
-    .clay-card {
-      background: #141824;
-      border: 2px solid #232B3E;
-      border-radius: 24px;
-      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.6), inset 0 2px 2px rgba(255, 255, 255, 0.05);
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.2s ease;
+    .project-card {
+      background: #141C2E;
+      border: 1px solid #243048;
+      border-radius: 18px;
+      transition: all 0.25s ease;
     }
-    .clay-card:hover {
-      transform: translateY(-5px) scale(1.01);
-      border-color: #FFB800;
-      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 184, 0, 0.2);
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: #C9A24D;
+      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(201, 162, 77, 0.15);
     }
-
-    /* Bouncy Cartoon Action Button */
-    .bouncy-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      padding: 12px 24px;
-      border-radius: 16px;
-      background: #FFB800;
-      color: #0B0D13;
-      box-shadow: 0 6px 0 #B8860B, 0 12px 20px rgba(255, 184, 0, 0.35);
-      transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
-      cursor: pointer;
+    .filter-btn {
+      transition: all 0.2s ease;
     }
-    .bouncy-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 0 #B8860B, 0 16px 25px rgba(255, 184, 0, 0.45);
-      background: #FFC425;
+    .filter-btn.active {
+      background-color: #C9A24D !important;
+      color: #0A0E17 !important;
+      font-weight: 700 !important;
     }
-    .bouncy-btn:active {
-      transform: translateY(4px);
-      box-shadow: 0 2px 0 #B8860B, 0 4px 10px rgba(255, 184, 0, 0.2);
-    }
-
-    /* Secondary Clay Pill */
-    .clay-pill {
-      background: #1E2538;
-      border: 1.5px solid #2D3748;
-      border-radius: 999px;
-      padding: 6px 14px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #CBD5E1;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-    }
-
-    /* Wiggle Animation for Cartoon Feel */
-    @keyframes subtle-wiggle {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(-2deg); }
-      75% { transform: rotate(2deg); }
-    }
-    .wiggle-hover:hover {
-      animation: subtle-wiggle 0.4s ease-in-out infinite;
-    }
-
-    /* Floating WhatsApp Pill */
-    .floating-wa-bubble {
+    /* Floating WhatsApp Button */
+    .floating-wa {
       position: fixed;
       bottom: 24px;
       right: 24px;
       z-index: 999;
       background: #25D366;
-      color: #0B0D13;
-      font-weight: 800;
-      padding: 14px 22px;
-      border-radius: 999px;
-      box-shadow: 0 8px 0 #1B8A44, 0 16px 30px rgba(37, 211, 102, 0.4);
+      color: #0A0E17;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 9999px;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
       display: flex;
       align-items: center;
       gap: 10px;
-      font-family: 'Space Grotesk', sans-serif;
-      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-      cursor: pointer;
       text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .floating-wa-bubble:hover {
-      transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 12px 0 #1B8A44, 0 20px 40px rgba(37, 211, 102, 0.5);
-    }
-    .floating-wa-bubble:active {
-      transform: translateY(4px);
-      box-shadow: 0 2px 0 #1B8A44;
-    }
-
-    /* Custom Terminal Styling */
-    .term-window {
-      background: #0D111A;
-      border: 2px solid #232B3E;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.7), inset 0 2px 4px rgba(255,255,255,0.05);
+    .floating-wa:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5);
     }
   </style>
 </head>
-<body class="selection:bg-accent selection:text-black">
+<body class="selection:bg-gold selection:text-black">
 
   <!-- =========================================================================
-       FLOATING WHATSAPP BUTTON (Direct Real-World Conversion)
+       FLOATING WHATSAPP ACTION (Instant Conversion)
        ========================================================================= -->
-  <a href="https://wa.me/2348149640122?text=Hello%20Olumide!%20I'm%20visiting%20your%20portfolio%20and%20would%20love%20to%20discuss%20a%20project." 
+  <a href="https://wa.me/2348149640122?text=Hello%20Olumide!%20I'm%20viewing%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." 
      target="_blank" 
-     class="floating-wa-bubble">
+     class="floating-wa">
     <span class="text-xl">💬</span>
     <span>Chat with Olumide on WhatsApp</span>
   </a>
 
   <!-- =========================================================================
-       NAVIGATION BAR
+       HEADER / NAVIGATION
        ========================================================================= -->
-  <header class="sticky top-0 z-50 backdrop-blur-xl bg-bg/85 border-b border-clay-border/60">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-      
-      <!-- Brand Avatar -->
-      <a href="#" class="flex items-center gap-3.5 group">
-        <div class="w-11 h-11 rounded-2xl bg-accent text-bg flex items-center justify-center font-display font-extrabold text-xl shadow-lg shadow-accent/30 group-hover:rotate-6 group-hover:scale-105 transition-all">
-          ⚡
+  <header class="sticky top-0 z-50 bg-[#0A0E17]/95 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-gold text-[#0A0E17] font-bold text-lg flex items-center justify-center shadow-md">
+          OA
         </div>
-        <div class="flex flex-col">
-          <span class="font-chunky font-bold text-white tracking-tight group-hover:text-accent transition-colors text-base sm:text-lg">
-            Olumide Adeyemi-Nana
-          </span>
-          <span class="text-[11px] font-mono text-slate-400">
-            Systems Engineer · Builder of Things That Run
-          </span>
+        <div>
+          <div class="font-bold text-white tracking-tight text-base sm:text-lg">Olumide Adeyemi-Nana</div>
+          <div class="text-xs font-mono text-slate-400">Systems Architect · Founder, Amazoe Solutions</div>
         </div>
       </a>
 
-      <!-- Desktop Links -->
-      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-300">
-        <a href="#playground3d" class="hover:text-accent transition-colors flex items-center gap-1.5">
-          <span class="text-accent text-sm">🎮</span> 3D Toybox
-        </a>
-        <a href="#systems" class="hover:text-accent transition-colors">Shipped Systems</a>
-        <a href="#philosophy" class="hover:text-accent transition-colors">How I Build</a>
-        <a href="#terminal" class="hover:text-accent transition-colors flex items-center gap-1 font-mono text-xs">
-          <span class="text-mint">&gt;_</span> Shell
-        </a>
-        <a href="portfolio-dossier.html" class="hover:text-accent transition-colors">Dossier</a>
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-300">
+        <a href="#about" class="hover:text-gold transition-colors">About</a>
+        <a href="#projects" class="hover:text-gold transition-colors">All Projects (14)</a>
+        <a href="#skills" class="hover:text-gold transition-colors">Technical Stack</a>
+        <a href="#cv" class="hover:text-gold transition-colors">Resume &amp; CV</a>
+        <a href="#contact" class="hover:text-gold transition-colors">Contact</a>
       </nav>
 
-      <!-- Action Button -->
       <div class="flex items-center gap-3">
-        <a href="https://www.linkedin.com/in/olumideadeyemi-nana" target="_blank" class="hidden sm:inline-flex clay-pill hover:border-accent hover:text-white transition-all">
-          <span>💼 LinkedIn</span>
+        <a href="https://www.linkedin.com/in/olumideadeyemi-nana" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300 hover:text-white hover:border-gold transition-all">
+          💼 LinkedIn
         </a>
-        <a href="#contact" class="bouncy-btn text-xs py-2 px-4">
-          <span>Let's Talk</span>
+        <a href="https://wa.me/2348149640122" target="_blank" class="px-4 py-2 rounded-lg bg-gold text-[#0A0E17] font-bold text-xs hover:brightness-110 transition-all shadow-md">
+          💬 WhatsApp
         </a>
       </div>
-
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-6 pt-12 pb-24 space-y-24">
+  <main class="max-w-7xl mx-auto px-6 py-12 space-y-24">
 
     <!-- =========================================================================
-         HERO SECTION: HONEST, PUNCHY, HUMAN
+         HERO SECTION: EXECUTIVE & PROVEN
          ========================================================================= -->
-    <section class="flex flex-col lg:flex-row items-center justify-between gap-12 pt-6">
-      <div class="space-y-6 max-w-2xl">
-        
-        <!-- Live Status Pill -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-mono text-xs font-semibold">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-          <span>SHIPPING CODE FROM OSOGBO &amp; LAGOS · OPEN FOR CONTRACTS &amp; FOUNDING ROLES</span>
+    <section id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-4">
+      <div class="lg:col-span-8 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>AVAILABLE FOR SENIOR SYSTEMS ENGINEERING &amp; ENTERPRISE CONTRACTS</span>
         </div>
 
-        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.1] font-display">
-          I build software that <span class="text-accent underline decoration-wavy decoration-accent/40">doesn't break</span> under real-world load.
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
+          Engineering High-Performance <span class="text-gold">Production Systems</span>, Escrow Engines &amp; Quant Algorithms.
         </h1>
 
-        <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
-          I have a background in <strong>Mechanical Engineering from OAU</strong>. To me, code is just physical machinery made out of logic: if your database locks up, the gears grind to a halt. If your latency spikes, you lose money.
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl">
+          I am <strong>Olumide Adeyemi-Nana</strong>, a Lead Systems Architect with a Mechanical Engineering degree from <strong>Obafemi Awolowo University (OAU)</strong> and founder of <strong>Amazoe Solutions</strong>. I treat distributed software with the same rigor as mechanical systems under load—focusing on stress limits, concurrency lock contention, sub-100ms latency, and automated fail-safes.
         </p>
 
-        <p class="text-sm sm:text-base text-slate-400 leading-relaxed">
-          In 2026 alone, I built and deployed <strong>5 production platforms</strong> with zero external engineering help—from sub-100ms algorithmic trading bots streaming 73 market feeds, to split-escrow campus delivery systems, to in-browser 3D cartoon animation studios.
+        <p class="text-sm sm:text-base text-slate-400 leading-relaxed max-w-3xl">
+          Below is a comprehensive catalogue of <strong>14 live production platforms</strong> I have engineered—spanning quantitative algorithmic trade execution (73 concurrent market feeds), automated split-payment merchant operating systems, luxury cinema booking engines, school ERPs, and WebGL media tools.
         </p>
 
-        <!-- CTAs -->
         <div class="flex flex-wrap items-center gap-4 pt-2">
-          <a href="https://wa.me/2348149640122?text=Hello%20Olumide!%20Let's%20talk%20about%20a%20project." target="_blank" class="bouncy-btn">
-            <span>💬 Message Me on WhatsApp</span>
+          <a href="#projects" class="px-6 py-3 rounded-xl bg-gold text-[#0A0E17] font-bold text-sm hover:brightness-110 transition-all shadow-lg shadow-gold/20 flex items-center gap-2">
+            <span>Explore 14 Shipped Projects</span>
+            <span>↓</span>
           </a>
-          <a href="#playground3d" class="px-6 py-3 rounded-2xl bg-clay border border-clay-border text-white font-chunky font-bold hover:border-accent transition-all text-sm flex items-center gap-2">
-            <span>🕹️ Play with the 3D Systems</span>
+          <a href="https://wa.me/2348149640122?text=Hello%20Olumide!%20Let's%20discuss%20a%20project." target="_blank" class="px-5 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white font-semibold text-sm hover:border-gold transition-all flex items-center gap-2">
+            <span>💬 Direct WhatsApp: +234 814 964 0122</span>
           </a>
-          <a href="https://github.com/Olumidenana" target="_blank" class="px-5 py-3 rounded-2xl bg-clay/60 border border-clay-border text-slate-300 font-mono text-xs hover:text-white transition-all flex items-center gap-2">
-            <span>⚡ github.com/Olumidenana</span>
+          <a href="https://github.com/Olumidenana" target="_blank" class="px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-slate-300 font-mono text-xs hover:text-white transition-all">
+            github.com/Olumidenana
           </a>
         </div>
-
-        <!-- Metric Badges Strip -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
-          <div class="p-4 rounded-2xl bg-clay/70 border border-clay-border text-center">
-            <div class="font-display text-3xl font-bold text-accent">73+</div>
-            <div class="text-[11px] font-mono text-slate-400 mt-1">Live Market Feeds</div>
-          </div>
-          <div class="p-4 rounded-2xl bg-clay/70 border border-clay-border text-center">
-            <div class="font-display text-3xl font-bold text-mint">&lt;100ms</div>
-            <div class="text-[11px] font-mono text-slate-400 mt-1">Trade Dispatch SLA</div>
-          </div>
-          <div class="p-4 rounded-2xl bg-clay/70 border border-clay-border text-center">
-            <div class="font-display text-3xl font-bold text-bubble">100%</div>
-            <div class="text-[11px] font-mono text-slate-400 mt-1">Zero Double-Spend</div>
-          </div>
-          <div class="p-4 rounded-2xl bg-clay/70 border border-clay-border text-center">
-            <div class="font-display text-3xl font-bold text-coral">5</div>
-            <div class="text-[11px] font-mono text-slate-400 mt-1">Shipped Systems</div>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Hero Visual: Tactile Developer Avatar & Quick Bio Card -->
-      <div class="w-full lg:w-96 clay-card p-6 relative overflow-hidden space-y-5">
-        <div class="flex items-center justify-between border-b border-clay-border pb-4">
+      <!-- Quick Executive Bio Card -->
+      <div class="lg:col-span-4 bg-[#141C2E] border border-slate-800 rounded-2xl p-6 space-y-5 shadow-xl">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
           <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-accent to-coral flex items-center justify-center text-2xl shadow-lg shadow-accent/20">
-              🛠️
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-gold to-emerald flex items-center justify-center font-extrabold text-xl text-black">
+              ⚡
             </div>
             <div>
-              <div class="font-bold text-white text-base">Olumide A. Nana</div>
-              <div class="text-xs font-mono text-slate-400">Osun State, Nigeria</div>
+              <div class="font-bold text-white text-base">Olumide Adeyemi-Nana</div>
+              <div class="text-xs font-mono text-slate-400">Osogbo &amp; Lagos, Nigeria</div>
             </div>
           </div>
-          <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
         </div>
 
-        <div class="space-y-2.5 text-xs text-slate-300 leading-relaxed font-mono">
-          <div class="flex items-start gap-2">
-            <span class="text-accent">▸</span>
-            <span><strong>Alma Mater:</strong> Obafemi Awolowo Univ (Mechanical Eng)</span>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="text-mint">▸</span>
-            <span><strong>Weapon of Choice:</strong> Python 3.12, TypeScript, PostgreSQL</span>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="text-bubble">▸</span>
-            <span><strong>Obsession:</strong> Eliminating race conditions &amp; lag</span>
-          </div>
-          <div class="flex items-start gap-2">
-            <span class="text-coral">▸</span>
-            <span><strong>Status:</strong> Ready to build serious things</span>
-          </div>
+        <div class="space-y-3 text-xs font-mono text-slate-300">
+          <div><strong class="text-white">Role:</strong> Lead Systems Architect &amp; Founder</div>
+          <div><strong class="text-white">Education:</strong> B.Sc. Mechanical Eng, OAU</div>
+          <div><strong class="text-white">Consultancy:</strong> Amazoe Solutions</div>
+          <div><strong class="text-white">Specialization:</strong> Low-Latency &amp; ACID Escrow</div>
+          <div><strong class="text-white">Live Systems:</strong> 14 Production Platforms</div>
         </div>
 
-        <div class="p-3.5 rounded-xl bg-black/40 border border-clay-border text-xs text-slate-400 italic">
-          "If a system looks pretty but locks up when 500 people checkout at once, it's just modern art, not engineering."
-        </div>
-
-        <div class="pt-2 flex items-center justify-between text-xs font-mono">
-          <span class="text-slate-400">Direct Phone:</span>
-          <a href="tel:+2348149640122" class="text-accent font-bold hover:underline">+234 814 964 0122</a>
+        <div class="pt-3 border-t border-slate-800 text-xs text-slate-400 space-y-2">
+          <div class="flex justify-between">
+            <span>Direct Email:</span>
+            <a href="mailto:olumideadeyeminana@gmail.com" class="text-gold hover:underline">olumideadeyeminana@gmail.com</a>
+          </div>
+          <div class="flex justify-between">
+            <span>WhatsApp / Phone:</span>
+            <a href="tel:+2348149640122" class="text-gold font-bold hover:underline">+234 814 964 0122</a>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- =========================================================================
-         SECTION: CARTOONISH 3D INTERACTIVE PLAYGROUND (NINTENDO / SPLINE STYLE)
+         CORE STATS BAR
          ========================================================================= -->
-    <section id="playground3d" class="space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+    <section class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="p-6 rounded-2xl bg-[#141C2E] border border-slate-800 text-center">
+        <div class="font-extrabold text-3xl sm:text-4xl text-gold font-mono">14+</div>
+        <div class="text-xs font-semibold text-slate-300 mt-1">Shipped Production Platforms</div>
+      </div>
+      <div class="p-6 rounded-2xl bg-[#141C2E] border border-slate-800 text-center">
+        <div class="font-extrabold text-3xl sm:text-4xl text-emerald font-mono">73+</div>
+        <div class="text-xs font-semibold text-slate-300 mt-1">Live WebSocket Feeds (ICT Flux)</div>
+      </div>
+      <div class="p-6 rounded-2xl bg-[#141C2E] border border-slate-800 text-center">
+        <div class="font-extrabold text-3xl sm:text-4xl text-accent font-mono">&lt;100ms</div>
+        <div class="text-xs font-semibold text-slate-300 mt-1">Trade Execution SLA</div>
+      </div>
+      <div class="p-6 rounded-2xl bg-[#141C2E] border border-slate-800 text-center">
+        <div class="font-extrabold text-3xl sm:text-4xl text-purple-400 font-mono">100%</div>
+        <div class="text-xs font-semibold text-slate-300 mt-1">ACID Double-Spend Elimination</div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION: COMPLETE 14-PROJECT PRODUCTION PORTFOLIO (WITH CATEGORY FILTERS)
+         ========================================================================= -->
+    <section id="projects" class="space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <div class="clay-pill mb-2 text-accent">
-            <span>🎮 Interactive 3D Toybox</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/30 text-gold font-mono text-xs font-semibold mb-2">
+            <span>🚀 PRODUCTION DEPLOYMENTS</span>
           </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-display">
-            The Systems Toybox: Click, Rotate &amp; Inspect
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+            Complete Production Systems Portfolio
           </h2>
           <p class="text-sm text-slate-400 mt-1">
-            Click any bouncy cartoon 3D node below to inspect how the real machinery works underneath.
+            Filter across FinTech, Logistics, AI &amp; Media, Campus Transit, and Enterprise ERPs. Every system has working live links or repositories.
           </p>
         </div>
-        <div class="text-xs font-mono text-slate-400 bg-clay p-2.5 rounded-xl border border-clay-border flex items-center gap-2">
-          <span>👆 Drag to rotate</span>
-          <span>·</span>
-          <span>🔍 Scroll to zoom</span>
-          <span>·</span>
-          <span>🎯 Click nodes</span>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap gap-2 text-xs font-mono">
+          <button onclick="filterProjects('all', this)" class="filter-btn active px-3.5 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700">
+            All (14)
+          </button>
+          <button onclick="filterProjects('fintech', this)" class="filter-btn px-3.5 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700">
+            FinTech &amp; Quant
+          </button>
+          <button onclick="filterProjects('logistics', this)" class="filter-btn px-3.5 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700">
+            Logistics &amp; POS
+          </button>
+          <button onclick="filterProjects('ai', this)" class="filter-btn px-3.5 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700">
+            AI &amp; WebGL
+          </button>
+          <button onclick="filterProjects('enterprise', this)" class="filter-btn px-3.5 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700">
+            Enterprise &amp; Edu
+          </button>
         </div>
       </div>
 
-      <!-- 3D Canvas Box -->
-      <div class="relative w-full h-[520px] rounded-3xl bg-gradient-to-b from-[#0F1420] to-[#0A0D15] border-2 border-clay-border shadow-2xl overflow-hidden">
-        <canvas id="toyboxCanvas" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
+      <!-- 14 Project Cards Grid -->
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <!-- Quick Switcher Bar on Top of 3D Canvas -->
-        <div class="absolute top-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
-          <div class="flex flex-wrap gap-2 pointer-events-auto">
-            <button onclick="focusToyNode(0)" class="px-3.5 py-1.5 rounded-xl bg-clay/90 border border-clay-border hover:border-accent text-white font-mono text-xs flex items-center gap-1.5 transition-all shadow-md">
-              <span class="w-2.5 h-2.5 rounded-full bg-accent"></span>
-              <span>ICT Flux</span>
-            </button>
-            <button onclick="focusToyNode(1)" class="px-3.5 py-1.5 rounded-xl bg-clay/90 border border-clay-border hover:border-bubble text-white font-mono text-xs flex items-center gap-1.5 transition-all shadow-md">
-              <span class="w-2.5 h-2.5 rounded-full bg-bubble"></span>
-              <span>Chopos OS</span>
-            </button>
-            <button onclick="focusToyNode(2)" class="px-3.5 py-1.5 rounded-xl bg-clay/90 border border-clay-border hover:border-coral text-white font-mono text-xs flex items-center gap-1.5 transition-all shadow-md">
-              <span class="w-2.5 h-2.5 rounded-full bg-coral"></span>
-              <span>ToonForge</span>
-            </button>
-            <button onclick="focusToyNode(3)" class="px-3.5 py-1.5 rounded-xl bg-clay/90 border border-clay-border hover:border-mint text-white font-mono text-xs flex items-center gap-1.5 transition-all shadow-md">
-              <span class="w-2.5 h-2.5 rounded-full bg-mint"></span>
-              <span>Motion OAU</span>
-            </button>
-            <button onclick="focusToyNode(4)" class="px-3.5 py-1.5 rounded-xl bg-clay/90 border border-clay-border hover:border-candy text-white font-mono text-xs flex items-center gap-1.5 transition-all shadow-md">
-              <span class="w-2.5 h-2.5 rounded-full bg-candy"></span>
-              <span>Video SaaS</span>
-            </button>
+        <!-- 1. ICT FLUX -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="fintech">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-gold/15 text-gold text-[11px] font-mono font-bold">FinTech / Quant</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Live Terminal</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">ICT Flux — Quant Trading Terminal</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Institutional quantitative trading engine streaming 73+ concurrent live WebSocket feeds (Forex, Synthetics, Equities). Zero-lookahead pattern matrix linked via low-level C FFI bindings to MetaTrader MT5 for sub-100ms trade dispatch.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: Python 3.12 · C FFI · Deriv WS · MT5 · PLpgSQL
+            </div>
           </div>
-
-          <div class="clay-pill pointer-events-auto text-xs font-mono">
-            <span>✨ 3D Physical Shading</span>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/ict-trader" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">Private Engine</a>
+            <a href="https://ictflux.app" target="_blank" class="text-xs font-bold text-gold hover:underline flex items-center gap-1">
+              <span>Launch ictflux.app</span> <span>→</span>
+            </a>
           </div>
         </div>
 
-        <!-- Live Inspector Card at the Bottom of Canvas -->
-        <div id="toyInspector" class="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-md p-5 rounded-2xl bg-bg/95 border-2 border-accent/40 shadow-2xl backdrop-blur-xl transition-all">
-          <div class="flex items-center justify-between mb-2">
-            <span id="toyTag" class="text-xs font-mono font-bold text-accent uppercase">SYSTEM 01 // QUANT FINTECH</span>
-            <span class="text-xs font-mono text-slate-400">Click node to inspect</span>
+        <!-- 2. CHOPOS OS -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="logistics">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-accent/15 text-accent text-[11px] font-mono font-bold">Logistics &amp; Escrow</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Live Prototype</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Chopos OS — Merchant POS &amp; Escrow</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Hyperlocal food delivery operating system designed to solve vendor commission overhead. Enforces Paystack Subaccount Split API to immediately pay food stalls upon cooking and couriers on drop-off with zero double-spending.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: Next.js · Paystack Split · PostgreSQL Row Locks · KDS Relay
+            </div>
           </div>
-          <h3 id="toyTitle" class="text-xl font-extrabold text-white font-display">ICT Flux — Algorithmic Quant Terminal</h3>
-          <p id="toyDesc" class="text-xs text-slate-300 mt-1.5 leading-relaxed">
-            Streams 73+ simultaneous market feeds with sub-100ms dispatch latency. Links Python asyncio mathematical models to MetaTrader C FFI bridges without lookahead bias.
-          </p>
-          <div class="mt-3 pt-3 border-t border-clay-border flex items-center justify-between">
-            <span id="toyStack" class="text-[11px] font-mono text-slate-400">Python 3.12 · C FFI · Deriv WS · MT5</span>
-            <a id="toyLink" href="https://ictflux.app" target="_blank" class="text-xs font-bold text-accent hover:underline flex items-center gap-1">
-              <span>Test Drive</span> <span>→</span>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/food-vendor-ordering" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">GitHub Repo</a>
+            <a href="https://food-vendor-ordering.vercel.app" target="_blank" class="text-xs font-bold text-gold hover:underline flex items-center gap-1">
+              <span>Test Live POS</span> <span>→</span>
             </a>
           </div>
+        </div>
+
+        <!-- 3. OJAJA LUXURY CINEMAS -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="enterprise">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-gold/15 text-gold text-[11px] font-mono font-bold">Luxury Entertainment</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Live Portal</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Ojaja Luxury Cinemas</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Netflix-style cinema booking platform engineered for Osun State's premier 5-star resort. Features 1-click Dolby Atmos video trailer streaming, full Paystack checkout (Cards, USSD, Bank Transfer), QR turnstile boarding passes, and box office staff console [Alt+A].
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: Vanilla JS · Paystack Webhooks · Turnstile QR · Staff Console
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/ojaja-cinemas" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">GitHub Repo</a>
+            <a href="https://ojaja-cinemas.vercel.app" target="_blank" class="text-xs font-bold text-gold hover:underline flex items-center gap-1">
+              <span>Test Cinema App</span> <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. AMAZOE SOLUTIONS -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="enterprise">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[11px] font-mono font-bold">Consultancy Hub</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Deployed Live</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Amazoe Solutions — Business Systems</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Official consultancy hub for Amazoe Solutions in Osogbo, Osun State. Delivers custom software, WhatsApp AI Business Automations (₦35k–₦50k), and enterprise workflows for Nigerian hotels, schools, and merchants.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: Plus Jakarta Sans · WhatsApp Form API · Business Registry
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/amazoe-solutions" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">GitHub Repo</a>
+            <a href="https://amazoe-solutions.vercel.app" target="_blank" class="text-xs font-bold text-gold hover:underline flex items-center gap-1">
+              <span>Visit Amazoe</span> <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. TOONFORGE -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="ai">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-400 text-[11px] font-mono font-bold">3D WebGL &amp; AI</span>
+              <span class="text-[11px] font-mono text-gold">● Studio Repo</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">ToonForge — In-Browser 3D Studio</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Browser-native 3D character animation and scripting studio built to liberate African creators from prohibitive $100+/month software costs. Powered by Three.js WebGL and Claude/Gemini APIs with automated phoneme lip-syncing.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: Three.js WebGL · Gemini / Claude API · Cloud GPU Transcoder
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-400">Private IP</span>
+            <a href="https://github.com/Olumidenana/toonforge" target="_blank" class="text-xs font-bold text-gold hover:underline flex items-center gap-1">
+              <span>View Repository</span> <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. VIDEO ASSEMBLER SAAS -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="ai">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-400 text-[11px] font-mono font-bold">Cloud Transcoder</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Live SaaS</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Video Assembler SaaS — AuraCut</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              A clipper's cloud studio with a 700KB+ TypeScript multi-track timeline orchestrator, distributed cloud FFMPEG rendering cluster, and automated -14 LUFS broadcast audio leveling.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: TypeScript · Cloud FFMPEG · Google Cloud Storage · LUFS Audio
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/video-assembler-saas" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">GitHub Repo</a>
+            <a href="https://video-assembler-saas.vercel.app" target="_blank" class="text-xs font-bold text-gold hover:underline flex items-center gap-1">
+              <span>Launch AuraCut</span> <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. MOTION OAU -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="logistics">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[11px] font-mono font-bold">Mobility Network</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Live Campus App</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Motion OAU — Transit &amp; Campus Graph</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Campus social pulse and transit network for Obafemi Awolowo University. Features real-time Leaflet GPS tracking, Haversine shuttle batching, reading room space monitoring, and safe night-walk corridors.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: Next.js · Supabase Realtime · Leaflet GPS · Haversine Routing
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/motion-oau" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">GitHub Repo</a>
+            <a href="https://motion-oau.vercel.app" target="_blank" class="text-xs font-bold text-gold hover:underline flex items-center gap-1">
+              <span>Explore Motion</span> <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 8. SCHOOL PORTAL OS -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="enterprise">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-blue-500/15 text-blue-400 text-[11px] font-mono font-bold">Education ERP</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Live Portal</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">EduCore OS — School Management ERP</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Full-featured school operating system engineered for The Olive Branches Schools Osogbo. Includes automated tuition invoicing, student attendance ledgers, parent portals, and PDF term reports.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: Node.js · Express · PostgreSQL · PDFKit Report Engine
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/school-portal-os" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">GitHub Repo</a>
+            <a href="https://school-portal-os.vercel.app" target="_blank" class="text-xs font-bold text-gold hover:underline flex items-center gap-1">
+              <span>Open EduCore</span> <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 9. BEAUTY SALON BOOKING -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="enterprise">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-pink-500/15 text-pink-400 text-[11px] font-mono font-bold">Appointment Booking</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Live Platform</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Luxe Salon &amp; Spa Booking System</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Automated stylist appointment allocation engine with deposit escrow and automated WhatsApp booking confirmations to eliminate client no-shows.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: Vanilla JS · Paystack Escrow · Calendar Engine · WhatsApp Alert
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/beauty-salon-booking" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">GitHub Repo</a>
+            <a href="https://beauty-salon-booking.vercel.app" target="_blank" class="text-xs font-bold text-gold hover:underline flex items-center gap-1">
+              <span>Test Salon Booking</span> <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 10. SKINCARE BRAND STORE -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="enterprise">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[11px] font-mono font-bold">E-Commerce</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Live Store</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">AuraSkin — Luxury Cosmetic Store</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              E-commerce platform with Paystack multi-channel checkout (Debit card, USSD, bank transfer), persistent shopping carts, and real-time inventory decrement.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: HTML5 · Tailwind CSS · Paystack Standard · LocalStorage Sync
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/skincare-brand-store" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">GitHub Repo</a>
+            <a href="https://skincare-brand-store.vercel.app" target="_blank" class="text-xs font-bold text-gold hover:underline flex items-center gap-1">
+              <span>View Storefront</span> <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 11. BIZ BOOKING ENGINE -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="enterprise">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-slate-500/15 text-slate-300 text-[11px] font-mono font-bold">Multi-Tenant ERP</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Live Engine</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Biz Booking Engine — Universal POS</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Multi-tenant service scheduling and table/room reservation engine with automated PDF receipts, staff commissions, and daily balance reconciliation.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: Node.js · Express · PostgreSQL · Paystack Split
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/biz-booking-engine" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">GitHub Repo</a>
+            <span class="text-xs font-mono text-gold">Deployed with Amazoe</span>
+          </div>
+        </div>
+
+        <!-- 12. ENGLISH DEMO SIMULATOR -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="ai">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-400 text-[11px] font-mono font-bold">EdTech AI</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Deployed</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">English Demo Simulator</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Interactive conversational simulation app assessing verbal clarity, listening comprehension, and grammar feedback with real-time scoring.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: JavaScript · Web Speech API · LLM Assessment Engine
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/english-demo-simulator" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">GitHub Repo</a>
+            <span class="text-xs font-mono text-slate-400">Public Tool</span>
+          </div>
+        </div>
+
+        <!-- 13. POLISHED AI SAAS -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="ai">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-400 text-[11px] font-mono font-bold">Natural Language</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Live SaaS</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Polished.ai — Content Polishing Engine</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Specialized linguistic engine stripping away repetitive sentence rhythms and corporate filler to produce punchy, authentic executive prose.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: Next.js · Gemini / Claude APIs · Regex Style Linters
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/polished-ai-saas" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">GitHub Repo</a>
+            <span class="text-xs font-mono text-gold">Prototype Build</span>
+          </div>
+        </div>
+
+        <!-- 14. DAILY FUEL APP -->
+        <div class="project-card p-6 flex flex-col justify-between" data-category="enterprise">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-slate-500/15 text-slate-300 text-[11px] font-mono font-bold">Productivity PWA</span>
+              <span class="text-[11px] font-mono text-emerald-400">● Deployed</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Daily Fuel App — Builder Habit Engine</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Lightweight progressive web app for disciplined daily deep work tracking, mental clarity prompts, and engineering sprint execution logs.
+            </p>
+            <div class="text-[11px] font-mono text-slate-400 pt-2 border-t border-slate-800">
+              Stack: PWA Service Worker · LocalStorage · Offline-First JS
+            </div>
+          </div>
+          <div class="pt-4 mt-4 border-t border-slate-800 flex items-center justify-between">
+            <a href="https://github.com/Olumidenana/daily-fuel-app" target="_blank" class="text-xs font-mono text-slate-400 hover:text-white">GitHub Repo</a>
+            <span class="text-xs font-mono text-slate-400">Offline PWA</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION: TECHNICAL PROFICIENCIES
+         ========================================================================= -->
+    <section id="skills" class="p-8 sm:p-12 rounded-2xl bg-[#141C2E] border border-slate-800 space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/15 text-accent font-mono text-xs font-bold">
+        <span>⚙️ TECHNICAL MASTERY</span>
+      </div>
+      <h2 class="text-3xl font-extrabold text-white">Engineering Stack &amp; Runtime Experience</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs leading-relaxed">
+        <div class="p-5 rounded-xl bg-[#0A0E17] border border-slate-800 space-y-2">
+          <div class="font-bold text-gold text-sm font-mono">Languages &amp; Runtimes</div>
+          <ul class="space-y-1 text-slate-300 list-disc list-inside">
+            <li><strong>Python 3.12:</strong> asyncio, multiprocessing, FastAPI</li>
+            <li><strong>TypeScript / JavaScript:</strong> ESNext, Next.js, Node.js</li>
+            <li><strong>Low-Level C:</strong> FFI memory bindings, MT4/MT5 bridge</li>
+            <li><strong>SQL:</strong> PostgreSQL, PLpgSQL stored procedures</li>
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-xl bg-[#0A0E17] border border-slate-800 space-y-2">
+          <div class="font-bold text-emerald text-sm font-mono">FinTech &amp; Distributed</div>
+          <ul class="space-y-1 text-slate-300 list-disc list-inside">
+            <li><strong>Escrow Architecture:</strong> Paystack Subaccounts Split API</li>
+            <li><strong>Concurrency:</strong> ACID Row-Level Locking (No double-spend)</li>
+            <li><strong>WebSockets:</strong> Real-time streaming (73+ feeds)</li>
+            <li><strong>Algorithmic Trading:</strong> Deriv API, SMC/ICT models</li>
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-xl bg-[#0A0E17] border border-slate-800 space-y-2">
+          <div class="font-bold text-purple-400 text-sm font-mono">Cloud, 3D &amp; Media</div>
+          <ul class="space-y-1 text-slate-300 list-disc list-inside">
+            <li><strong>3D Graphics:</strong> Three.js WebGL, Canvas API, shaders</li>
+            <li><strong>Cloud Transcoding:</strong> FFMPEG worker cluster, -14 LUFS</li>
+            <li><strong>Storage &amp; Infra:</strong> Google Cloud Storage, Cloud Run</li>
+            <li><strong>AI Integration:</strong> Gemini &amp; Claude APIs with JSON schemas</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- =========================================================================
-         SECTION: FLAGSHIP SHIPPED SYSTEMS (HUMAN STORY + HARD CODE)
+         SECTION: DOWNLOAD EXECUTIVE CVs
          ========================================================================= -->
-    <section id="systems" class="space-y-8">
-      <div>
-        <div class="clay-pill mb-2 text-mint">
-          <span>🚢 Shipped to Production</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-display">
-          What I've Actually Built &amp; Deployed
-        </h2>
-        <p class="text-sm text-slate-400 mt-1 max-w-2xl">
-          No tutorial clones. Every project here solves a real business friction point with zero fluff.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <!-- SYSTEM 1: ICT FLUX -->
-        <div class="clay-card p-7 space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-accent/15 border border-accent/30 text-accent font-mono text-xs font-bold">
-                FinTech · Quant Systems
-              </span>
-              <span class="text-xs font-mono text-slate-400">&lt;100ms Latency</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white font-display">
-              ICT Flux — Algorithmic Quant Trading Terminal
-            </h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              <strong>The Problem:</strong> Retail traders lose money because of emotional revenge trading and slow execution. 
-              <strong>The Fix:</strong> Engineered an institutional quant engine that streams <strong>73+ concurrent live feeds</strong>, calculates Fair Value Gaps and SMT divergences with zero lookahead, and executes orders via low-level C FFI bridges to MetaTrader (MT4/MT5).
-            </p>
-            <div class="p-3.5 rounded-xl bg-black/40 border border-clay-border space-y-1 text-xs font-mono text-slate-400">
-              <div>⚡ <strong>Execution:</strong> Python 3.12 asyncio + MetaTrader C memory bridge</div>
-              <div>🤖 <strong>Managed Accounts:</strong> Automated Deriv bot with strict drawdown gates</div>
-            </div>
-          </div>
-
-          <div class="pt-4 border-t border-clay-border flex items-center justify-between">
-            <span class="text-xs font-mono text-slate-400">Live &amp; Operating</span>
-            <a href="https://ictflux.app" target="_blank" class="bouncy-btn text-xs py-2 px-4">
-              <span>Open ictflux.app →</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- SYSTEM 2: CHOPOS OS -->
-        <div class="clay-card p-7 space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-bubble/15 border border-bubble/30 text-bubble font-mono text-xs font-bold">
-                Logistics &amp; Split Escrow
-              </span>
-              <span class="text-xs font-mono text-slate-400">Zero Double-Spend</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white font-display">
-              Chopos OS — Hyperlocal Delivery &amp; POS
-            </h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              <strong>The Problem:</strong> Chowdeck and general food delivery apps charge brutal vendor commissions and take days to pay food stalls on campus.
-              <strong>The Fix:</strong> Built a specialized merchant operating system with instant <strong>Paystack Subaccount split payments</strong>. Food vendors get their money the second food is cooked; couriers get their delivery fee upon verified handover.
-            </p>
-            <div class="p-3.5 rounded-xl bg-black/40 border border-clay-border space-y-1 text-xs font-mono text-slate-400">
-              <div>🔒 <strong>ACID Security:</strong> PostgreSQL row-level locks prevent stock race-conditions</div>
-              <div>📟 <strong>Kitchen Relay:</strong> Tablet chime cuts cooking start lag from minutes to &lt;3s</div>
-            </div>
-          </div>
-
-          <div class="pt-4 border-t border-clay-border flex items-center justify-between">
-            <span class="text-xs font-mono text-slate-400">Campus Prototype Live</span>
-            <a href="https://food-vendor-ordering.vercel.app" target="_blank" class="bouncy-btn text-xs py-2 px-4" style="background:#06B6D4; box-shadow:0 6px 0 #0891B2;">
-              <span>Test Live Demo →</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- SYSTEM 3: TOONFORGE -->
-        <div class="clay-card p-7 space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-coral/15 border border-coral/30 text-coral font-mono text-xs font-bold">
-                3D &amp; Generative AI Studio
-              </span>
-              <span class="text-xs font-mono text-slate-400">In-Browser WebGL</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white font-display">
-              ToonForge — In-Browser 3D Animation Studio
-            </h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              <strong>The Problem:</strong> African storytellers cannot afford $100+/mo animation licenses or expensive workstations.
-              <strong>The Fix:</strong> Engineered an in-browser 3D character studio using Three.js and Claude/Gemini APIs. Allows creators to script multi-shot episodic stories, generate lip-synced phoneme animations, and export directly for YouTube and TikTok.
-            </p>
-            <div class="p-3.5 rounded-xl bg-black/40 border border-clay-border space-y-1 text-xs font-mono text-slate-400">
-              <div>🎬 <strong>Engine:</strong> Three.js WebGL viewport with automated phoneme lip-sync</div>
-              <div>☁️ <strong>GPU Pipeline:</strong> Distributed cloud rendering cluster</div>
-            </div>
-          </div>
-
-          <div class="pt-4 border-t border-clay-border flex items-center justify-between">
-            <span class="text-xs font-mono text-slate-400">Private Studio Build</span>
-            <a href="https://github.com/Olumidenana/toonforge" target="_blank" class="px-4 py-2 rounded-xl bg-clay border border-clay-border text-white font-mono text-xs hover:border-accent">
-              <span>View Repo Details →</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- SYSTEM 4: VIDEO ASSEMBLER SAAS -->
-        <div class="clay-card p-7 space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-candy/15 border border-candy/30 text-candy font-mono text-xs font-bold">
-                Cloud Media Transcoder
-              </span>
-              <span class="text-xs font-mono text-slate-400">45% Render Speedup</span>
-            </div>
-            <h3 class="text-2xl font-bold text-white font-display">
-              Video Assembler SaaS — Clipper's Cloud Studio
-            </h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              <strong>The Problem:</strong> Video clippers waste hours re-encoding videos locally and leveling audio.
-              <strong>The Fix:</strong> Built a 700KB+ TypeScript multi-track timeline engine backed by a distributed cloud FFMPEG rendering cluster with automated -14 LUFS broadcast audio leveling.
-            </p>
-            <div class="p-3.5 rounded-xl bg-black/40 border border-clay-border space-y-1 text-xs font-mono text-slate-400">
-              <div>🎙️ <strong>Audio:</strong> Broadcast standard -14 LUFS loudness normalization</div>
-              <div>🎞️ <strong>Cloud:</strong> Parallel slice rendering on Google Cloud Storage</div>
-            </div>
-          </div>
-
-          <div class="pt-4 border-t border-clay-border flex items-center justify-between">
-            <span class="text-xs font-mono text-slate-400">Live Transcoder</span>
-            <a href="https://video-assembler-saas.vercel.app" target="_blank" class="bouncy-btn text-xs py-2 px-4" style="background:#8B5CF6; box-shadow:0 6px 0 #6D28D9;">
-              <span>Test Web App →</span>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- More Real Client Work Strip -->
-      <div class="p-6 rounded-3xl bg-clay/50 border border-clay-border space-y-4">
-        <div class="flex items-center justify-between">
-          <span class="text-xs font-mono font-bold text-accent uppercase">Additional Deployed Client Systems</span>
-          <span class="text-xs text-slate-400">Click to test live</span>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono">
-          <a href="https://ojaja-cinemas.vercel.app" target="_blank" class="p-3 rounded-xl bg-bg border border-clay-border hover:border-accent transition-colors flex items-center justify-between group">
-            <span>🎬 Ojaja Luxury Cinemas</span>
-            <span class="text-accent group-hover:translate-x-1 transition-transform">→</span>
-          </a>
-          <a href="https://motion-oau.vercel.app" target="_blank" class="p-3 rounded-xl bg-bg border border-clay-border hover:border-mint transition-colors flex items-center justify-between group">
-            <span>🚌 Motion OAU Campus Transit</span>
-            <span class="text-mint group-hover:translate-x-1 transition-transform">→</span>
-          </a>
-          <a href="https://school-portal-os.vercel.app" target="_blank" class="p-3 rounded-xl bg-bg border border-clay-border hover:border-bubble transition-colors flex items-center justify-between group">
-            <span>🎓 School Portal OS (Olive Branches)</span>
-            <span class="text-bubble group-hover:translate-x-1 transition-transform">→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION: ENGINEERING PHILOSOPHY (NO AI FLUFF)
-         ========================================================================= -->
-    <section id="philosophy" class="clay-card p-8 sm:p-12 space-y-6">
-      <div class="clay-pill text-accent">
-        <span>⚙️ The Engineering Ethos</span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-display">
-        "Don't Chase Trends. Chase Depth."
-      </h2>
-      <div class="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl">
-        <p>
-          The tech world is drowning in surface-level AI prompt-wrappers and no-code buzzwords. Anyone can ask an LLM to spit out a generic landing page with purple gradients. 
-        </p>
-        <p>
-          Real engineering begins when the user actually hits the system:
-        </p>
-        <ul class="space-y-2 list-disc list-inside text-slate-200 font-medium">
-          <li>What happens when two people buy the very last seat on Ojaja Cinemas at the exact same millisecond?</li>
-          <li>What happens when Deriv WebSockets drop a frame during high-impact US Non-Farm Payroll news?</li>
-          <li>What happens when a food vendor's network in Osogbo blips during a payment webhook?</li>
-        </ul>
-        <p>
-          Because I studied Mechanical Engineering, I think about <strong>stress limits, continuous friction, and fail-safe valves</strong> before I write a single line of backend logic. That is the difference between a prototype that breaks and software that lasts.
-        </p>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION: INTERACTIVE TERMINAL CONSOLE
-         ========================================================================= -->
-    <section id="terminal" class="space-y-4">
-      <div class="flex items-center justify-between">
+    <section id="cv" class="p-8 sm:p-12 rounded-2xl bg-gradient-to-r from-[#141C2E] to-[#111A28] border border-slate-800 space-y-6">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
-          <div class="clay-pill mb-1 text-mint">
-            <span>&gt;_ Interactive Developer Shell</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/15 text-gold font-mono text-xs font-bold mb-2">
+            <span>📄 ATS-OPTIMIZED CURRICULUM VITAE</span>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-display">
-            The Shell: Type Commands Live
-          </h2>
-        </div>
-        <span class="text-xs font-mono text-slate-400 hidden sm:inline">Try typing: <code>projects</code>, <code>skills</code>, <code>contact</code></span>
-      </div>
-
-      <div class="term-window p-6 font-mono text-xs sm:text-sm text-slate-300 space-y-4 shadow-2xl">
-        <div class="flex items-center justify-between border-b border-clay-border pb-3">
-          <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-coral"></span>
-            <span class="w-3 h-3 rounded-full bg-accent"></span>
-            <span class="w-3 h-3 rounded-full bg-mint"></span>
-            <span class="ml-2 text-slate-400 text-xs">olumide@systems-node:~</span>
-          </div>
-          <span class="text-xs text-slate-500">Bash / Node.js 20</span>
-        </div>
-
-        <div id="termOutput" class="space-y-2 min-h-[140px] max-h-[300px] overflow-y-auto">
-          <div class="text-slate-400">Welcome to Olumide Adeyemi-Nana's systems console. Type <span class="text-accent font-bold">help</span> to list commands.</div>
-        </div>
-
-        <div class="flex items-center gap-2 pt-2 border-t border-clay-border">
-          <span class="text-mint font-bold">guest@olumide:~$</span>
-          <input type="text" id="termInput" autofocus placeholder="Type a command (e.g. about, projects, contact)..." class="flex-1 bg-transparent text-white focus:outline-none text-xs sm:text-sm font-mono placeholder:text-slate-600">
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION: CONTACT & ENGAGEMENT
-         ========================================================================= -->
-    <section id="contact" class="clay-card p-8 sm:p-12 relative overflow-hidden space-y-6">
-      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-b border-clay-border pb-8">
-        <div>
-          <div class="clay-pill mb-2 text-accent">
-            <span>📫 Get in Touch</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white font-display">
-            Ready to Build Something Serious?
-          </h2>
-          <p class="text-sm text-slate-300 mt-1">
-            Available for Senior Systems Engineering roles, founding engineer contracts, and FinTech architecture.
+          <h2 class="text-3xl font-extrabold text-white">Download International CV</h2>
+          <p class="text-sm text-slate-300 mt-1 max-w-2xl">
+            Formatted with Google XYZ impact formulas and verified against global ATS filters (Greenhouse, Lever, Workday, LinkedIn Easy Apply).
           </p>
         </div>
 
         <div class="flex flex-wrap items-center gap-3">
-          <a href="https://wa.me/2348149640122?text=Hello%20Olumide!%20Let's%20connect%20on%20WhatsApp." target="_blank" class="bouncy-btn">
-            <span>💬 WhatsApp (+234 814 964 0122)</span>
+          <a href="international-cv.html" target="_blank" class="px-5 py-2.5 rounded-xl bg-gold text-[#0A0E17] font-bold text-xs hover:brightness-110 transition-all shadow-md">
+            View Live Printable CV
+          </a>
+          <a href="portfolio-dossier.html" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs hover:text-white">
+            Executive Project Dossier
           </a>
         </div>
       </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION: CONTACT
+         ========================================================================= -->
+    <section id="contact" class="p-8 sm:p-12 rounded-2xl bg-[#141C2E] border border-slate-800 space-y-6">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-b border-slate-800 pb-8">
+        <div>
+          <h2 class="text-3xl font-extrabold text-white">Direct Engineering Inquiries</h2>
+          <p class="text-sm text-slate-300 mt-1">
+            Available for Founding Systems Architect roles, high-concurrency consulting, and FinTech contracts globally.
+          </p>
+        </div>
+
+        <a href="https://wa.me/2348149640122?text=Hello%20Olumide!%20Let's%20connect%20on%20WhatsApp." target="_blank" class="px-6 py-3 rounded-xl bg-[#25D366] text-[#0A0E17] font-bold text-sm hover:brightness-110 transition-all shadow-lg flex items-center gap-2">
+          <span>💬 Start WhatsApp Chat (+234 814 964 0122)</span>
+        </a>
+      </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono">
-        <div class="p-4 rounded-xl bg-black/40 border border-clay-border">
+        <div class="p-4 rounded-xl bg-[#0A0E17] border border-slate-800">
           <div class="text-slate-400">Direct Email:</div>
-          <a href="mailto:olumideadeyeminana@gmail.com" class="text-accent font-bold hover:underline text-sm break-all">olumideadeyeminana@gmail.com</a>
+          <a href="mailto:olumideadeyeminana@gmail.com" class="text-gold font-bold hover:underline text-sm break-all">olumideadeyeminana@gmail.com</a>
         </div>
-        <div class="p-4 rounded-xl bg-black/40 border border-clay-border">
+        <div class="p-4 rounded-xl bg-[#0A0E17] border border-slate-800">
           <div class="text-slate-400">Verified LinkedIn:</div>
-          <a href="https://www.linkedin.com/in/olumideadeyemi-nana" target="_blank" class="text-bubble font-bold hover:underline text-sm break-all">linkedin.com/in/olumideadeyemi-nana</a>
+          <a href="https://www.linkedin.com/in/olumideadeyemi-nana" target="_blank" class="text-accent font-bold hover:underline text-sm break-all">linkedin.com/in/olumideadeyemi-nana</a>
         </div>
-        <div class="p-4 rounded-xl bg-black/40 border border-clay-border">
-          <div class="text-slate-400">Printable Executive CV:</div>
-          <a href="portfolio-dossier.html" class="text-mint font-bold hover:underline text-sm flex items-center gap-1">
-            <span>📄 View Technical Dossier</span> <span>→</span>
-          </a>
+        <div class="p-4 rounded-xl bg-[#0A0E17] border border-slate-800">
+          <div class="text-slate-400">GitHub Profile:</div>
+          <a href="https://github.com/Olumidenana" target="_blank" class="text-emerald font-bold hover:underline text-sm break-all">github.com/Olumidenana</a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-clay-border py-8 text-center text-xs font-mono text-slate-500">
-    <div>© 2026 Olumide Adeyemi-Nana · Built with genuine craftsmanship &amp; zero AI slop · Osogbo, Nigeria</div>
+  <footer class="border-t border-slate-800 py-8 text-center text-xs font-mono text-slate-500">
+    <div>© 2026 Olumide Adeyemi-Nana · Lead Systems Architect · Osogbo &amp; Lagos, Nigeria</div>
   </footer>
 
-  <!-- =========================================================================
-       THREE.JS PLAYFUL CARTOON 3D TOYBOX SCRIPT
-       ========================================================================= -->
+  <!-- Filter Script -->
   <script>
-    var container = document.getElementById('playground3d');
-    var canvas = document.getElementById('toyboxCanvas');
-    var scene, camera, renderer, controls;
-    var toyNodes = [];
-    var raycaster, mouse;
-
-    var systemsData = [
-      {
-        tag: "SYSTEM 01 // QUANT FINTECH",
-        title: "ICT Flux — Algorithmic Quant Terminal",
-        desc: "Streams 73+ simultaneous market feeds with sub-100ms dispatch latency. Links Python asyncio mathematical models to MetaTrader C FFI bridges without lookahead bias.",
-        stack: "Python 3.12 · C FFI · Deriv WS · MT5",
-        link: "https://ictflux.app",
-        color: 0xFFB800 // Warm Gold
-      },
-      {
-        tag: "SYSTEM 02 // LOGISTICS & ESCROW",
-        title: "Chopos OS — Hyperlocal Merchant Operating System",
-        desc: "Instant Paystack split payments for campus food vendors and couriers. PostgreSQL row-level locks prevent balance double-spending under high-concurrency order spikes.",
-        stack: "Next.js · PLpgSQL · Paystack Split · WebSockets",
-        link: "https://food-vendor-ordering.vercel.app",
-        color: 0x06B6D4 // Cartoon Cyan
-      },
-      {
-        tag: "SYSTEM 03 // 3D & GENERATIVE AI",
-        title: "ToonForge — In-Browser 3D Animation Studio",
-        desc: "WebGL 3D viewport powered by Claude and Gemini APIs with automated phoneme lip-syncing, reducing software costs for African animators.",
-        stack: "Three.js WebGL · Claude API · GPU Cloud Transcoder",
-        link: "https://github.com/Olumidenana/toonforge",
-        color: 0xF43F5E // Coral Red
-      },
-      {
-        tag: "SYSTEM 04 // REALTIME MOBILITY",
-        title: "Motion OAU — Campus Mobility & Social Pulse",
-        desc: "Real-time student transit coordination with Leaflet GPS tracking, Haversine shuttle batching, and safe evening group walking routes.",
-        stack: "Next.js · Supabase Realtime · Leaflet GPS",
-        link: "https://motion-oau.vercel.app",
-        color: 0x10B981 // Mint Green
-      },
-      {
-        tag: "SYSTEM 05 // CLOUD TRANSCODING",
-        title: "Video Assembler SaaS — Clipper's Cloud Studio",
-        desc: "700KB+ TypeScript multi-track timeline orchestrator with cloud FFMPEG rendering cluster and -14 LUFS broadcast audio leveling.",
-        stack: "TypeScript · Cloud FFMPEG · Google Cloud Storage",
-        link: "https://video-assembler-saas.vercel.app",
-        color: 0x8B5CF6 // Candy Purple
-      }
-    ];
-
-    function initToybox() {
-      var width = canvas.parentElement.clientWidth;
-      var height = canvas.parentElement.clientHeight;
-
-      scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x0C101A);
-
-      camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-      camera.position.set(0, 8, 22);
-
-      renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
-      renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-      controls = new THREE.OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true;
-      controls.dampingFactor = 0.05;
-      controls.maxDistance = 35;
-      controls.minDistance = 8;
-      controls.maxPolarAngle = Math.PI / 2.05; // Keep above floor
-
-      // Warm, Playful Lighting (Nintendo Studio Style)
-      var ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.7);
-      scene.add(ambientLight);
-
-      var mainLight = new THREE.DirectionalLight(0xFFF2D6, 1.2);
-      mainLight.position.set(12, 20, 10);
-      mainLight.castShadow = true;
-      scene.add(mainLight);
-
-      var rimLight = new THREE.DirectionalLight(0x38BDF8, 0.8);
-      rimLight.position.set(-12, -5, -10);
-      scene.add(rimLight);
-
-      // Stylized Toy Floor Grid with Soft Reflection
-      var floorGeo = new THREE.PlaneGeometry(80, 80);
-      var floorMat = new THREE.MeshStandardMaterial({
-        color: 0x080B12,
-        roughness: 0.8,
-        metalness: 0.2
+    function filterProjects(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(function(b) {
+        b.classList.remove('active');
       });
-      var floor = new THREE.Mesh(floorGeo, floorMat);
-      floor.rotation.x = -Math.PI / 2;
-      floor.position.y = -3.5;
-      floor.receiveShadow = true;
-      scene.add(floor);
+      if (btn) btn.classList.add('active');
 
-      // Create 5 Chunky Cartoon Toy Nodes
-      var angles = [0, 1.25, 2.5, 3.75, 5.0];
-      var radius = 8.5;
-
-      systemsData.forEach(function(sys, i) {
-        var group = new THREE.Group();
-        var angle = angles[i];
-        group.position.x = Math.cos(angle) * radius;
-        group.position.z = Math.sin(angle) * radius;
-        group.position.y = 0;
-
-        // Chunky Cartoon Capsule/Torus Mesh (Tactile Plastic Feel)
-        var meshGeo = new THREE.DodecahedronGeometry(1.6, 1);
-        var meshMat = new THREE.MeshStandardMaterial({
-          color: sys.color,
-          roughness: 0.25,
-          metalness: 0.1,
-          wireframe: false
-        });
-        var nodeMesh = new THREE.Mesh(meshGeo, meshMat);
-        nodeMesh.castShadow = true;
-        nodeMesh.receiveShadow = true;
-        group.add(nodeMesh);
-
-        // Bouncy Outer Ring
-        var ringGeo = new THREE.TorusGeometry(2.3, 0.15, 16, 50);
-        var ringMat = new THREE.MeshStandardMaterial({
-          color: 0xFFFFFF,
-          roughness: 0.4,
-          metalness: 0.5
-        });
-        var ring = new THREE.Mesh(ringGeo, ringMat);
-        ring.rotation.x = Math.PI / 3;
-        group.add(ring);
-
-        // Soft Glowing Core Light
-        var coreLight = new THREE.PointLight(sys.color, 1.2, 8);
-        coreLight.position.set(0, 0, 0);
-        group.add(coreLight);
-
-        group.userData = { id: i, data: sys, mesh: nodeMesh, ring: ring };
-        scene.add(group);
-        toyNodes.push(group);
-      });
-
-      // Central Cartoon Engine Pillar
-      var centerGeo = new THREE.CylinderGeometry(1.5, 2, 2.5, 16);
-      var centerMat = new THREE.MeshStandardMaterial({
-        color: 0x1E2538,
-        roughness: 0.5,
-        metalness: 0.2
-      });
-      var centerMesh = new THREE.Mesh(centerGeo, centerMat);
-      centerMesh.position.y = -2;
-      centerMesh.receiveShadow = true;
-      scene.add(centerMesh);
-
-      raycaster = new THREE.Raycaster();
-      mouse = new THREE.Vector2();
-
-      canvas.addEventListener('click', onCanvasClick);
-      window.addEventListener('resize', onWindowResize);
-    }
-
-    function onCanvasClick(e) {
-      var rect = canvas.getBoundingClientRect();
-      mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-
-      raycaster.setFromCamera(mouse, camera);
-      var intersects = raycaster.intersectObjects(scene.children, true);
-
-      for (var i = 0; i < intersects.length; i++) {
-        var obj = intersects[i].object;
-        var parent = obj.parent;
-        if (parent && parent.userData && parent.userData.data) {
-          selectToyNode(parent.userData.id);
-          squashAndBounce(parent);
-          break;
-        }
-      }
-    }
-
-    function squashAndBounce(group) {
-      var initialScale = { x: 1, y: 1, z: 1 };
-      new TWEEN.Tween(group.scale)
-        .to({ x: 1.35, y: 0.7, z: 1.35 }, 120)
-        .easing(TWEEN.Easing.Quadratic.Out)
-        .onComplete(function() {
-          new TWEEN.Tween(group.scale)
-            .to({ x: 1, y: 1, z: 1 }, 300)
-            .easing(TWEEN.Easing.Elastic.Out)
-            .start();
-        })
-        .start();
-    }
-
-    function selectToyNode(index) {
-      var sys = systemsData[index];
-      document.getElementById('toyTag').innerText = sys.tag;
-      document.getElementById('toyTag').style.color = '#' + sys.color.toString(16);
-      document.getElementById('toyTitle').innerText = sys.title;
-      document.getElementById('toyDesc').innerText = sys.desc;
-      document.getElementById('toyStack').innerText = sys.stack;
-      document.getElementById('toyLink').href = sys.link;
-
-      // Animate Inspector Card
-      var card = document.getElementById('toyInspector');
-      card.style.transform = 'scale(1.03)';
-      setTimeout(function() { card.style.transform = 'scale(1)'; }, 200);
-    }
-
-    function focusToyNode(index) {
-      selectToyNode(index);
-      var targetNode = toyNodes[index];
-      if (targetNode) {
-        squashAndBounce(targetNode);
-        new TWEEN.Tween(controls.target)
-          .to({ x: targetNode.position.x, y: targetNode.position.y, z: targetNode.position.z }, 600)
-          .easing(TWEEN.Easing.Cubic.Out)
-          .start();
-      }
-    }
-
-    function onWindowResize() {
-      if (!canvas || !renderer || !camera) return;
-      var width = canvas.parentElement.clientWidth;
-      var height = canvas.parentElement.clientHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-    }
-
-    function animate(time) {
-      requestAnimationFrame(animate);
-      TWEEN.update();
-      controls.update();
-
-      // Gentle cartoon floating animation
-      toyNodes.forEach(function(node, idx) {
-        node.position.y = Math.sin(time * 0.002 + idx) * 0.45;
-        node.children[0].rotation.y += 0.012;
-        node.children[0].rotation.x += 0.006;
-        if (node.children[1]) {
-          node.children[1].rotation.z += 0.015;
+      var cards = document.querySelectorAll('.project-card');
+      cards.forEach(function(c) {
+        var cardCat = c.getAttribute('data-category');
+        if (cat === 'all' || cardCat === cat) {
+          c.style.display = 'flex';
+        } else {
+          c.style.display = 'none';
         }
       });
-
-      renderer.render(scene, camera);
-    }
-
-    window.addEventListener('DOMContentLoaded', function() {
-      initToybox();
-      animate(0);
-      initTerminal();
-    });
-
-    // =========================================================================
-    // INTERACTIVE TERMINAL ENGINE
-    // =========================================================================
-    function initTerminal() {
-      var input = document.getElementById('termInput');
-      var output = document.getElementById('termOutput');
-      if (!input || !output) return;
-
-      input.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-          var cmd = input.value.trim().toLowerCase();
-          input.value = '';
-          runCommand(cmd);
-        }
-      });
-
-      function print(line) {
-        var el = document.createElement('div');
-        el.innerHTML = line;
-        output.appendChild(el);
-        output.scrollTop = output.scrollHeight;
-      }
-
-      function runCommand(cmd) {
-        print('<span class="text-mint font-bold">guest@olumide:~$</span> ' + cmd);
-
-        switch (cmd) {
-          case 'help':
-            print('Available commands: <span class="text-accent font-bold">about</span>, <span class="text-accent font-bold">projects</span>, <span class="text-accent font-bold">skills</span>, <span class="text-accent font-bold">contact</span>, <span class="text-accent font-bold">whatsapp</span>, <span class="text-accent font-bold">clear</span>');
-            break;
-          case 'about':
-            print('<strong>Olumide Adeyemi-Nana:</strong> Mechanical Engineer turned Systems Architect.');
-            print('Specializing in low-latency WebSockets (<100ms), split payments, and WebGL animation engines.');
-            break;
-          case 'projects':
-            print('1. <span class="text-accent font-bold">ICT Flux</span> — Quant trading engine (73+ feeds, C FFI MT5)');
-            print('2. <span class="text-bubble font-bold">Chopos OS</span> — Food delivery split escrow (Paystack API)');
-            print('3. <span class="text-coral font-bold">ToonForge</span> — In-browser 3D WebGL animation studio');
-            print('4. <span class="text-mint font-bold">Motion OAU</span> — Campus real-time transit & spatial batching');
-            print('5. <span class="text-candy font-bold">Video SaaS</span> — Cloud FFMPEG -14 LUFS transcoder');
-            break;
-          case 'skills':
-            print('Languages: Python 3.12, TypeScript, SQL (PostgreSQL), C');
-            print('Distributed: WebSockets, FastAPI, Node.js, Paystack API, Supabase');
-            print('Frontend/3D: Next.js, Three.js WebGL, Tailwind CSS');
-            break;
-          case 'contact':
-          case 'email':
-            print('Email: <a href="mailto:olumideadeyeminana@gmail.com" class="text-accent underline">olumideadeyeminana@gmail.com</a>');
-            print('Phone / WhatsApp: <a href="tel:+2348149640122" class="text-mint underline">+234 814 964 0122</a>');
-            break;
-          case 'whatsapp':
-            print('Opening WhatsApp chat directly...');
-            window.open('https://wa.me/2348149640122', '_blank');
-            break;
-          case 'clear':
-            output.innerHTML = '';
-            break;
-          default:
-            print('<span class="text-coral">Command not recognized:</span> ' + cmd + '. Type <span class="text-accent">help</span> for options.');
-        }
-      }
     }
   </script>
 </body>
