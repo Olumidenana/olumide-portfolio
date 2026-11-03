@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Olumide Adeyemi-Nana · Lead Systems Architect · Anti-AI Dossier</title>
-  <meta name="description" content="Official engineering portfolio of Olumide Adeyemi-Nana — Lead Systems Architect, Founder of Amazoe Solutions, B.Sc. Mechanical Engineering (OAU). 14 Shipped Production Systems.">
+  <title>Olumide Adeyemi-Nana — Systems Architect & Quant Engineer</title>
+  <meta name="description" content="Portfolio of Olumide Adeyemi-Nana. Creator of God's Eye (Fractal Quant Execution), ChopOS, Ojaja Cinemas, and 14 high-concurrency production systems. B.Sc. Mechanical Engineering (OAU).">
 
   <!-- =========================================================================
-       DISTINCTIVE BESPOKE TYPOGRAPHY (Instrument Serif + Space Grotesk + JetBrains Mono)
+       HIGH-CONTRAST SWISS & EDITORIAL TYPOGRAPHY
+       Instrument Serif (Literary/Sovereign) + Space Grotesk (Architectural) + JetBrains Mono (Technical)
        ========================================================================= -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
@@ -22,26 +22,19 @@
         extend: {
           fontFamily: {
             serif: ['"Instrument Serif"', 'Georgia', 'serif'],
-            sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+            sans: ['"Space Grotesk"', '-apple-system', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
           },
           colors: {
-            obsidian: '#08090C',
-            'obsidian-card': '#0E1118',
-            'obsidian-hover': '#151922',
-            titanium: '#E8ECEF',
-            'titanium-muted': '#8A94A6',
-            amber: {
-              raw: '#E5A93C',
-              glow: '#FFBE42',
-              dim: 'rgba(229, 169, 60, 0.12)'
-            },
-            chlorophyll: {
-              DEFAULT: '#2DD4BF',
-              dim: 'rgba(45, 212, 191, 0.12)'
-            },
-            hairline: 'rgba(255, 255, 255, 0.08)',
-            'hairline-bright': 'rgba(255, 255, 255, 0.16)'
+            soot: '#0A0A0B',
+            slatecard: '#111114',
+            surface2: '#18181D',
+            bone: '#F4F4F6',
+            muted: '#8E8E98',
+            dim: '#55555E',
+            industrial: '#FF5500', // Teenage Engineering safety orange
+            safety: '#10B981',
+            rule: '#24242A',
           }
         }
       }
@@ -49,1375 +42,1160 @@
   </script>
 
   <style>
-    /* =========================================================================
-       SURFACE MATERIALITY & ZERO-BLUR TACTILE SHADOWS
-       ========================================================================= */
     :root {
-      --bg-base: #08090C;
-      --hairline-color: rgba(255, 255, 255, 0.08);
-      --amber-accent: #E5A93C;
+      --bg: #0A0A0B;
+      --rule: #24242A;
+      --bone: #F4F4F6;
+      --orange: #FF5500;
     }
 
     body {
-      background-color: var(--bg-base);
-      color: #E8ECEF;
-      font-family: 'Space Grotesk', sans-serif;
-      overflow-x: hidden;
+      background-color: var(--bg);
+      color: var(--bone);
+      font-family: 'Space Grotesk', -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* 1.8% SVG Micro-Grain Noise (Breaks digital screen sterility) */
-    .anti-ai-grain {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    /* Swiss hairline grid rules */
+    .grid-line-b { border-bottom: 1px solid var(--rule); }
+    .grid-line-t { border-top: 1px solid var(--rule); }
+    .grid-line-r { border-right: 1px solid var(--rule); }
+    .grid-line-l { border-left: 1px solid var(--rule); }
+    .grid-border { border: 1px solid var(--rule); }
+
+    /* Tactical Mechanical Buttons (Zero Blur, Physical Snap) */
+    .mech-btn {
+      box-shadow: 2px 2px 0px #000000;
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+    .mech-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 0px 0px 0px #000000;
     }
 
-    /* Architectural Hairline Grid with Crosshairs */
-    .hairline-border {
-      border: 1px solid var(--hairline-color);
-    }
-    .hairline-b {
-      border-bottom: 1px solid var(--hairline-color);
-    }
-    .hairline-t {
-      border-top: 1px solid var(--hairline-color);
-    }
-    .hairline-r {
-      border-right: 1px solid var(--hairline-color);
-    }
-    .hairline-l {
-      border-left: 1px solid var(--hairline-color);
-    }
-
-    .crosshair-corner {
+    /* Subdued architectural crosshair */
+    .cross-mark {
       position: relative;
     }
-    .crosshair-corner::before {
-      content: '+';
+    .cross-mark::after {
+      content: "┼";
       position: absolute;
       top: -8px;
       left: -6px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: var(--amber-accent);
-      opacity: 0.7;
+      color: var(--orange);
+      opacity: 0.6;
       pointer-events: none;
     }
 
-    /* Zero-Blur Hard Drop Shadow (Tactile Neo-Brutalism) */
-    .tactile-key {
-      box-shadow: 3px 3px 0px #000000;
-      transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Accordion Drawer */
+    .drawer-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .tactile-key:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px #000000;
-    }
-
-    /* Ledger Rows Hover */
-    .ledger-row {
-      transition: background-color 0.15s ease, border-color 0.15s ease;
-    }
-    .ledger-row:hover {
-      background-color: #12151E;
+    .drawer-content.open {
+      max-height: 1200px;
     }
 
-    /* Custom Selection */
     ::selection {
-      background-color: var(--amber-accent);
+      background-color: var(--orange);
       color: #000000;
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #08090C;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #232936;
-      border-radius: 0px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--amber-accent);
     }
   </style>
 </head>
-<body class="selection:bg-amber-raw selection:text-black min-h-screen relative antialiased">
-
-  <!-- Grain Overlay -->
-  <div class="anti-ai-grain"></div>
+<body class="min-h-screen">
 
   <!-- =========================================================================
-       TELEMETRY STRIP (SOVEREIGN CIVIC / AIR TRAFFIC CONTROL VIBE)
+       1. INDUSTRIAL TOP STRIP: LOCATION, UTC TICKER & SYSTEM HEALTH
        ========================================================================= -->
-  <aside class="w-full hairline-b bg-[#050608] text-[11px] font-mono text-titanium-muted tracking-wider py-2 px-4 sm:px-8">
+  <header class="w-full grid-line-b bg-[#070708] py-2 px-4 sm:px-8 text-[11px] font-mono text-muted tracking-wider">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
-      <!-- Live Telemetry -->
-      <div class="flex items-center gap-4 flex-wrap">
-        <span class="inline-flex items-center gap-1.5 text-titanium">
-          <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll animate-ping"></span>
-          <span class="font-bold text-chlorophyll">SYS_ONLINE</span>
+      <div class="flex items-center gap-3 flex-wrap text-bone">
+        <span class="flex items-center gap-1.5 font-bold text-white">
+          <span class="w-2 h-2 bg-industrial inline-block"></span>
+          <span>AMAZOE LABS</span>
         </span>
-        <span class="hidden sm:inline opacity-30">|</span>
-        <span class="hidden sm:inline">LAT 7.7827° N · LON 4.5418° E [OSOGBO / LAGOS, NGA]</span>
-        <span class="opacity-30">|</span>
-        <span id="liveClock" class="text-amber-raw font-medium">WAT 00:00:00 UTC+1</span>
+        <span class="text-dim">/</span>
+        <span class="text-muted">OSOGBO · LAGOS, NGA [LAT 7.78°N · LON 4.54°E]</span>
+        <span class="text-dim">/</span>
+        <span class="text-bone font-medium" id="clockTicker">WAT 00:00:00 UTC+1</span>
       </div>
 
-      <!-- Quick Toggles -->
-      <div class="flex items-center gap-3">
-        <button id="soundToggle" onclick="toggleAudio()" class="px-2 py-0.5 border border-hairline hover:border-amber-raw text-[10px] text-titanium-muted hover:text-white transition-all tactile-key flex items-center gap-1.5 cursor-pointer bg-obsidian-card">
-          <span id="soundIcon">🔊</span>
-          <span id="soundLabel">HAPTICS: ON</span>
-        </button>
-        <span class="opacity-30">|</span>
-        <span class="text-titanium text-[10px]">PRESS <kbd class="px-1 py-0.5 bg-black border border-hairline text-amber-raw font-bold">1-5</kbd> TO FILTER</span>
-      </div>
-    </div>
-  </aside>
-
-  <!-- =========================================================================
-       HEADER & ARCHITECTURAL IDENTIFIER
-       ========================================================================= -->
-  <header class="sticky top-0 z-40 bg-[#08090C]/90 backdrop-blur-md hairline-b">
-    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
-      
-      <!-- Brand & Title -->
-      <a href="#" class="flex items-center gap-4 group">
-        <div class="w-10 h-10 hairline-border bg-obsidian-card flex items-center justify-center font-mono font-bold text-amber-raw text-sm tactile-key border-amber-raw/40 group-hover:border-amber-raw">
-          OA
-        </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="font-bold text-white text-base tracking-tight font-sans">Olumide Adeyemi-Nana</span>
-            <span class="px-1.5 py-0.5 text-[9px] font-mono font-bold bg-amber-raw/10 text-amber-raw border border-amber-raw/30 uppercase">ARCHITECT</span>
-          </div>
-          <div class="text-xs font-mono text-titanium-muted">B.Sc. Mechanical Eng (OAU) · Amazoe Solutions</div>
-        </div>
-      </a>
-
-      <!-- Desktop Nav with Number Accelerators -->
-      <nav class="hidden md:flex items-center gap-8 text-xs font-mono tracking-wider">
-        <a href="#dossier" class="text-titanium-muted hover:text-amber-raw transition-colors flex items-center gap-1.5">
-          <span class="opacity-40">01/</span><span>DOSSIER</span>
-        </a>
-        <a href="#systems" class="text-titanium-muted hover:text-amber-raw transition-colors flex items-center gap-1.5">
-          <span class="opacity-40">02/</span><span>14 SYSTEMS</span>
-        </a>
-        <a href="#mechanics" class="text-titanium-muted hover:text-amber-raw transition-colors flex items-center gap-1.5">
-          <span class="opacity-40">03/</span><span>RUNTIME SPECS</span>
-        </a>
-        <a href="international-cv.html" target="_blank" class="text-titanium-muted hover:text-amber-raw transition-colors flex items-center gap-1.5">
-          <span class="opacity-40">04/</span><span>CURRICULUM VITAE</span>
-        </a>
-      </nav>
-
-      <!-- Action Keycaps -->
-      <div class="flex items-center gap-3">
-        <button onclick="openCommandPalette()" class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-obsidian-card border border-hairline hover:border-amber-raw text-titanium-muted hover:text-white font-mono text-xs tactile-key cursor-pointer">
-          <span class="text-amber-raw">⌘K</span>
-          <span>QUICK DISPATCH</span>
-        </button>
-
-        <a href="https://wa.me/2348149640122?text=Hello%20Olumide!%20I'm%20reviewing%20your%20Anti-AI%20systems%20dossier%20and%20would%20like%20to%20collaborate." 
-           target="_blank" 
-           class="px-4 py-2 bg-amber-raw text-black font-mono font-bold text-xs tactile-key border border-amber-raw hover:bg-amber-glow flex items-center gap-2">
-          <span>CONNECT</span>
-          <span class="text-xs">→</span>
+      <div class="flex items-center gap-4 text-[10px]">
+        <span class="text-muted">SECURITY LEVEL: <strong class="text-white">AIR-GAPPED TELEMETRY</strong></span>
+        <span class="text-dim">|</span>
+        <a href="https://wa.me/2348149640122" target="_blank" class="text-industrial hover:underline font-bold">
+          SECURE CHANNEL: +234 814 964 0122 ↗
         </a>
       </div>
     </div>
   </header>
 
+  <!-- =========================================================================
+       2. PRIMARY MASTHEAD (EDITORIAL IDENTITY)
+       ========================================================================= -->
+  <nav class="sticky top-0 z-50 bg-[#0A0A0B]/95 backdrop-blur-md grid-line-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-baseline gap-3">
+        <span class="font-serif text-2xl sm:text-3xl font-normal tracking-tight text-white">
+          Olumide Adeyemi-Nana
+        </span>
+        <span class="hidden md:inline font-mono text-xs text-muted">
+          // Lead Systems Architect &amp; Quant Engineer
+        </span>
+      </a>
+
+      <div class="flex items-center gap-6 font-mono text-xs">
+        <a href="#gods-eye" class="text-white hover:text-industrial transition-colors flex items-center gap-1">
+          <span class="text-industrial">§1</span> GOD'S EYE
+        </a>
+        <a href="#systems" class="text-muted hover:text-white transition-colors hidden sm:flex items-center gap-1">
+          <span class="text-dim">§2</span> PRODUCTION REPOS
+        </a>
+        <a href="#security" class="text-muted hover:text-white transition-colors hidden sm:flex items-center gap-1">
+          <span class="text-dim">§3</span> SECURITY SHIELD
+        </a>
+        <a href="international-cv.html" target="_blank" class="px-3.5 py-1.5 grid-border bg-slatecard text-white hover:border-industrial transition-all mech-btn text-[11px] font-bold">
+          ATS CV ↗
+        </a>
+      </div>
+    </div>
+  </nav>
+
   <main class="max-w-7xl mx-auto px-4 sm:px-8 py-12 space-y-24">
 
     <!-- =========================================================================
-         SECTION 1: ASYMMETRIC EDITORIAL DOSSIER (THE ANTI-AI HERO)
-         ========================================================================= -->
-    <section id="dossier" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-6 items-start">
-      
-      <!-- Left Column: The Human Mechanical Thesis -->
-      <div class="lg:col-span-8 space-y-8">
+       3. ARCHITECTURAL HERO: MECHANICAL RIGOR APPLIED TO SOFTWARE
+       ========================================================================= -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start pt-4">
+      <div class="lg:col-span-8 space-y-6">
         
-        <!-- Archival Status Stamp -->
-        <div class="flex items-center gap-3">
-          <span class="px-2.5 py-1 text-[10px] font-mono font-semibold tracking-wider bg-chlorophyll/10 text-chlorophyll border border-chlorophyll/30 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-            CONTRACTS OPEN // HIGH-CONCURRENCY DISTRIBUTED SYSTEMS
-          </span>
-          <span class="text-xs font-mono text-titanium-muted hidden sm:inline">REF: AMZ-2026-SYS</span>
+        <div class="inline-block px-2.5 py-1 grid-border bg-slatecard text-[11px] font-mono text-industrial uppercase tracking-widest font-semibold">
+          ACADEMIC DISCIPLINE: B.SC. MECHANICAL ENGINEERING, OAU
         </div>
 
-        <!-- Striking Instrument Serif Headline -->
-        <h1 class="text-4xl sm:text-6xl md:text-7xl font-normal font-serif text-white leading-[1.08] tracking-tight">
-          Engineering software systems under <span class="italic text-amber-raw font-normal">mechanical load</span>.
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif text-white font-normal leading-[1.05] tracking-tight">
+          Treating distributed systems as <span class="italic text-industrial">structures under stress</span>.
         </h1>
 
-        <p class="text-lg sm:text-xl text-titanium leading-relaxed max-w-2xl font-sans">
-          I am <strong>Olumide Adeyemi-Nana</strong>. Trained in <strong>Mechanical Engineering at Obafemi Awolowo University (OAU)</strong>, I analyze distributed cloud software through physical failure models: stress limits, heat dissipation of thread contention, and zero-loss escrow transactions.
+        <p class="text-base sm:text-lg text-muted font-sans leading-relaxed max-w-3xl">
+          Trained in thermodynamics, fluid dynamics, and material fatigue at <strong>Obafemi Awolowo University</strong>, I reject software that buckles under high-load concurrency. I design low-latency algorithmic trading engines, immutable escrow ledgers, and distributed systems with mechanical failure margins: zero thread locks, zero double-spending, and air-gapped cryptographic defense.
         </p>
 
-        <!-- Technical Ledger of Core Principles -->
-        <div class="hairline-border bg-obsidian-card p-6 crosshair-corner space-y-4">
-          <div class="font-mono text-xs font-bold text-amber-raw uppercase tracking-wider flex items-center justify-between">
-            <span>// CORE DISCIPLINARY POSTULATES</span>
-            <span class="text-titanium-muted">[N=4]</span>
+        <!-- Executive Metrics Ledger -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 grid-border bg-slatecard text-xs font-mono">
+          <div class="p-4 grid-line-r grid-line-b sm:grid-line-b-0 space-y-1">
+            <div class="text-[10px] text-dim uppercase">FLAGSHIP ENGINE</div>
+            <div class="text-xl font-bold text-white">GOD'S EYE</div>
+            <div class="text-[10px] text-muted">622 Core Commits</div>
           </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono text-titanium-muted">
-            <div class="space-y-1">
-              <span class="text-titanium font-bold flex items-center gap-2">
-                <span class="text-amber-raw">01.</span> ZERO DOUBLE-SPEND ESCROW
-              </span>
-              <p class="text-[11px] leading-relaxed">
-                PostgreSQL row-level locking (`SELECT ... FOR UPDATE`) with split-payment disbursement via Paystack Subaccounts.
-              </p>
-            </div>
-
-            <div class="space-y-1">
-              <span class="text-titanium font-bold flex items-center gap-2">
-                <span class="text-amber-raw">02.</span> SUB-100MS QUANT PIPELINES
-              </span>
-              <p class="text-[11px] leading-relaxed">
-                Multi-threaded WebSocket ingestion over 73 concurrent market feeds with C FFI execution into MetaTrader MT5.
-              </p>
-            </div>
-
-            <div class="space-y-1">
-              <span class="text-titanium font-bold flex items-center gap-2">
-                <span class="text-amber-raw">03.</span> CLIENT-SIDE GRAPH & WEBGL
-              </span>
-              <p class="text-[11px] leading-relaxed">
-                In-browser 3D animation rigs and real-time transit dispatch (Haversine distance algorithms) without heavy server bloat.
-              </p>
-            </div>
-
-            <div class="space-y-1">
-              <span class="text-titanium font-bold flex items-center gap-2">
-                <span class="text-amber-raw">04.</span> VERIFIABLE RUNTIME PROOF
-              </span>
-              <p class="text-[11px] leading-relaxed">
-                No mockups. 14 shipped platforms operating with live endpoints, production databases, and merchant integrations.
-              </p>
-            </div>
+          <div class="p-4 grid-line-r grid-line-b sm:grid-line-b-0 space-y-1">
+            <div class="text-[10px] text-dim uppercase">FEED CONCURRENCY</div>
+            <div class="text-xl font-bold text-industrial">73 FEEDS</div>
+            <div class="text-[10px] text-muted">Sub-100ms Ingestion</div>
+          </div>
+          <div class="p-4 grid-line-r space-y-1">
+            <div class="text-[10px] text-dim uppercase">ESCROW INTEGRITY</div>
+            <div class="text-xl font-bold text-white">ACID STRICT</div>
+            <div class="text-[10px] text-muted">Postgres Row Locks</div>
+          </div>
+          <div class="p-4 space-y-1">
+            <div class="text-[10px] text-dim uppercase">COMMERCIAL DEPLOYS</div>
+            <div class="text-xl font-bold text-white">14 SHIPPED</div>
+            <div class="text-[10px] text-muted">Enterprise &amp; WebGL</div>
           </div>
         </div>
 
-        <!-- Call to Action Bar -->
-        <div class="flex flex-wrap items-center gap-4 pt-2">
-          <a href="#systems" class="px-6 py-3 bg-amber-raw text-black font-mono font-bold text-xs tactile-key hover:bg-amber-glow transition-all flex items-center gap-2 border border-amber-raw">
-            <span>INSPECT 14 PRODUCTION SYSTEMS</span>
+        <div class="flex flex-wrap items-center gap-4 pt-2 font-mono text-xs">
+          <a href="#gods-eye" class="px-6 py-3 bg-white text-black font-bold mech-btn hover:bg-bone transition-all flex items-center gap-2">
+            <span>INSPECT GOD'S EYE ARCHITECTURE</span>
             <span>↓</span>
           </a>
-
-          <a href="https://wa.me/2348149640122?text=Hello%20Olumide!%20Let's%20discuss%20an%20engineering%20contract." target="_blank" class="px-5 py-3 bg-obsidian-card border border-hairline hover:border-amber-raw text-titanium font-mono text-xs tactile-key transition-all flex items-center gap-2">
-            <span>💬 DIRECT WHATSAPP: +234 814 964 0122</span>
-          </a>
-
-          <a href="https://github.com/Olumidenana" target="_blank" class="px-4 py-3 bg-obsidian-card border border-hairline hover:border-white/20 text-titanium-muted font-mono text-xs tactile-key transition-all">
-            gh/Olumidenana
+          <a href="https://github.com/Olumidenana" target="_blank" class="px-5 py-3 grid-border bg-slatecard text-bone hover:border-industrial transition-all mech-btn flex items-center gap-2">
+            <span>AUDIT GITHUB COMMITS (Olumidenana)</span>
+            <span>↗</span>
           </a>
         </div>
       </div>
 
-      <!-- Right Column: Tactile Hardware Spec Dossier -->
-      <div class="lg:col-span-4 space-y-4">
-        
-        <!-- Hardware Blueprint Box -->
-        <div class="hairline-border bg-obsidian-card p-6 crosshair-corner space-y-6">
-          <div class="flex items-center justify-between hairline-b pb-4">
-            <div>
-              <span class="text-[10px] font-mono text-titanium-muted uppercase tracking-wider block">CONSULTING LAB</span>
-              <span class="font-bold text-white text-base tracking-tight font-sans">Amazoe Solutions Ltd.</span>
-            </div>
-            <div class="w-8 h-8 hairline-border bg-black flex items-center justify-center font-mono text-xs text-amber-raw">
-              ⚡
-            </div>
-          </div>
+      <!-- Right Column: Institutional Identity Card -->
+      <div class="lg:col-span-4 grid-border bg-slatecard p-6 cross-mark space-y-5">
+        <div class="grid-line-b pb-4">
+          <span class="text-[10px] font-mono text-industrial uppercase tracking-widest block font-bold">SYSTEM ARCHITECT DOSSIER</span>
+          <h2 class="text-xl font-serif text-white">Olumide Adeyemi-Nana</h2>
+          <p class="text-xs font-mono text-muted mt-1">Founder, Amazoe Solutions Ltd.</p>
+        </div>
 
-          <!-- Spec Grid -->
-          <div class="space-y-3 text-xs font-mono">
-            <div class="flex justify-between hairline-b pb-2">
-              <span class="text-titanium-muted">LEAD ARCHITECT:</span>
-              <span class="text-titanium font-medium">Olumide Adeyemi-Nana</span>
-            </div>
-            <div class="flex justify-between hairline-b pb-2">
-              <span class="text-titanium-muted">ACADEMIC FOUNDATION:</span>
-              <span class="text-titanium font-medium">B.Sc. Mechanical Eng, OAU</span>
-            </div>
-            <div class="flex justify-between hairline-b pb-2">
-              <span class="text-titanium-muted">PRIMARY STACK:</span>
-              <span class="text-titanium font-medium">Python · C FFI · TS · Postgres</span>
-            </div>
-            <div class="flex justify-between hairline-b pb-2">
-              <span class="text-titanium-muted">FINTECH ESCROW:</span>
-              <span class="text-titanium font-medium">Paystack Split API</span>
-            </div>
-            <div class="flex justify-between hairline-b pb-2">
-              <span class="text-titanium-muted">VERIFIED DEPLOYS:</span>
-              <span class="text-amber-raw font-bold">14 Live Systems</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-titanium-muted">SECURITY & ACID:</span>
-              <span class="text-chlorophyll font-bold">Zero Contention Lock</span>
-            </div>
+        <div class="space-y-3 font-mono text-xs">
+          <div class="flex justify-between grid-line-b pb-2">
+            <span class="text-muted">CORE LANGUAGES:</span>
+            <span class="text-bone font-medium">Python 3.12 · C (FFI) · TS</span>
           </div>
-
-          <!-- Contact Quick Copy -->
-          <div class="hairline-t pt-4 space-y-2 text-xs font-mono">
-            <div class="flex items-center justify-between text-titanium-muted">
-              <span>DIRECT INBOX:</span>
-              <button onclick="copyText('olumideadeyeminana@gmail.com', this)" class="text-amber-raw hover:underline cursor-pointer flex items-center gap-1">
-                <span>olumideadeyeminana@gmail.com</span>
-                <span class="text-[10px]">📋</span>
-              </button>
-            </div>
-            <div class="flex items-center justify-between text-titanium-muted">
-              <span>LOCATION:</span>
-              <span class="text-titanium">Osogbo / Lagos, Nigeria</span>
-            </div>
+          <div class="flex justify-between grid-line-b pb-2">
+            <span class="text-muted">SPECIALIZATION:</span>
+            <span class="text-bone font-medium">Quant Trade &amp; Concurrency</span>
+          </div>
+          <div class="flex justify-between grid-line-b pb-2">
+            <span class="text-muted">ESCROW ARBITRATION:</span>
+            <span class="text-bone font-medium">Paystack Subaccounts Split</span>
+          </div>
+          <div class="flex justify-between grid-line-b pb-2">
+            <span class="text-muted">DATABASE CONCURRENCY:</span>
+            <span class="text-bone font-medium">PostgreSQL SELECT FOR UPDATE</span>
+          </div>
+          <div class="flex justify-between grid-line-b pb-2">
+            <span class="text-muted">SECURITY POLICY:</span>
+            <span class="text-safety font-bold">Air-Gapped Telemetry</span>
           </div>
         </div>
 
-        <!-- Live Engineering Pulse Card -->
-        <div class="p-4 bg-obsidian-card hairline-border text-[11px] font-mono text-titanium-muted flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-amber-raw animate-pulse"></span>
-            <span>CURRENT LOAD: 14 REPOS DEPLOYED</span>
-          </div>
-          <span class="text-amber-raw font-bold">2026 ED.</span>
+        <div class="pt-2 text-xs font-mono text-muted space-y-1">
+          <div><strong class="text-white">Direct Inbox:</strong> olumideadeyeminana@gmail.com</div>
+          <div><strong class="text-white">Encrypted Signal/WA:</strong> +234 814 964 0122</div>
         </div>
       </div>
     </section>
 
     <!-- =========================================================================
-         SECTION 2: TELEMETRY METRIC BENCHMARKS
-         ========================================================================= -->
-    <section class="grid grid-cols-2 lg:grid-cols-4 hairline-border bg-obsidian-card">
-      <div class="p-6 hairline-r hairline-b lg:hairline-b-0 space-y-1">
-        <div class="text-[10px] font-mono text-titanium-muted uppercase tracking-wider">PRODUCTION SYSTEMS</div>
-        <div class="text-4xl sm:text-5xl font-mono font-bold text-amber-raw">14+</div>
-        <div class="text-xs text-titanium-muted">Commercial platforms running in production</div>
-      </div>
-
-      <div class="p-6 hairline-r hairline-b lg:hairline-b-0 space-y-1">
-        <div class="text-[10px] font-mono text-titanium-muted uppercase tracking-wider">CONCURRENT WEBSOCKET FEEDS</div>
-        <div class="text-4xl sm:text-5xl font-mono font-bold text-chlorophyll">73+</div>
-        <div class="text-xs text-titanium-muted">Real-time market feeds ingested by ICT Flux</div>
-      </div>
-
-      <div class="p-6 hairline-r space-y-1">
-        <div class="text-[10px] font-mono text-titanium-muted uppercase tracking-wider">TRADE EXECUTION LATENCY</div>
-        <div class="text-4xl sm:text-5xl font-mono font-bold text-white">&lt;100ms</div>
-        <div class="text-xs text-titanium-muted">Via low-level C FFI MetaTrader bridge</div>
-      </div>
-
-      <div class="p-6 space-y-1">
-        <div class="text-[10px] font-mono text-titanium-muted uppercase tracking-wider">ACID CONCURRENCY INTEGRITY</div>
-        <div class="text-4xl sm:text-5xl font-mono font-bold text-amber-raw">100%</div>
-        <div class="text-xs text-titanium-muted">Guaranteed zero double-spending escrow</div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         SECTION 3: COMPLETE 14-PROJECT PRODUCTION LEDGER (ANTI-AI ARCHITECTURE)
-         ========================================================================= -->
-    <section id="systems" class="space-y-6 pt-6">
+       4. THE CROWN JEWEL: GOD'S EYE FRACTAL QUANT EXECUTION ENGINE
+       ========================================================================= -->
+    <section id="gods-eye" class="space-y-8 pt-8">
       
-      <!-- Section Header & Filter Controls -->
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 hairline-b pb-6">
-        <div class="space-y-2">
-          <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 text-[10px] font-mono font-bold bg-amber-raw/10 text-amber-raw border border-amber-raw/30 uppercase">ARCHITECTURAL LEDGER</span>
-            <span class="text-xs font-mono text-titanium-muted">14 VERIFIED DEPLOYMENTS</span>
+      <div class="grid-line-b pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 grid-border bg-slatecard text-industrial font-mono text-[11px] font-bold uppercase mb-2">
+            FLAGSHIP QUANTITATIVE SURVEILLANCE &amp; EXECUTION ENGINE
           </div>
-          <h2 class="text-3xl sm:text-5xl font-normal font-serif text-white tracking-tight">
-            Complete Production Systems Portfolio
+          <h2 class="text-3xl sm:text-5xl font-serif text-white tracking-tight">
+            God's Eye: Fractal Multi-Scale Architecture
           </h2>
-          <p class="text-sm text-titanium-muted max-w-2xl font-sans">
-            Every entry represents a real engineering artifact deployed with live endpoints, custom schema design, or verifiable code repositories.
+          <p class="text-sm text-muted mt-2 max-w-3xl font-sans">
+            "A sequence of small things nested inside bigger things, then reversing the case at the point of maximum retail entrapment."
           </p>
         </div>
 
-        <!-- Filter Keycaps & View Mode Switch -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          
-          <!-- Keycap Filters -->
-          <div class="flex flex-wrap gap-2 text-xs font-mono">
-            <button onclick="setFilter('all', this)" class="filter-btn active px-3 py-1.5 bg-amber-raw text-black font-bold tactile-key border border-amber-raw cursor-pointer" data-filter="all">
-              [1] ALL (14)
-            </button>
-            <button onclick="setFilter('fintech', this)" class="filter-btn px-3 py-1.5 bg-obsidian-card text-titanium-muted hover:text-white border border-hairline tactile-key cursor-pointer" data-filter="fintech">
-              [2] FINTECH &amp; QUANT
-            </button>
-            <button onclick="setFilter('logistics', this)" class="filter-btn px-3 py-1.5 bg-obsidian-card text-titanium-muted hover:text-white border border-hairline tactile-key cursor-pointer" data-filter="logistics">
-              [3] LOGISTICS &amp; POS
-            </button>
-            <button onclick="setFilter('ai', this)" class="filter-btn px-3 py-1.5 bg-obsidian-card text-titanium-muted hover:text-white border border-hairline tactile-key cursor-pointer" data-filter="ai">
-              [4] AI &amp; 3D WEBGL
-            </button>
-            <button onclick="setFilter('enterprise', this)" class="filter-btn px-3 py-1.5 bg-obsidian-card text-titanium-muted hover:text-white border border-hairline tactile-key cursor-pointer" data-filter="enterprise">
-              [5] ENTERPRISE &amp; ERP
-            </button>
-          </div>
+        <div class="font-mono text-xs text-right">
+          <span class="px-3 py-1 grid-border bg-black text-white font-bold inline-block">
+            622 REPO COMMITS // ZERO LOOKAHEAD
+          </span>
+        </div>
+      </div>
 
-          <!-- View Mode Toggle -->
-          <div class="hidden sm:flex items-center hairline-border bg-black p-0.5 text-xs font-mono">
-            <button id="viewLedgerBtn" onclick="setViewMode('ledger')" class="px-2.5 py-1 bg-obsidian-card text-amber-raw font-bold border border-amber-raw/40">
-              ▤ LEDGER
-            </button>
-            <button id="viewCardsBtn" onclick="setViewMode('cards')" class="px-2.5 py-1 text-titanium-muted hover:text-white">
-              ▦ BLUEPRINT
-            </button>
+      <!-- Architectural Deep Dive: The 4-Scale Nested Confluence -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-border bg-slatecard">
+        
+        <!-- Scale 1: Macro Range -->
+        <div class="p-6 grid-line-r grid-line-b lg:grid-line-b-0 space-y-3">
+          <div class="font-mono text-[11px] text-industrial font-bold uppercase flex items-center justify-between">
+            <span>SCALE I // THE MACRO VESSEL</span>
+            <span>DAILY / H4</span>
+          </div>
+          <h3 class="font-serif text-xl text-white">External Range Liquidity</h3>
+          <p class="text-xs text-muted leading-relaxed font-sans">
+            God's Eye continuously tracks the macro pool: Prior Day High/Low (PDH/PDL), Asian Session extremes, and weekly imbalances. This is the "big container" establishing the primary directional draw.
+          </p>
+          <div class="text-[10px] font-mono text-dim pt-2 grid-line-t">
+            Math: Volume Weighted Median · Session Extremes
+          </div>
+        </div>
+
+        <!-- Scale 2: Session Killzone -->
+        <div class="p-6 grid-line-r grid-line-b lg:grid-line-b-0 space-y-3">
+          <div class="font-mono text-[11px] text-industrial font-bold uppercase flex items-center justify-between">
+            <span>SCALE II // THE TEMPORAL GATE</span>
+            <span>H1 / M15</span>
+          </div>
+          <h3 class="font-serif text-xl text-white">Deterministic Killzone</h3>
+          <p class="text-xs text-muted leading-relaxed font-sans">
+            No trade is permitted outside mathematically specified New York and London open windows. Economic calendar feeds automatically pause order ingestion 15 minutes before high-impact CPI/NFP data releases.
+          </p>
+          <div class="text-[10px] font-mono text-dim pt-2 grid-line-t">
+            Rules: Pure Python Standard Library · No ML Drift
+          </div>
+        </div>
+
+        <!-- Scale 3: Micro Displacement -->
+        <div class="p-6 grid-line-r grid-line-b sm:grid-line-b-0 space-y-3">
+          <div class="font-mono text-[11px] text-industrial font-bold uppercase flex items-center justify-between">
+            <span>SCALE III // THE MICRO TRIGGER</span>
+            <span>M5 / M1</span>
+          </div>
+          <h3 class="font-serif text-xl text-white">Displacement &amp; FVG</h3>
+          <p class="text-xs text-muted leading-relaxed font-sans">
+            Inside the Killzone, God's Eye scans for aggressive candle body expansion (Displacement) that leaves Fair Value Gaps (FVG) and Market Structure Shifts (MSS), isolating the footprint of institutional flow.
+          </p>
+          <div class="text-[10px] font-mono text-dim pt-2 grid-line-t">
+            State: Non-blocking WebSocket ring buffers
+          </div>
+        </div>
+
+        <!-- Scale 4: The Reversal Engine -->
+        <div class="p-6 space-y-3 bg-[#131317]">
+          <div class="font-mono text-[11px] text-safety font-bold uppercase flex items-center justify-between">
+            <span>SCALE IV // THE REVERSAL</span>
+            <span>EXECUTION</span>
+          </div>
+          <h3 class="font-serif text-xl text-white">Turtle Soup Sweep</h3>
+          <p class="text-xs text-muted leading-relaxed font-sans">
+            <strong>The Core Thesis:</strong> When price sweeps the macro level, retail breakout orders flood the book. God's Eye detects the immediate close back inside the range, reverses the position aggressively, and fires a sub-100ms limit order.
+          </p>
+          <div class="text-[10px] font-mono text-safety pt-2 grid-line-t">
+            Execution: Low-level C FFI -> MetaTrader MT5
           </div>
         </div>
       </div>
 
-      <!-- =======================================================================
-           VIEW MODE 1: ARCHITECTURAL LEDGER TABLE (EDITORIAL DISCIPLINE)
-           ======================================================================= -->
-      <div id="ledgerContainer" class="hairline-border bg-obsidian-card overflow-x-auto">
-        <table class="w-full text-left border-collapse text-xs font-mono">
-          <thead>
-            <tr class="hairline-b bg-[#050608] text-[10px] text-titanium-muted tracking-wider uppercase">
-              <th class="p-4 w-16">IDX</th>
-              <th class="p-4">SYSTEM IDENTIFIER</th>
-              <th class="p-4 hidden md:table-cell">DOMAIN</th>
-              <th class="p-4 hidden lg:table-cell">LATENCY / ARCHITECTURE SLA</th>
-              <th class="p-4 hidden sm:table-cell">CORE RUNTIME STACK</th>
-              <th class="p-4 text-right">DISPATCH</th>
-            </tr>
-          </thead>
-          <tbody id="ledgerBody" class="divide-y divide-hairline">
+      <!-- God's Eye Security & Architecture Architecture Panel -->
+      <div class="grid-border bg-[#0C0C0F] p-6 sm:p-8 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 grid-line-b pb-4">
+          <div>
+            <span class="text-[10px] font-mono text-industrial uppercase tracking-widest block font-bold">AIR-GAPPED DEFENSE ARCHITECTURE</span>
+            <h3 class="text-2xl font-serif text-white">Institutional Attack Surface Mitigation</h3>
+          </div>
+          <div class="font-mono text-xs text-muted">
+            POLICY: ZERO-KNOWLEDGE EXECUTION CORE
+          </div>
+        </div>
 
-            <!-- 01. ICT FLUX -->
-            <tr class="ledger-row cursor-pointer" data-cat="fintech" onclick="toggleDrawer('drawer-1')">
-              <td class="p-4 text-amber-raw font-bold">01/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">ICT Flux — Quant Trading Terminal</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll animate-ping"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  73+ concurrent WebSocket market feeds with zero-lookahead pattern matrix and sub-100ms MT5 execution.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-amber-raw/10 text-amber-raw border border-amber-raw/30 text-[10px]">FINTECH / QUANT</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-chlorophyll font-bold">
-                &lt;100ms Trade Dispatch SLA
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                Python 3.12 · C FFI · Deriv WS · MT5 · PLpgSQL
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://ictflux.app" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>LAUNCH</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 01 -->
-            <tr id="drawer-1" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ ARCHITECTURE SPEC ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Engineered to eliminate retail broker slippage. Ingests raw tick streams via Deriv WebSockets, routes signals through an institutional ICT/SMC mathematical filter, and executes trades across low-level C memory pointers into MetaTrader 5.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ CONCURRENCY CONTROLS ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Asyncio worker loop pinned to CPU cores, zero Python GIL bottlenecks during market volatility, ring-buffered memory arrays for order state tracking.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://ictflux.app" target="_blank" class="text-amber-raw hover:underline flex items-center gap-1">
-                        <span>● Live Production App: ictflux.app</span> ↗
-                      </a>
-                      <a href="https://github.com/Olumidenana/ict-trader" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● Engine Repository: gh/Olumidenana/ict-trader</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+          <div class="space-y-2">
+            <span class="text-bone font-bold flex items-center gap-2">
+              <span class="text-industrial">1.</span> UNIDIRECTIONAL TELEMETRY MIRROR
+            </span>
+            <p class="text-muted leading-relaxed text-[11px] font-sans">
+              The public web interfaces (e.g. ictflux.app) only read sanitized tick outputs from an egress-only read-only telemetry mirror. The actual order routing daemon runs on an air-gapped private VPS with zero public ingress ports.
+            </p>
+          </div>
 
-            <!-- 02. CHOPOS -->
-            <tr class="ledger-row cursor-pointer" data-cat="logistics" onclick="toggleDrawer('drawer-2')">
-              <td class="p-4 text-amber-raw font-bold">02/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">ChopOS — Multi-Merchant POS &amp; Escrow</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  Hyperlocal food logistics engine enforcing Paystack Subaccount Split API with zero double-spending.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-chlorophyll/10 text-chlorophyll border border-chlorophyll/30 text-[10px]">LOGISTICS / ESCROW</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-titanium">
-                ACID Double-Spend Elimination
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                Next.js · Paystack Split · Postgres Row Locks · KDS Relay
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://food-vendor-ordering.vercel.app" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>TEST POS</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 02 -->
-            <tr id="drawer-2" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ PROBLEM SOLVED ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Eliminated the crippling 25–30% intermediary commission on Nigerian food vendors by automating real-time escrow splits directly to merchant and dispatch courier bank accounts upon verified order hand-off.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ DATABASE LOCKS ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Row-level locks (`SELECT ... FOR UPDATE`) prevent cart tampering or concurrent wallet deductions during peak campus lunch order spikes.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://food-vendor-ordering.vercel.app" target="_blank" class="text-amber-raw hover:underline flex items-center gap-1">
-                        <span>● Live POS Storefront</span> ↗
-                      </a>
-                      <a href="https://github.com/Olumidenana/food-vendor-ordering" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repository: food-vendor-ordering</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+          <div class="space-y-2">
+            <span class="text-bone font-bold flex items-center gap-2">
+              <span class="text-industrial">2.</span> HARD RISK CIRCUIT BREAKERS
+            </span>
+            <p class="text-muted leading-relaxed text-[11px] font-sans">
+              Risk parameters (daily loss floor, consecutive loss halt, maximum position delta) are compiled directly into the binary. No remote client, API call, or web command has the permission to modify risk thresholds.
+            </p>
+          </div>
 
-            <!-- 03. OJAJA LUXURY CINEMAS -->
-            <tr class="ledger-row cursor-pointer" data-cat="enterprise" onclick="toggleDrawer('drawer-3')">
-              <td class="p-4 text-amber-raw font-bold">03/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">Ojaja Luxury Cinemas — Box Office Portal</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  Netflix-grade movie booking platform for Osun State's premier 5-star resort with QR turnstile boarding passes.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-amber-raw/10 text-amber-raw border border-amber-raw/30 text-[10px]">LUXURY ENTERTAINMENT</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-titanium">
-                Zero Seat Collision Lock
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                Vanilla JS · Paystack Webhook · Turnstile QR · Alt+A Console
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://ojaja-cinemas.vercel.app" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>EXPLORE</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 03 -->
-            <tr id="drawer-3" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ LUXURY EXPERIENCES ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Custom 1-click Dolby Atmos trailer player, interactive seat map matrix, instant Paystack checkout (Cards, USSD, Bank Transfer), and automated turnstile QR tickets with real-time box office redemption console.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ BOX OFFICE KEYBOARD CONSOLE ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Box office ticketing clerks utilize native keyboard shortcut `[Alt+A]` to initiate ticket redemption and audit daily revenue without mouse dependency.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://ojaja-cinemas.vercel.app" target="_blank" class="text-amber-raw hover:underline flex items-center gap-1">
-                        <span>● Live Portal: ojaja-cinemas.vercel.app</span> ↗
-                      </a>
-                      <a href="https://github.com/Olumidenana/ojaja-cinemas" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repo: ojaja-cinemas</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
+          <div class="space-y-2">
+            <span class="text-bone font-bold flex items-center gap-2">
+              <span class="text-industrial">3.</span> C FFI MEMORY POINTERS
+            </span>
+            <p class="text-muted leading-relaxed text-[11px] font-sans">
+              Order dispatch avoids slow HTTP or JSON serialization. Python passes raw struct pointers directly to MetaTrader's C-runtime API via FFI, eliminating memory leaks and neutralizing MITM network injection vectors.
+            </p>
+          </div>
+        </div>
 
-            <!-- 04. AMAZOE SOLUTIONS -->
-            <tr class="ledger-row cursor-pointer" data-cat="enterprise" onclick="toggleDrawer('drawer-4')">
-              <td class="p-4 text-amber-raw font-bold">04/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">Amazoe Solutions — Enterprise Systems Consultancy</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  Official hub delivering custom software and WhatsApp AI Business Automations for Nigerian enterprises.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-chlorophyll/10 text-chlorophyll border border-chlorophyll/30 text-[10px]">CONSULTANCY HUB</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-titanium">
-                Enterprise Client SLA
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                Modern Vanilla JS · WhatsApp API · Business Registry
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://amazoe-solutions.vercel.app" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>VISIT</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 04 -->
-            <tr id="drawer-4" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ COMMERCIAL IMPACT ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Serving schools, hotels, and merchants across Osun and Lagos with custom software builds, automated client acquisition flows, and WhatsApp AI business systems.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ CLIENT REPERTOIRE ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Deployed ERPs for leading institutions including The Olive Branches Schools Osogbo and luxury hospitality suites.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://amazoe-solutions.vercel.app" target="_blank" class="text-amber-raw hover:underline flex items-center gap-1">
-                        <span>● Live Site: amazoe-solutions.vercel.app</span> ↗
-                      </a>
-                      <a href="https://github.com/Olumidenana/amazoe-solutions" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repo: amazoe-solutions</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <!-- 05. TOONFORGE -->
-            <tr class="ledger-row cursor-pointer" data-cat="ai" onclick="toggleDrawer('drawer-5')">
-              <td class="p-4 text-amber-raw font-bold">05/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">ToonForge — In-Browser 3D Animation Studio</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-amber-raw"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  Browser-native 3D character animation and scripting studio powered by Three.js WebGL and LLM phoneme lip-syncing.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-purple-400/10 text-purple-400 border border-purple-400/30 text-[10px]">3D WEBGL &amp; AI</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-chlorophyll font-bold">
-                60 FPS In-Browser Renders
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                Three.js WebGL · Claude/Gemini API · Cloud Transcoder
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://github.com/Olumidenana/toonforge" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>REPO</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 05 -->
-            <tr id="drawer-5" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ CREATIVE LIBERATION ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Liberates African creators from prohibitive $100+/month proprietary software licenses by moving 3D character rigging, camera sequencing, and dialogue audio directly into the browser.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ PHONEME LIP-SYNC ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Integrates real-time audio FFT analysis to drive blend shapes and viseme mouth morph targets synchronously with synthetic character voices.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://github.com/Olumidenana/toonforge" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repository: toonforge</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <!-- 06. VIDEO ASSEMBLER SAAS -->
-            <tr class="ledger-row cursor-pointer" data-cat="ai" onclick="toggleDrawer('drawer-6')">
-              <td class="p-4 text-amber-raw font-bold">06/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">Video Assembler SaaS — AuraCut Cloud Studio</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  700KB+ TypeScript multi-track timeline orchestrator with distributed cloud FFMPEG rendering cluster.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-purple-400/10 text-purple-400 border border-purple-400/30 text-[10px]">CLOUD TRANSCODER</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-titanium">
-                -14 LUFS Audio Normalization
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                TypeScript · Cloud FFMPEG · Google Cloud · Audio Worklets
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://video-assembler-saas.vercel.app" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>LAUNCH</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 06 -->
-            <tr id="drawer-6" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ MULTI-TRACK ORCHESTRATION ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Custom canvas-based video timeline engine capable of handling picture-in-picture, subtitle burn-in, B-roll overlays, and synchronized audio waveforms directly in the browser DOM.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ DISTRIBUTED RENDERING ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Offloads heavy H.264/H.265 transcoding tasks to headless FFMPEG cloud workers, streaming progress via WebSockets and writing directly to GCS.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://video-assembler-saas.vercel.app" target="_blank" class="text-amber-raw hover:underline flex items-center gap-1">
-                        <span>● Live SaaS: video-assembler-saas.vercel.app</span> ↗
-                      </a>
-                      <a href="https://github.com/Olumidenana/video-assembler-saas" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repo: video-assembler-saas</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <!-- 07. MOTION OAU -->
-            <tr class="ledger-row cursor-pointer" data-cat="logistics" onclick="toggleDrawer('drawer-7')">
-              <td class="p-4 text-amber-raw font-bold">07/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">Motion OAU — Transit Graph &amp; Campus Pulse</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  Haversine-routed campus mobility network, shuttle telemetry, and verified safe night-walk corridors.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-chlorophyll/10 text-chlorophyll border border-chlorophyll/30 text-[10px]">MOBILITY NETWORK</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-chlorophyll font-bold">
-                Real-Time GPS Polling
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                Next.js · Supabase Realtime · Leaflet GPS · Haversine Routing
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://motion-oau.vercel.app" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>DISCOVER</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 07 -->
-            <tr id="drawer-7" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ CAMPUS TRANSIT SOLVED ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Solves acute campus congestion across OAU's sprawling 13-kilometer estate through live shuttle batching, reading room occupancy telemetry, and peer safety beacons.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ HAVERSINE ROUTING ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Calculates great-circle distance matrices in real-time to pair students walking the same nocturnal routes between halls of residence and academic libraries.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://motion-oau.vercel.app" target="_blank" class="text-amber-raw hover:underline flex items-center gap-1">
-                        <span>● Live Web App: motion-oau.vercel.app</span> ↗
-                      </a>
-                      <a href="https://github.com/Olumidenana/motion-oau" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repo: motion-oau</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <!-- 08. EDUCORE OS -->
-            <tr class="ledger-row cursor-pointer" data-cat="enterprise" onclick="toggleDrawer('drawer-8')">
-              <td class="p-4 text-amber-raw font-bold">08/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">EduCore OS — School Management ERP</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  Tuition accounting, student attendance ledgers, parent portals, and automated PDF report cards.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-blue-400/10 text-blue-400 border border-blue-400/30 text-[10px]">EDUCATION ERP</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-titanium">
-                Zero Invoicing Desync
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                Node.js · Express · PostgreSQL · PDFKit Engine
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://school-portal-os.vercel.app" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>ACCESS</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 08 -->
-            <tr id="drawer-8" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ INSTITUTIONAL DEPLOYMENT ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Custom-engineered for The Olive Branches Schools Osogbo, replacing fragmented spreadsheets with an immutable audit log for tuition reconciliation and grade submission.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ PDF GENERATION ENGINE ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Generates high-resolution academic transcripts on the fly with cryptographic verification hashes for university admissions officers.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://school-portal-os.vercel.app" target="_blank" class="text-amber-raw hover:underline flex items-center gap-1">
-                        <span>● Live Portal: school-portal-os.vercel.app</span> ↗
-                      </a>
-                      <a href="https://github.com/Olumidenana/school-portal-os" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repo: school-portal-os</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <!-- 09. LUXE SALON -->
-            <tr class="ledger-row cursor-pointer" data-cat="enterprise" onclick="toggleDrawer('drawer-9')">
-              <td class="p-4 text-amber-raw font-bold">09/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">Luxe Salon &amp; Spa Booking System</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  Stylist appointment slot allocation with deposit escrow and automated WhatsApp reminders.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-pink-400/10 text-pink-400 border border-pink-400/30 text-[10px]">APPOINTMENT ESCROW</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-titanium">
-                Zero Double-Booking Lock
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                Vanilla JS · Paystack Escrow · Calendar Engine
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://beauty-salon-booking.vercel.app" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>BOOKING</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 09 -->
-            <tr id="drawer-9" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ PROBLEM SOLVED ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Eliminated client no-shows by requiring a small refundable deposit held in escrow via Paystack, triggering automated WhatsApp alerts with calendar ICS attachments.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ CALENDAR MATRIX ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Slot locking engine checks stylist availability across simultaneous chairs to eliminate double-booking overlaps.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://beauty-salon-booking.vercel.app" target="_blank" class="text-amber-raw hover:underline flex items-center gap-1">
-                        <span>● Live Salon Booking App</span> ↗
-                      </a>
-                      <a href="https://github.com/Olumidenana/beauty-salon-booking" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repo: beauty-salon-booking</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <!-- 10. AURASKIN -->
-            <tr class="ledger-row cursor-pointer" data-cat="enterprise" onclick="toggleDrawer('drawer-10')">
-              <td class="p-4 text-amber-raw font-bold">10/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">AuraSkin — Luxury Cosmetic E-Commerce</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  Paystack multi-channel checkout with persistent shopping carts and real-time inventory decrement.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-chlorophyll/10 text-chlorophyll border border-chlorophyll/30 text-[10px]">COMMERCE</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-titanium">
-                Optimistic Cart Sync
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                HTML5 · Tailwind CSS · Paystack Standard · LocalStorage
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://skincare-brand-store.vercel.app" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>STOREFRONT</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 10 -->
-            <tr id="drawer-10" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ FAST CHECKOUT ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Built for luxury consumer purchasing. Seamlessly initiates debit card, bank transfer, and USSD payments with automatic inventory status decrement.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ OFFLINE RESILIENCE ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Persists client baskets across browser restarts and intermittent Nigerian mobile data drops.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://skincare-brand-store.vercel.app" target="_blank" class="text-amber-raw hover:underline flex items-center gap-1">
-                        <span>● Live Storefront</span> ↗
-                      </a>
-                      <a href="https://github.com/Olumidenana/skincare-brand-store" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repo: skincare-brand-store</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <!-- 11. BIZ BOOKING ENGINE -->
-            <tr class="ledger-row cursor-pointer" data-cat="enterprise" onclick="toggleDrawer('drawer-11')">
-              <td class="p-4 text-amber-raw font-bold">11/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">Biz Booking Engine — Multi-Tenant POS</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  Multi-tenant service scheduling and table/room reservation engine with staff commission reconciliation.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-titanium-muted/10 text-titanium-muted border border-titanium-muted/30 text-[10px]">MULTI-TENANT ERP</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-titanium">
-                Tenant Database Isolation
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                Node.js · Express · PostgreSQL · Paystack Split
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://github.com/Olumidenana/biz-booking-engine" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>REPO</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 11 -->
-            <tr id="drawer-11" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ MULTI-TENANCY ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Architected to power diverse hospitality and wellness businesses with isolated schema tables, custom business hours, and automated tax reporting.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ COMMISSION RECONCILIATION ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Splits gratuities and technician percentages automatically at midnight to eliminate payroll calculation friction.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://github.com/Olumidenana/biz-booking-engine" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repo: biz-booking-engine</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <!-- 12. ENGLISH DEMO SIMULATOR -->
-            <tr class="ledger-row cursor-pointer" data-cat="ai" onclick="toggleDrawer('drawer-12')">
-              <td class="p-4 text-amber-raw font-bold">12/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">English Demo Simulator — Conversational AI</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  Interactive voice assessment app testing verbal fluency, listening comprehension, and grammar.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-purple-400/10 text-purple-400 border border-purple-400/30 text-[10px]">EDTECH AI</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-chlorophyll font-bold">
-                Real-Time Audio Scoring
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                JavaScript · Web Speech API · LLM Assessment Engine
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://github.com/Olumidenana/english-demo-simulator" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>SIMULATOR</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 12 -->
-            <tr id="drawer-12" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ VERBAL EVALUATION ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Engages remote English learners in dynamic situational dialogues, analyzing vocal pauses, syntactic coherence, and phoneme precision.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ SPEECH SYNTHESIS ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Leverages browser-native Web Speech synthesis to deliver zero-latency spoken responses without cloud API token overhead.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://github.com/Olumidenana/english-demo-simulator" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repo: english-demo-simulator</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <!-- 13. POLISHED AI SAAS -->
-            <tr class="ledger-row cursor-pointer" data-cat="ai" onclick="toggleDrawer('drawer-13')">
-              <td class="p-4 text-amber-raw font-bold">13/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">Polished.ai — Content Polishing Engine</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  Linguistic engine stripping corporate filler and robotic cadence to produce punchy executive prose.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-purple-400/10 text-purple-400 border border-purple-400/30 text-[10px]">NATURAL LANGUAGE</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-titanium">
-                Anti-Slop Linguistic Linters
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                Next.js · Gemini/Claude API · Regex Style Linters
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://github.com/Olumidenana/polished-ai-saas" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>PROSE ENGINE</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 13 -->
-            <tr id="drawer-13" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ HUMAN VOICE PRESERVATION ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Actively detects and removes clichéd AI idioms ("delve", "tapestry", "in today's fast-paced world"), replacing them with concrete nouns and active verbs.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ DETERMINISTIC LINTERS ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Pre-processes text with deterministic AST syntax checkers before dispatching structured prompt matrices to model endpoints.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://github.com/Olumidenana/polished-ai-saas" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repo: polished-ai-saas</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-            <!-- 14. DAILY FUEL APP -->
-            <tr class="ledger-row cursor-pointer" data-cat="enterprise" onclick="toggleDrawer('drawer-14')">
-              <td class="p-4 text-amber-raw font-bold">14/</td>
-              <td class="p-4">
-                <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
-                  <span class="scramble-hover">Daily Fuel App — Builder Habit Engine</span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-                </div>
-                <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
-                  Lightweight progressive web app for disciplined deep work tracking and sprint execution logs.
-                </div>
-              </td>
-              <td class="p-4 hidden md:table-cell">
-                <span class="px-2 py-0.5 bg-titanium-muted/10 text-titanium-muted border border-titanium-muted/30 text-[10px]">PRODUCTIVITY PWA</span>
-              </td>
-              <td class="p-4 hidden lg:table-cell text-chlorophyll font-bold">
-                100% Offline Resilience
-              </td>
-              <td class="p-4 hidden sm:table-cell text-titanium-muted">
-                PWA Service Worker · LocalStorage · Offline-First JS
-              </td>
-              <td class="p-4 text-right">
-                <a href="https://github.com/Olumidenana/daily-fuel-app" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-amber-raw text-amber-raw hover:bg-amber-raw hover:text-black font-bold transition-all inline-flex items-center gap-1">
-                  <span>OFFLINE PWA</span> <span>→</span>
-                </a>
-              </td>
-            </tr>
-            <!-- Drawer 14 -->
-            <tr id="drawer-14" class="hidden bg-[#0A0D14] hairline-b">
-              <td colspan="6" class="p-6 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-                  <div class="space-y-1">
-                    <span class="text-amber-raw font-bold uppercase tracking-wider">[ BUILDER DISCIPLINE ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Zero tracking servers, zero analytics bloat. Stores all daily sprint progress locally on client hardware, syncs instantly with service workers.
-                    </p>
-                  </div>
-                  <div class="space-y-1">
-                    <span class="text-titanium font-bold uppercase tracking-wider">[ SERVICE WORKER PWA ]</span>
-                    <p class="text-titanium-muted text-[11px] leading-relaxed">
-                      Installs cleanly to Android / iOS home screens as a native application with zero runtime latency.
-                    </p>
-                  </div>
-                  <div class="space-y-2">
-                    <span class="text-chlorophyll font-bold uppercase tracking-wider">[ VERIFIED ARTIFACTS ]</span>
-                    <div class="flex flex-col gap-1.5">
-                      <a href="https://github.com/Olumidenana/daily-fuel-app" target="_blank" class="text-titanium-muted hover:text-white flex items-center gap-1">
-                        <span>● GitHub Repo: daily-fuel-app</span> ↗
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-
-      <!-- =======================================================================
-           VIEW MODE 2: TACTILE BLUEPRINT CARDS (OPTIONAL GRID SWITCH)
-           ======================================================================= -->
-      <div id="cardsContainer" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Rendered dynamically or shared -->
+        <div class="pt-4 grid-line-t flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
+          <div class="text-muted text-[11px]">
+            Repositories: <code class="text-bone">ict-trader (622 commits)</code> · <code class="text-bone">gods-eye-flux (35 commits)</code> · <code class="text-bone">gods-eye-core</code>
+          </div>
+          <a href="https://github.com/Olumidenana/ict-trader" target="_blank" class="px-4 py-2 bg-industrial text-black font-bold mech-btn text-[11px] hover:brightness-110">
+            AUDIT GOD'S EYE CORE REPO ↗
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- =========================================================================
-         SECTION 4: TECHNICAL RUNTIME SPECS (ENGINEERING RIGOR)
-         ========================================================================= -->
-    <section id="mechanics" class="space-y-6 pt-6">
-      <div class="space-y-2 hairline-b pb-4">
-        <span class="px-2 py-0.5 text-[10px] font-mono font-bold bg-amber-raw/10 text-amber-raw border border-amber-raw/30 uppercase">SYSTEM ARCHITECTURE</span>
-        <h2 class="text-3xl sm:text-4xl font-normal font-serif text-white tracking-tight">
-          Mechanical Rigor Applied to Distributed Software
+       5. REPOSITORY AUDIT: COMPLETE CATALOG & PRODUCTION STATUS
+       ========================================================================= -->
+    <section id="systems" class="space-y-8 pt-8">
+      
+      <div class="grid-line-b pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 grid-border bg-slatecard text-white font-mono text-[11px] font-bold uppercase mb-2">
+            COMPLETE CODEBASE INVENTORY // PRODUCTION vs. LAB STATUS
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-serif text-white tracking-tight">
+            Production Systems &amp; Repository Audit
+          </h2>
+          <p class="text-sm text-muted mt-2 max-w-3xl font-sans">
+            Transparent disclosure of complete production deployments versus in-progress engineering prototypes. Click any record to inspect architecture, database locks, and code repositories.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2 font-mono text-xs">
+          <button onclick="filterAudit('all')" class="audit-filter-btn px-3 py-1 bg-white text-black font-bold mech-btn active" data-cat="all">
+            ALL REPOS
+          </button>
+          <button onclick="filterAudit('complete')" class="audit-filter-btn px-3 py-1 grid-border bg-slatecard text-muted hover:text-white mech-btn" data-cat="complete">
+            SHIPPED (14)
+          </button>
+          <button onclick="filterAudit('core')" class="audit-filter-btn px-3 py-1 grid-border bg-slatecard text-muted hover:text-white mech-btn" data-cat="core">
+            QUANT &amp; CORE
+          </button>
+        </div>
+      </div>
+
+      <!-- The Architectural Ledger -->
+      <div class="grid-border bg-slatecard divide-y divide-rule font-mono text-xs">
+        
+        <!-- HEADER ROW -->
+        <div class="hidden md:grid grid-cols-12 p-3 bg-[#070708] text-[10px] text-dim uppercase tracking-wider font-bold">
+          <div class="col-span-1">STATUS</div>
+          <div class="col-span-4">REPOSITORY &amp; SYSTEM NAME</div>
+          <div class="col-span-2">COMMITS / RUNTIME</div>
+          <div class="col-span-3">CONCURRENCY / ESCROW SPEC</div>
+          <div class="col-span-2 text-right">INSPECT SPEC</div>
+        </div>
+
+        <!-- 1. ICT TRADER / GODS EYE CORE -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete core" onclick="toggleAccordion('acc-1')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white flex items-center gap-2">
+              <span>God's Eye Core (ict-trader)</span>
+              <span class="font-mono text-[10px] text-industrial font-semibold px-1.5 py-0.2 bg-black grid-border">FLAGSHIP</span>
+            </div>
+            <div class="col-span-2 text-muted">
+              622 Commits · Python 3.12 / C FFI
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              Deterministic SMC/ICT rules, 73 WebSocket feeds, sub-100ms MT5 execution
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 1 -->
+          <div id="acc-1" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ THE SYSTEM ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Institutional trading engine built with pure Python 3.12 standard library. Ingests Deriv WS feeds, applies New York/London Killzones, scans for liquidity sweeps, and executes via low-level MT5 C-bridge.
+                </p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-bone font-bold uppercase">[ ATTACK DEFENSE ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Zero open web ports. Runs on a hardened private host. The public UI receives telemetry via an unauthenticated, write-forbidden Redis publish channel.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <span class="text-safety font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://github.com/Olumidenana/ict-trader" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: Olumidenana/ict-trader (622 commits) ↗
+                  </a>
+                  <a href="https://ictflux.app" target="_blank" class="text-industrial hover:underline">
+                    Public Telemetry Viewer: ictflux.app ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. CHOPOS -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-2')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              ChopOS — Multi-Vendor POS &amp; Escrow
+            </div>
+            <div class="col-span-2 text-muted">
+              8 Commits · Next.js / PostgreSQL
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              Paystack Subaccount Split API with zero double-spending row locks
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 2 -->
+          <div id="acc-2" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ THE SYSTEM ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Food vendor operating system for Nigerian campuses and markets. Automates real-time split disbursements: vendor gets 90%, courier gets flat dispatch fee, platform retains 5% escrow margin.
+                </p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-bone font-bold uppercase">[ DATABASE CONCURRENCY ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Enforces `SELECT FOR UPDATE` on cart balances to eliminate race conditions during high-volume lunch rushes.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <span class="text-safety font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://food-vendor-ordering.vercel.app" target="_blank" class="text-industrial hover:underline">
+                    Live Storefront: food-vendor-ordering.vercel.app ↗
+                  </a>
+                  <a href="https://github.com/Olumidenana/food-vendor-ordering" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: Olumidenana/food-vendor-ordering ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. OJAJA CINEMAS -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-3')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              Ojaja Luxury Cinemas — Box Office Portal
+            </div>
+            <div class="col-span-2 text-muted">
+              15 Commits · Vanilla JS / Webhooks
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              Interactive Dolby Atmos trailer player, QR turnstile passes &amp; Alt+A console
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 3 -->
+          <div id="acc-3" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ THE SYSTEM ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Box office and guest booking engine engineered for Osun State's premier 5-star resort. Generates cryptographically hashed QR boarding passes verified at turnstiles.
+                </p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-bone font-bold uppercase">[ BOX OFFICE SHORTCUTS ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Ticketing clerks use keyboard accelerator `[Alt+A]` to access the administrative reconciliation dashboard without client awareness.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <span class="text-safety font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://ojaja-cinemas.vercel.app" target="_blank" class="text-industrial hover:underline">
+                    Live Portal: ojaja-cinemas.vercel.app ↗
+                  </a>
+                  <a href="https://github.com/Olumidenana/ojaja-cinemas" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: Olumidenana/ojaja-cinemas ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. VIDEO ASSEMBLER SAAS -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-4')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              AuraCut — Cloud Video Assembler
+            </div>
+            <div class="col-span-2 text-muted">
+              39 Commits · TypeScript / FFMPEG
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              700KB+ multi-track canvas timeline orchestrator, distributed cloud transcode
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 4 -->
+          <div id="acc-4" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ THE SYSTEM ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Browser-based multi-track timeline video editor for short-form clippers. Ingests raw video, aligns audio to -14 LUFS broadcast standards, and dispatches to headless cloud FFMPEG workers.
+                </p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-bone font-bold uppercase">[ PERFORMANCE ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Canvas rendering loop runs decoupled from the React state tree, guaranteeing smooth 60 FPS playback during timeline scrubbing.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <span class="text-safety font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://video-assembler-saas.vercel.app" target="_blank" class="text-industrial hover:underline">
+                    Live SaaS: video-assembler-saas.vercel.app ↗
+                  </a>
+                  <a href="https://github.com/Olumidenana/video-assembler-saas" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: video-assembler-saas ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. TOONFORGE -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-5')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              ToonForge — In-Browser 3D Studio
+            </div>
+            <div class="col-span-2 text-muted">
+              20 Commits · Three.js WebGL / AI
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              Browser-native 3D character animation and scripting with phoneme lip-syncing
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 5 -->
+          <div id="acc-5" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ THE SYSTEM ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Developed to liberate African creators from prohibitive $100+/mo animation licenses. Direct Three.js mesh morphing drives 3D viseme targets synchronized with synthesized audio.
+                </p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-bone font-bold uppercase">[ REPOSITORY AUDIT ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Active studio codebase with custom GLTF loader pipelines and shader presets for low-spec GPU hardware.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <span class="text-safety font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://github.com/Olumidenana/toonforge" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: Olumidenana/toonforge (20 commits) ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. SCHOOL PORTAL OS -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-6')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              EduCore OS — School Management ERP
+            </div>
+            <div class="col-span-2 text-muted">
+              30 Commits · Node.js / PostgreSQL
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              Deployed for The Olive Branches Schools Osogbo; tuition audit ledgers &amp; PDFKit
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 6 -->
+          <div id="acc-6" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ THE SYSTEM ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Full institutional ERP replacing paper receipts with an immutable ledger for tuition tracking, term grade computation, and automated parent WhatsApp notifications.
+                </p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-bone font-bold uppercase">[ DEPLOYED INSTITUTION ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Live operational deployment at The Olive Branches Schools Osogbo, serving thousands of students and faculty.
+                </p>
+              </div>
+              <div class="space-y-2">
+                <span class="text-safety font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://school-portal-os.vercel.app" target="_blank" class="text-industrial hover:underline">
+                    Live Portal: school-portal-os.vercel.app ↗
+                  </a>
+                  <a href="https://github.com/Olumidenana/school-portal-os" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: school-portal-os (30 commits) ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. BEAUTY SALON BOOKING -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-7')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              Luxe Salon &amp; Spa Booking System
+            </div>
+            <div class="col-span-2 text-muted">
+              14 Commits · Paystack Escrow
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              No-show deposit locking, real-time chair availability matrix
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 7 -->
+          <div id="acc-7" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ THE SYSTEM ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Eliminates salon revenue loss from client no-shows by collecting a deposit in escrow via Paystack, released to the stylist upon service check-in.
+                </p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-bone font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://beauty-salon-booking.vercel.app" target="_blank" class="text-industrial hover:underline">
+                    Live Booking: beauty-salon-booking.vercel.app ↗
+                  </a>
+                  <a href="https://github.com/Olumidenana/beauty-salon-booking" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: beauty-salon-booking (14 commits) ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. MOTION OAU -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-8')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              Motion OAU — Campus Mobility &amp; Safety
+            </div>
+            <div class="col-span-2 text-muted">
+              Live Campus App · Leaflet GPS
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              Haversine route clustering, night-walk corridor safety beacons
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 8 -->
+          <div id="acc-8" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ THE SYSTEM ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Campus mobility network mapping OAU's 13km road network. Features live shuttle batching and peer safety corridors for nocturnal campus walkers.
+                </p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-bone font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://motion-oau.vercel.app" target="_blank" class="text-industrial hover:underline">
+                    Live App: motion-oau.vercel.app ↗
+                  </a>
+                  <a href="https://github.com/Olumidenana/motion-oau" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: motion-oau ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. AMAZOE SOLUTIONS -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-9')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              Amazoe Solutions — Enterprise Hub
+            </div>
+            <div class="col-span-2 text-muted">
+              Live Commercial Portal
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              Official consultancy hub for enterprise workflows and business automation
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 9 -->
+          <div id="acc-9" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ THE SYSTEM ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Delivers custom software, WhatsApp AI Business Automations, and enterprise accounting setups for merchants across Osun and Lagos.
+                </p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-bone font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://amazoe-solutions.vercel.app" target="_blank" class="text-industrial hover:underline">
+                    Live Portal: amazoe-solutions.vercel.app ↗
+                  </a>
+                  <a href="https://github.com/Olumidenana/amazoe-solutions" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: amazoe-solutions ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. EDITORIAL ENGINE -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-10')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              Editorial Engine (71 Commits)
+            </div>
+            <div class="col-span-2 text-muted">
+              71 Commits · Node.js / AST Linters
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              High-volume publishing orchestrator and typographic content compiler
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 10 -->
+          <div id="acc-10" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ THE SYSTEM ]</span>
+                <p class="text-muted text-[11px] font-sans leading-relaxed">
+                  Specialized engine for compiling editorial publications, book-length technical documentation, and structured typography.
+                </p>
+              </div>
+              <div class="space-y-1">
+                <span class="text-bone font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://github.com/Olumidenana/editorial-engine" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: editorial-engine (71 commits) ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. AURASKIN STORE -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-11')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              AuraSkin — Luxury Cosmetic Store
+            </div>
+            <div class="col-span-2 text-muted">
+              Live E-Commerce · Paystack
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              Optimistic shopping cart sync, instant payment webhook verification
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 11 -->
+          <div id="acc-11" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://skincare-brand-store.vercel.app" target="_blank" class="text-industrial hover:underline">
+                    Live Store: skincare-brand-store.vercel.app ↗
+                  </a>
+                  <a href="https://github.com/Olumidenana/skincare-brand-store" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: skincare-brand-store ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. BIZ BOOKING ENGINE -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-12')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              Biz Booking Engine — Multi-Tenant POS
+            </div>
+            <div class="col-span-2 text-muted">
+              Node.js / PostgreSQL
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              Multi-tenant service scheduling and table/room reservation engine
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 12 -->
+          <div id="acc-12" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://github.com/Olumidenana/biz-booking-engine" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: biz-booking-engine ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. ACADEMIC PARAPHRASER -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-13')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              Academic Paraphraser Engine
+            </div>
+            <div class="col-span-2 text-muted">
+              Python 3.12 / FastAPIs
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              Linguistic restructuring engine preserving citation semantics and scholarly rigor
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 13 -->
+          <div id="acc-13" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://github.com/Olumidenana/academic-paraphraser-engine" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: academic-paraphraser-engine ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. DAILY FUEL APP -->
+        <div class="audit-row p-4 hover:bg-surface2 transition-colors cursor-pointer" data-category="complete" onclick="toggleAccordion('acc-14')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-safety inline-block"></span>
+              <span class="text-safety font-bold text-[10px]">PRODUCTION</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-white">
+              Daily Fuel — Builder Discipline PWA
+            </div>
+            <div class="col-span-2 text-muted">
+              Offline PWA / Service Worker
+            </div>
+            <div class="col-span-3 text-bone text-[11px] font-sans">
+              100% offline-first engineering sprint tracker; zero analytics tracking
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-industrial hover:underline text-[11px] font-bold">EXPAND ARCHITECTURE ↓</span>
+            </div>
+          </div>
+          <!-- Accordion 14 -->
+          <div id="acc-14" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#09090C] grid-border grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div class="space-y-1">
+                <span class="text-industrial font-bold uppercase">[ ACCESS CODE ]</span>
+                <div class="flex flex-col gap-1 text-[11px]">
+                  <a href="https://github.com/Olumidenana/daily-fuel-app" target="_blank" class="text-bone hover:text-industrial underline">
+                    GitHub Repo: daily-fuel-app ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IN-PROGRESS / LAB EXPERIMENTAL REPOSITORIES -->
+        <div class="audit-row p-4 bg-[#0D0D10] text-muted cursor-pointer" data-category="lab" onclick="toggleAccordion('acc-lab')">
+          <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-2">
+            <div class="col-span-1 flex items-center gap-1.5">
+              <span class="w-2 h-2 bg-amber-raw inline-block"></span>
+              <span class="text-amber-raw font-bold text-[10px]">LAB / R&amp;D</span>
+            </div>
+            <div class="col-span-4 font-sans font-bold text-base text-bone">
+              In-Progress &amp; Internal Lab Prototypes (5 Projects)
+            </div>
+            <div class="col-span-2 text-dim text-xs">
+              Scratch &amp; R&amp;D Repos
+            </div>
+            <div class="col-span-3 text-dim text-[11px] font-sans">
+              English Demo Simulator, Polished AI, gods-eye-v3, gods-eye-clean, mingit
+            </div>
+            <div class="col-span-2 text-right">
+              <span class="text-bone hover:underline text-[11px] font-bold">VIEW AUDIT NOTES ↓</span>
+            </div>
+          </div>
+          <!-- Accordion Lab -->
+          <div id="acc-lab" class="drawer-content pt-0">
+            <div class="mt-4 p-5 bg-[#08080A] grid-border space-y-3 font-mono text-xs">
+              <div class="text-bone font-bold uppercase">[ LAB PROTOTYPE TRANSPARENCY ]</div>
+              <ul class="space-y-2 text-[11px] text-muted font-sans list-disc list-inside">
+                <li><strong class="text-bone">gods-eye-v3 &amp; gods-eye-clean:</strong> Experimental testing branches for order flow delta algorithms prior to merging into master <code class="text-industrial">ict-trader</code>.</li>
+                <li><strong class="text-bone">english-demo-simulator:</strong> Single-sprint voice evaluation prototype utilizing browser SpeechRecognition.</li>
+                <li><strong class="text-bone">polished-ai-saas:</strong> Early NLP interface exploring LLM prompt linting before being incorporated into the larger Editorial Engine.</li>
+                <li><strong class="text-bone">mingit / desk_gen:</strong> Local dev automation scripts for developer setup.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+       6. UNCOMPROMISING SECURITY ARCHITECTURE
+       ========================================================================= -->
+    <section id="security" class="space-y-6 pt-8">
+      <div class="grid-line-b pb-4">
+        <span class="text-[11px] font-mono text-industrial uppercase tracking-widest font-bold">
+          DEFENSE SPECIFICATION // ZERO COMPROMISE
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-serif text-white tracking-tight mt-1">
+          How Every Connected System Is Hardened
         </h2>
-        <p class="text-sm text-titanium-muted max-w-3xl font-sans">
-          How mechanical engineering principles (fluids, statics, fatigue life) directly shape my production system design:
+        <p class="text-sm text-muted max-w-3xl font-sans mt-1">
+          Whether running God's Eye or a campus booking portal, all endpoints adhere to these sovereign security standards:
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
         
-        <!-- Card 1 -->
-        <div class="p-6 bg-obsidian-card hairline-border crosshair-corner space-y-4">
-          <div class="font-mono text-xs font-bold text-amber-raw uppercase tracking-wider flex items-center justify-between">
-            <span>[ 01. FLUID FLOW // WEBSOCKETS ]</span>
-            <span>73 FEEDS</span>
+        <div class="p-6 grid-border bg-slatecard space-y-3">
+          <div class="text-industrial font-bold uppercase flex items-center justify-between">
+            <span>[ I. TIMING-SAFE HMAC ]</span>
+            <span>SHA-256</span>
           </div>
-          <p class="text-xs text-titanium-muted leading-relaxed font-sans">
-            In mechanical hydraulics, flow separation and cavitation destroy pipes under turbulence. In quantitative trading, network buffer bloat causes latency spikes. ICT Flux uses non-blocking ring buffers and zero-copy JSON parsing to stream market ticks without dropping packets.
+          <p class="text-muted text-[11px] font-sans leading-relaxed">
+            All inbound payment webhooks (Paystack) and broker state signals are validated against constant-time HMAC SHA-256 signatures before processing. Replay attacks are neutralized via 60-second timestamp validation windows.
           </p>
-          <div class="pt-3 hairline-t text-[11px] font-mono text-titanium">
-            Implementation: Python asyncio · C FFI · Ring Buffer
-          </div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="p-6 bg-obsidian-card hairline-border crosshair-corner space-y-4">
-          <div class="font-mono text-xs font-bold text-chlorophyll uppercase tracking-wider flex items-center justify-between">
-            <span>[ 02. STATICS &amp; TORSION // ESCROW ]</span>
-            <span>ACID STRICT</span>
+        <div class="p-6 grid-border bg-slatecard space-y-3">
+          <div class="text-bone font-bold uppercase flex items-center justify-between">
+            <span>[ II. STRICT ROW-LOCK ISOLATION ]</span>
+            <span>FOR UPDATE</span>
           </div>
-          <p class="text-xs text-titanium-muted leading-relaxed font-sans">
-            Physical structures fail when unexpected transverse loads twist a beam past its shear modulus. Financial backends fail when concurrent HTTP requests update a wallet simultaneously. ChopOS and Ojaja Cinemas prevent double-allocation using explicit database row-level locks.
+          <p class="text-muted text-[11px] font-sans leading-relaxed">
+            Financial state changes in ChopOS, Ojaja Cinemas, and Luxe Booking execute within explicit PostgreSQL transactions using row-level locking (`SELECT ... FOR UPDATE`). No race condition can trigger an unbacked ticket or double disbursement.
           </p>
-          <div class="pt-3 hairline-t text-[11px] font-mono text-titanium">
-            Implementation: PostgreSQL SELECT FOR UPDATE · Paystack Split
-          </div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="p-6 bg-obsidian-card hairline-border crosshair-corner space-y-4">
-          <div class="font-mono text-xs font-bold text-white uppercase tracking-wider flex items-center justify-between">
-            <span>[ 03. FATIGUE LIMITS // MEMORY ]</span>
-            <span>SUB-100MS</span>
+        <div class="p-6 grid-border bg-slatecard space-y-3">
+          <div class="text-safety font-bold uppercase flex items-center justify-between">
+            <span>[ III. AIR-GAPPED ORCHESTRATION ]</span>
+            <span>EGRESS-ONLY</span>
           </div>
-          <p class="text-xs text-titanium-muted leading-relaxed font-sans">
-            Mechanical systems suffer catastrophic fatigue when cyclic stresses exceed the endurance limit. Web applications experience memory fatigue from GC thrashing. AuraCut and ToonForge orchestrate assets in TypedArrays and offscreen Web Workers to sustain 60 FPS rendering.
+          <p class="text-muted text-[11px] font-sans leading-relaxed">
+            No live execution keys or private trade algorithms are exposed to browser clients. Frontends connect exclusively to stateless reverse-proxies serving pre-computed, sanitized data feeds.
           </p>
-          <div class="pt-3 hairline-t text-[11px] font-mono text-titanium">
-            Implementation: Three.js WebGL · Web Workers · TypedArrays
-          </div>
         </div>
       </div>
     </section>
 
     <!-- =========================================================================
-         SECTION 5: ATS INTERNATIONAL CV & CONTACT DOSSIER
-         ========================================================================= -->
-    <section class="hairline-border bg-obsidian-card p-8 sm:p-12 crosshair-corner space-y-8">
-      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 hairline-b pb-8">
-        <div class="space-y-3">
-          <span class="px-2.5 py-1 text-[10px] font-mono font-bold bg-amber-raw/10 text-amber-raw border border-amber-raw/30 uppercase">ATS-OPTIMIZED CURRICULUM VITAE</span>
-          <h2 class="text-3xl sm:text-5xl font-normal font-serif text-white tracking-tight">
-            Verified Global Engineering Credentials
+       7. CURRICULUM VITAE & EXECUTIVE CONTACT
+       ========================================================================= -->
+    <section class="grid-border bg-[#0C0C0F] p-8 sm:p-12 space-y-8">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 grid-line-b pb-8">
+        <div class="space-y-2">
+          <span class="text-[11px] font-mono text-industrial uppercase tracking-widest font-bold">
+            VERIFIED CREDENTIALS
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-serif text-white tracking-tight">
+            International ATS Curriculum Vitae
           </h2>
-          <p class="text-sm text-titanium-muted max-w-2xl font-sans">
-            Formatted with Google XYZ impact formulas and verified against global ATS filters (Greenhouse, Lever, Workday, LinkedIn Easy Apply).
+          <p class="text-sm text-muted font-sans max-w-2xl">
+            Formatted strictly using Google XYZ impact formulas and verified across Greenhouse, Lever, and Workday ATS systems.
           </p>
         </div>
 
-        <div class="flex flex-wrap items-center gap-4">
-          <a href="international-cv.html" target="_blank" class="px-6 py-3 bg-amber-raw text-black font-mono font-bold text-xs tactile-key hover:bg-amber-glow transition-all flex items-center gap-2 border border-amber-raw">
-            <span>VIEW PRINTABLE ATS CV</span>
+        <div class="flex flex-wrap items-center gap-4 font-mono text-xs">
+          <a href="international-cv.html" target="_blank" class="px-6 py-3 bg-white text-black font-bold mech-btn hover:bg-bone transition-all flex items-center gap-2">
+            <span>VIEW PRINTABLE ATS RESUME</span>
             <span>↗</span>
           </a>
-          <a href="portfolio-dossier.html" target="_blank" class="px-5 py-3 bg-black border border-hairline hover:border-white/30 text-titanium font-mono text-xs tactile-key transition-all flex items-center gap-2">
-            <span>PRINT DOSSIER (PDF)</span>
+          <a href="portfolio-dossier.html" target="_blank" class="px-5 py-3 grid-border bg-slatecard text-bone hover:border-industrial transition-all mech-btn flex items-center gap-2">
+            <span>PRINT ARCHITECTURAL DOSSIER</span>
             <span>↗</span>
           </a>
         </div>
       </div>
 
-      <!-- Direct Contact Terminal -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-        <div class="space-y-2">
-          <span class="text-titanium-muted uppercase tracking-wider block">// DIRECT WHATSAPP</span>
-          <a href="https://wa.me/2348149640122" target="_blank" class="text-white hover:text-amber-raw font-bold text-sm block">
+        <div class="space-y-1">
+          <span class="text-dim uppercase tracking-wider block">// SECURE WHATSAPP / CELL</span>
+          <a href="https://wa.me/2348149640122" target="_blank" class="text-white hover:text-industrial font-bold text-sm block">
             +234 814 964 0122
           </a>
-          <span class="text-titanium-muted text-[11px]">Instant response for enterprise contracts</span>
+          <span class="text-muted text-[11px]">Instant response for enterprise contracts</span>
         </div>
 
-        <div class="space-y-2">
-          <span class="text-titanium-muted uppercase tracking-wider block">// EMAIL DISPATCH</span>
-          <a href="mailto:olumideadeyeminana@gmail.com" class="text-white hover:text-amber-raw font-bold text-sm block">
+        <div class="space-y-1">
+          <span class="text-dim uppercase tracking-wider block">// ENCRYPTED INBOX</span>
+          <a href="mailto:olumideadeyeminana@gmail.com" class="text-white hover:text-industrial font-bold text-sm block">
             olumideadeyeminana@gmail.com
           </a>
-          <span class="text-titanium-muted text-[11px]">Encrypted &amp; confidential project briefs</span>
+          <span class="text-muted text-[11px]">Direct architect correspondence</span>
         </div>
 
-        <div class="space-y-2">
-          <span class="text-titanium-muted uppercase tracking-wider block">// REPOSITORY AUDIT</span>
-          <a href="https://github.com/Olumidenana" target="_blank" class="text-white hover:text-amber-raw font-bold text-sm block">
+        <div class="space-y-1">
+          <span class="text-dim uppercase tracking-wider block">// CODEBASE VERIFICATION</span>
+          <a href="https://github.com/Olumidenana" target="_blank" class="text-white hover:text-industrial font-bold text-sm block">
             github.com/Olumidenana
           </a>
-          <span class="text-titanium-muted text-[11px]">Inspect real production commits &amp; architecture</span>
+          <span class="text-muted text-[11px]">Inspect real commit histories &amp; branches</span>
         </div>
       </div>
     </section>
@@ -1425,212 +1203,79 @@
   </main>
 
   <!-- =========================================================================
-       FOOTER (ARCHIVAL METADATA & COPYRIGHT)
+       8. SWISS ARCHIVAL FOOTER
        ========================================================================= -->
-  <footer class="w-full hairline-t bg-[#050608] py-12 px-4 sm:px-8 text-xs font-mono text-titanium-muted">
+  <footer class="w-full grid-line-t bg-[#060608] py-12 px-4 sm:px-8 text-xs font-mono text-muted">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
       <div class="space-y-1 text-center sm:text-left">
-        <div class="text-titanium font-bold font-sans">Olumide Adeyemi-Nana · Lead Systems Architect</div>
-        <div class="text-[11px]">Crafted with Anti-AI Intent · Zero Blurred Orbs · Zero Template Slop</div>
+        <div class="text-bone font-serif text-base">Olumide Adeyemi-Nana</div>
+        <div class="text-[11px] text-dim">Lead Systems Architect · Founder, Amazoe Solutions · Mechanical Engineer (OAU)</div>
       </div>
 
-      <div class="flex items-center gap-6">
-        <a href="#dossier" class="hover:text-amber-raw transition-colors">TOP ↑</a>
-        <span>·</span>
-        <a href="classic-index.html" class="hover:text-amber-raw transition-colors">CLASSIC THEME</a>
-        <span>·</span>
-        <a href="https://github.com/Olumidenana" target="_blank" class="hover:text-amber-raw transition-colors">GITHUB</a>
+      <div class="flex items-center gap-6 text-[11px]">
+        <a href="#gods-eye" class="hover:text-industrial transition-colors">GOD'S EYE</a>
+        <span class="text-dim">·</span>
+        <a href="#systems" class="hover:text-industrial transition-colors">14 SYSTEMS</a>
+        <span class="text-dim">·</span>
+        <a href="classic-index.html" class="hover:text-industrial transition-colors">CLASSIC VIEW</a>
+        <span class="text-dim">·</span>
+        <a href="https://github.com/Olumidenana" target="_blank" class="hover:text-industrial transition-colors">GITHUB</a>
       </div>
     </div>
   </footer>
 
   <!-- =========================================================================
-       TACTILE AUDIO & INTERACTIVE SCRIPTS
+       INTERACTIVE SCRIPTS
        ========================================================================= -->
   <script>
-    // 1. Web Audio Micro-Haptic Click
-    let audioCtx = null;
-    let soundEnabled = true;
-
-    function playMechanicalClick(freq = 120, duration = 0.012) {
-      if (!soundEnabled) return;
-      try {
-        if (!audioCtx) {
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        if (audioCtx.state === 'suspended') {
-          audioCtx.resume();
-        }
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + duration);
-
-        gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + duration);
-      } catch (e) {
-        // AudioContext not allowed before user interaction
-      }
-    }
-
-    function toggleAudio() {
-      soundEnabled = !soundEnabled;
-      document.getElementById('soundIcon').innerText = soundEnabled ? '🔊' : '🔇';
-      document.getElementById('soundLabel').innerText = soundEnabled ? 'HAPTICS: ON' : 'HAPTICS: OFF';
-      if (soundEnabled) playMechanicalClick(200, 0.02);
-    }
-
-    // Attach mechanical sound to all buttons and links
-    document.addEventListener('click', (e) => {
-      const target = e.target.closest('button, a, .ledger-row');
-      if (target) {
-        playMechanicalClick(140, 0.015);
-      }
-    });
-
-    // 2. Real-Time Telemetry Clock (WAT / UTC+1)
+    // 1. Clock Ticker (WAT / UTC+1)
     function updateClock() {
       const now = new Date();
-      // Format to WAT
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      const clockEl = document.getElementById('liveClock');
-      if (clockEl) {
-        clockEl.innerText = `WAT ${hours}:${minutes}:${seconds} (UTC+1)`;
-      }
+      const hrs = String(now.getHours()).padStart(2, '0');
+      const mins = String(now.getMinutes()).padStart(2, '0');
+      const secs = String(now.getSeconds()).padStart(2, '0');
+      const el = document.getElementById('clockTicker');
+      if (el) el.innerText = `WAT ${hrs}:${mins}:${secs} UTC+1`;
     }
     setInterval(updateClock, 1000);
     updateClock();
 
-    // 3. Project Filter Logic
-    function setFilter(category, btnElement) {
-      playMechanicalClick(180, 0.015);
-      
-      // Update Active Button State
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active', 'bg-amber-raw', 'text-black');
-        btn.classList.add('bg-obsidian-card', 'text-titanium-muted');
+    // 2. Accordion Drawer Toggle
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const isOpen = el.classList.contains('open');
+      // Close others in audit
+      document.querySelectorAll('.drawer-content').forEach(d => d.classList.remove('open'));
+      if (!isOpen) {
+        el.classList.add('open');
+      }
+    }
+
+    // 3. Filter Audit Rows
+    function filterAudit(cat) {
+      document.querySelectorAll('.audit-filter-btn').forEach(b => {
+        b.classList.remove('bg-white', 'text-black', 'font-bold');
+        b.classList.add('grid-border', 'bg-slatecard', 'text-muted');
       });
-      if (btnElement) {
-        btnElement.classList.add('active', 'bg-amber-raw', 'text-black');
-        btnElement.classList.remove('bg-obsidian-card', 'text-titanium-muted');
+      const activeBtn = document.querySelector(`.audit-filter-btn[data-cat="${cat}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-white', 'text-black', 'font-bold');
+        activeBtn.classList.remove('grid-border', 'bg-slatecard', 'text-muted');
       }
 
-      // Filter Ledger Rows
-      const rows = document.querySelectorAll('#ledgerBody .ledger-row');
-      rows.forEach(row => {
-        const rowCat = row.getAttribute('data-cat');
-        const drawerId = row.getAttribute('onclick')?.match(/toggleDrawer\('([^']+)'\)/)?.[1];
-        const drawer = drawerId ? document.getElementById(drawerId) : null;
-
-        if (category === 'all' || rowCat === category) {
+      document.querySelectorAll('.audit-row').forEach(row => {
+        const itemCats = row.getAttribute('data-category') || '';
+        if (cat === 'all') {
+          row.style.display = '';
+        } else if (cat === 'complete' && itemCats.includes('complete')) {
+          row.style.display = '';
+        } else if (cat === 'core' && itemCats.includes('core')) {
           row.style.display = '';
         } else {
           row.style.display = 'none';
-          if (drawer) drawer.classList.add('hidden');
         }
       });
-    }
-
-    // Keyboard Accelerators (1 to 5)
-    document.addEventListener('keydown', (e) => {
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-      if (e.key === '1') setFilter('all', document.querySelector('[data-filter="all"]'));
-      if (e.key === '2') setFilter('fintech', document.querySelector('[data-filter="fintech"]'));
-      if (e.key === '3') setFilter('logistics', document.querySelector('[data-filter="logistics"]'));
-      if (e.key === '4') setFilter('ai', document.querySelector('[data-filter="ai"]'));
-      if (e.key === '5') setFilter('enterprise', document.querySelector('[data-filter="enterprise"]'));
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        openCommandPalette();
-      }
-    });
-
-    // 4. Toggle Project Drawer
-    function toggleDrawer(drawerId) {
-      const drawer = document.getElementById(drawerId);
-      if (!drawer) return;
-      const isHidden = drawer.classList.contains('hidden');
-      
-      // Hide all open drawers first
-      document.querySelectorAll('#ledgerBody tr[id^="drawer-"]').forEach(d => d.classList.add('hidden'));
-
-      if (isHidden) {
-        drawer.classList.remove('hidden');
-        playMechanicalClick(240, 0.02);
-      }
-    }
-
-    // 5. Glyph Scramble Effect on Hover
-    const glyphs = '$#%&*+=~!?§@[]';
-    document.querySelectorAll('.scramble-hover').forEach(el => {
-      const originalText = el.innerText;
-      let interval = null;
-
-      el.addEventListener('mouseenter', () => {
-        let iteration = 0;
-        clearInterval(interval);
-
-        interval = setInterval(() => {
-          el.innerText = originalText
-            .split('')
-            .map((char, index) => {
-              if (index < iteration) {
-                return originalText[index];
-              }
-              return glyphs[Math.floor(Math.random() * glyphs.length)];
-            })
-            .join('');
-
-          if (iteration >= originalText.length) {
-            clearInterval(interval);
-          }
-          iteration += 1 / 2;
-        }, 25);
-      });
-
-      el.addEventListener('mouseleave', () => {
-        clearInterval(interval);
-        el.innerText = originalText;
-      });
-    });
-
-    // 6. Copy text feedback
-    function copyText(text, btn) {
-      navigator.clipboard.writeText(text);
-      const original = btn.innerHTML;
-      btn.innerHTML = '<span>COPIED ✓</span>';
-      playMechanicalClick(300, 0.02);
-      setTimeout(() => {
-        btn.innerHTML = original;
-      }, 1500);
-    }
-
-    // 7. Command Palette Quick Modal
-    function openCommandPalette() {
-      const query = prompt('DISPATCH TO SYSTEM (Type 1-14 or name: "flux", "chop", "cinema", "amazoe", "cv"):');
-      if (!query) return;
-      const q = query.toLowerCase();
-      if (q.includes('flux') || q === '1') window.open('https://ictflux.app', '_blank');
-      else if (q.includes('chop') || q === '2') window.open('https://food-vendor-ordering.vercel.app', '_blank');
-      else if (q.includes('cinema') || q.includes('ojaja') || q === '3') window.open('https://ojaja-cinemas.vercel.app', '_blank');
-      else if (q.includes('amazoe') || q === '4') window.open('https://amazoe-solutions.vercel.app', '_blank');
-      else if (q.includes('toon') || q === '5') window.open('https://github.com/Olumidenana/toonforge', '_blank');
-      else if (q.includes('video') || q.includes('aura') || q === '6') window.open('https://video-assembler-saas.vercel.app', '_blank');
-      else if (q.includes('motion') || q === '7') window.open('https://motion-oau.vercel.app', '_blank');
-      else if (q.includes('school') || q.includes('educore') || q === '8') window.open('https://school-portal-os.vercel.app', '_blank');
-      else if (q.includes('salon') || q === '9') window.open('https://beauty-salon-booking.vercel.app', '_blank');
-      else if (q.includes('skin') || q === '10') window.open('https://skincare-brand-store.vercel.app', '_blank');
-      else if (q.includes('cv') || q.includes('resume')) window.open('international-cv.html', '_blank');
-      else if (q.includes('wa') || q.includes('chat')) window.open('https://wa.me/2348149640122', '_blank');
-      else alert('Unknown system identifier. Select 1-14 from the ledger.');
     }
   </script>
 </body>
