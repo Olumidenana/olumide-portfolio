@@ -2669,6 +2669,162 @@
       else if (q.includes('wa') || q.includes('chat')) window.open('https://wa.me/2348149640122', '_blank');
       else alert('Unknown system identifier. Select 1-20 from the ledger.');
     }
+
+    // 8. REAL-TIME GITHUB AUTO-SYNC ENGINE
+    // Automatically queries GitHub on page load to discover newly published repositories in real-time
+    async function initLiveGitHubAutoSync() {
+      try {
+        const res = await fetch('https://api.github.com/users/Olumidenana/repos?sort=pushed&per_page=30');
+        if (!res.ok) return;
+        const repos = await res.json();
+        if (!Array.isArray(repos)) return;
+
+        // Collect all currently rendered repository links from the page
+        const existingLinks = new Set();
+        document.querySelectorAll('a[href*="github.com/Olumidenana/"]').forEach(a => {
+          const match = a.href.match(/github\.com\/Olumidenana\/([a-zA-Z0-9\-_]+)/i);
+          if (match && match[1]) existingLinks.add(match[1].toLowerCase());
+        });
+        existingLinks.add('olumidenana');
+        existingLinks.add('olumide-portfolio');
+
+        const tbody = document.getElementById('ledgerBody');
+        const cardsGrid = document.getElementById('cardsContainer');
+        if (!tbody || !cardsGrid) return;
+
+        const newRepos = repos.filter(r => !existingLinks.has(r.name.toLowerCase()) && !r.fork);
+        if (newRepos.length === 0) return;
+
+        console.log(`⚡ [LIVE GITHUB AUTO-SYNC]: Discovered ${newRepos.length} new repositories!`);
+
+        // Dynamically mount each newly discovered repo at the top of the ledger
+        newRepos.forEach((repo, idx) => {
+          const rawName = repo.name;
+          const formattedTitle = rawName.split(/[-_]/).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+          const desc = repo.description || `Production full-stack / systems repository published by Olumide Adeyemi-Nana on GitHub (${repo.html_url}).`;
+          const lang = repo.language || 'TypeScript';
+          const pushedDate = (repo.pushed_at || '').substring(0, 10);
+          const isAI = /ai|bot|model|llm|speech|linter/i.test(rawName);
+          const isFintech = /trade|quant|pay|flux|escrow|deriv/i.test(rawName);
+          const cat = isAI ? 'ai' : (isFintech ? 'fintech' : 'enterprise');
+          const catBadge = isAI ? 'AI / DISTRIBUTED' : (isFintech ? 'FINTECH / QUANT' : 'ENTERPRISE / SYSTEMS');
+          const newIdx = 20 + idx + 1;
+          const drawerId = `drawer-dyn-${newIdx}`;
+
+          // Create Ledger Row
+          const tr = document.createElement('tr');
+          tr.className = 'ledger-row cursor-pointer bg-chlorophyll/5 border-l-2 border-chlorophyll';
+          tr.setAttribute('data-cat', cat);
+          tr.onclick = () => toggleDrawer(drawerId);
+          tr.innerHTML = `
+            <td class="p-4 text-chlorophyll font-bold">${newIdx}/</td>
+            <td class="p-4">
+              <div class="font-bold text-white text-sm font-sans flex items-center gap-2">
+                <span>${formattedTitle}</span>
+                <span class="px-1.5 py-0.5 text-[9px] font-mono font-bold bg-chlorophyll/20 text-chlorophyll border border-chlorophyll/40 uppercase">LIVE REPO AUTO-DETECTED</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll animate-ping"></span>
+              </div>
+              <div class="text-[11px] text-titanium-muted font-sans mt-0.5 line-clamp-1">
+                ${desc}
+              </div>
+            </td>
+            <td class="p-4 hidden md:table-cell">
+              <span class="px-2 py-0.5 bg-chlorophyll/10 text-chlorophyll border border-chlorophyll/30 text-[10px]">${catBadge}</span>
+            </td>
+            <td class="p-4 hidden lg:table-cell text-chlorophyll font-bold">
+              Just Pushed · ${pushedDate}
+            </td>
+            <td class="p-4 hidden sm:table-cell text-titanium-muted">
+              ${lang} · Live GitHub Release
+            </td>
+            <td class="p-4 text-right">
+              <a href="${repo.html_url}" target="_blank" onclick="event.stopPropagation()" class="px-2.5 py-1 bg-black border border-chlorophyll text-chlorophyll hover:bg-chlorophyll hover:text-black font-bold transition-all inline-flex items-center gap-1">
+                <span>GITHUB</span> <span>↗</span>
+              </a>
+            </td>
+          `;
+
+          // Create Drawer Row
+          const trDrawer = document.createElement('tr');
+          trDrawer.id = drawerId;
+          trDrawer.className = 'hidden bg-[#0A0D14] hairline-b';
+          trDrawer.innerHTML = `
+            <td colspan="6" class="p-6 space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+                <div class="space-y-1">
+                  <span class="text-chlorophyll font-bold uppercase tracking-wider">[ LIVE SYSTEM OVERVIEW ]</span>
+                  <p class="text-titanium-muted text-[11px] leading-relaxed">
+                    ${desc}
+                  </p>
+                </div>
+                <div class="space-y-1">
+                  <span class="text-titanium font-bold uppercase tracking-wider">[ RUNTIME SPECIFICATIONS ]</span>
+                  <p class="text-titanium-muted text-[11px] leading-relaxed">
+                    Primary Language: ${lang}. Automatically detected from live GitHub repository. Stars: ${repo.stargazers_count ?? 0}.
+                  </p>
+                </div>
+                <div class="space-y-2">
+                  <span class="text-chlorophyll font-bold uppercase tracking-wider">[ REPOSITORY ARTIFACTS ]</span>
+                  <div class="flex flex-col gap-1.5">
+                    <a href="${repo.html_url}" target="_blank" class="text-amber-raw hover:underline flex items-center gap-1">
+                      <span>● Repository: gh/Olumidenana/${rawName}</span> ↗
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </td>
+          `;
+
+          // Prepend at the top of ledger
+          tbody.insertBefore(trDrawer, tbody.firstChild);
+          tbody.insertBefore(tr, trDrawer);
+
+          // Create Blueprint Card
+          const cardDiv = document.createElement('div');
+          cardDiv.className = 'blueprint-card p-6 bg-obsidian-card hairline-border crosshair-corner space-y-4 flex flex-col justify-between border-chlorophyll/40';
+          cardDiv.setAttribute('data-cat', cat);
+          cardDiv.innerHTML = `
+            <div class="space-y-3">
+              <div class="flex items-center justify-between font-mono text-xs">
+                <span class="text-chlorophyll font-bold">${newIdx}/</span>
+                <span class="px-2 py-0.5 bg-chlorophyll/10 text-chlorophyll border border-chlorophyll/30 text-[10px]">LIVE AUTO-SYNC</span>
+              </div>
+              <h4 class="text-xl font-serif text-white">${formattedTitle}</h4>
+              <p class="text-xs text-titanium-muted font-sans leading-relaxed">
+                ${desc}
+              </p>
+              <div class="p-2.5 bg-black border border-chlorophyll/40 font-mono text-[11px] text-chlorophyll font-bold">
+                ${lang} · Auto-Detected GitHub Repository
+              </div>
+              <div class="text-[10px] font-mono text-titanium-muted">
+                Pushed: ${pushedDate} · Stars: ${repo.stargazers_count ?? 0}
+              </div>
+            </div>
+            <div class="pt-4 hairline-t border-hairline flex items-center justify-between">
+              <a href="${repo.html_url}" target="_blank" class="px-3 py-1 bg-black border border-chlorophyll text-chlorophyll hover:bg-chlorophyll hover:text-black font-mono font-bold text-xs tactile-key flex items-center gap-1">
+                <span>VIEW REPO</span> <span>↗</span>
+              </a>
+              <span class="text-xs font-mono text-chlorophyll">LIVE SYNC</span>
+            </div>
+          `;
+          cardsGrid.insertBefore(cardDiv, cardsGrid.firstChild);
+        });
+
+        // Update total counter in UI
+        const allBtn = document.querySelector('[data-filter="all"]');
+        if (allBtn) {
+          allBtn.innerText = `[1] ALL (${20 + newRepos.length})`;
+        }
+      } catch (e) {
+        console.warn('Live GitHub auto-sync fallback:', e);
+      }
+    }
+
+    // Run auto-sync on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      initLiveGitHubAutoSync();
+    });
+
   </script>
 </body>
 </html>
