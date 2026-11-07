@@ -12,11 +12,11 @@
   <meta name="description" content="Official engineering portfolio of Olumide Adeyemi-Nana — Lead Systems Architect, Founder of Amazoe Solutions, B.Sc. Mechanical Engineering (OAU). 20 Shipped Production Systems & Developer Infrastructure.">
 
   <!-- =========================================================================
-       DISTINCTIVE BESPOKE TYPOGRAPHY (Instrument Serif + Space Grotesk + JetBrains Mono)
+       DISTINCTIVE BESPOKE TYPOGRAPHY (Geologica + Dancing Script + Instrument Serif + JetBrains Mono)
        ========================================================================= -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Geologica:wght@200;300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -27,7 +27,8 @@
         extend: {
           fontFamily: {
             serif: ['"Instrument Serif"', 'Georgia', 'serif'],
-            sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+            sans: ['"Geologica"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
+            accent: ['"Dancing Script"', 'cursive'],
             mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
           },
           colors: {
@@ -37,9 +38,9 @@
             titanium: '#E8ECEF',
             'titanium-muted': '#8A94A6',
             amber: {
-              raw: '#E5A93C',
-              glow: '#FFBE42',
-              dim: 'rgba(229, 169, 60, 0.12)'
+              raw: '#F28C28',
+              glow: '#FFAE42',
+              dim: 'rgba(242, 140, 40, 0.14)'
             },
             chlorophyll: {
               DEFAULT: '#2DD4BF',
@@ -55,19 +56,121 @@
 
   <style>
     /* =========================================================================
-       SURFACE MATERIALITY & ZERO-BLUR TACTILE SHADOWS
+       SURFACE MATERIALITY, BOUNCY PHYSICS & CURSIVE ACCENTS
        ========================================================================= */
     :root {
       --bg-base: #08090C;
       --hairline-color: rgba(255, 255, 255, 0.08);
-      --amber-accent: #E5A93C;
+      --amber-accent: #F28C28;
+      --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     body {
       background-color: var(--bg-base);
       color: #E8ECEF;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Geologica', 'Space Grotesk', sans-serif;
       overflow-x: hidden;
+    }
+
+    .font-accent {
+      font-family: 'Dancing Script', cursive;
+    }
+
+    /* Glassmorphic Surface (from Elewachi touch) */
+    .glass {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background-color: rgba(14, 17, 24, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+
+    /* Keyframe Animations (Bouncy, Float, Slide-Up, Neon Pulse, Marquee) */
+    @keyframes bounce-subtle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(15px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes neonPulse {
+      0%, 100% {
+        box-shadow: 0 0 5px rgba(242, 140, 40, 0.85),
+                    0 0 20px rgba(242, 140, 40, 0.45),
+                    0 0 40px rgba(242, 140, 40, 0.25);
+      }
+      50% {
+        box-shadow: 0 0 12px rgba(242, 140, 40, 1),
+                    0 0 32px rgba(242, 140, 40, 0.6),
+                    0 0 64px rgba(242, 140, 40, 0.35);
+      }
+    }
+    @keyframes marquee {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
+    }
+
+    .animate-bounce-subtle {
+      animation: bounce-subtle 2.2s ease-in-out infinite;
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+    }
+    .animate-float {
+      animation: float-slow 3.5s ease-in-out infinite;
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+    }
+    .animate-neon {
+      animation: neonPulse 2.2s ease-in-out infinite;
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+    }
+    .animate-marquee-fast {
+      display: flex;
+      width: max-content;
+      animation: marquee 26s linear infinite;
+      @media (prefers-reduced-motion: reduce) {
+        animation-duration: 120s;
+      }
+    }
+    .animate-marquee-fast:hover {
+      animation-play-state: paused;
+    }
+    .fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    .slide-up {
+      animation: slideUp 0.35s var(--spring-bounce) forwards;
+    }
+
+    /* Springy Bouncy Hover Physics on Cards & Buttons */
+    .bouncy-card {
+      transition: transform 0.38s var(--spring-bounce), box-shadow 0.35s ease, border-color 0.3s ease;
+    }
+    .bouncy-card:hover {
+      transform: translateY(-6px) scale(1.012);
+      box-shadow: 0 18px 40px -12px rgba(242, 140, 40, 0.18);
+      border-color: rgba(242, 140, 40, 0.45);
+    }
+
+    .blueprint-card {
+      transition: transform 0.38s var(--spring-bounce), box-shadow 0.35s ease, border-color 0.3s ease;
+    }
+    .blueprint-card:hover {
+      transform: translateY(-6px) scale(1.015);
+      box-shadow: 0 18px 40px -12px rgba(242, 140, 40, 0.2);
+      border-color: rgba(242, 140, 40, 0.45);
     }
 
     /* 1.8% SVG Micro-Grain Noise (Breaks digital screen sterility) */
@@ -78,7 +181,7 @@
       height: 100vh;
       pointer-events: none;
       z-index: 999;
-      opacity: 0.035;
+      opacity: 0.032;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
@@ -114,22 +217,27 @@
       pointer-events: none;
     }
 
-    /* Zero-Blur Hard Drop Shadow (Tactile Neo-Brutalism) */
+    /* Tactile Springy Key Shadow */
     .tactile-key {
       box-shadow: 3px 3px 0px #000000;
-      transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.28s var(--spring-bounce), box-shadow 0.28s ease;
+    }
+    .tactile-key:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 4px 6px 0px #000000, 0 0 20px rgba(242, 140, 40, 0.2);
     }
     .tactile-key:active {
-      transform: translate(2px, 2px);
+      transform: translate(2px, 2px) scale(0.98);
       box-shadow: 1px 1px 0px #000000;
     }
 
     /* Ledger Rows Hover */
     .ledger-row {
-      transition: background-color 0.15s ease, border-color 0.15s ease;
+      transition: background-color 0.2s ease, transform 0.28s var(--spring-bounce);
     }
     .ledger-row:hover {
-      background-color: #12151E;
+      background-color: #131722;
+      transform: translateX(4px);
     }
 
     /* Custom Selection */
@@ -198,16 +306,16 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
       
       <!-- Brand & Title -->
-      <a href="#" class="flex items-center gap-4 group">
-        <div class="w-10 h-10 hairline-border bg-obsidian-card flex items-center justify-center font-mono font-bold text-amber-raw text-sm tactile-key border-amber-raw/40 group-hover:border-amber-raw">
-          OA
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-amber-raw/60 shadow-lg shadow-amber-raw/20 group-hover:scale-110 transition-transform duration-300">
+          <img src="assets/olumide-studio-mono.jpg" alt="Olumide Adeyemi-Nana" width="44" height="44" class="w-full h-full object-cover object-top">
         </div>
         <div>
           <div class="flex items-center gap-2">
             <span class="font-bold text-white text-base tracking-tight font-sans">Olumide Adeyemi-Nana</span>
-            <span class="px-1.5 py-0.5 text-[9px] font-mono font-bold bg-amber-raw/10 text-amber-raw border border-amber-raw/30 uppercase">ARCHITECT</span>
+            <span class="px-2 py-0.5 text-[9px] font-mono font-bold bg-amber-raw/15 text-amber-raw border border-amber-raw/40 rounded-full uppercase">ARCHITECT</span>
           </div>
-          <div class="text-xs font-mono text-titanium-muted">B.Sc. Mechanical Eng (OAU) · Amazoe Solutions</div>
+          <div class="text-xs font-mono text-titanium-muted">B.Sc. Mechanical Eng (OAU) · <span class="font-accent text-amber-raw text-sm">Amazoe Solutions</span></div>
         </div>
       </a>
 
@@ -219,143 +327,207 @@
         <a href="#systems" class="text-titanium-muted hover:text-amber-raw transition-colors flex items-center gap-1.5">
           <span class="opacity-40">02/</span><span>20 SYSTEMS</span>
         </a>
+        <a href="#stack" class="text-titanium-muted hover:text-amber-raw transition-colors flex items-center gap-1.5">
+          <span class="opacity-40">03/</span><span>TOOL STACK</span>
+        </a>
         <a href="#mechanics" class="text-titanium-muted hover:text-amber-raw transition-colors flex items-center gap-1.5">
-          <span class="opacity-40">03/</span><span>RUNTIME SPECS</span>
+          <span class="opacity-40">04/</span><span>RUNTIME SPECS</span>
         </a>
         <a href="international-cv.html" target="_blank" class="text-titanium-muted hover:text-amber-raw transition-colors flex items-center gap-1.5">
-          <span class="opacity-40">04/</span><span>CURRICULUM VITAE</span>
+          <span class="opacity-40">05/</span><span>CURRICULUM VITAE</span>
         </a>
       </nav>
 
       <!-- Action Keycaps -->
       <div class="flex items-center gap-3">
-        <button onclick="openCommandPalette()" class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-obsidian-card border border-hairline hover:border-amber-raw text-titanium-muted hover:text-white font-mono text-xs tactile-key cursor-pointer">
+        <button onclick="openCommandPalette()" class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-obsidian-card border border-hairline hover:border-amber-raw text-titanium-muted hover:text-white font-mono text-xs rounded-full tactile-key cursor-pointer">
           <span class="text-amber-raw">⌘K</span>
           <span>QUICK DISPATCH</span>
         </button>
 
-        <a href="https://wa.me/2348149640122?text=Hello%20Olumide!%20I'm%20reviewing%20your%20Anti-AI%20systems%20dossier%20and%20would%20like%20to%20collaborate." 
+        <a href="https://wa.me/2348149640122?text=Hello%20Olumide!%20I'm%20reviewing%20your%20portfolio%20and%20would%20like%20to%20collaborate." 
            target="_blank" 
-           class="px-4 py-2 bg-amber-raw text-black font-mono font-bold text-xs tactile-key border border-amber-raw hover:bg-amber-glow flex items-center gap-2">
-          <span>CONNECT</span>
+           class="px-5 py-2 bg-amber-raw text-black font-sans font-bold text-xs rounded-full tactile-key border border-amber-raw hover:bg-amber-glow flex items-center gap-2 animate-neon">
+          <span>⚡ Hire Me</span>
           <span class="text-xs">→</span>
         </a>
       </div>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-8 py-12 space-y-24">
+  <main class="max-w-7xl mx-auto px-4 sm:px-8 py-12 space-y-24 relative">
+
+    <!-- Ambient Warm Glow Orbs (Elewachi Hero Atmosphere) -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-amber-raw/15 rounded-full blur-[110px] pointer-events-none -z-10"></div>
+    <div class="absolute top-40 right-1/4 w-96 h-96 bg-chlorophyll/10 rounded-full blur-[110px] pointer-events-none -z-10"></div>
 
     <!-- =========================================================================
-         SECTION 1: ASYMMETRIC EDITORIAL DOSSIER (THE ANTI-AI HERO)
+         SECTION 1: BOUNCY STUDIO PORTRAIT HERO + ENGINEERING DOSSIER
          ========================================================================= -->
-    <section id="dossier" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-6 items-start">
+    <section id="dossier" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-4 items-center fade-in">
       
-      <!-- Left Column: The Human Mechanical Thesis -->
-      <div class="lg:col-span-8 space-y-8">
+      <!-- Left Column: Bouncy Studio Portrait + Dynamic Cursive Headline -->
+      <div class="lg:col-span-8 space-y-7">
         
-        <!-- Archival Status Stamp -->
-        <div class="flex items-center gap-3">
-          <span class="px-2.5 py-1 text-[10px] font-mono font-semibold tracking-wider bg-chlorophyll/10 text-chlorophyll border border-chlorophyll/30 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-chlorophyll"></span>
-            CONTRACTS OPEN // HIGH-CONCURRENCY DISTRIBUTED SYSTEMS
-          </span>
-          <span class="text-xs font-mono text-titanium-muted hidden sm:inline">REF: AMZ-2026-SYS</span>
+        <!-- Studio Portrait Avatar + Floating Bouncy Pill Row -->
+        <div class="flex flex-col sm:flex-row sm:items-center gap-6">
+          <!-- Glowing Circular Studio Portrait (Elewachi Hero Style) -->
+          <div class="relative inline-block self-start group">
+            <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-4 border-amber-raw/40 shadow-2xl shadow-amber-raw/25 ring-4 ring-obsidian transition-transform duration-500 group-hover:scale-105">
+              <img id="heroStudioImg" 
+                   src="assets/olumide-studio-mono.jpg" 
+                   alt="Olumide Adeyemi-Nana — Google Studio Monochrome Portrait" 
+                   width="176" 
+                   height="176" 
+                   fetchpriority="high"
+                   class="w-full h-full object-cover object-top transition-all duration-500">
+            </div>
+            <!-- Floating Lightning Bolt Badge -->
+            <button onclick="cycleStudioPortrait()" 
+                    title="Click to switch Google Studio portrait"
+                    class="absolute -bottom-1 -right-1 w-11 h-11 bg-amber-raw hover:bg-amber-glow text-black rounded-full flex items-center justify-center shadow-lg shadow-amber-raw/40 cursor-pointer transition-transform duration-300 hover:scale-110 active:scale-95 border-2 border-obsidian">
+              <span class="text-lg">⚡</span>
+            </button>
+          </div>
+
+          <!-- Bouncy Pill Badges & Studio Portrait Selector -->
+          <div class="space-y-3">
+            <!-- Bouncy Status Pill (Elewachi signature animate-bounce-subtle) -->
+            <div class="animate-bounce-subtle inline-block">
+              <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 shadow-lg shadow-amber-raw/10">
+                <span class="text-amber-raw text-sm">✦</span>
+                <span class="text-xs sm:text-sm text-titanium font-medium">Lead Systems Architect &amp; AI Automation Expert</span>
+                <span class="w-2 h-2 rounded-full bg-chlorophyll animate-ping"></span>
+              </div>
+            </div>
+
+            <!--Greeting Line -->
+            <p class="text-titanium-muted text-base sm:text-lg flex items-center gap-2 font-light">
+              <span class="text-2xl inline-block animate-bounce-subtle">👋</span>
+              <span>Hi, I'm <strong class="text-white font-bold">Olumide Adeyemi-Nana</strong>.</span>
+            </p>
+
+            <!-- Interactive Studio Portrait Switcher -->
+            <div class="flex flex-wrap items-center gap-1.5 text-[10px] font-mono">
+              <span class="text-titanium-muted mr-1">STUDIO LOOK:</span>
+              <button onclick="setStudioPortrait(0)" class="studio-look-btn px-2.5 py-1 rounded-full bg-amber-raw text-black font-bold transition-all cursor-pointer">01 Studio Mono</button>
+              <button onclick="setStudioPortrait(1)" class="studio-look-btn px-2.5 py-1 rounded-full bg-obsidian-card text-titanium-muted hover:text-white border border-hairline transition-all cursor-pointer">02 Rim Light</button>
+              <button onclick="setStudioPortrait(2)" class="studio-look-btn px-2.5 py-1 rounded-full bg-obsidian-card text-titanium-muted hover:text-white border border-hairline transition-all cursor-pointer">03 Black Suit</button>
+              <button onclick="setStudioPortrait(3)" class="studio-look-btn px-2.5 py-1 rounded-full bg-obsidian-card text-titanium-muted hover:text-white border border-hairline transition-all cursor-pointer">04 Executive Tie</button>
+            </div>
+          </div>
         </div>
 
-        <!-- Striking Instrument Serif Headline -->
-        <h1 class="text-4xl sm:text-6xl md:text-7xl font-normal font-serif text-white leading-[1.08] tracking-tight">
-          Engineering software systems under <span class="italic text-amber-raw font-normal">mechanical load</span>.
+        <!-- Dynamic Bouncy Geologica + Dancing Script Headline -->
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+          I <span id="bouncyHeroWord" class="inline-block transition-all duration-500 transform opacity-100 translate-y-0 text-amber-raw mx-2 font-accent tracking-wide font-bold" style="font-size: 1.28em;">Build</span>
+          Production <span class="font-accent text-amber-raw font-normal" style="font-size: 1.15em;">Systems</span>
+          <span class="block text-2xl sm:text-4xl md:text-5xl font-serif font-normal text-titanium mt-2">
+            engineered under <span class="italic text-amber-raw">mechanical load</span>.
+          </span>
         </h1>
 
-        <p class="text-lg sm:text-xl text-titanium leading-relaxed max-w-2xl font-sans">
-          I am <strong>Olumide Adeyemi-Nana</strong>. Trained in <strong>Mechanical Engineering at Obafemi Awolowo University (OAU)</strong>, I analyze distributed cloud software through physical failure models: stress limits, heat dissipation of thread contention, and zero-loss escrow transactions.
+        <p class="text-base sm:text-lg text-titanium-muted leading-relaxed max-w-2xl font-light">
+          Trained in <strong class="text-white font-medium">Mechanical Engineering at Obafemi Awolowo University (OAU)</strong> and Founder of <strong class="text-amber-raw font-medium">Amazoe Solutions</strong>. I help businesses and enterprises eliminate bottlenecks, build intelligent AI &amp; FinTech workflows, and ship high-concurrency platforms with zero double-spend escrow.
         </p>
 
-        <!-- Technical Ledger of Core Principles -->
-        <div class="hairline-border bg-obsidian-card p-6 crosshair-corner space-y-4">
+        <!-- Technical Ledger of Core Principles (Bouncy Glass Card) -->
+        <div class="glass rounded-3xl p-6 crosshair-corner space-y-4 bouncy-card">
           <div class="font-mono text-xs font-bold text-amber-raw uppercase tracking-wider flex items-center justify-between">
             <span>// CORE DISCIPLINARY POSTULATES</span>
-            <span class="text-titanium-muted">[N=4]</span>
+            <span class="font-accent text-lg text-amber-raw capitalize">Built to Scale</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono text-titanium-muted">
-            <div class="space-y-1">
+            <div class="space-y-1 p-3 rounded-2xl bg-black/40 border border-hairline hover:border-amber-raw/30 transition-all">
               <span class="text-titanium font-bold flex items-center gap-2">
-                <span class="text-amber-raw">01.</span> ZERO DOUBLE-SPEND ESCROW
+                <span class="font-accent text-amber-raw text-xl">01.</span> ZERO DOUBLE-SPEND ESCROW
               </span>
-              <p class="text-[11px] leading-relaxed">
+              <p class="text-[11px] leading-relaxed font-sans font-light">
                 PostgreSQL row-level locking (`SELECT ... FOR UPDATE`) with split-payment disbursement via Paystack Subaccounts.
               </p>
             </div>
 
-            <div class="space-y-1">
+            <div class="space-y-1 p-3 rounded-2xl bg-black/40 border border-hairline hover:border-amber-raw/30 transition-all">
               <span class="text-titanium font-bold flex items-center gap-2">
-                <span class="text-amber-raw">02.</span> SUB-100MS QUANT PIPELINES
+                <span class="font-accent text-amber-raw text-xl">02.</span> SUB-100MS QUANT PIPELINES
               </span>
-              <p class="text-[11px] leading-relaxed">
+              <p class="text-[11px] leading-relaxed font-sans font-light">
                 Multi-threaded WebSocket ingestion over 73 concurrent market feeds with C FFI execution into MetaTrader MT5.
               </p>
             </div>
 
-            <div class="space-y-1">
+            <div class="space-y-1 p-3 rounded-2xl bg-black/40 border border-hairline hover:border-amber-raw/30 transition-all">
               <span class="text-titanium font-bold flex items-center gap-2">
-                <span class="text-amber-raw">03.</span> CLIENT-SIDE GRAPH & WEBGL
+                <span class="font-accent text-amber-raw text-xl">03.</span> AI AGENTS &amp; 3D WEBGL
               </span>
-              <p class="text-[11px] leading-relaxed">
-                In-browser 3D animation rigs and real-time transit dispatch (Haversine distance algorithms) without heavy server bloat.
+              <p class="text-[11px] leading-relaxed font-sans font-light">
+                Autonomous career &amp; WhatsApp AI agents, in-browser 3D animation rigs, and Haversine campus transit graphs.
               </p>
             </div>
 
-            <div class="space-y-1">
+            <div class="space-y-1 p-3 rounded-2xl bg-black/40 border border-hairline hover:border-amber-raw/30 transition-all">
               <span class="text-titanium font-bold flex items-center gap-2">
-                <span class="text-amber-raw">04.</span> VERIFIABLE RUNTIME PROOF
+                <span class="font-accent text-amber-raw text-xl">04.</span> 20+ SHIPPED PLATFORMS
               </span>
-              <p class="text-[11px] leading-relaxed">
-                No mockups. 20 shipped platforms and developer engines operating with live endpoints, production databases, and merchant integrations.
+              <p class="text-[11px] leading-relaxed font-sans font-light">
+                No mockups. 20 shipped platforms and developer engines operating with live endpoints and production databases.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Call to Action Bar -->
+        <!-- Bouncy Pill Call to Action Bar (Elewachi Style) -->
         <div class="flex flex-wrap items-center gap-4 pt-2">
-          <a href="#systems" class="px-6 py-3 bg-amber-raw text-black font-mono font-bold text-xs tactile-key hover:bg-amber-glow transition-all flex items-center gap-2 border border-amber-raw">
-            <span>INSPECT 14 PRODUCTION SYSTEMS</span>
+          <a href="https://wa.me/2348149640122?text=Hello%20Olumide!%20Let's%20discuss%20an%20engineering%20or%20AI%20automation%20project." 
+             target="_blank" 
+             class="rounded-full px-8 py-4 bg-amber-raw hover:bg-amber-glow text-black font-sans font-bold text-sm shadow-lg shadow-amber-raw/30 hover:-translate-y-1.5 hover:scale-105 transition-all duration-300 flex items-center gap-2 animate-neon">
+            <span>⚡ Hire Me / Book Consultation</span>
+            <span>→</span>
+          </a>
+
+          <a href="#systems" 
+             class="rounded-full px-8 py-4 bg-obsidian-card/90 hover:bg-obsidian-hover text-white font-sans font-semibold text-sm border border-hairline-bright hover:border-amber-raw/50 hover:-translate-y-1.5 transition-all duration-300 flex items-center gap-2">
+            <span>💼 View 20 Shipped Systems</span>
             <span>↓</span>
           </a>
 
-          <a href="https://wa.me/2348149640122?text=Hello%20Olumide!%20Let's%20discuss%20an%20engineering%20contract." target="_blank" class="px-5 py-3 bg-obsidian-card border border-hairline hover:border-amber-raw text-titanium font-mono text-xs tactile-key transition-all flex items-center gap-2">
-            <span>💬 DIRECT WHATSAPP: +234 814 964 0122</span>
-          </a>
-
-          <a href="https://github.com/Olumidenana" target="_blank" class="px-4 py-3 bg-obsidian-card border border-hairline hover:border-white/20 text-titanium-muted font-mono text-xs tactile-key transition-all">
-            gh/Olumidenana
+          <a href="https://github.com/Olumidenana" 
+             target="_blank" 
+             class="rounded-full px-5 py-4 bg-obsidian-card border border-hairline hover:border-amber-raw/40 text-titanium-muted hover:text-white font-mono text-xs hover:-translate-y-1 transition-all duration-300">
+            gh/Olumidenana ↗
           </a>
         </div>
       </div>
 
-      <!-- Right Column: Tactile Hardware Spec Dossier -->
-      <div class="lg:col-span-4 space-y-4">
+      <!-- Right Column: Studio Portrait Showcase Card + Hardware Spec Dossier -->
+      <div class="lg:col-span-4 space-y-5">
         
-        <!-- Hardware Blueprint Box -->
-        <div class="hairline-border bg-obsidian-card p-6 crosshair-corner space-y-6">
-          <div class="flex items-center justify-between hairline-b pb-4">
-            <div>
-              <span class="text-[10px] font-mono text-titanium-muted uppercase tracking-wider block">CONSULTING LAB</span>
-              <span class="font-bold text-white text-base tracking-tight font-sans">Amazoe Solutions Ltd.</span>
-            </div>
-            <div class="w-8 h-8 hairline-border bg-black flex items-center justify-center font-mono text-xs text-amber-raw">
-              ⚡
+        <!-- Studio Portrait Feature Card -->
+        <div class="glass rounded-3xl overflow-hidden border border-hairline-bright bouncy-card relative group">
+          <div class="aspect-[4/4.3] w-full overflow-hidden bg-black relative">
+            <img id="cardStudioImg" 
+                 src="assets/olumide-studio-mono.jpg" 
+                 alt="Olumide Adeyemi-Nana Studio Monochrome Portrait" 
+                 width="420" 
+                 height="450" 
+                 loading="eager"
+                 class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#08090C] via-[#08090C]/20 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+              <div>
+                <span class="px-2.5 py-0.5 rounded-full bg-amber-raw text-black font-mono font-bold text-[10px] uppercase">Founder &amp; Lead Architect</span>
+                <div class="text-white font-bold text-lg mt-1">Olumide Adeyemi-Nana</div>
+                <div class="font-accent text-amber-raw text-xl leading-none">Amazoe Solutions</div>
+              </div>
+              <button onclick="cycleStudioPortrait()" class="px-3 py-1.5 rounded-full glass text-[10px] font-mono text-titanium hover:text-amber-raw hover:border-amber-raw transition-all cursor-pointer">
+                Switch Photo ↻
+              </button>
             </div>
           </div>
 
-          <!-- Spec Grid -->
-          <div class="space-y-3 text-xs font-mono">
-            <div class="flex justify-between hairline-b pb-2">
-              <span class="text-titanium-muted">LEAD ARCHITECT:</span>
-              <span class="text-titanium font-medium">Olumide Adeyemi-Nana</span>
-            </div>
+          <!-- Spec Grid inside Card -->
+          <div class="p-6 space-y-3 text-xs font-mono">
             <div class="flex justify-between hairline-b pb-2">
               <span class="text-titanium-muted">ACADEMIC FOUNDATION:</span>
               <span class="text-titanium font-medium">B.Sc. Mechanical Eng, OAU</span>
@@ -365,77 +537,77 @@
               <span class="text-titanium font-medium">Python · C FFI · TS · Postgres</span>
             </div>
             <div class="flex justify-between hairline-b pb-2">
-              <span class="text-titanium-muted">FINTECH ESCROW:</span>
-              <span class="text-titanium font-medium">Paystack Split API</span>
+              <span class="text-titanium-muted">AI &amp; AUTOMATION:</span>
+              <span class="text-amber-raw font-bold">LLMs · n8n · WhatsApp API</span>
             </div>
             <div class="flex justify-between hairline-b pb-2">
               <span class="text-titanium-muted">VERIFIED DEPLOYS:</span>
-              <span class="text-amber-raw font-bold">20 Live Systems</span>
+              <span class="text-amber-raw font-bold">20+ Live Systems</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-titanium-muted">SECURITY & ACID:</span>
-              <span class="text-chlorophyll font-bold">Zero Contention Lock</span>
-            </div>
-          </div>
-
-          <!-- Contact Quick Copy -->
-          <div class="hairline-t pt-4 space-y-2 text-xs font-mono">
-            <div class="flex items-center justify-between text-titanium-muted">
-              <span>DIRECT INBOX:</span>
+              <span class="text-titanium-muted">DIRECT INBOX:</span>
               <button onclick="copyText('olumideadeyeminana@gmail.com', this)" class="text-amber-raw hover:underline cursor-pointer flex items-center gap-1">
                 <span>olumideadeyeminana@gmail.com</span>
                 <span class="text-[10px]">📋</span>
               </button>
             </div>
-            <div class="flex items-center justify-between text-titanium-muted">
-              <span>LOCATION:</span>
-              <span class="text-titanium">Osogbo / Lagos, Nigeria</span>
-            </div>
           </div>
         </div>
 
         <!-- Live Engineering Pulse Card -->
-        <div class="p-4 bg-obsidian-card hairline-border text-[11px] font-mono text-titanium-muted flex items-center justify-between">
+        <div class="p-4 glass rounded-2xl text-[11px] font-mono text-titanium-muted flex items-center justify-between animate-float">
           <div class="flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-amber-raw animate-pulse"></span>
-            <span>CURRENT LOAD: 20 REPOS DEPLOYED</span>
+            <span>CURRENT LOAD: 20+ REPOS DEPLOYED</span>
           </div>
-          <span class="text-amber-raw font-bold">2026 ED.</span>
+          <span class="font-accent text-amber-raw text-base font-bold">2026 Ed.</span>
         </div>
       </div>
     </section>
 
     <!-- =========================================================================
-         SECTION 2: TELEMETRY METRIC BENCHMARKS
+         SECTION 2: BOUNCY TELEMETRY METRIC BENCHMARKS
          ========================================================================= -->
-    <section class="grid grid-cols-2 lg:grid-cols-4 hairline-border bg-obsidian-card">
-      <div class="p-6 hairline-r hairline-b lg:hairline-b-0 space-y-1">
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="p-6 glass rounded-3xl bouncy-card space-y-1">
         <div class="text-[10px] font-mono text-titanium-muted uppercase tracking-wider">PRODUCTION SYSTEMS</div>
-        <div class="text-4xl sm:text-5xl font-mono font-bold text-amber-raw">20+</div>
-        <div class="text-xs text-titanium-muted">Commercial platforms running in production</div>
+        <div class="text-4xl sm:text-5xl font-bold text-amber-raw flex items-baseline gap-1">
+          <span>20+</span>
+          <span class="font-accent text-2xl text-titanium">Shipped</span>
+        </div>
+        <div class="text-xs text-titanium-muted font-light">Commercial platforms running in production</div>
       </div>
 
-      <div class="p-6 hairline-r hairline-b lg:hairline-b-0 space-y-1">
+      <div class="p-6 glass rounded-3xl bouncy-card space-y-1">
         <div class="text-[10px] font-mono text-titanium-muted uppercase tracking-wider">CONCURRENT WEBSOCKET FEEDS</div>
-        <div class="text-4xl sm:text-5xl font-mono font-bold text-chlorophyll">73+</div>
-        <div class="text-xs text-titanium-muted">Real-time market feeds ingested by ICT Flux</div>
+        <div class="text-4xl sm:text-5xl font-bold text-chlorophyll flex items-baseline gap-1">
+          <span>73+</span>
+          <span class="font-accent text-2xl text-titanium">Streams</span>
+        </div>
+        <div class="text-xs text-titanium-muted font-light">Real-time market feeds ingested by ICT Flux</div>
       </div>
 
-      <div class="p-6 hairline-r space-y-1">
+      <div class="p-6 glass rounded-3xl bouncy-card space-y-1">
         <div class="text-[10px] font-mono text-titanium-muted uppercase tracking-wider">TRADE EXECUTION LATENCY</div>
-        <div class="text-4xl sm:text-5xl font-mono font-bold text-white">&lt;100ms</div>
-        <div class="text-xs text-titanium-muted">Via low-level C FFI MetaTrader bridge</div>
+        <div class="text-4xl sm:text-5xl font-bold text-white flex items-baseline gap-1">
+          <span>&lt;100ms</span>
+          <span class="font-accent text-2xl text-amber-raw">Speed</span>
+        </div>
+        <div class="text-xs text-titanium-muted font-light">Via low-level C FFI MetaTrader bridge</div>
       </div>
 
-      <div class="p-6 space-y-1">
+      <div class="p-6 glass rounded-3xl bouncy-card space-y-1">
         <div class="text-[10px] font-mono text-titanium-muted uppercase tracking-wider">ACID CONCURRENCY INTEGRITY</div>
-        <div class="text-4xl sm:text-5xl font-mono font-bold text-amber-raw">100%</div>
-        <div class="text-xs text-titanium-muted">Guaranteed zero double-spending escrow</div>
+        <div class="text-4xl sm:text-5xl font-bold text-amber-raw flex items-baseline gap-1">
+          <span>100%</span>
+          <span class="font-accent text-2xl text-chlorophyll">Escrow</span>
+        </div>
+        <div class="text-xs text-titanium-muted font-light">Guaranteed zero double-spending escrow</div>
       </div>
     </section>
 
     <!-- =========================================================================
-         SECTION 3: COMPLETE 14-PROJECT PRODUCTION LEDGER (ANTI-AI ARCHITECTURE)
+         SECTION 3: COMPLETE 20-PROJECT PRODUCTION LEDGER
          ========================================================================= -->
     <section id="systems" class="space-y-6 pt-6">
       
@@ -443,14 +615,14 @@
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 hairline-b pb-6">
         <div class="space-y-2">
           <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 text-[10px] font-mono font-bold bg-amber-raw/10 text-amber-raw border border-amber-raw/30 uppercase">ARCHITECTURAL LEDGER</span>
-            <span class="text-xs font-mono text-titanium-muted">20 VERIFIED DEPLOYMENTS</span>
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-amber-raw/10 text-amber-raw border border-amber-raw/30 uppercase animate-bounce-subtle">ARCHITECTURAL LEDGER</span>
+            <span class="text-xs font-mono text-titanium-muted">20+ VERIFIED DEPLOYMENTS</span>
           </div>
-          <h2 class="text-3xl sm:text-5xl font-normal font-serif text-white tracking-tight">
-            Complete Production Systems Portfolio
+          <h2 class="text-3xl sm:text-5xl font-bold text-white tracking-tight">
+            Featured <span class="font-accent text-amber-raw text-4xl sm:text-6xl ml-2 font-normal">Work &amp; Systems</span>
           </h2>
-          <p class="text-sm text-titanium-muted max-w-2xl font-sans">
-            Every entry represents a real engineering artifact deployed with live endpoints, custom schema design, or verifiable code repositories.
+          <p class="text-sm text-titanium-muted max-w-2xl font-light">
+            Real-world problems solved with intelligent automation, high-concurrency FinTech engines, and production software.
           </p>
         </div>
 
@@ -2299,13 +2471,197 @@
     </section>
 
     <!-- =========================================================================
+         SECTION 3.5: TOOL STACK MARQUEE & HOW I WORK (ELEWACHI TOUCH)
+         ========================================================================= -->
+    <section id="stack" class="space-y-12 pt-8">
+      <!-- Tool Stack Infinite Marquee -->
+      <div class="space-y-4">
+        <div class="text-center space-y-2">
+          <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-amber-raw/10 text-amber-raw border border-amber-raw/30 uppercase tracking-widest">PRODUCTION ARSENAL</span>
+          <h2 class="text-3xl sm:text-5xl font-bold font-sans text-white tracking-tight">
+            My <span class="font-accent text-amber-raw font-normal text-4xl sm:text-6xl">Tool Stack</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-titanium-muted font-sans">
+            Languages, AI engines, quant runtimes &amp; cloud infrastructure powering 20+ live production systems
+          </p>
+        </div>
+
+        <div class="relative overflow-hidden py-4 hairline-y bg-obsidian-card/50 rounded-2xl">
+          <div class="animate-marquee-fast flex items-center gap-4 px-4">
+            <!-- Set 1 -->
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap">
+              <span class="text-lg">⚡</span>
+              <div>
+                <div class="text-sm font-bold text-white">TypeScript &amp; Next.js 15</div>
+                <div class="text-[10px] font-mono text-amber-raw">Full-Stack Edge</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap">
+              <span class="text-lg">🐍</span>
+              <div>
+                <div class="text-sm font-bold text-white">Python Asyncio &amp; FastAPI</div>
+                <div class="text-[10px] font-mono text-chlorophyll">Quant &amp; ML Engines</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap">
+              <span class="text-lg">🦀</span>
+              <div>
+                <div class="text-sm font-bold text-white">Rust &amp; C FFI Ring Buffers</div>
+                <div class="text-[10px] font-mono text-amber-raw">Sub-50ms Execution</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap">
+              <span class="text-lg">✨</span>
+              <div>
+                <div class="text-sm font-bold text-white">Google AI Studio &amp; Gemini</div>
+                <div class="text-[10px] font-mono text-chlorophyll">Multimodal AI Pipelines</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap">
+              <span class="text-lg">🐘</span>
+              <div>
+                <div class="text-sm font-bold text-white">PostgreSQL &amp; Prisma ORM</div>
+                <div class="text-[10px] font-mono text-amber-raw">ACID Row-Level Locking</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap">
+              <span class="text-lg">💳</span>
+              <div>
+                <div class="text-sm font-bold text-white">Paystack Split &amp; Escrow</div>
+                <div class="text-[10px] font-mono text-chlorophyll">Fintech Settlement</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap">
+              <span class="text-lg">🎥</span>
+              <div>
+                <div class="text-sm font-bold text-white">FFmpeg, WebGL &amp; Three.js</div>
+                <div class="text-[10px] font-mono text-amber-raw">60 FPS Media Pipeline</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap">
+              <span class="text-lg">📡</span>
+              <div>
+                <div class="text-sm font-bold text-white">WebSockets &amp; Redis Streams</div>
+                <div class="text-[10px] font-mono text-chlorophyll">73+ Concurrent Feeds</div>
+              </div>
+            </div>
+
+            <!-- Set 2 (Duplicate for seamless infinite loop) -->
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap" aria-hidden="true">
+              <span class="text-lg">⚡</span>
+              <div>
+                <div class="text-sm font-bold text-white">TypeScript &amp; Next.js 15</div>
+                <div class="text-[10px] font-mono text-amber-raw">Full-Stack Edge</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap" aria-hidden="true">
+              <span class="text-lg">🐍</span>
+              <div>
+                <div class="text-sm font-bold text-white">Python Asyncio &amp; FastAPI</div>
+                <div class="text-[10px] font-mono text-chlorophyll">Quant &amp; ML Engines</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap" aria-hidden="true">
+              <span class="text-lg">🦀</span>
+              <div>
+                <div class="text-sm font-bold text-white">Rust &amp; C FFI Ring Buffers</div>
+                <div class="text-[10px] font-mono text-amber-raw">Sub-50ms Execution</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap" aria-hidden="true">
+              <span class="text-lg">✨</span>
+              <div>
+                <div class="text-sm font-bold text-white">Google AI Studio &amp; Gemini</div>
+                <div class="text-[10px] font-mono text-chlorophyll">Multimodal AI Pipelines</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap" aria-hidden="true">
+              <span class="text-lg">🐘</span>
+              <div>
+                <div class="text-sm font-bold text-white">PostgreSQL &amp; Prisma ORM</div>
+                <div class="text-[10px] font-mono text-amber-raw">ACID Row-Level Locking</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap" aria-hidden="true">
+              <span class="text-lg">💳</span>
+              <div>
+                <div class="text-sm font-bold text-white">Paystack Split &amp; Escrow</div>
+                <div class="text-[10px] font-mono text-chlorophyll">Fintech Settlement</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap" aria-hidden="true">
+              <span class="text-lg">🎥</span>
+              <div>
+                <div class="text-sm font-bold text-white">FFmpeg, WebGL &amp; Three.js</div>
+                <div class="text-[10px] font-mono text-amber-raw">60 FPS Media Pipeline</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl glass bouncy-card whitespace-nowrap" aria-hidden="true">
+              <span class="text-lg">📡</span>
+              <div>
+                <div class="text-sm font-bold text-white">WebSockets &amp; Redis Streams</div>
+                <div class="text-[10px] font-mono text-chlorophyll">73+ Concurrent Feeds</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How I Work 4-Step Process (with Dancing Script numbers) -->
+      <div class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 hairline-b pb-4">
+          <div>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-chlorophyll/10 text-chlorophyll border border-chlorophyll/30 uppercase">EXECUTION PROTOCOL</span>
+            <h3 class="text-3xl sm:text-4xl font-bold font-sans text-white mt-2">
+              How I <span class="font-accent text-amber-raw font-normal text-4xl sm:text-5xl">Work &amp; Ship</span>
+            </h3>
+          </div>
+          <p class="text-xs text-titanium-muted font-mono">
+            FROM FIRST-PRINCIPLES TELEMETRY TO ZERO-DOWNTIME VERCEL / CLOUD DEPLOYMENT
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-6 rounded-2xl bg-obsidian-card hairline-border bouncy-card space-y-3 relative overflow-hidden group">
+            <div class="text-5xl font-accent text-amber-raw/30 group-hover:text-amber-raw transition-colors">01</div>
+            <h4 class="text-lg font-bold text-white font-sans">First-Principles Audit</h4>
+            <p class="text-xs text-titanium-muted leading-relaxed">
+              Map bottlenecks like a mechanical stress test—identifying latency spikes, race conditions, and unit economics before writing a single line of code.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-obsidian-card hairline-border bouncy-card space-y-3 relative overflow-hidden group">
+            <div class="text-5xl font-accent text-chlorophyll/30 group-hover:text-chlorophyll transition-colors">02</div>
+            <h4 class="text-lg font-bold text-white font-sans">Fault-Tolerant Core</h4>
+            <p class="text-xs text-titanium-muted leading-relaxed">
+              Architect ACID-compliant PostgreSQL schemas, non-blocking WebSocket ring buffers, and idempotent payment/escrow state machines.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-obsidian-card hairline-border bouncy-card space-y-3 relative overflow-hidden group">
+            <div class="text-5xl font-accent text-amber-raw/30 group-hover:text-amber-raw transition-colors">03</div>
+            <h4 class="text-lg font-bold text-white font-sans">Tactile &amp; Bouncy UI</h4>
+            <p class="text-xs text-titanium-muted leading-relaxed">
+              Pair sub-50ms backend responses with springy, fluid interfaces, micro-haptic feedback, and 60 FPS GPU-composited animations.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-obsidian-card hairline-border bouncy-card space-y-3 relative overflow-hidden group">
+            <div class="text-5xl font-accent text-chlorophyll/30 group-hover:text-chlorophyll transition-colors">04</div>
+            <h4 class="text-lg font-bold text-white font-sans">Autonomous Scale</h4>
+            <p class="text-xs text-titanium-muted leading-relaxed">
+              Ship with automated CI/CD, live telemetry heartbeats, AI agent workflows, and self-healing worker queues that scale effortlessly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
          SECTION 4: TECHNICAL RUNTIME SPECS (ENGINEERING RIGOR)
          ========================================================================= -->
     <section id="mechanics" class="space-y-6 pt-6">
       <div class="space-y-2 hairline-b pb-4">
-        <span class="px-2 py-0.5 text-[10px] font-mono font-bold bg-amber-raw/10 text-amber-raw border border-amber-raw/30 uppercase">SYSTEM ARCHITECTURE</span>
-        <h2 class="text-3xl sm:text-4xl font-normal font-serif text-white tracking-tight">
-          Mechanical Rigor Applied to Distributed Software
+        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-raw/10 text-amber-raw border border-amber-raw/30 uppercase">SYSTEM ARCHITECTURE</span>
+        <h2 class="text-3xl sm:text-5xl font-bold font-sans text-white tracking-tight">
+          Mechanical <span class="font-accent text-amber-raw font-normal text-4xl sm:text-6xl">Rigor</span> Applied to Distributed Software
         </h2>
         <p class="text-sm text-titanium-muted max-w-3xl font-sans">
           How mechanical engineering principles (fluids, statics, fatigue life) directly shape my production system design:
@@ -2315,7 +2671,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- Card 1 -->
-        <div class="p-6 bg-obsidian-card hairline-border crosshair-corner space-y-4">
+        <div class="p-6 rounded-2xl bg-obsidian-card hairline-border crosshair-corner bouncy-card space-y-4">
           <div class="font-mono text-xs font-bold text-amber-raw uppercase tracking-wider flex items-center justify-between">
             <span>[ 01. FLUID FLOW // WEBSOCKETS ]</span>
             <span>73 FEEDS</span>
@@ -2329,7 +2685,7 @@
         </div>
 
         <!-- Card 2 -->
-        <div class="p-6 bg-obsidian-card hairline-border crosshair-corner space-y-4">
+        <div class="p-6 rounded-2xl bg-obsidian-card hairline-border crosshair-corner bouncy-card space-y-4">
           <div class="font-mono text-xs font-bold text-chlorophyll uppercase tracking-wider flex items-center justify-between">
             <span>[ 02. STATICS &amp; TORSION // ESCROW ]</span>
             <span>ACID STRICT</span>
@@ -2343,7 +2699,7 @@
         </div>
 
         <!-- Card 3 -->
-        <div class="p-6 bg-obsidian-card hairline-border crosshair-corner space-y-4">
+        <div class="p-6 rounded-2xl bg-obsidian-card hairline-border crosshair-corner bouncy-card space-y-4">
           <div class="font-mono text-xs font-bold text-white uppercase tracking-wider flex items-center justify-between">
             <span>[ 03. FATIGUE LIMITS // MEMORY ]</span>
             <span>SUB-100MS</span>
@@ -2361,12 +2717,12 @@
     <!-- =========================================================================
          SECTION 5: ATS INTERNATIONAL CV & CONTACT DOSSIER
          ========================================================================= -->
-    <section class="hairline-border bg-obsidian-card p-8 sm:p-12 crosshair-corner space-y-8">
+    <section id="contact" class="rounded-3xl hairline-border bg-obsidian-card p-8 sm:p-12 crosshair-corner bouncy-card space-y-8">
       <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 hairline-b pb-8">
         <div class="space-y-3">
-          <span class="px-2.5 py-1 text-[10px] font-mono font-bold bg-amber-raw/10 text-amber-raw border border-amber-raw/30 uppercase">ATS-OPTIMIZED CURRICULUM VITAE</span>
-          <h2 class="text-3xl sm:text-5xl font-normal font-serif text-white tracking-tight">
-            Verified Global Engineering Credentials
+          <span class="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-amber-raw/10 text-amber-raw border border-amber-raw/30 uppercase">ATS-OPTIMIZED CURRICULUM VITAE</span>
+          <h2 class="text-3xl sm:text-5xl font-bold font-sans text-white tracking-tight">
+            Let's <span class="font-accent text-amber-raw font-normal text-4xl sm:text-6xl">Connect</span> &amp; Build Together
           </h2>
           <p class="text-sm text-titanium-muted max-w-2xl font-sans">
             Formatted with Google XYZ impact formulas and verified against global ATS filters (Greenhouse, Lever, Workday, LinkedIn Easy Apply).
@@ -2374,11 +2730,11 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-4">
-          <a href="international-cv.html" target="_blank" class="px-6 py-3 bg-amber-raw text-black font-mono font-bold text-xs tactile-key hover:bg-amber-glow transition-all flex items-center gap-2 border border-amber-raw">
+          <a href="international-cv.html" target="_blank" class="px-6 py-3 rounded-full bg-amber-raw text-black font-mono font-bold text-xs tactile-key hover:bg-amber-glow transition-all flex items-center gap-2 border border-amber-raw neon-glow">
             <span>VIEW PRINTABLE ATS CV</span>
             <span>↗</span>
           </a>
-          <a href="portfolio-dossier.html" target="_blank" class="px-5 py-3 bg-black border border-hairline hover:border-white/30 text-titanium font-mono text-xs tactile-key transition-all flex items-center gap-2">
+          <a href="portfolio-dossier.html" target="_blank" class="px-5 py-3 rounded-full bg-black border border-hairline hover:border-amber-raw/50 text-titanium font-mono text-xs tactile-key transition-all flex items-center gap-2">
             <span>PRINT DOSSIER (PDF)</span>
             <span>↗</span>
           </a>
@@ -2387,7 +2743,7 @@
 
       <!-- Direct Contact Terminal -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
-        <div class="space-y-2">
+        <div class="p-4 rounded-2xl bg-black/50 border border-hairline space-y-2 bouncy-card">
           <span class="text-titanium-muted uppercase tracking-wider block">// DIRECT WHATSAPP</span>
           <a href="https://wa.me/2348149640122" target="_blank" class="text-white hover:text-amber-raw font-bold text-sm block">
             +234 814 964 0122
@@ -2395,7 +2751,7 @@
           <span class="text-titanium-muted text-[11px]">Instant response for enterprise contracts</span>
         </div>
 
-        <div class="space-y-2">
+        <div class="p-4 rounded-2xl bg-black/50 border border-hairline space-y-2 bouncy-card">
           <span class="text-titanium-muted uppercase tracking-wider block">// EMAIL DISPATCH</span>
           <a href="mailto:olumideadeyeminana@gmail.com" class="text-white hover:text-amber-raw font-bold text-sm block">
             olumideadeyeminana@gmail.com
@@ -2403,7 +2759,7 @@
           <span class="text-titanium-muted text-[11px]">Encrypted &amp; confidential project briefs</span>
         </div>
 
-        <div class="space-y-2">
+        <div class="p-4 rounded-2xl bg-black/50 border border-hairline space-y-2 bouncy-card">
           <span class="text-titanium-muted uppercase tracking-wider block">// REPOSITORY AUDIT</span>
           <a href="https://github.com/Olumidenana" target="_blank" class="text-white hover:text-amber-raw font-bold text-sm block">
             github.com/Olumidenana
@@ -2416,13 +2772,107 @@
   </main>
 
   <!-- =========================================================================
+       ELEWACHI-STYLE FLOATING BOTTOM GLASS NAVIGATION DOCK
+       ========================================================================= -->
+  <nav aria-label="Floating quick navigation" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 glass rounded-full px-3 py-2 shadow-2xl border border-white/15">
+    <ul class="flex items-center space-x-1 sm:space-x-2">
+      <li>
+        <a href="#dossier" onclick="setActiveDock('dock-home')" id="dock-home" class="dock-item relative flex items-center justify-center px-3.5 py-2 rounded-full transition-all duration-300 bg-amber-raw text-black font-bold shadow-lg -translate-y-2 scale-110 text-xs font-sans gap-1.5">
+          <span>🏠</span>
+          <span class="hidden sm:inline">Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="#ledger" onclick="setActiveDock('dock-work')" id="dock-work" class="dock-item relative flex items-center justify-center px-3.5 py-2 rounded-full transition-all duration-300 text-titanium-muted hover:text-white hover:bg-white/5 text-xs font-sans gap-1.5">
+          <span>🚀</span>
+          <span class="hidden sm:inline">Systems (20)</span>
+        </a>
+      </li>
+      <li>
+        <a href="#stack" onclick="setActiveDock('dock-stack')" id="dock-stack" class="dock-item relative flex items-center justify-center px-3.5 py-2 rounded-full transition-all duration-300 text-titanium-muted hover:text-white hover:bg-white/5 text-xs font-sans gap-1.5">
+          <span>⚡</span>
+          <span class="hidden sm:inline">Stack</span>
+        </a>
+      </li>
+      <li>
+        <a href="#mechanics" onclick="setActiveDock('dock-specs')" id="dock-specs" class="dock-item relative flex items-center justify-center px-3.5 py-2 rounded-full transition-all duration-300 text-titanium-muted hover:text-white hover:bg-white/5 text-xs font-sans gap-1.5">
+          <span>⚙️</span>
+          <span class="hidden sm:inline">Rigor</span>
+        </a>
+      </li>
+      <li>
+        <a href="international-cv.html" target="_blank" class="dock-item relative flex items-center justify-center px-3.5 py-2 rounded-full transition-all duration-300 text-titanium-muted hover:text-white hover:bg-white/5 text-xs font-sans gap-1.5">
+          <span>📄</span>
+          <span class="hidden sm:inline">CV</span>
+        </a>
+      </li>
+      <li>
+        <a href="#contact" onclick="setActiveDock('dock-contact')" id="dock-contact" class="dock-item relative flex items-center justify-center px-3.5 py-2 rounded-full transition-all duration-300 text-titanium-muted hover:text-white hover:bg-white/5 text-xs font-sans gap-1.5">
+          <span>💬</span>
+          <span class="hidden sm:inline">Contact</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- =========================================================================
+       ELEWACHI-STYLE FLOATING "AI OLUMIDE" ASSISTANT WIDGET
+       ========================================================================= -->
+  <div class="fixed bottom-24 right-4 sm:right-6 z-50">
+    <!-- Chat Window -->
+    <div id="aiOlumidePanel" class="hidden mb-3 w-80 sm:w-96 rounded-2xl glass border border-amber-raw/40 shadow-2xl overflow-hidden animate-slide-up">
+      <div class="p-3.5 bg-obsidian-card border-b border-hairline flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <img src="assets/olumide-studio-mono.jpg" alt="AI Olumide" width="36" height="36" class="w-9 h-9 rounded-full object-cover object-top border border-amber-raw" />
+          <div>
+            <div class="text-xs font-bold text-white flex items-center gap-1.5">
+              <span>AI Olumide</span>
+              <span class="w-2 h-2 rounded-full bg-chlorophyll animate-pulse"></span>
+            </div>
+            <div class="text-[10px] font-mono text-titanium-muted">Systems Architect Assistant</div>
+          </div>
+        </div>
+        <button onclick="toggleAiChat()" class="text-titanium-muted hover:text-white text-xs font-mono px-2 py-1 rounded-lg hover:bg-white/10">✕</button>
+      </div>
+
+      <div id="aiChatMessages" class="p-4 max-h-64 overflow-y-auto space-y-3 text-xs font-sans bg-obsidian/90">
+        <div class="p-3 rounded-xl bg-obsidian-card border border-hairline text-titanium leading-relaxed">
+          Hey! 👋 I'm <strong class="text-amber-raw">AI Olumide</strong>. Ask me about any of my 20+ production systems, quant engines, Google Studio portraits, or availability for your team!
+        </div>
+      </div>
+
+      <div class="px-3 py-2 bg-obsidian-card border-t border-hairline flex flex-wrap gap-1.5">
+        <button onclick="askAiPreset('What are your top systems?')" class="px-2.5 py-1 rounded-full bg-black border border-hairline hover:border-amber-raw text-[10px] font-mono text-titanium-muted hover:text-amber-raw transition-all">Top Systems 🚀</button>
+        <button onclick="askAiPreset('Switch Studio Portrait')" class="px-2.5 py-1 rounded-full bg-black border border-hairline hover:border-amber-raw text-[10px] font-mono text-titanium-muted hover:text-amber-raw transition-all">Cycle Studio Photo 📸</button>
+        <button onclick="askAiPreset('How can we hire Olumide?')" class="px-2.5 py-1 rounded-full bg-black border border-hairline hover:border-amber-raw text-[10px] font-mono text-titanium-muted hover:text-amber-raw transition-all">Hire / Contact 💼</button>
+      </div>
+
+      <form onsubmit="sendAiMessage(event)" class="p-2.5 bg-black border-t border-hairline flex items-center gap-2">
+        <input id="aiChatInput" type="text" placeholder="Ask about systems, stack, or rates..." class="flex-1 bg-obsidian-card text-white text-xs px-3 py-2 rounded-xl border border-hairline focus:outline-none focus:border-amber-raw font-sans" />
+        <button type="submit" class="px-3 py-2 rounded-xl bg-amber-raw text-black font-bold text-xs tactile-key">Send</button>
+      </form>
+    </div>
+
+    <!-- Floating Trigger Button -->
+    <button onclick="toggleAiChat()" class="group relative flex items-center gap-2.5 p-2 pr-4 rounded-full bg-obsidian-card hover:bg-amber-raw text-white hover:text-black shadow-2xl transition-all duration-300 hover:scale-110 border border-amber-raw/60 animate-bounce-subtle">
+      <div class="relative w-10 h-10 rounded-full overflow-hidden border-2 border-amber-raw">
+        <img src="assets/olumide-studio-mono.jpg" alt="Ask AI Olumide" width="40" height="40" class="w-full h-full object-cover object-top" />
+      </div>
+      <div class="text-left">
+        <span class="block text-[9px] font-mono uppercase tracking-wider text-amber-raw group-hover:text-black font-bold">Online Now</span>
+        <span class="block text-xs font-bold font-sans">Ask AI Olumide ✨</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- =========================================================================
        FOOTER (ARCHIVAL METADATA & COPYRIGHT)
        ========================================================================= -->
-  <footer class="w-full hairline-t bg-[#050608] py-12 px-4 sm:px-8 text-xs font-mono text-titanium-muted">
+  <footer class="w-full hairline-t bg-[#050608] pt-12 pb-28 px-4 sm:px-8 text-xs font-mono text-titanium-muted">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
       <div class="space-y-1 text-center sm:text-left">
-        <div class="text-titanium font-bold font-sans">Olumide Adeyemi-Nana · Lead Systems Architect</div>
-        <div class="text-[11px]">Crafted with Anti-AI Intent · Zero Blurred Orbs · Zero Template Slop</div>
+        <div class="text-titanium font-bold font-sans">Olumide Adeyemi-Nana · <span class="font-accent text-amber-raw text-base font-normal">Lead Systems Architect</span></div>
+        <div class="text-[11px]">Bouncy Kinetic Edition · Google Studio Portraits · 20+ Live Production Systems</div>
       </div>
 
       <div class="flex items-center gap-6">
@@ -2820,9 +3270,165 @@
       }
     }
 
-    // Run auto-sync on page load
+    // 9. GOOGLE STUDIO PORTRAIT SWITCHER (4 LOOKS FROM GOOGLE AI STUDIO)
+    const STUDIO_PORTRAITS = [
+      {
+        heroSrc: 'assets/olumide-studio-mono.jpg',
+        cardSrc: 'assets/olumide-studio-mono.jpg',
+        label: 'Google Studio · Monochrome Noir'
+      },
+      {
+        heroSrc: 'assets/olumide-studio-dark.jpg',
+        cardSrc: 'assets/olumide-studio-suit.jpg',
+        label: 'Google Studio · Crimson Rim Light'
+      },
+      {
+        heroSrc: 'assets/olumide-studio-suit.jpg',
+        cardSrc: 'assets/olumide-studio-dark.jpg',
+        label: 'Google Studio · Executive Suit'
+      },
+      {
+        heroSrc: 'assets/olumide-studio-corporate.png',
+        cardSrc: 'assets/olumide-studio-mono.jpg',
+        label: 'Google Studio · Corporate Navy'
+      }
+    ];
+    let currentStudioIndex = 0;
+
+    function setStudioPortrait(idx) {
+      playMechanicalClick(220, 0.018);
+      currentStudioIndex = idx % STUDIO_PORTRAITS.length;
+      const item = STUDIO_PORTRAITS[currentStudioIndex];
+      const heroImg = document.getElementById('heroStudioImg');
+      const cardImg = document.getElementById('cardStudioImg');
+
+      if (heroImg) {
+        heroImg.style.opacity = '0.3';
+        heroImg.style.transform = 'scale(0.94)';
+        setTimeout(() => {
+          heroImg.src = item.heroSrc;
+          heroImg.style.opacity = '1';
+          heroImg.style.transform = 'scale(1)';
+        }, 140);
+      }
+      if (cardImg) {
+        cardImg.style.opacity = '0.3';
+        setTimeout(() => {
+          cardImg.src = item.cardSrc;
+          cardImg.style.opacity = '1';
+        }, 140);
+      }
+
+      document.querySelectorAll('.studio-look-btn').forEach((btn, i) => {
+        if (i === currentStudioIndex) {
+          btn.classList.add('bg-amber-raw', 'text-black', 'font-bold');
+          btn.classList.remove('bg-obsidian-card', 'text-titanium-muted', 'border', 'border-hairline');
+        } else {
+          btn.classList.remove('bg-amber-raw', 'text-black', 'font-bold');
+          btn.classList.add('bg-obsidian-card', 'text-titanium-muted', 'border', 'border-hairline');
+        }
+      });
+    }
+
+    function cycleStudioPortrait() {
+      setStudioPortrait((currentStudioIndex + 1) % STUDIO_PORTRAITS.length);
+    }
+
+    // 10. ELEWACHI-STYLE BOUNCY ROTATING HERO VERB (Dancing Script)
+    const HERO_VERBS = ['Build', 'Scale', 'Architect', 'Automate'];
+    let heroVerbIdx = 0;
+
+    function initBouncyHeroWord() {
+      const wordEl = document.getElementById('bouncyHeroWord');
+      if (!wordEl) return;
+      setInterval(() => {
+        wordEl.classList.remove('opacity-100', 'translate-y-0');
+        wordEl.classList.add('opacity-0', 'translate-y-4');
+        setTimeout(() => {
+          heroVerbIdx = (heroVerbIdx + 1) % HERO_VERBS.length;
+          wordEl.textContent = HERO_VERBS[heroVerbIdx];
+          wordEl.classList.remove('opacity-0', 'translate-y-4');
+          wordEl.classList.add('opacity-100', 'translate-y-0');
+        }, 280);
+      }, 2800);
+    }
+
+    // 11. FLOATING BOTTOM DOCK ACTIVE BOUNCE STATE
+    function setActiveDock(activeId) {
+      playMechanicalClick(190, 0.015);
+      document.querySelectorAll('.dock-item').forEach(el => {
+        if (el.id === activeId) {
+          el.classList.add('bg-amber-raw', 'text-black', 'font-bold', 'shadow-lg', '-translate-y-2', 'scale-110');
+          el.classList.remove('text-titanium-muted', 'hover:text-white', 'hover:bg-white/5');
+        } else if (el.id) {
+          el.classList.remove('bg-amber-raw', 'text-black', 'font-bold', 'shadow-lg', '-translate-y-2', 'scale-110');
+          el.classList.add('text-titanium-muted', 'hover:text-white', 'hover:bg-white/5');
+        }
+      });
+    }
+
+    // 12. FLOATING "AI OLUMIDE" ASSISTANT WIDGET
+    function toggleAiChat() {
+      playMechanicalClick(240, 0.02);
+      const panel = document.getElementById('aiOlumidePanel');
+      if (!panel) return;
+      panel.classList.toggle('hidden');
+    }
+
+    function appendAiChatBubble(text, isUser = false) {
+      const container = document.getElementById('aiChatMessages');
+      if (!container) return;
+      const div = document.createElement('div');
+      div.className = isUser
+        ? 'p-2.5 rounded-xl bg-amber-raw text-black font-bold ml-8 text-right'
+        : 'p-3 rounded-xl bg-obsidian-card border border-hairline text-titanium leading-relaxed mr-4';
+      div.innerHTML = text;
+      container.appendChild(div);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function getAiOlumideReply(q) {
+      const lower = q.toLowerCase();
+      if (lower.includes('portrait') || lower.includes('photo') || lower.includes('picture') || lower.includes('studio')) {
+        cycleStudioPortrait();
+        return `Switched to <strong>${STUDIO_PORTRAITS[currentStudioIndex].label}</strong>! You can also click any of the 4 circular thumbnails under my Hero photo to test each Google Studio look.`;
+      }
+      if (lower.includes('top') || lower.includes('system') || lower.includes('project') || lower.includes('work')) {
+        return `My flagship systems include:<br>• <strong>God's Eye ICT Flux</strong> (73+ concurrent market feeds, &lt;50ms latency)<br>• <strong>ChopOS</strong> &amp; <strong>Ojaja Cinemas</strong> (ACID escrow &amp; seat locking)<br>• <strong>Remote Job Hunter</strong> &amp; <strong>AuraCut AI Video SaaS</strong>.<br>Scroll to the <a href="#ledger" class="text-amber-raw underline">20-System Ledger</a> to inspect live demos!`;
+      }
+      if (lower.includes('hire') || lower.includes('contact') || lower.includes('rate') || lower.includes('whatsapp') || lower.includes('email')) {
+        return `I'm available for Principal/Lead Full-Stack, Quant &amp; AI Systems roles or enterprise contracts! Reach me directly on <a href="https://wa.me/2348149640122" target="_blank" class="text-amber-raw underline font-bold">WhatsApp (+234 814 964 0122)</a> or <a href="mailto:olumideadeyeminana@gmail.com" class="text-amber-raw underline">olumideadeyeminana@gmail.com</a>.`;
+      }
+      return `I build fault-tolerant fintech, AI &amp; quant architectures with TypeScript, Next.js, Python, Rust/C FFI, and PostgreSQL. Try clicking <strong>Top Systems 🚀</strong> or <strong>Cycle Studio Photo 📸</strong> below!`;
+    }
+
+    function askAiPreset(question) {
+      playMechanicalClick(200, 0.015);
+      appendAiChatBubble(question, true);
+      setTimeout(() => {
+        appendAiChatBubble(getAiOlumideReply(question), false);
+      }, 220);
+    }
+
+    function sendAiMessage(e) {
+      e.preventDefault();
+      const input = document.getElementById('aiChatInput');
+      if (!input || !input.value.trim()) return;
+      const text = input.value.trim();
+      input.value = '';
+      appendAiChatBubble(text, true);
+      setTimeout(() => {
+        appendAiChatBubble(getAiOlumideReply(text), false);
+      }, 250);
+    }
+
+    // Run auto-sync and bouncy enhancements on page load
     window.addEventListener('DOMContentLoaded', () => {
       initLiveGitHubAutoSync();
+      initBouncyHeroWord();
+      document.querySelectorAll('.blueprint-card').forEach(card => {
+        card.classList.add('bouncy-card', 'rounded-2xl');
+      });
     });
 
   </script>
